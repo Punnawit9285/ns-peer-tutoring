@@ -1,0 +1,290 @@
+# name              pdf      page  x0    y0    x1    y1   [m=x0,y0,x1,y1 mask] [w=px]
+# V · Back
+back-curves       back     5   0.15 0.18 0.47 0.97
+back-lumbar       back     17  0.00 0.33 1.00 0.97
+back-atlas        back     25  0.08 0.30 0.95 0.97
+back-thoracic     back     40  0.08 0.40 0.75 0.97
+back-ligaments    back     54  0.10 0.28 0.75 0.95
+back-pressure     back     62  0.15 0.23 0.88 0.90
+back-muscles      back     65  0.18 0.22 0.92 0.97
+back-subocc       back     86  0.15 0.25 0.80 0.95
+# I · Spine imaging
+spimg-openmouth   spimg    8   0.05 0.25 1.00 0.88
+spimg-adi         spimg    11  0.02 0.22 0.55 0.92
+spimg-lines       spimg    15  0.27 0.22 0.98 0.98
+spimg-scotty      spimg    26  0.10 0.22 0.92 0.98
+spimg-pars        spimg    28  0.00 0.30 0.98 0.98
+spimg-listhesis   spimg    29  0.25 0.22 0.92 0.98
+spimg-hu          spimg    33  0.00 0.30 0.98 0.98
+spimg-t1t2        spimg    47  0.22 0.03 0.92 0.98
+# N · Nervous tissue
+tis-neuropil      tissue   7   0.15 0.00 0.85 0.68
+tis-neuron        tissue   16  0.00 0.05 0.50 0.98
+tis-synapse       tissue   20  0.20 0.38 0.95 0.98
+tis-myelin        tissue   24  0.00 0.12 0.98 0.98
+tis-polar         tissue   27  0.10 0.03 0.90 0.98
+tis-spindle       tissue   31  0.10 0.30 0.88 0.85
+tis-astro         tissue   36  0.00 0.05 0.98 0.98
+tis-ependyma      tissue   41  0.00 0.28 0.98 0.98
+tis-sheath        tissue   45  0.50 0.18 0.98 0.98
+# C · Spinal cord & nerve
+cord-levels       cord     6   0.00 0.00 0.50 0.98
+cord-meninges     cord     11  0.15 0.30 0.98 0.95
+cord-internal     cord     18  0.00 0.25 0.62 0.98
+cord-blood        cord     21  0.00 0.00 0.98 0.98
+cord-lp           cord     31  0.10 0.15 0.98 0.85
+cord-caudal       cord     32  0.12 0.32 0.98 0.98
+cord-fibers       cord     37  0.08 0.40 0.98 0.95
+cord-seddon       cord     46  0.10 0.22 0.85 0.98
+# K · Skull
+sk-temporal       skull    10  0.00 0.10 1.00 0.68
+sk-newborn        skull    25  0.00 0.10 1.00 0.98
+sk-lateral        skull    28  0.18 0.08 0.78 0.98
+sk-superior       skull    30  0.00 0.10 1.00 0.98
+sk-middle         skull    37  0.00 0.33 1.00 0.98
+sk-cn             skull    53  0.60 0.10 1.00 0.98
+sk-pterion        skull    55  0.00 0.10 1.00 0.85
+sk-raccoon        skull    56  0.00 0.12 1.00 0.85
+sk-synostosis     skull    58  0.00 0.12 1.00 0.85
+# F · Superficial face & neck
+fa-muscles        face     3   0.00 0.08 1.00 0.98
+fa-artery         face     7   0.15 0.10 0.90 0.98
+fa-cavernous      face     9   0.00 0.00 0.58 0.98
+fa-parotid        face     11  0.00 0.10 1.00 0.98
+fa-palsy          face     13  0.00 0.25 0.75 0.98
+fa-sensory        face     18  0.00 0.30 1.00 0.98
+fa-triangles      face     23  0.20 0.15 0.85 0.98
+fa-hyoid          face     27  0.00 0.05 0.90 0.98
+fa-thyroid        face     30  0.00 0.05 0.65 0.98
+# D · Deep face
+df-itf            deepface 4   0.38 0.00 1.00 1.00
+df-pterygoid      deepface 8   0.45 0.00 1.00 1.00
+df-maxart         deepface 10  0.15 0.28 1.00 1.00
+df-plexus         deepface 16  0.10 0.22 0.90 0.95
+df-v3             deepface 18  0.00 0.35 1.00 1.00
+df-otic           deepface 20  0.00 0.20 1.00 1.00
+df-chorda         deepface 24  0.00 0.43 1.00 1.00
+df-tmj            deepface 27  0.12 0.48 1.00 1.00
+# O · Oral cavity
+or-incisive       oral     5   0.00 0.10 1.00 1.00
+or-softpal        oral     8   0.13 0.30 0.98 0.93
+or-tongue         oral     19  0.25 0.38 1.00 1.00
+or-tongnerve      oral     37  0.15 0.55 0.85 1.00
+or-submand        oral     47  0.10 0.20 0.90 0.95
+or-pharynx        oral     57  0.38 0.12 0.98 0.95
+or-constrictor    oral     63  0.15 0.00 0.85 0.62
+# J · Deep neck
+nk-eca            neck     6   0.05 0.00 0.55 0.95
+nk-subclav        neck     10  0.05 0.25 0.60 0.95
+nk-ijv            neck     16  0.50 0.15 1.00 0.98
+nk-sln            neck     21  0.10 0.25 0.70 1.00
+nk-thyroid        neck     24  0.10 0.25 0.70 1.00
+nk-sym            neck     25  0.15 0.25 0.65 1.00
+nk-horner         neck     26  0.10 0.25 0.68 1.00
+nk-fascia         neck     30  0.08 0.25 0.62 0.95
+# Z · Cranial cavity
+cr-scalp          cranial  6   0.15 0.12 0.88 0.98
+cr-scalpclin      cranial  7   0.48 0.08 1.00 0.98
+cr-epidural       cranial  12  0.00 0.18 1.00 0.72
+cr-tentorium      cranial  14  0.00 0.10 1.00 0.98
+cr-cn             cranial  25  0.52 0.00 1.00 0.98
+cr-willis         cranial  32  0.00 0.22 1.00 0.98
+cr-cavernous      cranial  37  0.33 0.40 0.98 0.98
+cr-subdural       cranial  39  0.15 0.18 1.00 0.98
+# M · Membrane potential
+mb-forces         memb     6   0.10 0.12 0.95 0.90
+mb-channels       memb     21  0.10 0.12 1.00 0.95
+mb-table          memb     17  0.12 0.12 0.93 0.95
+mb-ap             memb     22  0.00 0.12 1.00 0.95
+mb-refract        memb     28  0.00 0.12 1.00 0.95
+mb-nachan         memb     30  0.20 0.12 0.92 0.98
+mb-ions           memb     36  0.00 0.12 0.97 0.81
+# P · Nerve & NMJ
+pn-cable          nmj      10  0.00 0.12 1.00 0.72
+pn-salt           nmj      13  0.00 0.12 1.00 0.72
+pn-demyel         nmj      16  0.00 0.12 1.00 0.85
+pn-nmj            nmj      21  0.00 0.12 1.00 0.85
+pn-toxins         nmj      30  0.00 0.18 1.00 0.85
+pn-relax          nmj      34  0.00 0.12 1.00 0.62
+pn-blocksite      nmj      36  0.00 0.12 1.00 0.95
+# L · Lab nerve & NMJ
+lb-refract        lab      9   0.00 0.10 1.00 0.95
+lb-cap            lab      14  0.00 0.08 0.60 0.95
+lb-fibers         lab      15  0.00 0.08 1.00 0.95
+lb-ncv            lab      21  0.50 0.12 1.00 0.80
+lb-electrode      lab      24  0.50 0.35 1.00 0.95
+lb-anodal         lab      27  0.00 0.00 1.00 1.00
+# unused: lb-anodaltrace    lab      28  0.00 0.10 0.60 0.95
+lb-achsux         lab      38  0.10 0.15 0.97 0.60
+# A · ANS physiology
+an-somatic        ansphys  6   0.08 0.10 0.95 0.85
+an-ganglion       ansphys  8   0.00 0.12 1.00 0.92
+an-organiz        ansphys  12  0.08 0.10 1.00 0.85
+an-pupil          ansphys  13  0.20 0.50 0.85 0.98
+an-lens           ansphys  14  0.00 0.50 1.00 0.98
+an-bladder        ansphys  18  0.45 0.55 1.00 0.98
+an-adr            ansphys  24  0.00 0.10 1.00 0.95
+an-chol           ansphys  26  0.00 0.10 1.00 0.95
+# G · ANS integration
+gr-causes         ansreg   6   0.00 0.18 1.00 0.95
+gr-cocaine        ansreg   9   0.00 0.10 1.00 0.95
+gr-apra           ansreg   10  0.00 0.10 1.00 0.95
+gr-raynaud        ansreg   14  0.55 0.60 0.95 0.95
+gr-rabbit1        ansreg   19  0.05 0.12 1.00 0.95
+gr-rabbit2        ansreg   20  0.05 0.12 1.00 0.95
+gr-dogsheet       ansreg   34  0.08 0.00 0.92 1.00
+# E · Eye & orbit
+ey-orbit          eye      6   0.00 0.05 0.72 0.60
+ey-muscles        eye      14  0.08 0.05 1.00 0.58
+ey-cardinal       eye      15  0.30 0.05 0.85 0.50
+ey-lacrimal       eye      20  0.00 0.30 0.88 1.00
+ey-wall           eye      22  0.60 0.05 1.00 0.95
+ey-ciliary        eye      30  0.10 0.12 1.00 1.00
+ey-fundus         eye      32  0.00 0.45 1.00 1.00
+ey-aqueous        eye      34  0.35 0.45 1.00 1.00
+ey-cg             eye      39  0.00 0.30 1.00 0.92
+# R · Reflex
+rf-arc            reflex   4   0.15 0.60 1.00 1.00
+rf-gto            reflex   23  0.15 0.08 1.00 1.00
+rf-crossed        reflex   35  0.10 0.12 0.95 1.00
+rf-recip          reflex   39  0.10 0.50 0.95 0.95
+rf-abnormal       reflex   45  0.10 0.25 1.00 0.90
+rf-plantar        reflex   74  0.75 0.10 1.00 1.00
+rf-pupil          reflex   76  0.60 0.15 1.00 1.00
+# H · Ear
+er-tm             ear      4   0.00 0.40 1.00 0.98
+er-medial         ear      6   0.35 0.30 1.00 0.98
+er-walls          ear      8   0.35 0.18 1.00 0.72
+er-tube           ear      9   0.52 0.22 1.00 0.98
+er-muscles        ear      12  0.00 0.45 1.00 0.98
+er-labyrinth      ear      19  0.18 0.45 0.90 1.00
+er-macula         ear      22  0.25 0.45 0.75 1.00
+er-corti          ear      28  0.50 0.18 1.00 1.00
+er-transmit       ear      34  0.10 0.20 1.00 0.80
+er-com            ear      41  0.00 0.15 1.00 1.00
+# X · ANS of head & neck
+# unused: ah-overview       anshn    3   0.05 0.45 0.95 1.00
+ah-sym            anshn    4   0.15 0.20 0.85 1.00
+ah-para           anshn    7   0.10 0.20 0.95 1.00
+ah-cn3            anshn    9   0.15 0.55 0.85 1.00
+ah-ppg            anshn    11  0.05 0.22 1.00 1.00
+ah-facial         anshn    15  0.10 0.18 1.00 0.98
+ah-croc           anshn    16  0.05 0.45 0.85 1.00
+ah-otic           anshn    17  0.15 0.18 0.92 1.00
+ah-frey           anshn    20  0.00 0.45 1.00 1.00
+# S · Sound & hearing (2026)
+so-retspl         sound    16  0.00 0.08 1.00 0.98
+so-itd            sound    33  0.10 0.22 0.90 0.98
+so-noise          sound    46  0.48 0.27 0.99 0.85
+so-ossic          sound    53  0.00 0.35 1.00 0.85
+so-basilar        sound    69  0.10 0.28 0.93 0.87
+so-who            sound    84  0.00 0.20 1.00 0.88
+# unused: so-snhl           sound    87  0.00 0.25 1.00 1.00
+so-chl            sound    88  0.00 0.25 1.00 1.00
+so-mixed          sound    89  0.00 0.25 1.00 1.00
+# unused: so-mismatch       sound    94  0.00 0.45 1.00 0.85
+so-vestinput      sound    99  0.00 0.40 1.00 0.85
+so-hit            sound    100 0.48 0.23 0.95 0.78  w=2600
+so-bppv           sound    104 0.28 0.50 0.82 0.80  w=2400
+# unused: so-dixhall        sound    106 0.18 0.48 0.88 0.95  w=2400
+so-vemp           sound    110 0.42 0.28 0.72 0.82  w=2800
+so-nerves         sound    111 0.20 0.20 0.85 0.65  w=2200
+# Y · SGD wrap-up
+sg-derm           sgd      5   0.00 0.15 1.00 1.00
+sg-roots          sgd      11  0.00 0.10 1.00 1.00
+sg-hnp            sgd      12  0.25 0.50 0.80 1.00  w=2000
+sg-slr            sgd      13  0.20 0.45 0.80 1.00
+sg-mgmt           sgd      16  0.20 0.45 0.85 1.00  w=2200
+sg-horner         sgd      23  0.58 0.40 1.00 0.85
+sg-ocsym          sgd      25  0.58 0.30 0.98 1.00
+sg-plr            sgd      27  0.58 0.30 0.98 1.00
+# ---- past papers: AC81 spot test (one crop per station) ----
+s81-01 ac81s 2 0.50 0.03 1.00 1.00 w=2400 trim
+s81-02 ac81s 3 0.50 0.03 1.00 1.00 w=2400 trim
+s81-03 ac81s 4 0.40 0.03 1.00 1.00 w=2400 trim
+s81-04 ac81s 5 0.45 0.03 1.00 1.00 w=2400 trim
+s81-05 ac81s 6 0.44 0.03 1.00 1.00 w=2400 trim
+s81-06 ac81s 7 0.50 0.03 1.00 1.00 w=2400 trim
+s81-07 ac81s 8 0.50 0.03 1.00 1.00 w=2400 trim
+s81-08 ac81s 9 0.47 0.03 1.00 1.00 w=2400 trim
+s81-09 ac81s 10 0.50 0.03 1.00 1.00 w=2400 trim
+s81-10 ac81s 11 0.50 0.03 1.00 1.00 w=2400 trim
+s81-11 ac81s 12 0.50 0.03 1.00 1.00 w=2400 trim
+s81-12 ac81s 13 0.50 0.03 1.00 1.00 w=2400 trim
+s81-13 ac81s 14 0.50 0.03 1.00 1.00 w=2400 trim
+s81-14 ac81s 15 0.55 0.03 1.00 1.00 w=2400 trim
+s81-15 ac81s 16 0.55 0.03 1.00 1.00 w=2400 trim
+s81-16 ac81s 17 0.53 0.03 1.00 1.00 w=2400 trim
+s81-17 ac81s 18 0.47 0.03 1.00 0.66 w=2400 trim
+s81-18 ac81s 19 0.50 0.03 1.00 1.00 w=2400 trim
+s81-19 ac81s 20 0.47 0.03 1.00 1.00 w=2400 trim
+s81-20 ac81s 21 0.48 0.03 1.00 1.00 w=2400 trim
+s81-21 ac81s 22 0.50 0.03 1.00 1.00 w=2400 trim
+s81-22 ac81s 23 0.50 0.03 1.00 1.00 w=2400 trim
+s81-23 ac81s 24 0.50 0.03 1.00 1.00 w=2400 trim
+s81-24 ac81s 25 0.50 0.03 1.00 1.00 w=2400 trim
+s81-25a ac81s 26 0.43 0.03 1.00 1.00 w=2400 trim
+s81-25b ac81s 27 0.43 0.03 1.00 1.00 w=2400 trim
+s81-26 ac81s 28 0.50 0.03 1.00 1.00 w=2400 trim
+s81-27 ac81s 29 0.50 0.03 1.00 1.00 w=2400 trim
+s81-28 ac81s 30 0.50 0.03 1.00 1.00 w=2400 trim
+s81-29 ac81s 31 0.50 0.03 1.00 1.00 w=2400 trim
+s81-30 ac81s 32 0.50 0.03 1.00 1.00 w=2400 trim
+s81-31 ac81s 33 0.50 0.03 1.00 1.00 w=2400 trim
+s81-32 ac81s 34 0.50 0.03 1.00 1.00 w=2400 trim
+s81-33 ac81s 35 0.42 0.03 1.00 1.00 w=2400 trim
+s81-34 ac81s 36 0.48 0.03 1.00 1.00 w=2400 trim
+s81-35 ac81s 37 0.50 0.03 1.00 1.00 w=2400 trim
+s81-36 ac81s 38 0.50 0.03 1.00 1.00 w=2400 trim
+# ---- past papers: AC79 spot II (back, head & neck) + tissue stations ----
+s79-t1 ac79s 3 0.00 0.00 0.49 1.00 w=2000 trim
+s79-t2 ac79s 4 0.00 0.00 0.49 1.00 w=2000 trim
+s79-t3 ac79s 5 0.00 0.00 0.49 1.00 w=2000 trim
+s79-t4 ac79s 6 0.00 0.00 0.49 1.00 w=2000 trim
+s79-t5 ac79s 7 0.00 0.00 0.49 1.00 w=2000 trim
+s79-t6 ac79s 8 0.00 0.00 0.49 1.00 w=2000 trim
+s79-01 ac79s 9 0.00 0.00 0.49 1.00 w=2000 trim
+s79-02 ac79s 10 0.00 0.00 0.49 1.00 w=2000 trim
+s79-03 ac79s 11 0.00 0.00 0.49 1.00 w=2000 trim
+s79-04 ac79s 12 0.00 0.00 0.49 1.00 w=2000 trim
+s79-05 ac79s 13 0.00 0.00 0.49 1.00 w=2000 trim
+s79-06 ac79s 14 0.00 0.00 0.49 1.00 w=2000 trim
+s79-07 ac79s 15 0.00 0.00 0.49 1.00 w=2000 trim
+s79-08 ac79s 16 0.00 0.00 0.49 1.00 w=2000 trim
+s79-09 ac79s 17 0.00 0.00 0.49 1.00 w=2000 trim
+s79-10 ac79s 18 0.00 0.00 0.49 1.00 w=2000 trim
+s79-11 ac79s 19 0.00 0.00 0.49 1.00 w=2000 trim
+s79-12 ac79s 20 0.00 0.00 0.49 1.00 w=2000 trim
+s79-13 ac79s 21 0.00 0.00 0.49 1.00 w=2000 trim
+s79-14 ac79s 22 0.00 0.00 0.49 1.00 w=2000 trim
+s79-15 ac79s 23 0.00 0.00 0.49 1.00 w=2000 trim
+s79-16 ac79s 24 0.00 0.00 0.49 1.00 w=2000 trim
+s79-17 ac79s 25 0.00 0.00 0.49 1.00 w=2000 trim
+s79-18 ac79s 26 0.00 0.00 0.49 1.00 w=2000 trim
+s79-19 ac79s 27 0.00 0.00 0.49 1.00 w=2000 trim
+s79-20 ac79s 28 0.00 0.00 0.49 1.00 w=2000 trim
+s79-21 ac79s 29 0.00 0.00 0.49 1.00 w=2000 trim
+s79-22 ac79s 30 0.00 0.00 0.49 1.00 w=2000 trim
+s79-23 ac79s 31 0.00 0.00 0.49 1.00 w=2000 trim
+s79-24 ac79s 32 0.00 0.00 0.49 1.00 w=2000 trim
+s79-25 ac79s 33 0.00 0.00 0.49 1.00 w=2000 trim
+s79-26 ac79s 34 0.00 0.00 0.49 1.00 w=2000 trim
+s79-27 ac79s 35 0.00 0.00 0.49 1.00 w=2000 trim
+s79-28 ac79s 36 0.00 0.00 0.49 0.64 w=2000 trim
+s79-29 ac79s 37 0.00 0.00 0.49 1.00 w=2000 trim
+s79-30 ac79s 38 0.00 0.00 0.49 1.00 w=2000 trim
+s79-31 ac79s 39 0.00 0.00 0.49 1.00 w=2000 trim
+s79-32 ac79s 40 0.00 0.00 0.49 1.00 w=2000 trim
+s79-33 ac79s 41 0.00 0.00 0.49 1.00 w=2000 trim
+s79-34 ac79s 42 0.00 0.00 0.49 1.00 w=2000 trim
+s79-35 ac79s 43 0.00 0.00 0.49 1.00 w=2000 trim
+s79-36 ac79s 44 0.00 0.00 0.49 1.00 w=2000 trim
+s79-37 ac79s 45 0.00 0.00 0.49 1.00 w=2000 trim
+s79-38 ac79s 46 0.00 0.00 0.49 1.00 w=2000 trim
+# ---- past papers: MCQ figures ----
+ac80-caudal ac80 7 0.16 0.288 0.51 0.53 w=2400
+ac80-lines ac80 7 0.165 0.69 0.52 0.905 w=2400
+ac80-facet ac80 8 0.16 0.178 0.48 0.51 w=2400
+ac80-apra ac80 17 0.20 0.232 0.68 0.50 w=2400
+ac81-dens ac81 8 0.175 0.17 0.54 0.475 w=2400
+ac81-pedicle ac81 9 0.2 0.225 0.49 0.53 w=2400

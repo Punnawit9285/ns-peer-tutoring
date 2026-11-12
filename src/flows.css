@@ -1,0 +1,90 @@
+/* ---------- interactive flowcharts (src/flows.js): NMJ on P-C4, Horner on G-C1, facial nerve on X-C5, audiogram on S-C6 ---------- */
+.flowx { border: 1px solid var(--rule); border-radius: 12px; background: var(--sheet); padding: 14px; display: grid; gap: 12px; min-width: 0; }
+.fx-head { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.fx-head b { font: 600 1.08em var(--f-display); color: var(--ven); }
+.fx-head span { color: var(--ink2); font-size: .88em; }
+.fx-cases { display: flex; flex-wrap: wrap; gap: 6px; }
+.fx-btn { font: 500 .86em var(--f-body); border: 1.5px solid var(--rule); background: var(--sheet); color: var(--ink); border-radius: 999px; padding: 4px 12px; cursor: pointer; line-height: 1.4; }
+.fx-btn:hover { border-color: var(--ven); }
+.fx-btn.on { background: var(--ven); border-color: var(--ven); color: var(--sheet); }
+.fx-btn.go { background: var(--art); border-color: var(--art); color: var(--sheet); font-weight: 600; }
+.fx-btn.ghost { border-style: dashed; }
+.fx-btn.ghost.on { border-style: solid; }
+.fx-btn:disabled { opacity: .4; cursor: default; }
+.fx-form { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; align-items: end; background: var(--sheet2); border-radius: 10px; padding: 10px; }
+.fx-form label { display: grid; gap: 2px; font-size: .8em; color: var(--ink2); }
+.fx-form input { font: 500 1rem var(--f-mono); width: 100%; padding: 5px 8px; border: 1px solid var(--rule); border-radius: 8px; background: var(--sheet); color: var(--ink); }
+.fx-case { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: .86em; }
+.fx-src { font-family: var(--f-mono); color: var(--ink2); margin-right: 4px; }
+.fx-chip { background: var(--sheet2); border-radius: 999px; padding: 2px 10px; }
+.fx-chip b { font-family: var(--f-mono); font-weight: 600; }
+.fx-scroll { overflow-x: auto; min-width: 0; }
+.fx-svg { display: block; width: 100%; min-width: 640px; height: auto; }
+.fx-node { cursor: pointer; transition: opacity .2s; }
+.fx-node > rect { fill: var(--sheet); stroke: var(--rule); stroke-width: 1.5; transition: fill .2s, stroke .2s; }
+.fx-node.k-q > rect { fill: var(--ven-soft); stroke: var(--ven); }
+.fx-node.k-leaf > rect { fill: var(--sheet2); stroke: var(--ink2); }
+.fx-node.k-st > rect { fill: var(--sheet2); stroke: var(--ink2); }
+.fx-node.k-note > rect { fill: none; stroke: var(--ink2); stroke-dasharray: 5 4; }
+.fx-node.k-cause > rect { fill: none; stroke: var(--rule); stroke-dasharray: 2 3; }
+.fx-node:hover > rect { stroke: var(--art); }
+.fx-node:focus { outline: none; }
+.fx-node:focus-visible > rect { stroke: var(--ven); stroke-width: 3; }
+.fx-t { font: 600 16px var(--f-display); fill: var(--ink); }
+.fx-s { font: 12.5px var(--f-body); fill: var(--ink2); }
+.fx-node.k-cause .fx-t { font-size: 14px; fill: var(--ink2); }
+.fx-node.on > rect { fill: var(--art-soft); stroke: var(--art); stroke-width: 2.2; }
+.fx-node.cur > rect { stroke-width: 3.6; }
+.fx-node.sel > rect { stroke: var(--ok); stroke-width: 3; stroke-dasharray: none; }
+.fx-node.dim, .fx-edge.dim { opacity: .38; }
+.fx-edge path { fill: none; stroke: var(--ink2); stroke-width: 1.6; }
+.fx-edge.dash path { stroke-dasharray: 5 4; }
+.fx-edge.on path { stroke: var(--art); stroke-width: 3; }
+.fx-edge text { font: 600 12.5px var(--f-mono); fill: var(--ink2); }
+.fx-edge.on text { fill: var(--art); }
+.fx-mk path { fill: var(--ink2); }
+.fx-mk-on path { fill: var(--art); }
+.fx-pill rect { fill: var(--art); stroke: none; }
+.fx-pill text { font: 600 11.5px var(--f-mono); fill: var(--sheet); }
+.fx-node.dim .fx-pill { display: none; }
+.fx-sev rect { fill: transparent; }
+.fx-sev text { font: 14px var(--f-body); fill: var(--ink); }
+.fx-sev.on rect { fill: var(--art); }
+.fx-sev.on text { fill: var(--sheet); font-weight: 600; }
+.fx-ctl { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.fx-pos { font: .84em var(--f-mono); color: var(--ink2); }
+.fx-panel { display: grid; gap: 10px; min-width: 0; }
+.fx-trail { margin: 0; padding-left: 1.5em; display: grid; gap: 4px; font-size: .93em; }
+.fx-trail li { color: var(--ink2); }
+.fx-trail li.now { color: var(--ink); }
+.fx-trail li.now::marker { color: var(--art); font-weight: 700; }
+.fx-dx { margin: 0; background: var(--ok-soft); border-radius: 10px; padding: 10px 14px; font: 600 1.05em var(--f-display); }
+.fx-dx span { display: block; font: 500 .7em var(--f-mono); color: var(--ok); text-transform: uppercase; letter-spacing: .06em; }
+.fx-explain { background: var(--sheet2); border-radius: 10px; padding: 10px 14px; }
+.fx-explain h4 { margin: 0 0 4px; font: 600 1.02em var(--f-display); color: var(--art); }
+.fx-explain ul { margin: 0; padding-left: 1.1em; display: grid; gap: 3px; }
+.fx-th { margin: 6px 0 0; font-family: "IBM Plex Sans Thai", var(--f-body); color: var(--ink2); font-size: .92em; }
+.fx-ratio { display: inline-flex; align-items: center; gap: 12px; margin-top: 8px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 6px 14px; }
+.fx-ratio > div { display: grid; text-align: center; }
+.fx-ratio span { font: .72em var(--f-mono); color: var(--ink2); }
+.fx-ratio b { font: 600 .95em var(--f-display); }
+.fx-ratio .div { font-size: 1.4em; color: var(--ink2); }
+.fx-curves { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; max-width: 640px; }
+.fx-curves figure { margin: 0; }
+.fx-curves figcaption { font-size: .78em; color: var(--ink2); text-align: center; }
+.fx-mini { width: 100%; height: auto; display: block; }
+.fx-mini .ax { stroke: var(--ink2); stroke-width: 1; }
+.fx-mini .ax1 { stroke: var(--rule); stroke-dasharray: 3 3; }
+.fx-mini text { font: 11px var(--f-mono); fill: var(--ink2); }
+.fx-mini .nrm { fill: none; stroke: var(--ink2); stroke-width: 1.6; stroke-dasharray: 5 4; }
+.fx-mini .nrmd { fill: var(--ink2); }
+.fx-mini .pat { fill: none; stroke: var(--art); stroke-width: 2.4; }
+.fx-mini .patd { fill: var(--art); }
+.fx-key { grid-column: 1 / -1; margin: 0; font-size: .8em; color: var(--ink2); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.fx-key i { display: inline-block; width: 22px; height: 0; border-top: 2px dashed var(--ink2); }
+.fx-key i.kp { border-top: 3px solid var(--art); margin-left: 8px; }
+.fx-idle { margin: 0; color: var(--ink2); }
+.fx-err { margin: 0; color: var(--bad); }
+@media (max-width: 560px) { .flowx { padding: 10px; } .fx-curves { grid-template-columns: 1fr; } }
+.fx-print { border: 0; padding: 0; }
+.fx-print .fx-svg { min-width: 0; }
