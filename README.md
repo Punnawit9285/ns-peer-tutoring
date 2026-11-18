@@ -56,14 +56,14 @@ A second deck for the NS I gross-anatomy lectures, built to link each lecture st
 |---|---|
 | **Student deck** | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/student.html |
 | **Tutor deck** (every answer and cloze revealed, Thai tutor notes and SAY lines) | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/tutor.html |
-| **Student handout PDF** | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/student.pdf?v=3c6efea5 |
+| **Student handout PDF** | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/student.pdf?v=1a6c3b6b |
 | **RS I Anatomy 101 deck** | https://punnawit9285.github.io/rs-peer-tutoring/anatomy/student.html |
 
 64 concepts · 46 cadaver steps · 14 lab clips · 215 past-paper items (379 questions) · 42 connection maps.
 
 Sections: B Vertebral column & deep back muscles; S Spinal cord, meninges & peripheral nerve; K Skull: bones, landmarks, fossae & foramina; F Superficial face & neck; T Temporal & infratemporal fossa, mastication, TMJ; O Oral cavity, tongue, floor of mouth & pharynx; N Deep structures of the neck; C Scalp, meninges, brain, cranial nerves & vessels.
 
-The atlas photos (Rohen, *Photographic Atlas of Anatomy*) are not published here. Each cadaver step shows the atlas page instead, and its label numbers match that page, so keep your atlas open beside the deck. Deck source: [`ns-peer-tutoring/anatomy/src`](https://github.com/Punnawit9285/ns-peer-tutoring/tree/main/anatomy/src).
+This repository is private because the cadaver steps use photos from Rohen, *Photographic Atlas of Anatomy* 8e (© Schattauer / Wolters Kluwer). Do not share the deck or the PDF outside the class. Deck source: [`ns-peer-tutoring/anatomy/src`](https://github.com/Punnawit9285/ns-peer-tutoring/tree/main/anatomy/src).
 
 ## Pages
 
