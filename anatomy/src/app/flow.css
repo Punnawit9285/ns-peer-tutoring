@@ -1,0 +1,105 @@
+/* ---------- connection flowcharts ---------- */
+:root {
+  --fk-a: #c0392b; --fk-a-bg: #fdecea;  --fk-v: #2f6db5; --fk-v-bg: #e8f0fb;
+  --fk-n: #b58900; --fk-n-bg: #fff6d1;  --fk-g: #b58900; --fk-g-bg: #ffe79a;
+  --fk-l: #2e8b57; --fk-l-bg: #e4f4ea;  --fk-s: #5b4bb7; --fk-s-bg: #ece9fb;
+  --fk-t: #7a8190; --fk-t-bg: #f4f5f7;  --fk-o: #8a6a2f; --fk-o-bg: #fbf5e8;
+  --fk-c: #4f6d8c; --fk-c-bg: #eaf0f6;  --fk-r: #0e8a7e; --fk-r-bg: #e0f5f2;
+  --fk-ink: #1d2330; --fk-note: #5b6475;
+}
+:root[data-theme="dark"] {
+  --fk-a: #ef6f61; --fk-a-bg: #3a1916;  --fk-v: #6aa3ef; --fk-v-bg: #142640;
+  --fk-n: #e3b93a; --fk-n-bg: #332a0c;  --fk-g: #e3b93a; --fk-g-bg: #4a3b0a;
+  --fk-l: #5cc48a; --fk-l-bg: #12301f;  --fk-s: #a597f0; --fk-s-bg: #241f45;
+  --fk-t: #9aa2b1; --fk-t-bg: #1e232e;  --fk-o: #d0a764; --fk-o-bg: #2c2414;
+  --fk-c: #8fb0d1; --fk-c-bg: #18222e;  --fk-r: #4fd1c1; --fk-r-bg: #0f2d2a;
+  --fk-ink: #e5e8ef; --fk-note: #a3abbc;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fk-a: #ef6f61; --fk-a-bg: #3a1916;  --fk-v: #6aa3ef; --fk-v-bg: #142640;
+    --fk-n: #e3b93a; --fk-n-bg: #332a0c;  --fk-g: #e3b93a; --fk-g-bg: #4a3b0a;
+    --fk-l: #5cc48a; --fk-l-bg: #12301f;  --fk-s: #a597f0; --fk-s-bg: #241f45;
+    --fk-t: #9aa2b1; --fk-t-bg: #1e232e;  --fk-o: #d0a764; --fk-o-bg: #2c2414;
+    --fk-c: #8fb0d1; --fk-c-bg: #18222e;  --fk-r: #4fd1c1; --fk-r-bg: #0f2d2a;
+    --fk-ink: #e5e8ef; --fk-note: #a3abbc;
+  }
+}
+.flowsvg { display: block; width: 100%; height: auto; margin: 0 auto; font-family: "IBM Plex Sans", "IBM Plex Sans Thai", sans-serif; overflow: visible; }
+.flowsvg .fn rect { stroke-width: 1.4; }
+.flowsvg .fn.key rect { stroke-width: 2.6; }
+.flowsvg .fn .nm { font-size: 13px; font-weight: 500; fill: var(--fk-ink); }
+.flowsvg .fn.key .nm { font-weight: 600; }
+.flowsvg .fn .nt { font-size: 10.5px; fill: var(--fk-note); }
+.flowsvg .fe .fl { fill: none; stroke-width: 1.6; }
+.flowsvg .fl-link { fill: none; stroke: var(--fk-t); stroke-width: 1.4; stroke-dasharray: 5 4; }
+.flowsvg .fl-lab rect { fill: var(--sheet, #fff); stroke: var(--fk-t); stroke-width: .8; }
+.flowsvg .fl-lab text { font-size: 10px; fill: var(--fk-note); font-style: italic; }
+.flowsvg .k-a rect, .flowsvg .fn.k-a rect { fill: var(--fk-a-bg); stroke: var(--fk-a); }
+.flowsvg .fn.k-v rect { fill: var(--fk-v-bg); stroke: var(--fk-v); }
+.flowsvg .fn.k-n rect { fill: var(--fk-n-bg); stroke: var(--fk-n); }
+.flowsvg .fn.k-g rect { fill: var(--fk-g-bg); stroke: var(--fk-g); }
+.flowsvg .fn.k-l rect { fill: var(--fk-l-bg); stroke: var(--fk-l); }
+.flowsvg .fn.k-s rect { fill: var(--fk-s-bg); stroke: var(--fk-s); }
+.flowsvg .fn.k-t rect { fill: var(--fk-t-bg); stroke: var(--fk-t); stroke-dasharray: 3 2.5; }
+.flowsvg .fn.k-o rect { fill: var(--fk-o-bg); stroke: var(--fk-o); stroke-dasharray: 6 3; }
+.flowsvg .fn.k-c rect { fill: var(--fk-c-bg); stroke: var(--fk-c); }
+.flowsvg .fn.k-r rect { fill: var(--fk-r-bg); stroke: var(--fk-r); }
+.flowsvg .fe.k-a .fl { stroke: var(--fk-a); } .flowsvg .fe.k-a .fa { fill: var(--fk-a); }
+.flowsvg .fe.k-v .fl { stroke: var(--fk-v); } .flowsvg .fe.k-v .fa { fill: var(--fk-v); }
+.flowsvg .fe.k-n .fl { stroke: var(--fk-n); } .flowsvg .fe.k-n .fa { fill: var(--fk-n); }
+.flowsvg .fe.k-l .fl { stroke: var(--fk-l); } .flowsvg .fe.k-l .fa { fill: var(--fk-l); }
+.flowsvg .fe.k-s .fl { stroke: var(--fk-s); } .flowsvg .fe.k-s .fa { fill: var(--fk-s); }
+.flowsvg .fe.k-r .fl { stroke: var(--fk-r); } .flowsvg .fe.k-r .fa { fill: var(--fk-r); }
+.flowsvg .fe.k-g .fl, .flowsvg .fe.k-t .fl, .flowsvg .fe.k-o .fl, .flowsvg .fe.k-c .fl { stroke: var(--fk-t); }
+.flowsvg .fe.k-g .fa, .flowsvg .fe.k-t .fa, .flowsvg .fe.k-o .fa, .flowsvg .fe.k-c .fa { fill: var(--fk-t); }
+/* interaction */
+.flowbox .flowsvg .fn { cursor: pointer; transition: opacity .15s; }
+.flowbox .flowsvg .fe, .flowbox .flowsvg .fl-link, .flowbox .flowsvg .fl-lab { transition: opacity .15s; }
+.flowbox .flowsvg.dim .fn:not(.hl), .flowbox .flowsvg.dim .fe:not(.hl), .flowbox .flowsvg.dim .fl-link, .flowbox .flowsvg.dim .fl-lab { opacity: .18; }
+.flowbox .flowsvg .fn.sel rect { stroke-width: 3.2; }
+.flowbox .flowsvg .fe.hl .fl { stroke-width: 2.6; }
+.flowbox .flowsvg .fn:focus { outline: none; }
+.flowbox .flowsvg .fn:focus-visible rect { stroke-width: 3.2; }
+.flowbox.fq .flowsvg .fn:not(.root):not(.rv) .nm, .flowbox.fq .flowsvg .fn:not(.root):not(.rv) .nt { fill: transparent; }
+.flowbox.fq .flowsvg .fn:not(.root):not(.rv) rect { fill: var(--sheet2, #eef0f4); }
+/* box */
+.flowbox { border: 1px solid var(--rule); border-radius: 12px; background: var(--sheet); padding: 10px 12px 12px; min-width: 0; }
+.flowbox .fhead { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-bottom: 6px; }
+.flowbox .fh { font-family: var(--f-mono); font-size: .74em; letter-spacing: .06em; text-transform: uppercase; color: var(--ink2); }
+.flowbox .ftabs { display: flex; flex-wrap: wrap; gap: 4px; }
+.flowbox .ftabs button { font: inherit; font-size: .8em; border: 1px solid var(--rule); background: var(--sheet2); color: var(--ink2); border-radius: 999px; padding: 2px 10px; cursor: pointer; }
+.flowbox .ftabs button[aria-pressed="true"] { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+.flowbox .ftools { margin-left: auto; display: flex; gap: 6px; }
+.flowbox .ftitle { font-weight: 600; margin: 2px 0 6px; font-size: .95em; }
+.flowbox .fpanel { display: none; }
+.flowbox .fpanel.on { display: block; }
+.flowbox .fsvg { overflow-x: auto; }
+.flowbox .fsvg.wide .flowsvg { width: auto; min-width: 100%; }
+.flowbox .finfo { min-height: 1.6em; font-size: .86em; color: var(--ink2); margin-top: 6px; }
+.flowbox .finfo b { color: var(--ink); }
+.flowbox .flegend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: .74em; color: var(--ink2); margin-top: 4px; font-family: var(--f-mono); }
+.flowbox .flegend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 4px; vertical-align: -1px; border: 1.5px solid var(--c); background: var(--b); }
+.flowbox .fth { margin-top: 8px; background: var(--sheet2); border-radius: 8px; padding: 8px 10px; font-size: .92em; }
+.flowbox .fth .tp-head { font-family: var(--f-mono); font-size: .72em; color: var(--ink2); margin-bottom: 2px; }
+.fpair { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.35fr); gap: 18px; align-items: start; margin-bottom: 14px; }
+@media (max-width: 900px) { .fpair { grid-template-columns: 1fr; } }
+.views[data-v="flow"] { grid-template-columns: minmax(0, .85fr) minmax(0, 1.25fr); align-items: start; }
+.views[data-v="flow"] .vw-cmp { display: none; }
+.views .vw-flow { display: none; }
+.views[data-v="flow"] .vw-flow { display: block; }
+.sgrid.wide { grid-template-columns: 1fr; }
+.sgrid.wide > .lblside { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 28px; align-items: start; }
+@media (max-width: 860px) { .views[data-v="flow"] { grid-template-columns: 1fr; } .sgrid.wide > .lblside { grid-template-columns: 1fr; } }
+.zoom .zpaper .flowsvg { width: min(1400px, 92vw); max-width: none !important; max-height: 86vh; background: var(--sheet); border-radius: 10px; padding: 10px; }
+.fpair.stack { grid-template-columns: 1fr; }
+.fpair.stack .figs .fig img { max-height: 44vh; }
+.views.fstack[data-v="flow"] { grid-template-columns: 1fr; }
+.views.fstack[data-v="flow"] .vw-cad .fig img { max-height: 46vh; }
+.flowbox .flegend .lk::before { border: 0; border-top: 1.5px dashed var(--fk-t); border-radius: 0; height: 0; width: 16px; vertical-align: 3px; background: none; }
+.saybox .say-th { margin-top: 6px; font-family: "IBM Plex Sans Thai", var(--f-body); }
+.tutor .cz { color: inherit; background: var(--art-soft); }
+.tutor .cz * { color: inherit !important; }
+.fig.ph .phbox { display: grid; gap: 4px; place-content: center; text-align: center; min-height: 220px; border: 2px dashed var(--rule); border-radius: 10px; padding: 18px; background: var(--sheet2); color: var(--ink2); }
+.fig.ph .phbox b { color: var(--ink); font-size: 1.05em; }
+.fig.ph .phbox small { font-size: .8em; max-width: 34ch; margin: 0 auto; }

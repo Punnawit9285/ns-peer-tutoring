@@ -1,0 +1,378 @@
+[
+ {
+  "page": 2,
+  "station": 1,
+  "qs": [
+   {
+    "n": 1,
+    "q": "Identify structure A B",
+    "o": [
+     "Superior nasal concha",
+     "Inferior nasal concha",
+     "Hiatus semilunaris",
+     "Ethmoidal bulla"
+    ],
+    "key": "C"
+   },
+   {
+    "n": 2,
+    "q": "Which paranasal sinus opening lies on B?",
+    "o": [
+     "Frontal sinus",
+     "Ethmoid sinus",
+     "Maxillary sinus",
+     "Sphenoid sinus"
+    ],
+    "key": "A"
+   }
+  ]
+ },
+ {
+  "page": 3,
+  "station": 2,
+  "qs": [
+   {
+    "n": 3,
+    "q": "Identify area A A",
+    "o": [
+     "Piriform recess",
+     "Hiatus semilunaris",
+     "Opening of auditory tube",
+     "Opening of nasolacrimal duct"
+    ],
+    "key": "C"
+   },
+   {
+    "n": 4,
+    "q": "Identify muscle in area B",
+    "o": [
+     "Palatoglossus",
+     "Stylopharyngeus",
+     "Palatopgharyngeus",
+     "Salpingopharyngeus"
+    ],
+    "key": "D"
+   }
+  ]
+ },
+ {
+  "page": 4,
+  "station": 3,
+  "qs": [
+   {
+    "n": 5,
+    "q": "Identify structure A",
+    "o": [
+     "Cricothyroid m.",
+     "Thyroarytenoid m.",
+     "Lateral cricoarytenoid m.",
+     "Posterior cricoarytenoid m."
+    ],
+    "key": "D"
+   },
+   {
+    "n": 6,
+    "q": "Which paranasal sinus opening lies on B?",
+    "o": [
+     "Vocal fold",
+     "Vestibular fold",
+     "Ary-epiglottic fold"
+    ],
+    "key": "A"
+   }
+  ]
+ },
+ {
+  "page": 5,
+  "station": 4,
+  "qs": []
+ },
+ {
+  "page": 6,
+  "station": 5,
+  "qs": [
+   {
+    "n": 9,
+    "q": "Identify structure A",
+    "o": [
+     "External intercostal m.",
+     "Inner intercostal m.",
+     "Innermost intercostal m.",
+     "Transversus thoracis m."
+    ],
+    "key": "D"
+   },
+   {
+    "n": 10,
+    "q": "Identify structure B",
+    "o": [
+     "Pericardiophrenic vessels",
+     "Intercostal vessels",
+     "Internal thoracic vessels"
+    ],
+    "key": "C"
+   }
+  ]
+ },
+ {
+  "page": 7,
+  "station": 6,
+  "qs": [
+   {
+    "n": 11,
+    "q": "Identify structure A",
+    "o": [
+     "Manubrium sterni",
+     "Sternal angle",
+     "Body of sternum",
+     "Xiphoid process"
+    ],
+    "key": "B"
+   },
+   {
+    "n": 12,
+    "q": "Identify structure B",
+    "o": [
+     "2nd rib",
+     "3rd rib",
+     "4th rib",
+     "5th rib"
+    ],
+    "key": "B"
+   }
+  ]
+ },
+ {
+  "page": 8,
+  "station": 7,
+  "qs": [
+   {
+    "n": 13,
+    "q": "Identify structure A",
+    "o": [
+     "External intercostal m.",
+     "Internal intercostal m.",
+     "Innermost intercostal m.",
+     "Transversus thoracis m."
+    ],
+    "key": "A"
+   },
+   {
+    "n": 14,
+    "q": "Identify structure B",
+    "o": [
+     "Manubrium sterni",
+     "Sternal angle",
+     "Body of sternum",
+     "Xiphoid process"
+    ],
+    "key": "B"
+   }
+  ]
+ },
+ {
+  "page": 9,
+  "station": 8,
+  "qs": [
+   {
+    "n": 15,
+    "q": "Identify structure A A",
+    "o": [
+     "Vagus n.",
+     "Recurrent laryngeal n.",
+     "Phrenic n.",
+     "Sympathetic trunk"
+    ],
+    "key": "C"
+   },
+   {
+    "n": 16,
+    "q": "Which organ have impression at B?",
+    "o": [
+     "Stomach",
+     "Liver",
+     "Spleen"
+    ],
+    "key": "B"
+   }
+  ]
+ },
+ {
+  "page": 10,
+  "station": 9,
+  "qs": [
+   {
+    "n": 17,
+    "q": "Identify structure A",
+    "o": [
+     "Lingula",
+     "Pulmonary ligement",
+     "Hilum"
+    ],
+    "key": "B"
+   },
+   {
+    "n": 18,
+    "q": "Which organ have impression at B?",
+    "o": [
+     "Cervical pleura",
+     "Mediastinal pleura",
+     "Costal pleura",
+     "Visceral pleura"
+    ],
+    "key": "D"
+   }
+  ]
+ },
+ {
+  "page": 11,
+  "station": 10,
+  "qs": [
+   {
+    "n": 19,
+    "q": "Which structure delivers oxygenated blood from the lungs back to the heart?",
+    "o": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "key": "C"
+   },
+   {
+    "n": 20,
+    "q": "Which structure is in the same level with right atrium?",
+    "o": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "key": "D"
+   }
+  ]
+ },
+ {
+  "page": 12,
+  "station": 11,
+  "qs": [
+   {
+    "n": 21,
+    "q": "Which structure is at the same vertebral level as structure X?",
+    "o": [
+     "C6",
+     "T1",
+     "carina",
+     "eparterial bronchus",
+     "lingula"
+    ],
+    "key": "C"
+   },
+   {
+    "n": 22,
+    "q": "Which structure is at the same vertebral level as the start of the conducting portion of the bronchial tree?",
+    "o": [
+     "C6",
+     "T1",
+     "carina",
+     "eparterial bronchus",
+     "lingula"
+    ],
+    "key": "A"
+   }
+  ]
+ },
+ {
+  "page": 13,
+  "station": 12,
+  "qs": [
+   {
+    "n": 23,
+    "q": "Which structure delivers deoxygenated blood from the posterior of the thorax to the heart?",
+    "o": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "key": "C"
+   },
+   {
+    "n": 24,
+    "q": "Which structure delivers oxygenated blood to the bronchial tree?",
+    "o": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "key": "B"
+   }
+  ]
+ },
+ {
+  "page": 14,
+  "station": 13,
+  "qs": [
+   {
+    "n": 25,
+    "q": "Identify this structure",
+    "o": [
+     "regular bronchiole",
+     "terminal bronchiole",
+     "intrapulmonary bronchiole",
+     "respiratory bronchiole"
+    ],
+    "key": "A"
+   },
+   {
+    "n": 26,
+    "q": "Identify structure A",
+    "o": [
+     "Smooth muscle",
+     "Hyalin cartilage",
+     "Dense connective tissue"
+    ],
+    "key": "A"
+   }
+  ]
+ },
+ {
+  "page": 15,
+  "station": 14,
+  "qs": [
+   {
+    "n": 27,
+    "q": "Identify this structure",
+    "o": [
+     "Motile cilia",
+     "Non motile cilia",
+     "Stereo cilia",
+     "Microfilament"
+    ],
+    "key": "B"
+   },
+   {
+    "n": 28,
+    "q": "Where this tissue can be found?",
+    "o": [
+     "Maxillary sinus",
+     "Oropharyng",
+     "Upper part of nasal cavity",
+     "Vocal fold"
+    ],
+    "key": "C"
+   }
+  ]
+ },
+ {
+  "page": 16,
+  "station": 15,
+  "qs": []
+ },
+ {
+  "page": 17,
+  "station": 16,
+  "qs": []
+ }
+]

@@ -1,0 +1,700 @@
+[
+ {
+  "page": 3,
+  "station": 1,
+  "qs": [
+   {
+    "n": 1,
+    "q": "Identify this opening",
+    "o": [
+     "B",
+     "Hiatus semicircularis",
+     "Hiatus semilunaris",
+     "Opening to middle ethmoidal air cells",
+     "Opening to posterior ethmoidal air cells"
+    ],
+    "key": "B"
+   },
+   {
+    "n": 2,
+    "q": "Identify this structure",
+    "o": [
+     "A. Ethmoidal sinus",
+     "Maxillary sinus",
+     "Frontal sinus",
+     "Sphenoid sinus"
+    ],
+    "key": "D"
+   }
+  ]
+ },
+ {
+  "page": 4,
+  "station": 2,
+  "qs": [
+   {
+    "n": 3,
+    "q": "Identify this structure",
+    "o": [
+     "A. Nasal vestibule",
+     "Ethmoidal bullae",
+     "Middle nasal concha",
+     "Inferior nasal concha"
+    ],
+    "key": "D"
+   },
+   {
+    "n": 4,
+    "q": "Which structure opens below the structure A? A",
+    "o": [
+     "Middle ethmoidal air cells",
+     "Anterior ethmoidal air cells",
+     "Frontal sinus",
+     "None of the above"
+    ],
+    "key": "D"
+   }
+  ]
+ },
+ {
+  "page": 5,
+  "station": 3,
+  "qs": [
+   {
+    "n": 5,
+    "q": "Identify this structure",
+    "o": [
+     "A. Palatine torus",
+     "Torus tubarius",
+     "Salpingopharyngeal fold",
+     "Torus mandibularis"
+    ],
+    "key": "B"
+   },
+   {
+    "n": 6,
+    "q": "Identify this structure",
+    "o": [
+     "A",
+     "Epiglottic vallecula",
+     "Piriform sinus",
+     "Pharyngeal sinus",
+     "Opening to pharyngotympanic tube"
+    ],
+    "key": "C"
+   }
+  ]
+ },
+ {
+  "page": 6,
+  "station": 4,
+  "qs": [
+   {
+    "n": 7,
+    "q": "Identify this structure",
+    "o": [
+     "A",
+     "Thyroid cartilage",
+     "Cricoid cartilage",
+     "Arytenoid cartilage",
+     "Hyoid bone"
+    ],
+    "key": "A"
+   },
+   {
+    "n": 8,
+    "q": "Identify this structure",
+    "o": [
+     "A. Posterior cricoarytenoid muscle",
+     "Thyroepiglottic muscle",
+     "Thyroarytenoid muscle",
+     "Cricothyroid muscle"
+    ],
+    "key": "D"
+   }
+  ]
+ },
+ {
+  "page": 7,
+  "station": 5,
+  "qs": [
+   {
+    "n": 9,
+    "q": "Identify this structure",
+    "o": [
+     "A",
+     "Cricothyroid muscle",
+     "Aryepiglottic muscle",
+     "Posterior cricoarytenoid muscle",
+     "Arytenoid muscle"
+    ],
+    "key": "C"
+   },
+   {
+    "n": 10,
+    "q": "What is the function of structure A?",
+    "o": [
+     "Tense vocal cords",
+     "Relax vocal cords",
+     "Opens rima glottdis",
+     "Closes rima glottidis"
+    ],
+    "key": "C"
+   }
+  ]
+ },
+ {
+  "page": 8,
+  "station": 6,
+  "qs": [
+   {
+    "n": 11,
+    "q": "Identify this structure",
+    "o": [
+     "A. Piriform sinus",
+     "Vestibular fold of larynx",
+     "Laryngeal ventricle",
+     "Vocal fold of larynx"
+    ],
+    "key": "D"
+   },
+   {
+    "n": 12,
+    "q": "Identify this structure",
+    "o": [
+     "A",
+     "Trachea",
+     "Esophagus",
+     "Cricoid cartilage",
+     "Thyroid gland"
+    ],
+    "key": "A"
+   }
+  ]
+ },
+ {
+  "page": 9,
+  "station": 7,
+  "qs": [
+   {
+    "n": 13,
+    "q": "Identify this structure",
+    "o": [
+     "A. External intercostal muscle",
+     "Internal intercostal muscle",
+     "Innermost intercostal muscle",
+     "Transversus thoracis muscle"
+    ],
+    "key": "B"
+   },
+   {
+    "n": 14,
+    "q": "Identify this structure",
+    "o": [
+     "A",
+     "External intercostal muscle",
+     "Internal intercostal muscle",
+     "Innermost intercostal muscle",
+     "Transversus thoracis muscle"
+    ],
+    "key": "A"
+   }
+  ]
+ },
+ {
+  "page": 10,
+  "station": 8,
+  "qs": [
+   {
+    "n": 15,
+    "q": "Identify these structures",
+    "o": [
+     "A. Pericardiophrenic vessels",
+     "Intercostal vessels",
+     "Internal thoracic vessels",
+     "Musculophrenic vessels"
+    ],
+    "key": "C"
+   },
+   {
+    "n": 16,
+    "q": "Identify this structure",
+    "o": [
+     "A. Manubrium sterni",
+     "Sternal angle",
+     "Body of sternum",
+     "Xiphoid process"
+    ],
+    "key": "C"
+   }
+  ]
+ },
+ {
+  "page": 11,
+  "station": 9,
+  "qs": [
+   {
+    "n": 17,
+    "q": "Identify this structure",
+    "o": [
+     "B",
+     "Manubrium sterni",
+     "Sternal angle",
+     "Body of sternum",
+     "Xiphoid process"
+    ],
+    "key": "A"
+   },
+   {
+    "n": 18,
+    "q": "Identify this structure",
+    "o": [
+     "A. External intercostal muscle",
+     "Internal intercostal muscle",
+     "Innermost intercostal muscle",
+     "Transversus thoracis muscle"
+    ],
+    "key": "D"
+   }
+  ]
+ },
+ {
+  "page": 12,
+  "station": 10,
+  "qs": [
+   {
+    "n": 19,
+    "q": "Identify this structure",
+    "o": [
+     "A. Manubrium sterni",
+     "Sternal angle",
+     "Body of sternum",
+     "Xiphoid process"
+    ],
+    "key": "B"
+   },
+   {
+    "n": 20,
+    "q": "Identify this structure",
+    "o": [
+     "A. 1st rib",
+     "2nd rib",
+     "3rd rib",
+     "4th rib"
+    ],
+    "key": "C"
+   }
+  ]
+ },
+ {
+  "page": 13,
+  "station": 11,
+  "qs": [
+   {
+    "n": 21,
+    "q": "Which nerve innervates this structure A?",
+    "o": [
+     "Superior epigastric nerve",
+     "Medial pectoral nerve",
+     "Subcostal nerve",
+     "Phrenic nerve"
+    ],
+    "key": "D"
+   },
+   {
+    "n": 22,
+    "q": "Which structure is located right below structure A? A",
+    "o": [
+     "Stomach",
+     "Liver",
+     "Small intestine",
+     "Pancreas"
+    ],
+    "key": "B"
+   }
+  ]
+ },
+ {
+  "page": 14,
+  "station": 12,
+  "qs": [
+   {
+    "n": 23,
+    "q": "Structure A enters the diaphragm through which opening?",
+    "o": [
+     "Aortic hiatus",
+     "Esophageal hiatus",
+     "Caval opening"
+    ],
+    "key": "B"
+   },
+   {
+    "n": 24,
+    "q": "Identify this structure",
+    "o": [
+     "A",
+     "Aorta",
+     "Esophagus",
+     "Superior vena cava",
+     "Inferior vena cava"
+    ],
+    "key": "D"
+   }
+  ]
+ },
+ {
+  "page": 15,
+  "station": 13,
+  "qs": [
+   {
+    "n": 25,
+    "q": "Identify this structure",
+    "o": [
+     "A. Caruncle of trachea",
+     "Carina of trachea",
+     "Trachealis muscle",
+     "Right main bronchus"
+    ],
+    "key": "B"
+   },
+   {
+    "n": 26,
+    "q": "Identify this structure",
+    "o": [
+     "A. Costodiaphragmatic recess",
+     "Costomediastinal recess",
+     "Supraphrenic recess",
+     "Pulmonary ligament"
+    ],
+    "key": "A"
+   }
+  ]
+ },
+ {
+  "page": 16,
+  "station": 14,
+  "qs": [
+   {
+    "n": 27,
+    "q": "Identify this structure",
+    "o": [
+     "A. Visceral pleura",
+     "Parietal pleura",
+     "Pulmonary ligament",
+     "Endothoracic fascia A B ข้อสอบจริง อำจำรย์ปก ั ให้อย่ำงนี้ :"
+    ],
+    "key": "A"
+   },
+   {
+    "n": 25,
+    "q": "แหวก lobe ของปอดแล้วปักตรงเยื่อที่อยู่ระหว่ำง lobe พวกนั้น",
+    "o": [],
+    "key": "B"
+   },
+   {
+    "n": 26,
+    "q": "ปักตรงเยื่อเหนือพวก intercostal muscles ด้ำนหลังปอด (ยกปอดออกไป)",
+    "o": [],
+    "key": "A"
+   },
+   {
+    "n": 28,
+    "q": "Identify this structure",
+    "o": [
+     "A. Visceral pleura",
+     "Parietal pleura",
+     "Pulmonary ligament",
+     "Pulmonary membrane"
+    ],
+    "key": "B"
+   }
+  ]
+ },
+ {
+  "page": 17,
+  "station": 15,
+  "qs": [
+   {
+    "n": 29,
+    "q": "Identify this structure",
+    "o": [
+     "A",
+     "Branch of pulmonary artery",
+     "Right main bronchus",
+     "Eparterial bronchus",
+     "Left superior lobar bronchus"
+    ],
+    "key": "C"
+   },
+   {
+    "n": 30,
+    "q": "Identify this structure",
+    "o": [
+     "B",
+     "Right main bronchus",
+     "Left main bronchus",
+     "Right superior lobar bronchus",
+     "Tracheal bifurcation"
+    ],
+    "key": "B"
+   }
+  ]
+ },
+ {
+  "page": 18,
+  "station": 16,
+  "qs": [
+   {
+    "n": 31,
+    "q": "Identify this structure",
+    "o": [
+     "A. Visceral pleura",
+     "Parietal pleura",
+     "Pulmonary ligament",
+     "Costodiaphragmatic fold"
+    ],
+    "key": "C"
+   },
+   {
+    "n": 32,
+    "q": "Identify this structure",
+    "o": [
+     "B",
+     "Middle lobe of right lung",
+     "Inferior lobe of right lung",
+     "Lingula of left lung",
+     "Inferior lobe of left lung"
+    ],
+    "key": "C"
+   }
+  ]
+ },
+ {
+  "page": 19,
+  "station": 17,
+  "qs": [
+   {
+    "n": 33,
+    "q": "Identify this structure",
+    "o": [
+     "A. Aortic arch impression",
+     "Superior vena cava impression",
+     "Azygos vein impression",
+     "Subclavian artery impression"
+    ],
+    "key": "C"
+   },
+   {
+    "n": 34,
+    "q": "Identify this structure",
+    "o": [
+     "B",
+     "Right cardiac impression",
+     "Left cardiac impression",
+     "Esophagus impression",
+     "Descending aorta impression"
+    ],
+    "key": "B"
+   }
+  ]
+ },
+ {
+  "page": 20,
+  "station": 18,
+  "qs": [
+   {
+    "n": 35,
+    "q": "Identify this structure",
+    "o": [
+     "A",
+     "Left phrenic nerve",
+     "Thoracic duct",
+     "Stellate ganglion",
+     "Internal thoracic artery"
+    ],
+    "key": "C"
+   },
+   {
+    "n": 36,
+    "q": "Identify this structure",
+    "o": [
+     "A. Thoracic duct",
+     "Thoracic sympathetic trunk",
+     "Azygos vein",
+     "Right vagus nerve"
+    ],
+    "key": "A"
+   }
+  ]
+ },
+ {
+  "page": 21,
+  "station": 19,
+  "qs": [
+   {
+    "n": 37,
+    "q": "Identify this structure",
+    "o": [
+     "A",
+     "Intrapulmonary bronchus",
+     "Nasopharynx",
+     "Esophagus",
+     "Trachea"
+    ],
+    "key": "D"
+   },
+   {
+    "n": 38,
+    "q": "Identify this structure",
+    "o": [
+     "A. Trachealis muscle",
+     "Adventitia layer of trachea",
+     "Muscularis externa of trachea",
+     "Tracheal cartilage"
+    ],
+    "key": "B"
+   }
+  ]
+ },
+ {
+  "page": 22,
+  "station": 20,
+  "qs": [
+   {
+    "n": 39,
+    "q": "Identify this structure",
+    "o": [
+     "A. Primary bronchiole",
+     "Respiratory bronchiole",
+     "Terminal bronchiole",
+     "Alveolar duct"
+    ],
+    "key": "D"
+   },
+   {
+    "n": 40,
+    "q": "Identify this structure",
+    "o": [
+     "B",
+     "Primary bronchiole",
+     "Respiratory bronchiole",
+     "Terminal bronchiole",
+     "Alveolar duct"
+    ],
+    "key": "B"
+   }
+  ]
+ },
+ {
+  "page": 23,
+  "station": 21,
+  "qs": [
+   {
+    "n": 41,
+    "q": "Identify this structure",
+    "o": [
+     "A. Type I pneumocyte",
+     "Type II pneumocyte",
+     "Clara cell",
+     "Dust cell"
+    ],
+    "key": "B"
+   },
+   {
+    "n": 42,
+    "q": "What is the function of structure A? A",
+    "o": [
+     "Secrete surfactant",
+     "Immune surveillance",
+     "Secrete lubricant",
+     "Facilitation of gas perfusion in lungs"
+    ],
+    "key": "A"
+   }
+  ]
+ },
+ {
+  "page": 24,
+  "station": 22,
+  "qs": [
+   {
+    "n": 43,
+    "q": "Identify this structure",
+    "o": [
+     "A. Type I pneumocyte",
+     "Clara cell",
+     "Mesothelial cell of parietal cavity",
+     "Mesothelial cell of visceral cavity"
+    ],
+    "key": "D"
+   },
+   {
+    "n": 44,
+    "q": "What is the function of structure A? A",
+    "o": [
+     "Secrete surfactant",
+     "Immune surveillance",
+     "Secrete lubricant",
+     "Facilitation of gas perfusion in lungs"
+    ],
+    "key": "C"
+   }
+  ]
+ },
+ {
+  "page": 25,
+  "station": 23,
+  "qs": [
+   {
+    "n": 45,
+    "q": "Identify this epithelium.",
+    "o": [
+     "Stratified squamous epithelium, moist type",
+     "Stratified squamous epithelium, dried type",
+     "Pseudostratified columnar epithelium",
+     "Stratified cuboidal epithelium"
+    ],
+    "key": "A"
+   },
+   {
+    "n": 46,
+    "q": "Where can this type of epithelium be found?",
+    "o": [
+     "Nasal vestibule",
+     "Roof of nasal cavity",
+     "True vocal cord",
+     "Terminal bronchiole"
+    ],
+    "key": "C"
+   }
+  ]
+ },
+ {
+  "page": 26,
+  "station": 24,
+  "qs": [
+   {
+    "n": 47,
+    "q": "Where can this slide section be found?",
+    "o": [
+     "Piriform recess",
+     "Sphenoethmoidal recess",
+     "Pharyngeal recess",
+     "Costodiaphragmatic recess"
+    ],
+    "key": "B"
+   },
+   {
+    "n": 48,
+    "q": "What is the main function of this structure A? A",
+    "o": [
+     "Transmit odorants",
+     "Immune surveillance",
+     "Enzymatic secretion",
+     "Mucus formation"
+    ],
+    "key": "A"
+   }
+  ]
+ }
+]

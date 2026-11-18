@@ -1,0 +1,41 @@
+<div id="app">
+<header class="bar">
+  <div class="brand">
+    <svg viewBox="0 0 38 22" aria-hidden="true"><path d="M3,19 C6,9 10,4 19,3 C28,4 32,9 35,19 M12,19 L12,11 M19,19 L19,8 M26,19 L26,11" fill="none" stroke="var(--art)" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <div><b>NS I &amp; RS I Anatomy 101</b><small>__SUB__</small></div>
+  </div>
+  <nav class="tabs" id="tabs" aria-label="Sections"></nav>
+  <div class="ctrls">
+    <div class="seg" role="group" aria-label="View">
+      <button type="button" id="vPresent" aria-pressed="true">Present</button>
+      <button type="button" id="vBrowse" aria-pressed="false">Browse</button>
+    </div>
+    <div class="filt" id="filt" role="group" aria-label="Card type"></div>
+    __TUTORCTRL__
+    <button type="button" class="icon" id="themeBtn" aria-label="Switch between light and dark"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8,1.5 A6.5,6.5 0 0 1 8,14.5 Z" fill="currentColor"/></svg></button>
+    <button type="button" class="icon" id="fsBtn" aria-label="Full screen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5,5.5 V1.5 H5.5 M10.5,1.5 H14.5 V5.5 M14.5,10.5 V14.5 H10.5 M5.5,14.5 H1.5 V10.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+<main>
+  <section id="present" aria-label="Present mode">
+    <div class="stage" id="stage"></div>
+    <div class="pager">
+      <button type="button" class="btn" id="prev">&#8592; Prev</button>
+      <div class="pos" id="pos" aria-live="polite"></div>
+      <button type="button" class="btn primary" id="reveal">Reveal</button>
+      <button type="button" class="btn" id="next">Next &#8594;</button>
+      <div class="prog"><i id="progBar"></i></div>
+      <div class="keys">__KEYS__</div>
+    </div>
+  </section>
+  <section id="browse" aria-label="Browse mode" hidden>
+    <div class="btools">
+      <input type="search" id="q" placeholder="Search: pterion, hiatus semilunaris, AC79&#8230;" aria-label="Search cards">
+      <label class="chk" for="showAll"><input type="checkbox" id="showAll"> Show all answers</label>
+      <span class="bcount" id="bcount"></span>
+    </div>
+    <div id="blist"></div>
+  </section>
+</main>
+<div class="zoom" id="zoom" hidden><div class="zbox"><div class="zpaper"><img alt=""></div><p class="zcap"></p></div></div>
+</div>

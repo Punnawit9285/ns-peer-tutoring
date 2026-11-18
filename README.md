@@ -48,6 +48,23 @@ The problems are the **past papers**: the AC80 and AC81 NS I MCQ recalls (with t
 - **Excluded**: the *Imaging of head and neck* items (that lecture is not one of the NS I handouts here) and items recalled without options (AC81 “mimics a β1 agonist”).
 - **Interactive flowcharts**: P-C4 (where the NMJ signal fails: MG, LEMS, toxins, drugs), G-C1 (Horner: which neuron), X-C5 (facial nerve lesion level from the signs) and S-C6 (reading an audiogram: type and WHO degree). Click any box for why that step exists, load a case, or (audiogram) type your own thresholds, then press *Next step*. The PDF prints the charts without the controls.
 
+## Anatomy 101: cadaver to lecture (NS I gross anatomy)
+
+A second deck for the NS I gross-anatomy lectures, built to link each lecture structure to the real cadaver. Each section pairs the lecture slides with dissection steps: an atlas plate with numbered labels to name, the matching handout figure beside it, and what to find and compare. Connected nerves, arteries and veins have a connection map (flowchart) next to the slide or cadaver photo. Click a box to trace its branches, or hide the names to quiz yourself.
+
+| | Link |
+|---|---|
+| **Student deck** | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/student.html |
+| **Tutor deck** (every answer and cloze revealed, Thai tutor notes and SAY lines) | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/tutor.html |
+| **Student handout PDF** | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/student.pdf?v=3c6efea5 |
+| **RS I Anatomy 101 deck** | https://punnawit9285.github.io/rs-peer-tutoring/anatomy/student.html |
+
+64 concepts · 46 cadaver steps · 14 lab clips · 215 past-paper items (379 questions) · 42 connection maps.
+
+Sections: B Vertebral column & deep back muscles; S Spinal cord, meninges & peripheral nerve; K Skull: bones, landmarks, fossae & foramina; F Superficial face & neck; T Temporal & infratemporal fossa, mastication, TMJ; O Oral cavity, tongue, floor of mouth & pharynx; N Deep structures of the neck; C Scalp, meninges, brain, cranial nerves & vessels.
+
+The atlas photos (Rohen, *Photographic Atlas of Anatomy*) are not published here. Each cadaver step shows the atlas page instead, and its label numbers match that page, so keep your atlas open beside the deck. Deck source: [`ns-peer-tutoring/anatomy/src`](https://github.com/Punnawit9285/ns-peer-tutoring/tree/main/anatomy/src).
+
 ## Pages
 
 - **`student.html`** (also `index.html`, `dist/deck.html`): Present and Browse modes, *Core only* filter, cloze blanks on every concept card (Space = next blank, Enter = all, R = hide, click a blank to flip it), click an option to see the answer, click a figure to zoom, L opens the Thai explanation, B toggles Browse. Swipe on phones.

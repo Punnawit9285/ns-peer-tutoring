@@ -1,0 +1,7 @@
+.saybox { margin: 12px 0 0; background: var(--sheet2); border-left: 3px solid var(--art); border-radius: 10px; padding: 10px 14px; }
+.concept .saybox, .secard .saybox { margin: 0 0 14px; }
+.saybox .tp-head { font: 600 .75em var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--art); margin-bottom: 4px; }
+.saybox p { margin: 0; line-height: 1.55; }
+.tn-head { font: 600 .75em var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--art); margin-bottom: 4px; }
+.tnotes ul { margin: 0; padding-left: 1.2em; display: grid; gap: 3px; line-height: 1.45; }
+.tdiag { margin: 8px 0 0; padding: 8px 10px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 8px; font: .8em/1.45 var(--f-mono); white-space: pre; overflow-x: auto; color: var(--ink); }
