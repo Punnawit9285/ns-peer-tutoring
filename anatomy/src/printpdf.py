@@ -4,7 +4,7 @@ Concepts with numbered empty blanks, cadaver steps with numbered lines, lab-clip
 answer key at the back (blanks, labels, relationships, past-paper keys, Thai explanations)."""
 import json, os, re, html, sys, asyncio
 COURSE = os.environ.get('COURSE', 'NS'); PUBLIC = os.environ.get('PUBLIC') == '1'
-W = '/home/claude/work'; D = json.load(open(f'{W}/site_data_{COURSE}{"_pub" if PUBLIC else ""}.json'))
+W = os.environ.get('W', '/home/claude/work'); D = json.load(open(f'{W}/site_data_{COURSE}{"_pub" if PUBLIC else ""}.json'))
 OUT = f'{W}/{"site_pub" if PUBLIC else "site"}/{COURSE.lower()}'
 KN = {'a': 'artery', 'v': 'vein', 'n': 'nerve', 'g': 'ganglion', 'l': 'lymph', 's': 'dural sinus', 't': 'target / organ', 'o': 'opening', 'c': 'space', 'r': 'airway'}
 def flows(it):
@@ -95,6 +95,9 @@ table.lt-tbl th { background: #f3f5f8; }
 .twofig { display: grid; grid-template-columns: 1.35fr 1fr; gap: 4mm; align-items: start; }
 .twofig .fig img { max-height: 118mm; }
 .note { font-size: 9pt; color: #4a5263; }
+.tbgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 5mm; align-items: start; }
+.tbgrid .fig { break-inside: avoid; margin: 0 0 2mm; }
+.tbgrid .fig img { max-height: 98mm; }
 .pq { break-inside: avoid; margin: 0 0 6mm; padding-bottom: 4mm; border-bottom: 1px dashed #d9dde5; }
 .pq .fig img { max-height: 92mm; }
 .q { margin: 2mm 0 1mm; font-weight: 500; }
@@ -143,6 +146,20 @@ def step(s, sec):
     h += '<div class="nums">' + ''.join(f'<div><span class="n">{esc(n)}</span><span class="ln"></span></div>' for n, _ in s['labels']) + '</div>'
     if s.get('note'): h += f'<p class="note">{esc(s["note"])}</p>'
     return h + flows(s) + '</section>'
+
+def tidbits(items, sec):
+    """tidbits-board tiles (img/t/) of the section, filed under their card; the tile already on a concept page is not repeated"""
+    seen, tiles = set(), []
+    for it in items:
+        for k, f in enumerate(it.get('figs', []) if it['t'] == 'c' else it.get('cmp', []) if it['t'] == 's' else []):
+            if not f['src'].startswith('img/t/') or f['src'] in seen: continue
+            seen.add(f['src'])
+            if it['t'] == 'c' and k == 0: continue
+            tiles.append((it, f))
+    if not tiles: return ''
+    h = f'<section class="page"><div class="ey"><span class="kind">Tidbits board</span><span class="sec">{esc(sec["id"])} · {esc(sec["short"])}</span></div><h2>Tidbits board · {esc(sec["short"])}</h2><p class="note">The class tidbits board: 3D-app views with the handwritten labels and notes, filed under the card each one belongs to.</p><div class="tbgrid">'
+    h += ''.join(f'<div class="fig"><img src="{f["src"]}"><div class="cap">{esc(it["id"])} · {esc(it["title"])}</div></div>' for it, f in tiles)
+    return h + '</div></section>'
 
 def clips(vs):
     if not vs: return ''
@@ -197,6 +214,7 @@ def main():
                 out.append(step(it, s))
                 key.append(f'<div class="blk"><h3>{esc(it["id"])} · {esc(it["title"])}</h3><div class="lab">' + ''.join(f'<div><span class="n">{esc(a)}</span>{esc(b)}</div>' for a, b in it['labels']) + '</div>'
                            + '<ul style="margin:1mm 0;padding-left:5mm">' + ''.join(f'<li>{esc(r)}</li>' for r in it['rel']) + '</ul></div>')
+        out.append(tidbits(items, s))
         out.append(clips([i for i in items if i['t'] == 'v']))
         ps = [i for i in items if i['t'] == 'p']
         out.append(pastq(ps, s))
@@ -212,7 +230,7 @@ def main():
     from playwright.async_api import async_playwright
     async def run():
         async with async_playwright() as p:
-            b = await p.chromium.launch(executable_path='/usr/bin/google-chrome', args=['--no-sandbox', '--disable-background-networking', '--disable-sync', '--no-first-run'])
+            b = await p.chromium.launch(executable_path=os.environ.get('CHROME', '/usr/bin/google-chrome'), args=['--no-sandbox', '--disable-background-networking', '--disable-sync', '--no-first-run'])
             pg = await b.new_page()
             await pg.goto('file://' + f'{OUT}/print.html', wait_until='networkidle', timeout=600000)
             await pg.evaluate('document.fonts.ready')

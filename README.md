@@ -50,16 +50,16 @@ The problems are the **past papers**: the AC80 and AC81 NS I MCQ recalls (with t
 
 ## Anatomy 101: cadaver to lecture (NS I gross anatomy)
 
-A second deck for the NS I gross-anatomy lectures, built to link each lecture structure to the real cadaver. Each section pairs the lecture slides with dissection steps: an atlas plate with numbered labels to name, the matching handout figure beside it, and what to find and compare. Connected nerves, arteries and veins have a connection map (flowchart) next to the slide or cadaver photo. Click a box to trace its branches, or hide the names to quiz yourself.
+A second deck for the NS I gross-anatomy lectures, built to link each lecture structure to the real cadaver. Each section pairs the lecture slides with dissection steps: an atlas plate with numbered labels to name, the matching handout figure beside it, and what to find and compare. Connected nerves, arteries and veins have a connection map (flowchart) next to the slide or cadaver photo. Click a box to trace its branches, or hide the names to quiz yourself. The class's NS I tidbits board (3D-app views with handwritten labels and notes) is cut into tiles that sit under the card they belong to, with two tidbits cards of their own (F-C9 facial muscles one by one, T-C9 the four parasympathetic ganglia) and a *Tidbits board* page at the end of each section in the PDF.
 
 | | Link |
 |---|---|
 | **Student deck** | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/student.html |
 | **Tutor deck** (every answer and cloze revealed, Thai tutor notes and SAY lines) | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/tutor.html |
-| **Student handout PDF** | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/student.pdf?v=1a6c3b6b |
+| **Student handout PDF** | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/student.pdf?v=5c02c306 |
 | **RS I Anatomy 101 deck** | https://punnawit9285.github.io/rs-peer-tutoring/anatomy/student.html |
 
-64 concepts · 46 cadaver steps · 14 lab clips · 215 past-paper items (379 questions) · 42 connection maps.
+66 concepts · 46 cadaver steps · 14 lab clips · 215 past-paper items (379 questions) · 42 connection maps · 88 tidbits-board tiles.
 
 Sections: B Vertebral column & deep back muscles; S Spinal cord, meninges & peripheral nerve; K Skull: bones, landmarks, fossae & foramina; F Superficial face & neck; T Temporal & infratemporal fossa, mastication, TMJ; O Oral cavity, tongue, floor of mouth & pharynx; N Deep structures of the neck; C Scalp, meninges, brain, cranial nerves & vessels.
 
