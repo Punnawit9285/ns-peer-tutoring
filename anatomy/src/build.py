@@ -4,7 +4,7 @@ import importlib.util, json, os, re, glob, shutil, html, sys
 from PIL import Image, ImageOps
 import pymupdf
 
-W = os.environ.get('W', '/home/claude/work')   # work folder: content/, bank/, app/, src/ PDFs, rohen/, tb/, fz/
+W = '/home/claude/work'
 COURSE = os.environ.get('COURSE', 'NS')          # NS or RS: one deck per course
 PUBLIC = os.environ.get('PUBLIC') == '1'      # GitHub build: no Rohen plates
 OUT = os.environ.get('OUT', W + ('/site_pub/' if PUBLIC else '/site/') + COURSE.lower())
@@ -43,13 +43,13 @@ def tbimg(k):
     return fn
 def anyfig(h, pg, own=None):
     if h == 'tb':
-        return dict(src=tbimg(pg), cap=f'{COURSE} I tidbits board (peer summary)')
+        return dict(src=tbimg(pg), cap='RS I tidbits board (peer summary)')
     return dict(src=handout(h, pg), cap=f'Handout p.{pg}' + ('' if h == own else f' · {HN.get(h, h)}'))
 def extimg(name):
     fn = 'img/pp/x_' + name.replace(':', '_')
     if not os.path.exists(f'{OUT}/{fn}'):
         repo, _, base = name.rpartition(':'); repo = repo or 'ns'
-        im = Image.open(f'{os.environ.get("REPOS", "/home/claude/punnawit9285")}/{repo}-peer-tutoring/img/{base}').convert('RGB')
+        im = Image.open(f'/home/claude/punnawit9285/{repo}-peer-tutoring/img/{base}').convert('RGB')
         if max(im.size) > 1500: im.thumbnail((1500, 1500))
         im.save(f'{OUT}/{fn}', quality=85, optimize=True)
     return fn
@@ -229,16 +229,16 @@ for X in ORDER:
     sections.append(S)
 
 META = {'NS': dict(title='NS I Anatomy 101', deck='ns', badge='Peer tutoring', sub='Back, spinal cord, skull, head & neck · cadaver ↔ lecture',
-            lede='The eight gross-anatomy lectures of NS I as concept cards, cadaver steps (real specimen beside the lecture diagram), the group\'s own lab clips, the NS I tidbits board, and every usable past spot test (AC76-AC81) with keys.'),
+            lede='The eight gross-anatomy lectures of NS I as concept cards, cadaver steps (real specimen beside the lecture diagram), the group\'s own lab clips, and every usable past spot test (AC76-AC81) with keys.'),
           'RS': dict(title='RS I Anatomy 101', deck='rs', badge='Peer tutoring', sub='Nose, pharynx, larynx, thoracic wall & lungs · cadaver ↔ lecture',
             lede='The three gross-anatomy lectures of RS I as concept cards, cadaver steps (real specimen beside the lecture diagram), the RS I tidbits board, and every usable past RS spot test (AC76-AC81) with keys.')}[COURSE]
 META.update(
-            disc='Cadaver photographs: Rohen, Yokochi & Lütjen-Drecoll, Anatomy: A Photographic Atlas 8e (© Schattauer / Wolters Kluwer). Past spot tests and MCQ recalls: MDCU peer-support teams (AC79 spot II and the MCQ items as edited in the ns- and rs-peer-tutoring decks). ' + COURSE + ' I tidbits board: class summary. Lecture figures: 2026 NS I / RS I handouts, Faculty of Medicine, Chulalongkorn University. For use inside the class only.')
+            disc='Cadaver photographs: Rohen, Yokochi & Lütjen-Drecoll, Anatomy: A Photographic Atlas 8e (© Schattauer / Wolters Kluwer). Past spot tests and MCQ recalls: MDCU peer-support teams (AC79 spot II and the MCQ items as edited in the ns- and rs-peer-tutoring decks). RS I tidbits board: class summary. Lecture figures: 2026 NS I / RS I handouts, Faculty of Medicine, Chulalongkorn University. For use inside the class only.')
 data = dict(meta=META, sections=sections)
 json.dump(stats, sys.stdout); print()
 
 # ---------- fonts ----------
-FS = os.environ.get('FONTS', '/home/claude/fonts/node_modules/@fontsource')
+FS = '/home/claude/fonts/node_modules/@fontsource'
 fonts = [('IBM Plex Sans', 'ibm-plex-sans', 'latin', w, st) for w in (400, 500, 600) for st in ('normal', 'italic')] + \
         [('IBM Plex Sans Thai', 'ibm-plex-sans-thai', 'thai', w, 'normal') for w in (400, 500, 600)] + \
         [('Bai Jamjuree', 'bai-jamjuree', sub, w, 'normal') for sub in ('latin', 'thai') for w in (500, 600, 700)] + \

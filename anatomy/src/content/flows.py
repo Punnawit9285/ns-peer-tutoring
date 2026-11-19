@@ -30,7 +30,7 @@ Segmental veins | vertebral, intercostal, lumbar
     *Internal vertebral venous plexus {v} #ivp | epidural, valveless
       Basivertebral vv. {v} | from the vertebral body
   External vertebral venous plexus {v} #evp
-''')], kind='a', links=[('ivp', 'evp', 'valveless')],
+''')], kind='a', links=[('ivp', 'evp', 'no valves')],
   th='แดง: segmental artery ให้ dorsal branch แล้ว spinal branch เข้า intervertebral foramen เลี้ยงตัวกระดูกและไขสันหลัง. ดำ: basivertebral vein → internal vertebral venous plexus (อยู่ใน epidural space ไม่มีลิ้น) → intervertebral vein → segmental veins; plexus ในและนอกเชื่อมกันจึงเป็นทางแพร่มะเร็งไปกระดูกสันหลัง')
 
 F('vert-a', 'Vertebral artery: four parts', [('out', '''
@@ -171,7 +171,7 @@ F('facial-v', 'Facial vein and the danger triangle', [('in', '''
 '''), ('in', '''
 Maxillary v.
   *Pterygoid venous plexus #pp | around lateral pterygoid
-''')], kind='v', links=[('angv', 'sov', 'connects'), ('dfv', 'pp', 'connects'), ('pp', 'emv', '')],
+''')], kind='v', links=[('angv', 'sov', 'no valves'), ('dfv', 'pp', 'no valves'), ('pp', 'emv', 'no valves')],
   th='เลือดจากใบหน้าไหลลง facial vein → common facial → IJV แต่ facial vein ไม่มีลิ้นที่ได้ผล: angular vein ต่อกับ superior ophthalmic vein และ deep facial vein ต่อกับ pterygoid plexus ซึ่งมี emissary vein ผ่าน foramen ovale ไป cavernous sinus — เชื้อจาก danger triangle จึงย้อนเข้า cavernous sinus ได้ 2 ทาง')
 
 F('cn7', 'Facial nerve (CN VII): course and branches', [('out', '''
@@ -352,7 +352,7 @@ Facial v. #fv
 '''), ('in', '''
 *Cavernous sinus {s} #cs
   Emissary v. | through foramen ovale #emv
-''')], kind='v', links=[('pp', 'dfv', 'valveless'), ('pp', 'emv', 'valveless')],
+''')], kind='v', links=[('pp', 'dfv', 'no valves'), ('pp', 'emv', 'no valves')],
   th='Pterygoid plexus รับเลือดจากกิ่งที่คู่กับ maxillary artery แล้วไหลออกทาง maxillary vein → retromandibular. มันเชื่อมกับ facial vein (deep facial vein) และ cavernous sinus (emissary vein ผ่าน foramen ovale) โดยไม่มีลิ้น → ทางแพร่เชื้อเข้ากะโหลก')
 
 F('v3', 'Mandibular nerve (V3) and its branches', [('out', '''
@@ -418,7 +418,7 @@ Vagus n. (X)
     *Palatoglossus {t} | the only tongue muscle not XII
 *Hypoglossal n. (XII) | on hyoglossus
   *All other intrinsic + extrinsic muscles {t}
-''')], kind='n', links=[('ct', 'ln', 'joins')],
+''')], kind='n', links=[('ct', 'ln', 'fibres join')],
   th='ลิ้นมีเส้นประสาท 4 เส้น: 2/3 หน้า ความรู้สึกทั่วไป = lingual (V3), รส = chorda tympani (VII) ที่อาศัย lingual; 1/3 หลัง ทั้งความรู้สึกและรส = IX; motor = XII ทุกมัดยกเว้น palatoglossus (X)')
 
 F('lingual-a', 'Lingual artery', [('out', '''
@@ -567,7 +567,7 @@ F('scalp-a', 'Arteries of the scalp: ICA and ECA', [('out', '''
   *Superficial temporal a. #stt | frontal + parietal branches
   Posterior auricular a.
   Occipital a.
-''')], kind='a', links=[('soa', 'stt', 'anastomose')],
+''')], kind='a', links=[('soa', 'stt', 'ICA–ECA anastomosis')],
   th='หนังศีรษะได้เลือดจาก 2 ระบบ: ICA (supratrochlear, supra-orbital ทางหน้าผาก) และ ECA (superficial temporal, posterior auricular, occipital) ซึ่งต่อกันมากมายใน connective tissue layer — แผลหนังศีรษะจึงเลือดออกมากและเส้นเลือดหดไม่ได้')
 
 F('scalp-n', 'Nerves of the scalp', [('out', '''
@@ -612,7 +612,7 @@ F('willis', 'Arteries of the brain: circle of Willis', [('out', '''
     Pontine aa.
     Superior cerebellar a.
     *Posterior cerebral a. #pca
-''')], kind='a', links=[('pcom', 'pca', 'circle')],
+''')], kind='a', links=[('pcom', 'pca', 'closes the circle')],
   th='เลือดเข้าสมอง 2 ระบบ: anterior (ICA → ophthalmic, PComm, anterior choroidal, ACA, MCA) และ posterior (vertebral สองข้าง → basilar → PCA). วงของ Willis = ACA–AComm–ACA–ICA–PComm–PCA ต่อสองระบบเข้าด้วยกัน; aneurysm บนวงแตก → subarachnoid haemorrhage')
 
 F('sinuses', 'Dural venous sinuses: where the blood goes', [('in', '''
@@ -700,18 +700,18 @@ Ophthalmic n. (V1)
 F('larynx-nv', 'Nerves and arteries of the larynx (thyroidectomy map)', [('out', '''
 *Vagus n. (X) {n}
   *Superior laryngeal n. {n}
-    *Internal laryngeal n. {n} #iln | sensory above the vocal folds
-    *External laryngeal n. {n} #eln | motor: cricothyroid only
-  *Recurrent laryngeal n. {n} #rln | R: subclavian · L: aortic arch
+    *Internal laryngeal n. {n} #iln | sensory above the vocal folds; pierces the thyrohyoid membrane with the superior laryngeal a.
+    *External laryngeal n. {n} #eln | motor: cricothyroid only; runs with the superior thyroid a.
+  *Recurrent laryngeal n. {n} #rln | R: subclavian · L: aortic arch; crosses the inferior thyroid a.
     *Inferior laryngeal n. {n} | all other intrinsic mm.; sensory below the folds
 External carotid a.
-  *Superior thyroid a. #sta
+  *Superior thyroid a. #sta | runs with the external laryngeal n.
     Superior laryngeal a. #sla | through the thyrohyoid membrane
 Subclavian a.
   Thyrocervical trunk
-    *Inferior thyroid a. #ita
+    *Inferior thyroid a. #ita | crosses the recurrent laryngeal n.
       Inferior laryngeal a.
-''')], kind='a', links=[('eln', 'sta', 'runs with'), ('iln', 'sla', 'pierce together'), ('rln', 'ita', 'crosses')],
+''')], kind='a', links=[],
   th='แผนที่ผ่าตัดไทรอยด์: external laryngeal nerve วิ่งคู่ superior thyroid artery (ผูกสูงเกิน → cricothyroid อ่อน เสียงโทนเดียว), recurrent laryngeal nerve ไขว้ inferior thyroid artery (บาด → เสียงแหบ). Internal laryngeal กับ superior laryngeal artery แทง thyrohyoid membrane ด้วยกัน')
 
 # ===================================================================== RS I · W thoracic wall
@@ -727,7 +727,7 @@ Subclavian a.
     Pericardiacophrenic a. | with the phrenic n.
     Musculophrenic a. | anterior intercostals 7–9
     *Superior epigastric a. | into the rectus sheath
-''')], kind='a', links=[('pia', 'aia', 'meet in each space')],
+''')], kind='a', links=[('pia', 'aia', 'anastomose in each space')],
   th='ผนังอกได้เลือดจาก 2 ทาง: posterior intercostal arteries จาก aorta (ช่อง 1-2 จาก superior intercostal ของ costocervical trunk) และ anterior intercostal arteries จาก internal thoracic (ช่อง 1-6) และ musculophrenic (ช่อง 7-9) ซึ่งมาต่อกันในแต่ละช่อง')
 
 F('icos-v', 'Azygos system: veins of the thoracic wall', [('in', '''

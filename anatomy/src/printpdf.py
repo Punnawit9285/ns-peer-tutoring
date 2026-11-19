@@ -4,14 +4,19 @@ Concepts with numbered empty blanks, cadaver steps with numbered lines, lab-clip
 answer key at the back (blanks, labels, relationships, past-paper keys, Thai explanations)."""
 import json, os, re, html, sys, asyncio
 COURSE = os.environ.get('COURSE', 'NS'); PUBLIC = os.environ.get('PUBLIC') == '1'
-W = os.environ.get('W', '/home/claude/work'); D = json.load(open(f'{W}/site_data_{COURSE}{"_pub" if PUBLIC else ""}.json'))
+W = '/home/claude/work'; D = json.load(open(f'{W}/site_data_{COURSE}{"_pub" if PUBLIC else ""}.json'))
 OUT = f'{W}/{"site_pub" if PUBLIC else "site"}/{COURSE.lower()}'
 KN = {'a': 'artery', 'v': 'vein', 'n': 'nerve', 'g': 'ganglion', 'l': 'lymph', 's': 'dural sinus', 't': 'target / organ', 'o': 'opening', 'c': 'space', 'r': 'airway'}
+def flowlines(lt):
+    s = '<span class="ln"><svg width="26" height="10"><path d="M1 5H18" stroke="currentColor" stroke-width="1.6"/><path d="M25 5l-8-4v8z" fill="currentColor"/></svg>one-way: branch or drainage</span>'
+    if 'conn' in lt: s += '<span class="ln conn"><svg width="34" height="10"><path d="M8 5H26" stroke="currentColor" stroke-width="2.2"/><path d="M1 5l8-4v8z M33 5l-8-4v8z" fill="currentColor"/></svg>two-way connection (anastomosis, valveless vein, fibres join)</span>'
+    if 'rel' in lt: s += '<span class="ln"><svg width="28" height="10"><path d="M2 5H26" stroke="currentColor" stroke-width="1.8" stroke-dasharray=".1 4.5" stroke-linecap="round"/></svg>dotted: lies next to it, not connected</span>'
+    return s
 def flows(it):
     out = ''
     for f in it.get('flows', []):
         lg = ''.join(f'<span style="--c:var(--fk-{k});--b:var(--fk-{k}-bg)">{KN[k]}</span>' for k in f['legend'])
-        out += f'<div class="pflow"><div class="pfh">Connection map · {esc(f["title"])}</div>{f["svg"]}<div class="flegend">{lg}{"<span class=lk>dashed = connection</span>" if f.get("links") else ""}</div></div>'
+        out += f'<div class="pflow"><div class="pfh">Connection map · {esc(f["title"])}</div>{f["svg"]}<div class="flegend">{lg}{flowlines(f.get("links") or [])}</div></div>'
     return out
 def cadfig(f, style=''):
     if not f.get('src'):
@@ -38,7 +43,9 @@ CSS = fontcss + open(f'{W}/app/flow.css').read() + r'''
 .pflow .flowsvg { width: auto; max-width: 100%; max-height: 165mm; height: auto; }
 .pflow .flegend { display: flex; flex-wrap: wrap; gap: 1mm 4mm; font-family: "IBM Plex Mono", monospace; font-size: 7pt; color: #4a5263; margin-top: 1mm; }
 .pflow .flegend span::before { content: ""; display: inline-block; width: 2.6mm; height: 2.6mm; border-radius: .8mm; margin-right: 1mm; vertical-align: -.4mm; border: 1.2px solid var(--c); background: var(--b); }
-.pflow .flegend .lk::before { border: 0; border-top: 1.2px dashed #7a8190; border-radius: 0; height: 0; width: 5mm; background: none; vertical-align: .8mm; }
+.pflow .flegend .ln::before { display: none; }
+.pflow .flegend .ln svg { vertical-align: -.3mm; margin-right: 1.2mm; overflow: visible; }
+.pflow .flegend .ln.conn { color: #c2185b; font-weight: 600; }
 .phbox { border: 1.5px dashed #9aa1b0; border-radius: 2mm; padding: 10mm 6mm; text-align: center; color: #4a5263; font-size: 10pt; }
 @page { size: A4; margin: 14mm 13mm 15mm 13mm; }
 * { box-sizing: border-box; }
@@ -95,9 +102,6 @@ table.lt-tbl th { background: #f3f5f8; }
 .twofig { display: grid; grid-template-columns: 1.35fr 1fr; gap: 4mm; align-items: start; }
 .twofig .fig img { max-height: 118mm; }
 .note { font-size: 9pt; color: #4a5263; }
-.tbgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 5mm; align-items: start; }
-.tbgrid .fig { break-inside: avoid; margin: 0 0 2mm; }
-.tbgrid .fig img { max-height: 98mm; }
 .pq { break-inside: avoid; margin: 0 0 6mm; padding-bottom: 4mm; border-bottom: 1px dashed #d9dde5; }
 .pq .fig img { max-height: 92mm; }
 .q { margin: 2mm 0 1mm; font-weight: 500; }
@@ -146,20 +150,6 @@ def step(s, sec):
     h += '<div class="nums">' + ''.join(f'<div><span class="n">{esc(n)}</span><span class="ln"></span></div>' for n, _ in s['labels']) + '</div>'
     if s.get('note'): h += f'<p class="note">{esc(s["note"])}</p>'
     return h + flows(s) + '</section>'
-
-def tidbits(items, sec):
-    """tidbits-board tiles (img/t/) of the section, filed under their card; the tile already on a concept page is not repeated"""
-    seen, tiles = set(), []
-    for it in items:
-        for k, f in enumerate(it.get('figs', []) if it['t'] == 'c' else it.get('cmp', []) if it['t'] == 's' else []):
-            if not f['src'].startswith('img/t/') or f['src'] in seen: continue
-            seen.add(f['src'])
-            if it['t'] == 'c' and k == 0: continue
-            tiles.append((it, f))
-    if not tiles: return ''
-    h = f'<section class="page"><div class="ey"><span class="kind">Tidbits board</span><span class="sec">{esc(sec["id"])} · {esc(sec["short"])}</span></div><h2>Tidbits board · {esc(sec["short"])}</h2><p class="note">The class tidbits board: 3D-app views with the handwritten labels and notes, filed under the card each one belongs to.</p><div class="tbgrid">'
-    h += ''.join(f'<div class="fig"><img src="{f["src"]}"><div class="cap">{esc(it["id"])} · {esc(it["title"])}</div></div>' for it, f in tiles)
-    return h + '</div></section>'
 
 def clips(vs):
     if not vs: return ''
@@ -214,7 +204,6 @@ def main():
                 out.append(step(it, s))
                 key.append(f'<div class="blk"><h3>{esc(it["id"])} · {esc(it["title"])}</h3><div class="lab">' + ''.join(f'<div><span class="n">{esc(a)}</span>{esc(b)}</div>' for a, b in it['labels']) + '</div>'
                            + '<ul style="margin:1mm 0;padding-left:5mm">' + ''.join(f'<li>{esc(r)}</li>' for r in it['rel']) + '</ul></div>')
-        out.append(tidbits(items, s))
         out.append(clips([i for i in items if i['t'] == 'v']))
         ps = [i for i in items if i['t'] == 'p']
         out.append(pastq(ps, s))
@@ -230,7 +219,7 @@ def main():
     from playwright.async_api import async_playwright
     async def run():
         async with async_playwright() as p:
-            b = await p.chromium.launch(executable_path=os.environ.get('CHROME', '/usr/bin/google-chrome'), args=['--no-sandbox', '--disable-background-networking', '--disable-sync', '--no-first-run'])
+            b = await p.chromium.launch(executable_path='/usr/bin/google-chrome', args=['--no-sandbox', '--disable-background-networking', '--disable-sync', '--no-first-run'])
             pg = await b.new_page()
             await pg.goto('file://' + f'{OUT}/print.html', wait_until='networkidle', timeout=600000)
             await pg.evaluate('document.fonts.ready')

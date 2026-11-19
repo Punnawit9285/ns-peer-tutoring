@@ -4,7 +4,7 @@
   --fk-n: #b58900; --fk-n-bg: #fff6d1;  --fk-g: #b58900; --fk-g-bg: #ffe79a;
   --fk-l: #2e8b57; --fk-l-bg: #e4f4ea;  --fk-s: #5b4bb7; --fk-s-bg: #ece9fb;
   --fk-t: #7a8190; --fk-t-bg: #f4f5f7;  --fk-o: #8a6a2f; --fk-o-bg: #fbf5e8;
-  --fk-c: #4f6d8c; --fk-c-bg: #eaf0f6;  --fk-r: #0e8a7e; --fk-r-bg: #e0f5f2;
+  --fk-c: #4f6d8c; --fk-c-bg: #eaf0f6;  --fk-r: #0e8a7e; --fk-r-bg: #e0f5f2;  --fk-x: #c2185b; --fk-x-bg: #fde7ef;
   --fk-ink: #1d2330; --fk-note: #5b6475;
 }
 :root[data-theme="dark"] {
@@ -12,7 +12,7 @@
   --fk-n: #e3b93a; --fk-n-bg: #332a0c;  --fk-g: #e3b93a; --fk-g-bg: #4a3b0a;
   --fk-l: #5cc48a; --fk-l-bg: #12301f;  --fk-s: #a597f0; --fk-s-bg: #241f45;
   --fk-t: #9aa2b1; --fk-t-bg: #1e232e;  --fk-o: #d0a764; --fk-o-bg: #2c2414;
-  --fk-c: #8fb0d1; --fk-c-bg: #18222e;  --fk-r: #4fd1c1; --fk-r-bg: #0f2d2a;
+  --fk-c: #8fb0d1; --fk-c-bg: #18222e;  --fk-r: #4fd1c1; --fk-r-bg: #0f2d2a;  --fk-x: #f0679b; --fk-x-bg: #3a1424;
   --fk-ink: #e5e8ef; --fk-note: #a3abbc;
 }
 @media (prefers-color-scheme: dark) {
@@ -21,7 +21,7 @@
     --fk-n: #e3b93a; --fk-n-bg: #332a0c;  --fk-g: #e3b93a; --fk-g-bg: #4a3b0a;
     --fk-l: #5cc48a; --fk-l-bg: #12301f;  --fk-s: #a597f0; --fk-s-bg: #241f45;
     --fk-t: #9aa2b1; --fk-t-bg: #1e232e;  --fk-o: #d0a764; --fk-o-bg: #2c2414;
-    --fk-c: #8fb0d1; --fk-c-bg: #18222e;  --fk-r: #4fd1c1; --fk-r-bg: #0f2d2a;
+    --fk-c: #8fb0d1; --fk-c-bg: #18222e;  --fk-r: #4fd1c1; --fk-r-bg: #0f2d2a;  --fk-x: #f0679b; --fk-x-bg: #3a1424;
     --fk-ink: #e5e8ef; --fk-note: #a3abbc;
   }
 }
@@ -32,17 +32,24 @@
 .flowsvg .fn.key .nm { font-weight: 600; }
 .flowsvg .fn .nt { font-size: 10.5px; fill: var(--fk-note); }
 .flowsvg .fe .fl { fill: none; stroke-width: 1.6; }
-.flowsvg .fl-link { fill: none; stroke: var(--fk-t); stroke-width: 1.4; stroke-dasharray: 5 4; }
-.flowsvg .fl-lab rect { fill: var(--sheet, #fff); stroke: var(--fk-t); stroke-width: .8; }
-.flowsvg .fl-lab text { font-size: 10px; fill: var(--fk-note); font-style: italic; }
+.flowsvg .fl-link .ll { fill: none; }
+.flowsvg .fl-link.conn .ll { stroke: var(--fk-x); stroke-width: 2.2; }
+.flowsvg .fl-link.conn .la { fill: var(--fk-x); }
+.flowsvg .fl-link.conn .fl-lab rect { fill: var(--fk-x-bg); stroke: var(--fk-x); stroke-width: 1; }
+.flowsvg .fl-link.conn .fl-lab text { font-size: 10px; font-weight: 600; fill: var(--fk-x); }
+.flowsvg .fl-link.rel .ll { stroke: var(--fk-note); stroke-width: 1.8; stroke-dasharray: .1 4.5; stroke-linecap: round; }
+.flowsvg .fl-link.rel .fl-lab rect { fill: var(--sheet, #fff); stroke: var(--fk-note); stroke-width: .7; }
+.flowsvg .fl-link.rel .fl-lab text { font-size: 10px; font-style: italic; fill: var(--fk-note); }
+.flowsvg .fl-link.conn .lk-lead { stroke: var(--fk-x); stroke-width: 1; opacity: .7; }
+.flowsvg g.fn.lkp rect { stroke: var(--fk-x); stroke-width: 2.4; }
 .flowsvg .k-a rect, .flowsvg .fn.k-a rect { fill: var(--fk-a-bg); stroke: var(--fk-a); }
 .flowsvg .fn.k-v rect { fill: var(--fk-v-bg); stroke: var(--fk-v); }
 .flowsvg .fn.k-n rect { fill: var(--fk-n-bg); stroke: var(--fk-n); }
 .flowsvg .fn.k-g rect { fill: var(--fk-g-bg); stroke: var(--fk-g); }
 .flowsvg .fn.k-l rect { fill: var(--fk-l-bg); stroke: var(--fk-l); }
 .flowsvg .fn.k-s rect { fill: var(--fk-s-bg); stroke: var(--fk-s); }
-.flowsvg .fn.k-t rect { fill: var(--fk-t-bg); stroke: var(--fk-t); stroke-dasharray: 3 2.5; }
-.flowsvg .fn.k-o rect { fill: var(--fk-o-bg); stroke: var(--fk-o); stroke-dasharray: 6 3; }
+.flowsvg .fn.k-t rect { fill: var(--fk-t-bg); stroke: var(--fk-t); }
+.flowsvg .fn.k-o rect { fill: var(--fk-o-bg); stroke: var(--fk-o); stroke-width: 1.8; }
 .flowsvg .fn.k-c rect { fill: var(--fk-c-bg); stroke: var(--fk-c); }
 .flowsvg .fn.k-r rect { fill: var(--fk-r-bg); stroke: var(--fk-r); }
 .flowsvg .fe.k-a .fl { stroke: var(--fk-a); } .flowsvg .fe.k-a .fa { fill: var(--fk-a); }
@@ -55,8 +62,8 @@
 .flowsvg .fe.k-g .fa, .flowsvg .fe.k-t .fa, .flowsvg .fe.k-o .fa, .flowsvg .fe.k-c .fa { fill: var(--fk-t); }
 /* interaction */
 .flowbox .flowsvg .fn { cursor: pointer; transition: opacity .15s; }
-.flowbox .flowsvg .fe, .flowbox .flowsvg .fl-link, .flowbox .flowsvg .fl-lab { transition: opacity .15s; }
-.flowbox .flowsvg.dim .fn:not(.hl), .flowbox .flowsvg.dim .fe:not(.hl), .flowbox .flowsvg.dim .fl-link, .flowbox .flowsvg.dim .fl-lab { opacity: .18; }
+.flowbox .flowsvg .fe, .flowbox .flowsvg .fl-link { transition: opacity .15s; }
+.flowbox .flowsvg.dim .fn:not(.hl), .flowbox .flowsvg.dim .fe:not(.hl), .flowbox .flowsvg.dim .fl-link:not(.hl) { opacity: .18; }
 .flowbox .flowsvg .fn.sel rect { stroke-width: 3.2; }
 .flowbox .flowsvg .fe.hl .fl { stroke-width: 2.6; }
 .flowbox .flowsvg .fn:focus { outline: none; }
@@ -96,7 +103,11 @@
 .fpair.stack .figs .fig img { max-height: 44vh; }
 .views.fstack[data-v="flow"] { grid-template-columns: 1fr; }
 .views.fstack[data-v="flow"] .vw-cad .fig img { max-height: 46vh; }
-.flowbox .flegend .lk::before { border: 0; border-top: 1.5px dashed var(--fk-t); border-radius: 0; height: 0; width: 16px; vertical-align: 3px; background: none; }
+.flegend .ln::before { display: none !important; }
+.flegend .ln svg { vertical-align: -1px; margin-right: 5px; overflow: visible; }
+.flegend .ln.conn { color: var(--fk-x); font-weight: 600; }
+.finfo .ilk { color: var(--fk-x); font-weight: 600; }
+.finfo .irl { color: var(--fk-note); font-style: italic; }
 .saybox .say-th { margin-top: 6px; font-family: "IBM Plex Sans Thai", var(--f-body); }
 .tutor .cz { color: inherit; background: var(--art-soft); }
 .tutor .cz * { color: inherit !important; }

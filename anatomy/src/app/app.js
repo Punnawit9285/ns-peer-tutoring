@@ -70,13 +70,20 @@
       '<p class="minih">Cards</p><ul class="toc">' + toc + '</ul></article>';
   }
   var KN = { a: 'artery', v: 'vein', n: 'nerve', g: 'ganglion', l: 'lymph', s: 'dural sinus', t: 'target / organ', o: 'opening', c: 'space', r: 'airway' };
+  function flowLines(lt) {
+    lt = lt || [];
+    var s = '<span class="ln"><svg width="26" height="10" aria-hidden="true"><path d="M1 5H18" stroke="currentColor" stroke-width="1.6"/><path d="M25 5l-8-4v8z" fill="currentColor"/></svg>one-way: branch or drainage</span>';
+    if (lt.indexOf('conn') >= 0) s += '<span class="ln conn"><svg width="34" height="10" aria-hidden="true"><path d="M8 5H26" stroke="currentColor" stroke-width="2.2"/><path d="M1 5l8-4v8z M33 5l-8-4v8z" fill="currentColor"/></svg>two-way connection (anastomosis, valveless vein, fibres join)</span>';
+    if (lt.indexOf('rel') >= 0) s += '<span class="ln"><svg width="28" height="10" aria-hidden="true"><path d="M2 5H26" stroke="currentColor" stroke-width="1.8" stroke-dasharray=".1 4.5" stroke-linecap="round"/></svg>dotted: lies next to it, not connected</span>';
+    return s;
+  }
   function flowBox(it) {
     var F = it.flows || [];
     if (!F.length) return '';
     var tabs = F.length > 1 ? '<div class="ftabs" role="group" aria-label="Flowcharts">' + F.map(function (f, k) { return '<button type="button" data-fk="' + k + '" aria-pressed="' + (k ? 'false' : 'true') + '">' + esc(f.title) + '</button>'; }).join('') + '</div>' : '';
     var tools = '<span class="ftools">' + (TUTOR ? '' : '<button type="button" class="btn small" data-act="fquiz" aria-pressed="false">Hide names</button>') + '<button type="button" class="btn small" data-act="fzoom">Expand</button></span>';
     var panels = F.map(function (f, k) {
-      var lg = '<div class="flegend">' + f.legend.map(function (x) { return '<span style="--c:var(--fk-' + x + ');--b:var(--fk-' + x + '-bg)">' + KN[x] + '</span>'; }).join('') + (f.links ? '<span class="lk">dashed = connection / anastomosis</span>' : '') + '</div>';
+      var lg = '<div class="flegend">' + f.legend.map(function (x) { return '<span style="--c:var(--fk-' + x + ');--b:var(--fk-' + x + '-bg)">' + KN[x] + '</span>'; }).join('') + flowLines(f.links) + '</div>';
       return '<div class="fpanel' + (k ? '' : ' on') + '" data-fk="' + k + '">' + (F.length > 1 ? '' : '<p class="ftitle">' + esc(f.title) + '</p>') +
         '<div class="fsvg">' + f.svg + '</div><div class="finfo">Click a box to trace what it comes from and what it gives.</div>' + lg +
         (TUTOR && f.th ? '<div class="fth"><div class="tp-head">อธิบายแผนภาพ · say</div>' + esc(f.th) + '</div>' : '') + '</div>';
@@ -252,6 +259,7 @@
       var svg = p.querySelector('svg'), info = p.querySelector('.finfo'), E = [];
       if (!svg) return;
       svg.querySelectorAll('.fe').forEach(function (e) { E.push({ a: e.dataset.a, b: e.dataset.b, el: e }); });
+      var L = []; svg.querySelectorAll('.fl-link').forEach(function (l) { L.push({ a: l.dataset.a, b: l.dataset.b, lab: l.dataset.lab || '', rel: l.classList.contains('rel'), el: l }); });
       var byId = {}; svg.querySelectorAll('.fn').forEach(function (n) { byId[n.dataset.n] = n; });
       var cur = null;
       function trace(id) {
@@ -267,7 +275,7 @@
         while (guard++ < 20) { var e = E.filter(function (x) { return x.b === k; })[0]; if (!e) break; out.unshift(byId[e.a].dataset.name); k = e.a; }
         return out;
       }
-      function clear() { cur = null; svg.classList.remove('dim'); svg.querySelectorAll('.hl,.sel').forEach(function (x) { x.classList.remove('hl', 'sel'); }); info.textContent = 'Click a box to trace what it comes from and what it gives.'; }
+      function clear() { cur = null; svg.classList.remove('dim'); svg.querySelectorAll('.hl,.sel,.lkp').forEach(function (x) { x.classList.remove('hl', 'sel', 'lkp'); }); info.textContent = 'Click a box to trace what it comes from and what it gives.'; }
       function pick(n) {
         var id = n.dataset.n;
         if (box.classList.contains('fq') && !n.classList.contains('rv') && !n.classList.contains('root')) { n.classList.add('rv'); }
@@ -277,10 +285,18 @@
         svg.classList.add('dim'); n.classList.add('sel');
         Object.keys(keep).forEach(function (k) { if (byId[k]) byId[k].classList.add('hl'); });
         E.forEach(function (e) { if (keep[e.a] && keep[e.b]) e.el.classList.add('hl'); });
+        var lk = [];
+        L.forEach(function (l) {
+          if (!keep[l.a] && !keep[l.b]) return;
+          l.el.classList.add('hl');
+          var o = keep[l.a] ? l.b : l.a; if (!keep[o] && byId[o]) { byId[o].classList.add('hl'); if (!l.rel) byId[o].classList.add('lkp'); }
+          if (l.a === id || l.b === id) { var p = l.a === id ? l.b : l.a; lk.push((l.rel ? '<span class="irl">lies next to <b>' : '<span class="ilk">⇄ two-way with <b>') + esc(byId[p].dataset.name) + '</b>' + (l.lab ? ' (' + esc(l.lab) + ')' : '') + '</span>'); }
+        });
         var hidden = box.classList.contains('fq');
         var c = chain(id).map(function (x, i, arr) { return i === arr.length - 1 ? '<b>' + esc(x) + '</b>' : esc(x); });
         info.innerHTML = (hidden ? '' : c.join(' → ')) + (n.dataset.note ? (hidden ? '' : ' · ') + '<span>' + esc(n.dataset.note) + '</span>' : '');
         if (hidden && !n.dataset.note) info.innerHTML = '<b>' + esc(n.dataset.name) + '</b>';
+        if (!hidden && lk.length) info.innerHTML += ' · ' + lk.join(' · ');
       }
       svg.querySelectorAll('.fn').forEach(function (n) {
         n.addEventListener('click', function (ev) { ev.stopPropagation(); pick(n); });
