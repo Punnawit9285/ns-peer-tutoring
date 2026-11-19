@@ -63,7 +63,7 @@ A second deck for the NS I gross-anatomy lectures, built to link each lecture st
 
 Sections: B Vertebral column & deep back muscles; S Spinal cord, meninges & peripheral nerve; K Skull: bones, landmarks, fossae & foramina; F Superficial face & neck; T Temporal & infratemporal fossa, mastication, TMJ; O Oral cavity, tongue, floor of mouth & pharynx; N Deep structures of the neck; C Scalp, meninges, brain, cranial nerves & vessels.
 
-This repository is private because the cadaver steps use photos from Rohen, *Photographic Atlas of Anatomy* 8e (© Schattauer / Wolters Kluwer). Do not share the deck or the PDF outside the class. Deck source: [`ns-peer-tutoring/anatomy/src`](https://github.com/Punnawit9285/ns-peer-tutoring/tree/main/anatomy/src).
+The cadaver steps use photos from Rohen, *Photographic Atlas of Anatomy* 8e (© Schattauer / Wolters Kluwer). The deck and PDF are for educational, non-profit use inside MDCU only, and the textbook itself is not uploaded; see [legal.md](legal.md). Deck source: [`ns-peer-tutoring/anatomy/src`](https://github.com/Punnawit9285/ns-peer-tutoring/tree/main/anatomy/src).
 
 ## Pages
 
@@ -81,4 +81,4 @@ node build.js all  # student.html, index.html, tutor.html, dist/deck.html, dist/
 tools/pdf.sh       # student.pdf: two headless-Chrome passes for real page numbers (CHROME=... to override)
 ```
 
-Course material belongs to the Faculty of Medicine, Chulalongkorn University; past-paper recalls to the MDCU peer-support teams. For peer study only.
+Course material belongs to the Faculty of Medicine, Chulalongkorn University; past-paper recalls to the MDCU peer-support teams. For peer study only. See [legal.md](legal.md).
