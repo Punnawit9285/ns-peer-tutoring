@@ -7,7 +7,7 @@ var D = window.SPOT, T = D.T, I = D.I, P = D.P;
 var $ = function (s, r) { return (r || document).querySelector(s); };
 var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
-var DAY = 864e5, now = function () { return Date.now(); };
+var now = function () { return Date.now(); };
 var shuffle = function (a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
 var pick = function (a) { return a[Math.floor(Math.random() * a.length)]; };
 var app = $('#app');
@@ -15,22 +15,10 @@ var app = $('#app');
 /* ---------------- storage ---------------- */
 var KEY = 'spot.' + D.course + '.v1';
 var S = (function () { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } })();
-S.t = S.t || {}; S.ck = S.ck || {}; S.set = S.set || { ptr: 'short', newPer: 20 }; S.set.mode = S.set.mode || 'mc';
+S.t = S.t || {}; S.ck = S.ck || {}; S.set = S.set || { ptr: 'short' }; S.set.mode = S.set.mode || 'mc';
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
-function st(id) { return S.t[id] || (S.t[id] = { d: 0, i: 0, e: 2.4, r: 0, l: 0, g: 0, s: 0, v: -1 }); }
-function state(id) { var x = S.t[id]; if (!x || !x.s) return 'n'; return (x.r >= 2 && x.g >= 3) ? 'm' : 's'; }
-function due(id) { var x = S.t[id]; return !!(x && x.s && x.d <= now()); }
-function grade(id, g) {
-  var x = st(id); x.s++; x.g = g;
-  if (g === 1) { x.l++; x.r = 0; x.i = 0; x.e = Math.max(1.3, x.e - 0.2); x.d = now() + 6e5; }
-  else {
-    if (g === 2) { x.i = Math.max(0.5, x.i * 1.2 || 0.5); x.e = Math.max(1.3, x.e - 0.15); }
-    else if (g === 3) x.i = x.r === 0 ? 1 : x.r === 1 ? 3 : Math.round(x.i * x.e * 10) / 10;
-    else { x.i = x.r === 0 ? 3 : Math.round(x.i * x.e * 1.3 * 10) / 10; x.e += 0.15; }
-    x.r++; x.d = now() + x.i * DAY;
-  }
-  save();
-}
+function st(id) { return S.t[id] || (S.t[id] = { v: -1 }); }        // ok: when first named correctly; v: last photo shown
+function learned(id) { return !!(S.t[id] && S.t[id].ok); }
 
 /* theme */
 (function () {
@@ -147,7 +135,7 @@ function labsParam(q) { return q.labs ? q.labs.split(',').map(Number) : D.labs.m
 
 /* ---------------- checklist ticks ---------------- */
 // An item is ticked when every structure in it has been identified correctly at least once (choice, typed answer,
-// a self-graded Good/Easy, quiz or find-it). The tick is the student's own record: they can untick or tick by hand.
+// "Got it" when typing, quiz or find-it). The tick is the student's own record: they can untick or tick by hand.
 function itemKey(lab, k) { return lab + '.' + k; }
 function ticked(lab, k) { return S.ck[itemKey(lab, k)] === true; }
 var toastTimer = null;
@@ -168,19 +156,18 @@ function identified(id) {
 
 /* ---------------- home / checklist ---------------- */
 function home() {
-  var c = { n: 0, s: 0, m: 0 }, dueN = 0, nItems = 0, nTicked = 0;
-  withViews.forEach(function (id) { c[state(id)]++; if (due(id)) dueN++; });
+  var nLearned = withViews.filter(learned).length, nItems = 0, nTicked = 0;
   D.labs.forEach(function (L) { L.items.forEach(function (it, k) { nItems++; if (ticked(L.lab, k)) nTicked++; }); });
   var h = '<section class="hero"><div class="panel"><div class="kicker">' + esc(D.course) + ' I · gross lab checklist</div><h1>' + esc(D.title) + '</h1>' +
     '<p>Every structure on the lab checklist, on real cadaver photos. A thin arrow points at one structure: pick or type its name, then learn how to find it, why it matters and the lecture slide.</p>' +
-    '<div class="stats"><div class="stat"><b>' + nTicked + '<small> / ' + nItems + '</small></b><span>checklist items ticked</span></div><div class="stat"><b>' + c.m + '</b><span>structures mastered</span></div><div class="stat"><b>' + dueN + '</b><span>due for review</span></div></div>' +
+    '<div class="stats"><div class="stat"><b>' + nTicked + '<small> / ' + nItems + '</small></b><span>checklist items ticked</span></div><div class="stat"><b>' + nLearned + '<small> / ' + withViews.length + '</small></b><span>structures named correctly</span></div><div class="stat"><b>' + (withViews.length - nLearned) + '</b><span>structures to go</span></div></div>' +
     '<div class="bar" title="' + nTicked + ' of ' + nItems + ' items ticked"><i class="m" style="width:' + (100 * nTicked / nItems) + '%"></i></div>' +
     '<div class="labpick"><span class="kicker">Drill a lab</span><div class="labbtns">' + D.labs.map(function (L) {
-      var ids = idsOfLabs([L.lab]), d = ids.filter(due).length;
-      return '<a class="labbtn" href="#/drill?labs=' + L.lab + '"><b>Lab ' + L.lab + '</b><span>' + esc(L.title) + '</span>' + (d ? '<i>' + d + ' due</i>' : '') + '</a>'; }).join('') + '</div></div>' +
-    '<div class="row" style="margin-top:12px"><a class="btn" href="#/drill">' + (dueN ? 'Review all ' + dueN + ' due' : 'Drill every lab') + '</a><a class="btn" href="#/quiz">Quick quiz</a><a class="btn" href="#/find">Find it</a><a class="btn" href="#/exam">Past spot exam</a></div></div>' +
+      var ids = idsOfLabs([L.lab]), n = ids.filter(learned).length;
+      return '<a class="labbtn" href="#/drill?labs=' + L.lab + '"><b>Lab ' + L.lab + '</b><span>' + esc(L.title) + '</span><i>' + n + '/' + ids.length + '</i></a>'; }).join('') + '</div></div>' +
+    '<div class="row" style="margin-top:12px"><a class="btn" href="#/drill">Drill every lab (' + withViews.length + ')</a><a class="btn" href="#/quiz">Quick quiz</a><a class="btn" href="#/find">Find it</a><a class="btn" href="#/exam">Past spot exam</a></div></div>' +
     '<div class="panel"><div class="kicker">How it works</div><ol class="how">' +
-    '<li><b>Drill a lab</b>: a thin arrow points at one structure. Pick its name from four choices (or switch to typing). Misses come back in 10 minutes; known ones in 1, 3, 8… days.</li>' +
+    '<li><b>Drill a lab</b>: every structure of the lab comes up once, in random order, with a thin arrow on it. Pick its name from four choices (or switch to typing). A miss comes back a few cards later; the round ends when you have named them all.</li>' +
     '<li>Name every structure of a checklist item correctly once and the item is <b>ticked</b>. Tap a tick box to untick or tick it yourself.</li>' +
     '<li>Each structure has up to four photos from different dissections, so you learn the structure, not one picture.</li>' +
     '<li>After the answer: <b>how to find it</b> on the cadaver, the neighbours on the same photo, the lecture slide and past spot stations.</li>' +
@@ -190,14 +177,14 @@ function home() {
     '<button class="chip" id="reset">Reset progress</button></div>' +
     '<div class="sharebox"><div class="kicker">Open on your phone</div>' + qrHTML('qrs') + '</div></div></section><section class="labs">';
   D.labs.forEach(function (L) {
-    var ids = idsOfLabs([L.lab]), d = ids.filter(due).length, nt = L.items.filter(function (it, k) { return ticked(L.lab, k); }).length;
+    var ids = idsOfLabs([L.lab]), nl = ids.filter(learned).length, nt = L.items.filter(function (it, k) { return ticked(L.lab, k); }).length;
     h += '<article class="panel lab"><header><span class="no">LAB ' + L.lab + '</span><h2>' + esc(L.title) + '</h2><span class="grow"></span><span class="mono muted" style="font-size:12px">' + nt + ' / ' + L.items.length + ' ticked</span></header>' +
-      '<a class="btn pri drillbig" href="#/drill?labs=' + L.lab + '"><span class="play">▶</span><span><b>Drill Lab ' + L.lab + '</b><small>' + L.items.length + ' items · ' + ids.length + ' structures' + (d ? ' · ' + d + ' due' : '') + '</small></span></a>' +
+      '<a class="btn pri drillbig" href="#/drill?labs=' + L.lab + '"><span class="play">▶</span><span><b>Drill Lab ' + L.lab + '</b><small>' + L.items.length + ' items · all ' + ids.length + ' structures · ' + nl + ' named so far</small></span></a>' +
       '<div class="bar"><i class="m" style="width:' + (100 * nt / L.items.length) + '%"></i></div><ul class="items">';
     L.items.forEach(function (it, k) {
       var ts = it.ts, on = ticked(L.lab, k);
       h += '<li class="' + (on ? 'done' : '') + '" data-lab="' + L.lab + '" data-k="' + k + '" title="Drill this item"><button class="tick" role="checkbox" aria-checked="' + on + '" aria-label="Tick ' + esc(it.name) + '" title="' + (on ? 'Untick' : 'Tick') + '">✓</button><span class="nm">' + (k + 1) + '. ' + esc(it.name) + (ts.length > 1 ? '<small>' + ts.length + ' structures</small>' : '') + '</span><span class="dots">' +
-        ts.map(function (id) { return '<i class="' + (ok(id) ? state(id) : 'x') + '" title="' + esc(T[id].name) + (T[id].views.length ? '' : T[id].past.length ? ' (past spot station only)' : ' (no photo yet: lecture and notes only)') + '"></i>'; }).join('') + '</span></li>';
+        ts.map(function (id) { return '<i class="' + (ok(id) ? (learned(id) ? 'm' : '') : 'x') + '" title="' + esc(T[id].name) + (T[id].views.length ? '' : T[id].past.length ? ' (past spot station only)' : ' (no photo yet: lecture and notes only)') + '"></i>'; }).join('') + '</span></li>';
     });
     h += '</ul><div class="row"><a class="btn sm" href="#/quiz?labs=' + L.lab + '">Quiz</a><a class="btn sm" href="#/find?labs=' + L.lab + '">Find it</a><a class="btn sm" href="#/atlas?labs=' + L.lab + '">Photos</a></div></article>';
   });
@@ -214,17 +201,17 @@ function modeSwitch() {
 }
 function wireMode(again) { $$('[data-mode]', app).forEach(function (b) { b.onclick = function (e) { e.stopPropagation(); S.set.mode = b.dataset.mode; save(); again(); }; }); }
 
-/* ---------------- drill (flashcards) ---------------- */
+/* ---------------- drill ---------------- */
+// A round is every structure of the chosen labs (or item, or list), once each, in random order.
+// Named correctly: it counts and leaves the round. Missed: it does not count and comes back three cards later.
+// The round ends when every structure has been named.
 function drill(q) {
   var pool;
   if (q.item) { var a = q.item.split('.'), L = D.labs.filter(function (x) { return x.lab === +a[0]; })[0]; pool = L.items[+a[1]].ts.filter(function (id) { return ok(id); }); }
+  else if (q.ids) pool = q.ids.split(',').filter(function (id) { return T[id] && ok(id); });
   else pool = idsOfLabs(labsParam(q));
-  var queue = pool.filter(due).sort(function (a, b) { return st(a).d - st(b).d; });
-  var fresh = shuffle(pool.filter(function (id) { return !S.t[id] || !S.t[id].s; })).slice(0, q.item ? 99 : S.set.newPer);
-  queue = queue.concat(fresh); var practice = false;
-  if (!queue.length) { queue = shuffle(pool).slice(0, 20); practice = true; }
-  var total = queue.length, doneN = 0, cur = null, vi = 0, revealed = false, typed = null, hint = 0, opts = null, chosen = -1;
-  var title = q.item ? itemName(q.item) : (q.labs ? 'Lab ' + q.labs.split(',').join(', ') : 'All labs');
+  var queue = shuffle(pool), total = pool.length, nRight = 0, missed = {}, cur = null, vi = 0, revealed = false, typed = null, self = null, hint = 0, opts = null, chosen = -1;
+  var title = q.item ? itemName(q.item) : q.ids ? 'Structures you missed' : (q.labs ? 'Lab ' + q.labs.split(',').join(', ') : 'All labs');
   function itemName(s) { var a = s.split('.'), L = D.labs.filter(function (x) { return x.lab === +a[0]; })[0]; return 'Lab ' + L.lab + ' · ' + L.items[+a[1]].name; }
   function mc() { return S.set.mode !== 'type'; }
   function makeOpts() {
@@ -233,24 +220,32 @@ function drill(q) {
     var others = v ? distractors(cur, v, peers, 3) : shuffle(peers).filter(function (o) { var k = dkey(T[o].name); if (seen[k]) return false; seen[k] = 1; return true; }).slice(0, 3).map(function (o) { return { name: T[o].name, id: o }; });
     opts = shuffle([{ name: t.name, id: cur, n: v ? v.n : null, right: true }].concat(others)); chosen = -1;
   }
+  function right() { return typed ? typed.ok : self === true; }
+  function finished() {
+    var ms = pool.filter(function (id) { return missed[id]; });
+    app.innerHTML = '<div class="panel setup done"><div class="kicker">' + esc(title) + '</div><b class="big">' + total + ' / ' + total + '</b><p>Every structure named. ' + (total - ms.length) + ' right the first time' + (ms.length ? '; missed at least once: ' + ms.map(function (id) { return esc(T[id].name); }).join(', ') : '') + '.</p>' +
+      '<div class="row" style="justify-content:center">' + (ms.length ? '<a class="btn pri" href="#/drill?ids=' + ms.join(',') + '">Drill the ' + ms.length + ' you missed</a>' : '') + '<button class="btn" id="again">Drill all again</button><a class="btn" href="#/">Back to the checklist</a></div></div>';
+    $('#again').onclick = function () { drill(q); }; keyHandler = null;
+  }
   function next() {
-    if (!queue.length) {
-      app.innerHTML = '<div class="panel setup done"><div class="kicker">' + esc(title) + '</div><b class="big">Done</b><p>' + doneN + ' cards reviewed' + (practice ? ' (practice round: nothing was due)' : '') + '.</p>' +
-        '<div class="row" style="justify-content:center"><a class="btn pri" href="#/">Back to the checklist</a><a class="btn" href="#/quiz' + (q.labs ? '?labs=' + q.labs : '') + '">Quiz these labs</a><button class="btn" id="again">Practise again</button></div></div>';
-      $('#again').onclick = function () { pool.forEach(function (id) { var x = st(id); x.d = Math.min(x.d, now()); }); save(); drill(q); }; keyHandler = null; return;
-    }
-    cur = queue.shift(); var t = T[cur], x = st(cur); revealed = false; typed = null; hint = 0;
+    if (!queue.length) return finished();
+    cur = queue.shift(); var t = T[cur], x = st(cur); revealed = false; typed = null; self = null; hint = 0;
     var nv = t.views.length || t.past.length;
-    vi = nv > 1 ? (x.v + 1 + Math.floor(Math.random() * (nv - 1))) % nv : 0; x.v = vi;
+    vi = nv > 1 ? (x.v + 1 + Math.floor(Math.random() * (nv - 1))) % nv : 0; x.v = vi; save();
     makeOpts(); render();
   }
+  function advance() {                 // after the answer: count it, or send it back three cards later
+    if (!revealed || (!typed && self === null)) return;
+    if (right()) nRight++; else { missed[cur] = 1; queue.splice(Math.min(3, queue.length), 0, cur); }
+    next();
+  }
   function render() {
-    var t = T[cur], v = t.views[vi], x = S.t[cur], pq = v ? null : t.past[vi], ps = pq ? P[pq[0]] : null;
-    var tag = !x || !x.s ? '<span class="pill new">new</span>' : due(cur) ? '<span class="pill due">due</span>' : '<span class="pill">practice</span>';
+    var t = T[cur], v = t.views[vi], pq = v ? null : t.past[vi], ps = pq ? P[pq[0]] : null;
+    var tag = missed[cur] ? '<span class="pill due">again</span>' : '';
     var nv = t.views.length || t.past.length;
     var pic = v ? stage(v.img, [{ path: v.path }]) : '<div class="stage" data-nozoom="1" style="background:#fff"><img src="' + esc(ps.img) + '" alt="Past spot station" data-zoomsrc="' + esc(ps.img) + '" data-cap="' + esc(ps.set) + '"></div>';
     var h = '<div class="drill"><div>' + pic + '<div class="stagecap"><span>' + esc(v ? srcCap(v.img) : ps.set + ' · past spot station (no clean atlas photo for this structure)') + '</span><span>view ' + (vi + 1) + ' of ' + nv + (nv > 1 ? ' · <a href="#" id="nextView">another photo <span class="kbd">V</span></a>' : '') + '</span></div></div>' +
-      '<aside class="panel card"><div class="qtop">' + tag + '<span class="pill">Lab ' + labOf[cur].join(', ') + '</span><span class="grow"></span>' + modeSwitch() + '<span class="mono muted" style="font-size:12px">' + (doneN + 1) + ' / ' + total + '</span></div>' +
+      '<aside class="panel card"><div class="qtop">' + tag + '<span class="pill">Lab ' + labOf[cur].join(', ') + '</span><span class="grow"></span>' + modeSwitch() + '<span class="mono muted" style="font-size:12px" title="named correctly / structures in this round">' + nRight + ' / ' + total + ' named</span></div>' +
       '<div class="prompt">' + (v ? 'What is at the arrow?' : esc(ps.qs[pq[1]][0])) + '</div>';
     if (mc()) {
       h += '<div class="opts">' + opts.map(function (o, j) {
@@ -258,13 +253,13 @@ function drill(q) {
         return '<button data-j="' + j + '" class="' + cls + '"' + (revealed ? ' disabled' : '') + '><span class="L">' + 'ABCD'[j] + '</span>' + esc(o.name) + '</button>'; }).join('') + '</div>' +
         (revealed ? '' : '<div class="row" style="margin-top:8px"><button class="btn sm" id="hintBtn">Hint <kbd>H</kbd></button><button class="btn sm" id="showBtn">I don’t know <kbd>Space</kbd></button></div>');
     } else {
-      h += '<form class="answer-in" id="af" autocomplete="off"><input id="ain" placeholder="Type the name (optional)" aria-label="Your answer"' + (revealed ? ' disabled' : '') + '><button class="btn pri" type="submit">' + (revealed ? 'Next' : 'Check') + '</button></form>' +
+      h += '<form class="answer-in" id="af" autocomplete="off"><input id="ain" placeholder="Type the name, or leave it empty" aria-label="Your answer"' + (revealed ? ' disabled' : '') + (revealed && typed ? ' value="' + esc(typed.s) + '"' : '') + '><button class="btn pri" type="submit"' + (revealed ? ' hidden' : '') + '>Check</button></form>' +
         (revealed ? '' : '<div class="row" style="margin-top:8px"><button class="btn sm" id="hintBtn">Hint <kbd>H</kbd></button><button class="btn sm" id="showBtn">Show answer <kbd>Space</kbd></button></div>');
     }
     h += (hint ? '<div class="hintbox">' + hintText() + '</div>' : '') +
-      (typed !== null ? '<div class="verdict ' + (typed.ok ? 'ok' : 'no') + '">' + (typed.ok ? '✓ Correct' : mc() ? (chosen < 0 ? 'The answer is below' : '✗ Not quite' + (opts[chosen].n != null ? ': the blue arrow shows where “' + esc(opts[chosen].name) + '” is' : '')) : '✗ You wrote “' + esc(typed.s) + '”') + '</div>' : '') +
+      (typed !== null ? '<div class="verdict ' + (typed.ok ? 'ok' : 'no') + '">' + (typed.ok ? '✓ Correct' : mc() ? (chosen < 0 ? 'It comes back in a few cards' : '✗ Not quite' + (opts[chosen].n != null ? ': the blue arrow shows where “' + esc(opts[chosen].name) + '” is' : '')) : '✗ You wrote “' + esc(typed.s) + '”') + '</div>' : '') +
       (revealed ? revealHTML() : '') +
-      '<div class="progress"><i style="width:' + (100 * doneN / total) + '%"></i></div></aside></div>';
+      '<div class="progress"><i style="width:' + (100 * nRight / total) + '%"></i></div></aside></div>';
     app.innerHTML = h; wire();
     if (revealed && mc() && chosen >= 0 && !opts[chosen].right && opts[chosen].n != null && v) {
       var L = I[v.img].labels.filter(function (x) { return x[0] === opts[chosen].n; })[0];
@@ -282,9 +277,15 @@ function drill(q) {
     im.labels.forEach(function (L) { if (L[0] === v.n) return; var p = L[2][L[2].length - 1], d = Math.hypot(p[0] - tip[0], p[1] - tip[1]); var k = L[1].toLowerCase(); if (seen[k]) return; seen[k] = 1; out.push([d, L]); });
     return out.sort(function (a, b) { return a[0] - b[0]; }).slice(0, 5).map(function (x) { return x[1]; });
   }
+  function nextHTML() {
+    if (!typed && self === null)      // typing mode, nothing typed: the student marks it
+      return '<div class="row selfmark"><button class="btn ok" data-self="1">Got it <kbd>Y</kbd></button><button class="btn no" data-self="0">Missed it <kbd>N</kbd></button></div>';
+    return '<div class="row"><button class="btn pri" id="nextBtn">' + (right() ? 'Next' : 'Next (this one comes back)') + ' <kbd>Enter</kbd></button>' +
+      (typed && !typed.ok && !mc() ? '<button class="btn sm" id="okBtn">I was right</button>' : '') + '</div>';
+  }
   function revealHTML() {
     var t = T[cur], v = t.views[vi], pq = v ? null : t.past[vi], h = '<div class="reveal"><p class="ans">' + esc(t.name) + '</p>' + (pq ? '<div class="ansitem">Station key: ' + esc(P[pq[0]].qs[pq[1]][1]) + (P[pq[0]].qs[pq[1]][2] ? ' · ' + esc(P[pq[0]].qs[pq[1]][2]) : '') + '</div>' : '') + '<div class="ansitem">Lab ' + labOf[cur].join(', ') + ' · ' + esc(itemOf[cur]) + (t.card ? ' · <a href="' + esc(D.deck) + '#' + esc(t.card) + '" target="_blank" rel="noopener">Anatomy 101 ' + esc(t.card) + ' ↗</a>' : '') + '</div>' +
-      gradesHTML() + '<div class="note"><b>How to find it</b><p>' + esc(t.find) + '</p></div><div class="note"><b>Why it matters</b><p>' + esc(t.why) + '</p></div><div class="note th"><b>ภาษาไทย</b><p class="th">' + esc(t.th) + '</p></div>';
+      nextHTML() + '<div class="note"><b>How to find it</b><p>' + esc(t.find) + '</p></div><div class="note"><b>Why it matters</b><p>' + esc(t.why) + '</p></div><div class="note th"><b>ภาษาไทย</b><p class="th">' + esc(t.th) + '</p></div>';
     var nb = neighbours(v);
     if (nb.length) h += '<div class="sub"><h3>Neighbours on this photo · hover or tap</h3><div class="chips">' + nb.map(function (L) { return '<span class="chip" data-nb="' + L[0] + '">' + esc(L[1]) + '</span>'; }).join('') + '</div></div>';
     if (t.views.length > 1) h += '<div class="sub"><h3>Same structure, other photos</h3><div class="thumbs">' + t.views.map(function (w, k) { return '<figure class="' + (k === vi ? 'cur' : '') + '" data-view="' + k + '"><img src="img/a/' + esc(w.img) + '" alt="" loading="lazy"><figcaption>Rohen p.' + I[w.img].page + '</figcaption></figure>'; }).join('') + '</div></div>';
@@ -292,37 +293,27 @@ function drill(q) {
     if (t.past.length) h += '<div class="sub"><h3>Past spot stations</h3><div class="thumbs">' + t.past.map(function (pq) { var p = P[pq[0]]; return '<figure data-past="' + esc(pq[0]) + '" data-qi="' + pq[1] + '"><img src="' + esc(p.img) + '" alt="" loading="lazy"><figcaption>' + esc(p.set) + '</figcaption></figure>'; }).join('') + '</div></div>';
     return h + '</div>';
   }
-  function sugg() { return typed ? (typed.ok ? 3 : 1) : 0; }
-  function gradesHTML() {
-    var sg = sugg(), x = S.t[cur] || { i: 0, r: 0, e: 2.4 };
-    var ivl = function (g) { var i = g === 2 ? Math.max(0.5, x.i * 1.2 || 0.5) : g === 3 ? (x.r === 0 ? 1 : x.r === 1 ? 3 : x.i * x.e) : (x.r === 0 ? 3 : x.i * x.e * 1.3); return i < 1 ? '12 h' : Math.round(i) + ' d'; };
-    return '<div class="grades">' + [[1, 'Again', '10 min'], [2, 'Hard', ivl(2)], [3, 'Good', ivl(3)], [4, 'Easy', ivl(4)]].map(function (g) {
-      return '<button class="g' + g[0] + '" data-g="' + g[0] + '"' + (sg === g[0] ? ' style="box-shadow:0 0 0 2px currentColor inset"' : '') + '>' + g[1] + '<small>' + g[0] + ' · ' + g[2] + '</small></button>'; }).join('') + '</div>' +
-      '<p class="muted" style="font-size:12px;margin:4px 0 0">' + (sg ? 'Enter = ' + ['', 'Again', '', 'Good'][sg] + ' · ' : '') + '1–4 to grade</p>';
-  }
   function reveal() { if (revealed) return; revealed = true; render(); }
   function check() {
     if (revealed) return;
-    if (mc()) { typed = { s: '', ok: false }; reveal(); return; }   // "I don't know"
+    if (mc()) { typed = { s: '', ok: false }; reveal(); return; }   // "I don't know": a miss
     var s = $('#ain').value.trim(); if (s) { typed = { s: s, ok: matchAns(s, accOf(cur)) }; if (typed.ok) identified(cur); } reveal();
   }
   function choose(j) {
     if (revealed) return; chosen = j; typed = { s: opts[j].name, ok: !!opts[j].right };
     if (typed.ok) identified(cur); reveal();
   }
-  function rate(g) {
-    if (!revealed) return;
-    if (!typed && g >= 3) identified(cur);              // typing mode, answer only thought: a Good/Easy counts as named correctly
-    grade(cur, g); doneN++; if (g === 1) queue.splice(Math.min(3, queue.length), 0, cur); else if (g === 2 && queue.length > 6) queue.splice(8, 0, cur); next();
-  }
+  function mark(got) { self = got; if (got) identified(cur); render(); }
   function wire() {
-    var f = $('#af'); if (f) f.onsubmit = function (e) { e.preventDefault(); if (revealed) rate(sugg() || 3); else check(); };
+    var f = $('#af'); if (f) f.onsubmit = function (e) { e.preventDefault(); if (!revealed) check(); };
     var inp = $('#ain'); if (inp && !revealed && matchMedia('(pointer:fine)').matches) inp.focus();
     $$('.opts [data-j]', app).forEach(function (b) { b.onclick = function () { choose(+b.dataset.j); }; });
     if (!revealed) { $('#hintBtn').onclick = function () { hint++; render(); }; $('#showBtn').onclick = function () { check(); }; }
     wireMode(function () { if (!revealed) { typed = null; } render(); });
     var nvl = $('#nextView'); if (nvl) nvl.onclick = function (e) { e.preventDefault(); vi = (vi + 1) % (T[cur].views.length || T[cur].past.length); makeOpts(); render(); };
-    $$('[data-g]', app).forEach(function (b) { b.onclick = function () { rate(+b.dataset.g); }; });
+    var nb = $('#nextBtn'); if (nb) nb.onclick = advance;
+    var ob = $('#okBtn'); if (ob) ob.onclick = function () { typed.ok = true; identified(cur); render(); };
+    $$('[data-self]', app).forEach(function (b) { b.onclick = function () { mark(b.dataset.self === '1'); }; });
     $$('[data-view]', app).forEach(function (fg) { fg.onclick = function () { vi = +fg.dataset.view; render(); }; });
     $$('[data-past]', app).forEach(function (fg) { fg.onclick = function () { showPast(fg.dataset.past, +fg.dataset.qi); }; });
     var v = T[cur].views[vi], sg = $('.stage svg', app);
@@ -341,9 +332,9 @@ function drill(q) {
       var i = 'abcd'.indexOf(e.key.toLowerCase()); if (i < 0) i = '1234'.indexOf(e.key);
       if (i >= 0 && i < opts.length) { choose(i); return; }
     }
+    if (revealed && !typed && self === null) { if (e.key === 'y' || e.key === 'Y') mark(true); else if (e.key === 'n' || e.key === 'N') mark(false); return; }
     if (e.key === ' ' && !revealed) { e.preventDefault(); check(); }
-    else if (revealed && '1234'.indexOf(e.key) >= 0) rate(+e.key);
-    else if (revealed && e.key === 'Enter' && mc()) rate(sugg() || 3);
+    else if (revealed && (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight')) { e.preventDefault(); advance(); }
     else if (e.key === 'h' || e.key === 'H') { if (!revealed) { hint++; render(); } }
     else if ((e.key === 'v' || e.key === 'V') && (T[cur].views.length || T[cur].past.length) > 1) { vi = (vi + 1) % (T[cur].views.length || T[cur].past.length); makeOpts(); render(); }
   };
@@ -372,8 +363,7 @@ function setup(kind, q, start) {
 }
 function finish(kind, score, n, misses, again) {
   app.innerHTML = '<div class="panel setup done"><div class="kicker">' + kind + '</div><b class="big">' + score + ' / ' + n + '</b><p>' + (misses.length ? 'Missed: ' + misses.map(function (id) { return esc(T[id].name); }).join(', ') : 'No misses.') + '</p>' +
-    '<div class="row" style="justify-content:center">' + (misses.length ? '<button class="btn pri" id="drillMiss">Drill the misses now</button>' : '') + '<button class="btn" id="again">Another round</button><a class="btn" href="#/">Checklist</a></div></div>';
-  var b = $('#drillMiss'); if (b) b.onclick = function () { misses.forEach(function (id) { var x = st(id); x.s = x.s || 1; x.d = 0; x.r = 0; }); save(); location.hash = '#/drill'; };
+    '<div class="row" style="justify-content:center">' + (misses.length ? '<a class="btn pri" href="#/drill?ids=' + misses.filter(function (id, i) { return misses.indexOf(id) === i; }).join(',') + '">Drill the misses now</a>' : '') + '<button class="btn" id="again">Another round</button><a class="btn" href="#/">Checklist</a></div></div>';
   $('#again').onclick = again; keyHandler = null;
 }
 
@@ -405,7 +395,7 @@ function quiz(q) {
       function choose(j) {
         if (answered) return; answered = true; var o = opts[j];
         $$('.opts button', app).forEach(function (b, i) { b.disabled = true; if (opts[i].right) b.classList.add('right'); else if (i === j) b.classList.add('wrong'); });
-        if (o.right) { score++; grade(id, 3); identified(id); } else { misses.push(id); grade(id, 1);
+        if (o.right) { score++; identified(id); } else { misses.push(id);
           if (o.n != null) { var L = I[v.img].labels.filter(function (x) { return x[0] === o.n; })[0]; if (L) { var g = document.createElementNS('http://www.w3.org/2000/svg', 'g'); g.innerHTML = arrow(ptrPath(L[2], I[v.img].w, I[v.img].h, S.set.ptr), I[v.img].w, I[v.img].h, 'alt'); $('.stage svg', app).appendChild(g); } } }
         $('#fb').innerHTML = '<div class="verdict ' + (o.right ? 'ok' : 'no') + '">' + (o.right ? '✓ ' + esc(t.name) : '✗ It is the <b>' + esc(t.name) + '</b>' + (o.n != null ? '. The blue arrow shows where your choice is.' : '.')) + '</div>' +
           '<div class="note"><b>How to find it</b><p>' + esc(t.find) + '</p></div><button class="btn pri" id="nx">Next <kbd>Enter</kbd></button>';
@@ -437,7 +427,7 @@ function findIt(q) {
       function choose(j) {
         if (answered) return; answered = true; var ok = arrows[j].right;
         $$('.opts button', app).forEach(function (b, i) { b.disabled = true; b.innerHTML = '<span class="L">' + arrows[i].badge + '</span>' + esc(arrows[i].name); if (arrows[i].right) b.classList.add('right'); else if (i === j) b.classList.add('wrong'); });
-        if (ok) { score++; grade(id, 3); identified(id); } else { misses.push(id); grade(id, 1); }
+        if (ok) { score++; identified(id); } else { misses.push(id); }
         $('#fb').innerHTML = '<div class="verdict ' + (ok ? 'ok' : 'no') + '">' + (ok ? '✓ Correct' : '✗ It was arrow ' + arrows.filter(function (a) { return a.right; })[0].badge) + '</div><div class="note"><b>How to find it</b><p>' + esc(t.find) + '</p></div><button class="btn pri" id="nx">Next <kbd>Enter</kbd></button>';
         $('#nx').onclick = function () { k++; show(); };
       }
