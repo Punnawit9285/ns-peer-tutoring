@@ -84,6 +84,9 @@ function stage(file, ptrs, opts) {
   return '<div class="stage" data-file="' + esc(file) + '"><img src="img/a/' + esc(file) + '" width="' + w + '" height="' + h + '" alt="Cadaver photograph"' + (opts.lazy ? ' loading="lazy"' : '') + '>' +
     '<svg viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="xMidYMid meet">' + svg + '</svg>' + (opts.nozoom ? '' : '<span class="zoomhint">click to zoom</span>') + '</div>';
 }
+// some atlas leaders end in a small black arrow or tick; the yellow arrow stops where the leader met it
+var ARROWTH = 'ถ้าลูกศรสีเหลืองชี้ลูกศรสีดำเล็ก หรือขีดสีดำอยู่ ให้ยึดตามสีดำเล็ก (ใช้ลูกศรสีเหลืองใหญ่ชี้เลยมันจะเห็นไม่ชัด)';
+var ARROWNOTE = '<p class="arrownote" lang="th"><svg viewBox="0 0 30 14" aria-hidden="true"><path d="M12 7H28" stroke="#1d2330" stroke-width="6" stroke-linecap="round"/><path d="M12 7H28" stroke="var(--ptr)" stroke-width="3.5" stroke-linecap="round"/><path d="M1.5 7L13 1V13Z" fill="var(--ptr)" stroke="#1d2330" stroke-width="1.2" stroke-linejoin="round"/></svg><span>' + ARROWTH + '</span></p>';
 function srcCap(file) { return 'Rohen, Photographic Atlas 8e p.' + I[file].page + ' · leader line redrawn, labels removed'; }
 
 /* zoom */
@@ -169,6 +172,7 @@ function home() {
     '<div class="panel"><div class="kicker">How it works</div><ol class="how">' +
     '<li><b>Drill a lab</b>: every structure of the lab comes up once, in random order, with a thin arrow on it. Pick its name from four choices (or switch to typing). A miss comes back a few cards later; the round ends when you have named them all.</li>' +
     '<li>Name every structure of a checklist item correctly once and the item is <b>ticked</b>. Tap a tick box to untick or tick it yourself.</li>' +
+    '<li lang="th"><b>ลูกศรสีเหลือง</b>: ' + ARROWTH + '</li>' +
     '<li>Each structure has up to four photos from different dissections, so you learn the structure, not one picture.</li>' +
     '<li>After the answer: <b>how to find it</b> on the cadaver, the neighbours on the same photo, the lecture slide and past spot stations.</li>' +
     '<li><b>Spot exam</b> runs past stations against the clock. Progress stays in this browser.</li></ol>' +
@@ -246,7 +250,7 @@ function drill(q) {
     var pic = v ? stage(v.img, [{ path: v.path }]) : '<div class="stage" data-nozoom="1" style="background:#fff"><img src="' + esc(ps.img) + '" alt="Past spot station" data-zoomsrc="' + esc(ps.img) + '" data-cap="' + esc(ps.set) + '"></div>';
     var h = '<div class="drill"><div>' + pic + '<div class="stagecap"><span>' + esc(v ? srcCap(v.img) : ps.set + ' · past spot station (no clean atlas photo for this structure)') + '</span><span>view ' + (vi + 1) + ' of ' + nv + (nv > 1 ? ' · <a href="#" id="nextView">another photo <span class="kbd">V</span></a>' : '') + '</span></div></div>' +
       '<aside class="panel card"><div class="qtop">' + tag + '<span class="pill">Lab ' + labOf[cur].join(', ') + '</span><span class="grow"></span>' + modeSwitch() + '<span class="mono muted" style="font-size:12px" title="named correctly / structures in this round">' + nRight + ' / ' + total + ' named</span></div>' +
-      '<div class="prompt">' + (v ? 'What is at the arrow?' : esc(ps.qs[pq[1]][0])) + '</div>';
+      '<div class="prompt">' + (v ? 'What is at the arrow?' : esc(ps.qs[pq[1]][0])) + '</div>' + (v ? ARROWNOTE : '');
     if (mc()) {
       h += '<div class="opts">' + opts.map(function (o, j) {
         var cls = revealed ? (o.right ? 'right' : j === chosen ? 'wrong' : '') : '';
@@ -390,7 +394,7 @@ function quiz(q) {
     function show() {
       if (k >= qs.length) return finish('Quiz', score, qs.length, misses, function () { quiz(q); });
       var id = qs[k], t = T[id], v = pick(t.views), opts = shuffle([{ name: t.name, id: id, n: v.n, right: true }].concat(distractors(id, v, pool, 3))), answered = false;
-      app.innerHTML = '<div class="drill"><div>' + stage(v.img, [{ path: v.path }]) + '<div class="stagecap"><span>' + esc(srcCap(v.img)) + '</span></div></div><aside class="panel card"><div class="qtop"><span class="pill">Quiz</span><span class="grow"></span><span class="mono muted" style="font-size:12px">' + (k + 1) + ' / ' + qs.length + ' · score ' + score + '</span></div><div class="prompt">What is at the arrow?</div><div class="opts">' +
+      app.innerHTML = '<div class="drill"><div>' + stage(v.img, [{ path: v.path }]) + '<div class="stagecap"><span>' + esc(srcCap(v.img)) + '</span></div></div><aside class="panel card"><div class="qtop"><span class="pill">Quiz</span><span class="grow"></span><span class="mono muted" style="font-size:12px">' + (k + 1) + ' / ' + qs.length + ' · score ' + score + '</span></div><div class="prompt">What is at the arrow?</div>' + ARROWNOTE + '<div class="opts">' +
         opts.map(function (o, j) { return '<button data-j="' + j + '"><span class="L">' + 'ABCD'[j] + '</span>' + esc(o.name) + '</button>'; }).join('') + '</div><div id="fb"></div><div class="progress"><i style="width:' + (100 * k / qs.length) + '%"></i></div></aside></div>';
       function choose(j) {
         if (answered) return; answered = true; var o = opts[j];
@@ -423,7 +427,7 @@ function findIt(q) {
       arrows.forEach(function (a, j) { a.badge = 'ABCD'[j]; });
       var answered = false;
       app.innerHTML = '<div class="drill"><div>' + stage(v.img, arrows.map(function (a) { return { path: a.path, badge: a.badge, full: true }; })) + '<div class="stagecap"><span>' + esc(srcCap(v.img)) + '</span></div></div><aside class="panel card"><div class="qtop"><span class="pill">Find it</span><span class="grow"></span><span class="mono muted" style="font-size:12px">' + (k + 1) + ' / ' + qs.length + ' · score ' + score + '</span></div>' +
-        '<div class="prompt">Which arrow is the <span style="color:var(--acc)">' + esc(t.name) + '</span>?</div><div class="opts">' + arrows.map(function (a, j) { return '<button data-j="' + j + '"><span class="L">' + a.badge + '</span>Arrow ' + a.badge + '</button>'; }).join('') + '</div><div id="fb"></div></aside></div>';
+        '<div class="prompt">Which arrow is the <span style="color:var(--acc)">' + esc(t.name) + '</span>?</div>' + ARROWNOTE + '<div class="opts">' + arrows.map(function (a, j) { return '<button data-j="' + j + '"><span class="L">' + a.badge + '</span>Arrow ' + a.badge + '</button>'; }).join('') + '</div><div id="fb"></div></aside></div>';
       function choose(j) {
         if (answered) return; answered = true; var ok = arrows[j].right;
         $$('.opts button', app).forEach(function (b, i) { b.disabled = true; b.innerHTML = '<span class="L">' + arrows[i].badge + '</span>' + esc(arrows[i].name); if (arrows[i].right) b.classList.add('right'); else if (i === j) b.classList.add('wrong'); });
@@ -499,7 +503,7 @@ function plate(file) {
     var ptrs = sel != null ? [{ path: im.labels.filter(function (L) { return L[0] === sel; })[0][2] }] : [];
     app.innerHTML = '<div class="drill"><div>' + stage(file, ptrs, { dots: im.labels.map(function (L) { return { n: L[0], path: L[2] }; }) }) + '<div class="stagecap"><span>' + esc(srcCap(file)) + '</span></div></div>' +
       '<aside class="panel card"><div class="qtop"><a class="btn sm" href="#/atlas">← All photos</a><span class="grow"></span><label class="chip"><input type="checkbox" id="hid"' + (hidden ? ' checked' : '') + '> hide names</label></div>' +
-      '<div class="prompt">' + (sel != null && (!hidden || revealed[sel]) ? esc(im.labels.filter(function (L) { return L[0] === sel; })[0][1]) : (hidden ? 'Tap a dot, name it, tap again' : 'Hover a name or tap a dot')) + '</div>' +
+      '<div class="prompt">' + (sel != null && (!hidden || revealed[sel]) ? esc(im.labels.filter(function (L) { return L[0] === sel; })[0][1]) : (hidden ? 'Tap a dot, name it, tap again' : 'Hover a name or tap a dot')) + '</div>' + ARROWNOTE +
       '<div class="labels">' + im.labels.map(function (L) { var tg = targetN[L[0]]; return '<div class="' + (tg ? 'tg ' : '') + (sel === L[0] ? 'on' : '') + '" data-n="' + L[0] + '"><span class="n">' + L[0] + '</span>' + (hidden && !revealed[L[0]] ? '•••' : esc(L[1])) + (tg ? ' ✓' : '') + '</div>'; }).join('') + '</div>' +
       '<p class="muted" style="font-size:13px;margin-top:10px">✓ = on the lab checklist. Numbers are Rohen’s legend numbers.</p></aside></div>';
     $('#hid').onchange = function () { hidden = this.checked; revealed = {}; render(); };

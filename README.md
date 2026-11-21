@@ -82,6 +82,7 @@ Every structure on the *112-69 Gross Checklist NS I*: 7 labs and 77 items, split
 - **Quiz** (four choices from the same photo; a miss shows where your choice really is), **Find it** (four lettered arrows), **Spot exam** (past stations against the clock) and **Atlas** (every label on a photo, with a hide-names self-test).
 - **QR** button (top bar of the trainer and the tutor answer sheet): both trainers' QR codes full screen, for a shared screen; the home page shows them small.
 - The home page mirrors the lab checklist and ticks an item once each of its structures is named correctly; students can untick or tick by hand. Every page carries the note ห้ามส่งต่อนอก MDCU · รูปติดลิขสิทธิ์. Progress stays in the browser.
+- Some atlas leaders end in a small black arrow or tick, and the yellow arrow stops where the leader met it. Under every arrowed question (and on the tutor sheet) a note says: ถ้าลูกศรสีเหลืองชี้ลูกศรสีดำเล็ก หรือขีดสีดำอยู่ ให้ยึดตามสีดำเล็ก (ใช้ลูกศรสีเหลืองใหญ่ชี้เลยมันจะเห็นไม่ชัด).
 
 Source and method: [`spot/src`](spot/src). The atlas PDF is read locally and never uploaded; see [legal.md](legal.md).
 

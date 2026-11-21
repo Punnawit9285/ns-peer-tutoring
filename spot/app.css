@@ -152,6 +152,8 @@ main { max-width: 1320px; margin: 0 auto; padding: 18px 18px 40px; outline: none
 .badge { font: 700 15px var(--f-mono); }
 .zoomhint { position: absolute; right: 10px; bottom: 10px; line-height: 1; font: 12px var(--f-mono); color: #fff; background: rgba(0,0,0,.55); padding: 5px 8px; border-radius: 7px; pointer-events: none; }
 .stagecap { font: 12px var(--f-mono); color: var(--ink3); margin-top: 6px; display: flex; gap: 10px; flex-wrap: wrap; }
+.arrownote { display: flex; gap: 9px; align-items: flex-start; margin: -4px 0 12px; padding: 7px 10px; border-radius: 9px; background: var(--warnbg); color: var(--ink2); font: 13px/1.55 "IBM Plex Sans Thai", var(--f-sans); }
+.arrownote svg { flex: none; width: 30px; height: 14px; margin-top: 3px; }
 
 /* drill */
 .drill { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(320px, 1fr); gap: 18px; align-items: start; }
