@@ -8,9 +8,11 @@ Question-first peer-tutoring material for **Nervous System I (NS I)**, MDCU: the
 |---|---|
 | **Student deck** (shown in the video) | https://punnawit9285.github.io/ns-peer-tutoring/student.html |
 | **Tutor deck** (second screen: answers, Thai notes, script) | https://punnawit9285.github.io/ns-peer-tutoring/tutor.html |
-| **Student handout PDF** | https://punnawit9285.github.io/ns-peer-tutoring/student.pdf?v=d34d88aa |
+| **Student handout PDF** | https://punnawit9285.github.io/ns-peer-tutoring/student.pdf?v=8ab6f402 |
 
 Open the student and tutor decks in the same browser and tick *Follow student* in the tutor deck: it jumps to whatever card the student deck shows.
+
+**QR codes** for a shared screen or a printed page: the start card of each deck (main and Anatomy 101) shows QR codes that open the deck, download its PDF and open the spot trainer, and the cover of each PDF carries a QR code that downloads that PDF.
 
 ## Sections (121 concepts · 301 questions · 460 cloze blanks)
 
@@ -56,7 +58,7 @@ A second deck for the NS I gross-anatomy lectures, built to link each lecture st
 |---|---|
 | **Student deck** | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/student.html |
 | **Tutor deck** (every answer and cloze revealed, Thai tutor notes and SAY lines) | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/tutor.html |
-| **Student handout PDF** | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/student.pdf?v=4fcf6b8b |
+| **Student handout PDF** | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/student.pdf?v=3a265ab5 |
 | **RS I Anatomy 101 deck** | https://punnawit9285.github.io/rs-peer-tutoring/anatomy/student.html |
 
 66 concepts · 46 cadaver steps · 14 lab clips · 215 past-paper items (379 questions) · 42 connection maps · 88 tidbits-board tiles.
@@ -78,6 +80,7 @@ Every structure on the *112-69 Gross Checklist NS I*: 7 labs and 77 items, split
 
 - **Drill** (big *Drill Lab N* buttons): pick the name of the structure at the arrow from four choices (default) or switch to typing, with spaced repetition (misses return in 10 min; known ones in 1, 3, 8… days) and hints. After the answer: how to find it on the cadaver, why it matters, a Thai line, the neighbours on the same photo (hover shows their arrow), the other photos, the lecture slide and the past spot stations that asked it.
 - **Quiz** (four choices from the same photo; a miss shows where your choice really is), **Find it** (four lettered arrows), **Spot exam** (past stations against the clock) and **Atlas** (every label on a photo, with a hide-names self-test).
+- **QR** button (top bar of the trainer and the tutor answer sheet): both trainers' QR codes full screen, for a shared screen; the home page shows them small.
 - The home page mirrors the lab checklist and ticks an item once each of its structures is named correctly; students can untick or tick by hand. Every page carries the note ห้ามส่งต่อนอก MDCU · รูปติดลิขสิทธิ์. Progress stays in the browser.
 
 Source and method: [`spot/src`](spot/src). The atlas PDF is read locally and never uploaded; see [legal.md](legal.md).

@@ -35,6 +35,7 @@ function grade(id, g) {
 /* theme */
 (function () {
   var t = S.set.theme; if (t) document.documentElement.dataset.theme = t;
+  $('#qrBtn').onclick = showQR;
   $('#themeBtn').onclick = function () {
     var dark = document.documentElement.dataset.theme ? document.documentElement.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
     S.set.theme = dark ? 'light' : 'dark'; document.documentElement.dataset.theme = S.set.theme; save();
@@ -109,6 +110,18 @@ function openZoom(html, cap) {
   zoom.onclick = function (e) { var z = e.target.closest('[data-z]'); if (!z) { if (e.target === body) closeZoom(); return; } if (z.dataset.z === 'x') closeZoom(); else if (z.dataset.z === 'fit') fit(); else full(); };
 }
 function closeZoom() { zoom.hidden = true; zoom.innerHTML = ''; }
+/* QR codes of both trainers (this course first): on the home page, and full screen from the header for a shared screen */
+var QRS = (D.course === 'NS' ? ['ns', 'rs'] : ['rs', 'ns']).map(function (c) {
+  return { name: c.toUpperCase() + ' I Spot Trainer', url: 'https://punnawit9285.github.io/' + c + '-peer-tutoring/spot/', img: 'img/qr-' + c + '.svg' };
+});
+function qrHTML(cls) {
+  return '<div class="' + cls + '">' + QRS.map(function (q) { return '<a class="qr" href="' + q.url + '" target="_blank" rel="noopener"><img src="' + q.img + '" alt="QR code for ' + q.url + '"><b>' + q.name + '</b><span>' + q.url.replace(cls === 'qrbig' ? 'https://' : 'https://punnawit9285.github.io/', '') + '</span></a>'; }).join('') + '</div>';
+}
+function showQR() {
+  zoom.innerHTML = '<div class="zbar"><span class="grow">Scan to open on your phone</span><button data-z="x">Close <span class="kbd">Esc</span></button></div><div class="zbody">' + qrHTML('qrbig') + '</div>';
+  zoom.hidden = false;
+  zoom.onclick = function (e) { if (e.target.closest('[data-z]') || e.target.classList.contains('zbody')) closeZoom(); };
+}
 function zoomStage(st) { var c = st.cloneNode(true); var h = $('.zoomhint', c); if (h) h.remove(); openZoom(c.outerHTML, srcCap(st.dataset.file)); }
 document.addEventListener('click', function (e) {
   var s = e.target.closest('.stage'); if (s && !s.closest('.zoom') && !e.target.closest('.hit') && !s.dataset.nozoom) { zoomStage(s); return; }
@@ -174,7 +187,8 @@ function home() {
     '<li><b>Spot exam</b> runs past stations against the clock. Progress stays in this browser.</li></ol>' +
     '<div class="setrow"><span class="muted">Answer by</span>' + modeSwitch() + '</div>' +
     '<div class="setrow"><span class="muted">Arrow</span><label class="chip"><input type="radio" name="ptr" value="short"' + (S.set.ptr === 'short' ? ' checked' : '') + '> short arrow</label><label class="chip"><input type="radio" name="ptr" value="full"' + (S.set.ptr === 'full' ? ' checked' : '') + '> full leader line</label>' +
-    '<button class="chip" id="reset">Reset progress</button></div></div></section><section class="labs">';
+    '<button class="chip" id="reset">Reset progress</button></div>' +
+    '<div class="sharebox"><div class="kicker">Open on your phone</div>' + qrHTML('qrs') + '</div></div></section><section class="labs">';
   D.labs.forEach(function (L) {
     var ids = idsOfLabs([L.lab]), d = ids.filter(due).length, nt = L.items.filter(function (it, k) { return ticked(L.lab, k); }).length;
     h += '<article class="panel lab"><header><span class="no">LAB ' + L.lab + '</span><h2>' + esc(L.title) + '</h2><span class="grow"></span><span class="mono muted" style="font-size:12px">' + nt + ' / ' + L.items.length + ' ticked</span></header>' +
@@ -215,7 +229,8 @@ function drill(q) {
   function mc() { return S.set.mode !== 'type'; }
   function makeOpts() {
     var t = T[cur], v = t.views[vi], peers = idsOfLabs(labOf[cur]);
-    var others = v ? distractors(cur, v, peers, 3) : shuffle(peers.filter(function (o) { return o !== cur && T[o].name !== t.name; })).slice(0, 3).map(function (o) { return { name: T[o].name, id: o }; });
+    var seen = {}; seen[dkey(t.name)] = 1;
+    var others = v ? distractors(cur, v, peers, 3) : shuffle(peers).filter(function (o) { var k = dkey(T[o].name); if (seen[k]) return false; seen[k] = 1; return true; }).slice(0, 3).map(function (o) { return { name: T[o].name, id: o }; });
     opts = shuffle([{ name: t.name, id: cur, n: v ? v.n : null, right: true }].concat(others)); chosen = -1;
   }
   function next() {
@@ -363,14 +378,19 @@ function finish(kind, score, n, misses, again) {
 }
 
 /* ---------------- quiz (MCQ) ---------------- */
+// one key per name, so near-duplicates never share a set of choices ("Parotid (Stensen's) duct" = "Parotid duct", "Facial a." = "Facial artery")
+var ABBR = { m: 'muscle', mm: 'muscles', n: 'nerve', nn: 'nerves', a: 'artery', aa: 'arteries', v: 'vein', vv: 'veins', lig: 'ligament', ligg: 'ligaments' };
+function dkey(s) {
+  return String(s).toLowerCase().replace(/\(.*?\)/g, ' ').replace(/[’'.]/g, '').replace(/[^a-z0-9]+/g, ' ').trim().split(' ').map(function (w) { return ABBR[w] || w; }).join(' ');
+}
 function distractors(id, v, pool, k) {
-  var im = I[v.img], names = {}, out = [], tn = T[id].name.toLowerCase();
-  names[tn] = 1;
+  var im = I[v.img], names = {}, out = [];
+  names[dkey(T[id].name)] = 1;
   // other checklist structures on the same photo, then other labels on it, then other structures of the same labs
   var onPhoto = pool.filter(function (o) { return o !== id && T[o].views.some(function (w) { return w.img === v.img; }); });
-  shuffle(onPhoto).forEach(function (o) { if (out.length < k && !names[T[o].name.toLowerCase()]) { names[T[o].name.toLowerCase()] = 1; out.push({ name: T[o].name, id: o, n: T[o].views.filter(function (w) { return w.img === v.img; })[0].n }); } });
-  shuffle(im.labels).forEach(function (L) { var nm = L[1].replace(/\s*\(.*?\)\s*/g, ' ').trim(); if (out.length < k && L[0] !== v.n && !names[nm.toLowerCase()] && nm.length < 60 && !/ and |,/.test(nm)) { names[nm.toLowerCase()] = 1; out.push({ name: nm, n: L[0] }); } });
-  shuffle(pool).forEach(function (o) { if (out.length < k && o !== id && !names[T[o].name.toLowerCase()]) { names[T[o].name.toLowerCase()] = 1; out.push({ name: T[o].name, id: o }); } });
+  shuffle(onPhoto).forEach(function (o) { if (out.length < k && !names[dkey(T[o].name)]) { names[dkey(T[o].name)] = 1; out.push({ name: T[o].name, id: o, n: T[o].views.filter(function (w) { return w.img === v.img; })[0].n }); } });
+  shuffle(im.labels).forEach(function (L) { var nm = L[1].replace(/\s*\(.*?\)\s*/g, ' ').trim(); if (out.length < k && L[0] !== v.n && !names[dkey(nm)] && nm.length < 60 && !/ and |,/.test(nm)) { names[dkey(nm)] = 1; out.push({ name: nm, n: L[0] }); } });
+  shuffle(pool).forEach(function (o) { if (out.length < k && o !== id && !names[dkey(T[o].name)]) { names[dkey(T[o].name)] = 1; out.push({ name: T[o].name, id: o }); } });
   return out;
 }
 function quiz(q) {

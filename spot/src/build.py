@@ -128,6 +128,7 @@ ver = hashlib.md5((js + css + appjs + tutorjs).encode()).hexdigest()[:8]
 foot = ('Cadaver photographs: Rohen, Yokochi &amp; Lütjen-Drecoll, <i>Anatomy: A Photographic Atlas</i> 8e (© Schattauer / Wolters Kluwer); printed numbers removed and the leader line redrawn as an arrow. '
         'Lecture slides: 2026 handouts, Faculty of Medicine, Chulalongkorn University. Past spot stations: MDCU peer-support teams. '
         'Educational, non-profit use inside MDCU only — see <a href="../legal.md">legal.md</a>. Progress is saved in this browser only.')
+for c in ('ns', 'rs'): copy(f'{HERE}/app/qr-{c}.svg', f'{OUT}/img/qr-{c}.svg')     # both trainers' QR codes (tools/qr)
 for name in ('index.html', 'tutor.html'):     # tutor.html: every item of a lab on one page, with the answers
     page = open(f'{HERE}/app/{name}').read()
     for k, v in (('__TITLE__', html.escape(META['title'])), ('__SUB__', html.escape(META['sub'])), ('__OTHER__', META['other']), ('__OTHERNAME__', META['othername']), ('__FOOT__', foot), ('__V__', ver)):

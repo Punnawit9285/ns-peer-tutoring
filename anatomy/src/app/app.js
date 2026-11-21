@@ -50,10 +50,15 @@
       var n = s.items.length;
       return '<button type="button" class="station" data-go="' + s.id + '-0"><span class="k">' + s.id + ' · ' + esc(s.course) + '</span><b>' + esc(s.short) + '</b><span>' + n + ' cards</span></button>';
     }).join('');
+    function qrs() {
+      return '<div class="qrs">' + (D.meta.qr || []).map(function (q) {
+        return '<a class="qrlink" href="' + esc(q.url) + '"' + (q.dl ? ' download' : '') + ' target="_blank" rel="noopener"><small class="qrcap">' + esc(q.cap) + '</small><img src="' + esc(q.img) + '" width="112" height="112" alt="QR code for ' + esc(q.url) + '"><span>' + esc(q.url.replace('https://punnawit9285.github.io/', '')) + '</span></a>';
+      }).join('') + '</div>';
+    }
     return '<article class="card secard"><div class="eyebrow"><span class="chip kind">' + esc(D.meta.badge) + '</span><span class="chip">' + esc(D.meta.sub) + '</span></div>' +
       '<h2>' + esc(D.meta.title) + (TUTOR ? ' <span class="muted">(Tutor)</span>' : '') + '</h2>' +
       '<p class="lede">' + esc(D.meta.lede) + '</p>' +
-      '<div class="coverline"><div class="counts"><div><b>' + nc + '</b><span>concepts</span></div><div><b>' + ns + '</b><span>cadaver steps</span></div><div><b>' + np + '</b><span>past-paper items</span></div><div><b>' + nq + '</b><span>questions</span></div></div></div>' +
+      '<div class="coverline"><div class="counts"><div><b>' + nc + '</b><span>concepts</span></div><div><b>' + ns + '</b><span>cadaver steps</span></div><div><b>' + np + '</b><span>past-paper items</span></div><div><b>' + nq + '</b><span>questions</span></div></div>' + qrs() + '</div>' +
       '<div class="howto"><div><b>Concept</b>Lecture key points with click-to-reveal blanks, next to the handout figure.</div><div><b>Cadaver step</b>Real specimen beside the lecture diagram. Name each number, then reveal.</div><div><b>Lab clip</b>What the group said at the bench, with timestamps; spot the myths.</div><div><b>Past papers</b>Spot tests AC76-AC81 and MCQ recalls AC79-AC81, with keys and why.</div></div>' +
       '<p class="minih">Sections</p><div class="stations">' + secs + '</div>' +
       '<p class="disc">' + D.meta.disc + '</p></article>';

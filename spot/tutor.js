@@ -94,6 +94,12 @@ $('#fitBtn').onchange = function () { O.fit = this.checked; save(); render(); };
 $('#notesBtn').onchange = function () { O.notes = this.checked; save(); render(); };
 $('#fullBtn').onchange = function () { O.full = this.checked; save(); render(); };
 $('#printBtn').onclick = function () { window.print(); };
+$('#qrBtn').onclick = function () {      // both trainers, full screen (as in app.js)
+  zoom.innerHTML = '<div class="zbar"><span class="grow">Scan to open on your phone</span><button data-z="x">Close <span class="kbd">Esc</span></button></div><div class="zbody"><div class="qrbig">' +
+    (D.course === 'NS' ? ['ns', 'rs'] : ['rs', 'ns']).map(function (c) { var u = 'https://punnawit9285.github.io/' + c + '-peer-tutoring/spot/';
+      return '<a class="qr" href="' + u + '" target="_blank" rel="noopener"><img src="img/qr-' + c + '.svg" alt="QR code for ' + u + '"><b>' + c.toUpperCase() + ' I Spot Trainer</b><span>' + u.replace('https://', '') + '</span></a>'; }).join('') + '</div></div>';
+  zoom.hidden = false;
+};
 $('#themeBtn').onclick = function () {
   var dark = document.documentElement.dataset.theme ? document.documentElement.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
   O.theme = dark ? 'light' : 'dark'; document.documentElement.dataset.theme = O.theme; save();

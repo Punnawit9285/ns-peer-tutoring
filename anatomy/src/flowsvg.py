@@ -19,13 +19,13 @@ Tree line syntax (2-space indent per level):
   {k}      kind for this node
   #id      id to share the node between blocks or to target a link; default id = name
 """
-import html, re
+import html, os, re
 from PIL import ImageFont
 
 _F = {}
 def _font(w, sz):
     k = (w, sz)
-    if k not in _F: _F[k] = ImageFont.truetype(f'/home/claude/work/ttf/plex{w}.ttf', sz)
+    if k not in _F: _F[k] = ImageFont.truetype(f'{os.environ.get("W", "/home/claude/work")}/ttf/plex{w}.ttf', sz)
     return _F[k]
 def tw(s, w=500, sz=13): return _font(w, sz).getlength(s)
 

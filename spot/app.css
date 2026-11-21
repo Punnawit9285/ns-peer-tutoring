@@ -72,6 +72,20 @@ main { max-width: 1320px; margin: 0 auto; padding: 18px 18px 40px; outline: none
 .notice { background: var(--warnbg); color: var(--warn); border-bottom: 1px solid color-mix(in srgb, var(--warn) 35%, transparent); text-align: center; padding: 6px 14px; font: 600 14px/1.4 "IBM Plex Sans Thai", var(--f-sans); }
 .notice b { font-family: var(--f-mono); font-size: 12px; letter-spacing: .04em; margin-right: 6px; }
 
+/* QR codes */
+.sharebox { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--rule); }
+.qrs { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 6px; }
+.qr { display: grid; justify-items: start; gap: 3px; color: var(--ink2); text-decoration: none; font-size: 12px; }
+.qr img { width: 104px; height: 104px; display: block; border-radius: 4px; }
+.qr b { color: var(--ink); font-size: 13px; }
+.qr span { font: 10px var(--f-mono); }
+.qrbig { display: flex; gap: 6vw; flex-wrap: wrap; justify-content: center; align-items: center; }
+.qrbig .qr { justify-items: center; gap: 8px; }
+.qrbig .qr img { width: min(38vw, 64vh); height: auto; aspect-ratio: 1; border-radius: 8px; }
+.qrbig .qr b { color: #fff; font: 700 24px var(--f-disp); }
+.qrbig .qr span { color: #cfd3dc; font-size: 14px; }
+@media (max-width: 560px) { .sharebox { display: none; } }
+
 /* home / checklist */
 .labpick { margin-top: 16px; }
 .labbtns { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-top: 6px; }

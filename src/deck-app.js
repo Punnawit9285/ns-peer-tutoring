@@ -104,7 +104,9 @@
     return '<article class="card secard"><div class="eyebrow"><span class="chip kind">Peer support 82</span><span class="chip">NS I &#183; Anatomy, physiology &amp; physics</span><span class="chip">22 topics</span></div>' +
       '<h2>NS I: Nervous System Anatomy, Physiology &amp; Physics</h2>' +
       '<div class="coverline"><div class="counts"><div><b>' + nc + '</b><span>concepts</span></div><div><b>' + tot + '</b><span>questions</span></div></div>' +
-      '<a class="qrlink" href="https://punnawit9285.github.io/ns-peer-tutoring/"><small class="qrcap">Scan to open the interactive deck</small><img src="img/qr-site.svg" width="112" height="112" alt="QR code for punnawit9285.github.io/ns-peer-tutoring"><span>punnawit9285.github.io/ns-peer-tutoring</span></a></div>' +
+      '<div class="qrs"><a class="qrlink" href="https://punnawit9285.github.io/ns-peer-tutoring/"><small class="qrcap">Scan to open the interactive deck</small><img src="img/qr-site.svg" width="112" height="112" alt="QR code for punnawit9285.github.io/ns-peer-tutoring"><span>punnawit9285.github.io/ns-peer-tutoring</span></a>' +
+      '<a class="qrlink" href="https://punnawit9285.github.io/ns-peer-tutoring/student.pdf" download><small class="qrcap">Scan to download the handout (PDF)</small><img src="img/qr-pdf.svg" width="112" height="112" alt="QR code for the student handout PDF"><span>ns-peer-tutoring/student.pdf</span></a>' +
+      '<a class="qrlink" href="https://punnawit9285.github.io/ns-peer-tutoring/spot/"><small class="qrcap">Scan for the spot trainer</small><img src="img/qr-spot.svg" width="112" height="112" alt="QR code for the NS I spot trainer"><span>ns-peer-tutoring/spot</span></a></div></div>' +
       '<div class="stations">' + st + '</div>' +
       '<p class="legend"><span class="chip core">core</span> done in the video</p></article>';
   }

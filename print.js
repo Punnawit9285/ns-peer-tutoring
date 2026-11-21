@@ -53,7 +53,8 @@ let nB = 0;
 let h = '<section class="cover"><div class="eyebrow"><span class="chip kind">Peer support 82</span><span class="chip">NS I · Anatomy, physiology &amp; physics</span><span class="chip">Student handout</span></div>' +
   '<h1>NS I: Nervous System Anatomy, Physiology &amp; Physics</h1>' +
   '<div class="coverline"><div class="counts"><div><b>' + nC + '</b><span>concepts</span></div><div><b>' + nQ + '</b><span>questions</span></div></div>' +
-  '<a class="qrlink" href="https://punnawit9285.github.io/ns-peer-tutoring/"><small class="qrcap">Scan to open the interactive deck</small><img src="img/qr-site.svg" alt="QR code for punnawit9285.github.io/ns-peer-tutoring"><span>punnawit9285.github.io/ns-peer-tutoring</span></a></div>' +
+  '<div class="qrs"><a class="qrlink" href="https://punnawit9285.github.io/ns-peer-tutoring/"><small class="qrcap">Scan to open the interactive deck</small><img src="img/qr-site.svg" alt="QR code for punnawit9285.github.io/ns-peer-tutoring"><span>punnawit9285.github.io/ns-peer-tutoring</span></a>' +
+  '<a class="qrlink" href="https://punnawit9285.github.io/ns-peer-tutoring/student.pdf"><small class="qrcap">Scan to download this handout (PDF)</small><img src="img/qr-pdf.svg" alt="QR code for the student handout PDF"><span>ns-peer-tutoring/student.pdf</span></a></div></div>' +
   '<h3 class="minih">Contents</h3><table class="toc"><thead><tr><th>Section</th><th>Starts</th><th>Concepts · questions</th><th>Quiz answers</th><th>Blank answers</th><th>Thai concept explanations</th></tr></thead><tbody>';
 S.forEach(s => {
   const qn = s.items.filter(isQ).length, cn = s.items.filter(it => it.t === 'c').length;

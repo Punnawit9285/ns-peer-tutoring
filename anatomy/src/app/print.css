@@ -25,6 +25,7 @@ h1 { font: 600 2.6em/1.1 var(--f-display); margin: 4px 0 10px; letter-spacing: .
 .cover .counts { gap: 16mm; }
 .cover .counts b { font-size: 4.6em; }
 .cover .counts span { font-size: .95em; }
+.cover .qrs { gap: 9mm; }
 .cover .qrlink img { width: 36mm; height: 36mm; }
 .cover .qrlink span { font-size: .85em; }
 .cover .qrlink .qrcap { font-size: 1em; }

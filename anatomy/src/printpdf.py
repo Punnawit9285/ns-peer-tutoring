@@ -4,7 +4,7 @@ Concepts with numbered empty blanks, cadaver steps with numbered lines, lab-clip
 answer key at the back (blanks, labels, relationships, past-paper keys, Thai explanations)."""
 import json, os, re, html, sys, asyncio
 COURSE = os.environ.get('COURSE', 'NS'); PUBLIC = os.environ.get('PUBLIC') == '1'
-W = '/home/claude/work'; D = json.load(open(f'{W}/site_data_{COURSE}{"_pub" if PUBLIC else ""}.json'))
+W = os.environ.get('W', '/home/claude/work'); D = json.load(open(f'{W}/site_data_{COURSE}{"_pub" if PUBLIC else ""}.json'))
 OUT = f'{W}/{"site_pub" if PUBLIC else "site"}/{COURSE.lower()}'
 KN = {'a': 'artery', 'v': 'vein', 'n': 'nerve', 'g': 'ganglion', 'l': 'lymph', 's': 'dural sinus', 't': 'target / organ', 'o': 'opening', 'c': 'space', 'r': 'airway'}
 def flowlines(lt):
@@ -57,6 +57,11 @@ h1, h2, h3, .disp { font-family: "Bai Jamjuree", "IBM Plex Sans Thai", sans-seri
 .cover h1 { font-size: 30pt; margin: 18mm 0 2mm; color: #8f1d2c; letter-spacing: -.5px; }
 .cover .sub { font-size: 13pt; color: #4a5263; margin: 0 0 8mm; }
 .cover p.lede { font-size: 11.5pt; max-width: 165mm; }
+.qrrow { display: flex; gap: 7mm; margin: 3mm 0 1mm; }
+.qrrow a { display: grid; justify-items: start; gap: .8mm; width: 52mm; color: #1d2330; text-decoration: none; }
+.qrrow img { width: 25mm; height: 25mm; }
+.qrrow b { font-size: 9pt; }
+.qrrow span { font: 7pt "IBM Plex Mono", monospace; color: #6b7385; }
 .cover table { border-collapse: collapse; width: 100%; margin: 6mm 0; font-size: 10pt; }
 .cover td, .cover th { border-bottom: 1px solid #d9dde5; padding: 1.6mm 2mm; text-align: left; vertical-align: top; }
 .cover th { font-family: "IBM Plex Mono", monospace; font-size: 8.5pt; color: #6b7385; font-weight: 500; }
@@ -102,6 +107,9 @@ table.lt-tbl th { background: #f3f5f8; }
 .twofig { display: grid; grid-template-columns: 1.35fr 1fr; gap: 4mm; align-items: start; }
 .twofig .fig img { max-height: 118mm; }
 .note { font-size: 9pt; color: #4a5263; }
+.tbgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 5mm; align-items: start; }
+.tbgrid .fig { break-inside: avoid; margin: 0 0 2mm; }
+.tbgrid .fig img { max-height: 98mm; }
 .pq { break-inside: avoid; margin: 0 0 6mm; padding-bottom: 4mm; border-bottom: 1px dashed #d9dde5; }
 .pq .fig img { max-height: 92mm; }
 .q { margin: 2mm 0 1mm; font-weight: 500; }
@@ -151,6 +159,20 @@ def step(s, sec):
     if s.get('note'): h += f'<p class="note">{esc(s["note"])}</p>'
     return h + flows(s) + '</section>'
 
+def tidbits(items, sec):
+    """tidbits-board tiles (img/t/) of the section, filed under their card; the tile already on a concept page is not repeated"""
+    seen, tiles = set(), []
+    for it in items:
+        for k, f in enumerate(it.get('figs', []) if it['t'] == 'c' else it.get('cmp', []) if it['t'] == 's' else []):
+            if not f['src'].startswith('img/t/') or f['src'] in seen: continue
+            seen.add(f['src'])
+            if it['t'] == 'c' and k == 0: continue
+            tiles.append((it, f))
+    if not tiles: return ''
+    h = f'<section class="page"><div class="ey"><span class="kind">Tidbits board</span><span class="sec">{esc(sec["id"])} · {esc(sec["short"])}</span></div><h2>Tidbits board · {esc(sec["short"])}</h2><p class="note">The class tidbits board: 3D-app views with the handwritten labels and notes, filed under the card each one belongs to.</p><div class="tbgrid">'
+    h += ''.join(f'<div class="fig"><img src="{f["src"]}"><div class="cap">{esc(it["id"])} · {esc(it["title"])}</div></div>' for it, f in tiles)
+    return h + '</div></section>'
+
 def clips(vs):
     if not vs: return ''
     h = '<section class="page"><div class="ey"><span class="kind">Lab clips</span></div><h2>From our lab clips</h2><p class="note">Key points the group said at the bench (timestamps) and the statements that were wrong, with the correction.</p>'
@@ -185,6 +207,7 @@ def main():
             n[it['t']] += 1
             if it['t'] == 'p': nq += len(it['qs'])
     out = [f'<section class="cover"><div class="ey"><span class="kind">{esc(M["badge"])}</span><span>Student handout</span></div><h1>{esc(M["title"])}</h1><p class="sub">{esc(M["sub"])}</p><p class="lede">{esc(M["lede"])}</p>',
+           '<div class="qrrow">' + ''.join(f'<a href="{q["url"]}"><img src="{q["img"]}"><b>{esc(q["cap"])}</b><span>{esc(q["url"].replace("https://", ""))}</span></a>' for q in M.get('qr', [])) + '</div>',
            f'<p class="mono" style="font-size:9.5pt">{n["c"]} concepts · {n["s"]} cadaver steps · {n["v"]} lab clips · {n["p"]} past-paper items ({nq} questions)</p>',
            '<table><tr><th>ID</th><th>Section</th><th>Lecture</th></tr>' + ''.join(f'<tr><td class="mono">{esc(s["id"])}</td><td><b>{esc(s["title"])}</b></td><td>{esc(s["hname"])}<br><span class="note">{esc(s["lect"])} · {esc(s["date"])}</span></td></tr>' for s in secs) + '</table>',
            '<div class="howto"><div><b>Concept pages</b>Fill each numbered gap; answers are in the key at the back, with a Thai explanation.</div><div><b>Cadaver steps</b>Real specimen (Rohen) beside the lecture figure. Name every number on the lines, then check the key.</div><div><b>Lab clips</b>What our group said in the dissection room, and the myths corrected.</div><div><b>Past papers</b>Spot tests AC76-AC81 and MCQ recalls AC79-AC81 without answers; keys and why at the back.</div></div>',
@@ -204,6 +227,7 @@ def main():
                 out.append(step(it, s))
                 key.append(f'<div class="blk"><h3>{esc(it["id"])} · {esc(it["title"])}</h3><div class="lab">' + ''.join(f'<div><span class="n">{esc(a)}</span>{esc(b)}</div>' for a, b in it['labels']) + '</div>'
                            + '<ul style="margin:1mm 0;padding-left:5mm">' + ''.join(f'<li>{esc(r)}</li>' for r in it['rel']) + '</ul></div>')
+        out.append(tidbits(items, s))
         out.append(clips([i for i in items if i['t'] == 'v']))
         ps = [i for i in items if i['t'] == 'p']
         out.append(pastq(ps, s))
@@ -219,7 +243,7 @@ def main():
     from playwright.async_api import async_playwright
     async def run():
         async with async_playwright() as p:
-            b = await p.chromium.launch(executable_path='/usr/bin/google-chrome', args=['--no-sandbox', '--disable-background-networking', '--disable-sync', '--no-first-run'])
+            b = await p.chromium.launch(executable_path=os.environ.get('CHROME', '/usr/bin/google-chrome'), args=['--no-sandbox', '--disable-background-networking', '--disable-sync', '--no-first-run'])
             pg = await b.new_page()
             await pg.goto('file://' + f'{OUT}/print.html', wait_until='networkidle', timeout=600000)
             await pg.evaluate('document.fonts.ready')
