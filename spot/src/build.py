@@ -122,14 +122,15 @@ for fam, base, w, stl, sub in FONTS:
     rng = 'U+0E00-0E7F,U+200C-200D,U+25CC' if sub == 'thai' else 'U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2190-2199,U+2212,U+2713,U+2717'
     ff.append(f'@font-face{{font-family:"{fam}";font-style:{stl};font-weight:{w};font-display:swap;src:url(fonts/{fn}) format("woff2");unicode-range:{rng}}}')
 css = open(f'{HERE}/app/app.css').read().replace('__FONTS__', '\n'.join(ff))
-appjs = open(f'{HERE}/app/app.js').read()
-open(f'{OUT}/app.css', 'w').write(css); open(f'{OUT}/app.js', 'w').write(appjs)
-ver = hashlib.md5((js + css + appjs).encode()).hexdigest()[:8]
+appjs = open(f'{HERE}/app/app.js').read(); tutorjs = open(f'{HERE}/app/tutor.js').read()
+open(f'{OUT}/app.css', 'w').write(css); open(f'{OUT}/app.js', 'w').write(appjs); open(f'{OUT}/tutor.js', 'w').write(tutorjs)
+ver = hashlib.md5((js + css + appjs + tutorjs).encode()).hexdigest()[:8]
 foot = ('Cadaver photographs: Rohen, Yokochi &amp; Lütjen-Drecoll, <i>Anatomy: A Photographic Atlas</i> 8e (© Schattauer / Wolters Kluwer); printed numbers removed and the leader line redrawn as an arrow. '
         'Lecture slides: 2026 handouts, Faculty of Medicine, Chulalongkorn University. Past spot stations: MDCU peer-support teams. '
         'Educational, non-profit use inside MDCU only — see <a href="../legal.md">legal.md</a>. Progress is saved in this browser only.')
-page = open(f'{HERE}/app/index.html').read()
-for k, v in (('__TITLE__', html.escape(META['title'])), ('__SUB__', html.escape(META['sub'])), ('__OTHER__', META['other']), ('__OTHERNAME__', META['othername']), ('__FOOT__', foot), ('__V__', ver)):
-    page = page.replace(k, v)
-open(f'{OUT}/index.html', 'w').write(page)
+for name in ('index.html', 'tutor.html'):     # tutor.html: every item of a lab on one page, with the answers
+    page = open(f'{HERE}/app/{name}').read()
+    for k, v in (('__TITLE__', html.escape(META['title'])), ('__SUB__', html.escape(META['sub'])), ('__OTHER__', META['other']), ('__OTHERNAME__', META['othername']), ('__FOOT__', foot), ('__V__', ver)):
+        page = page.replace(k, v)
+    open(f'{OUT}/{name}', 'w').write(page)
 print(json.dumps(dict(stats, course=COURSE, out=OUT, version=ver)))
