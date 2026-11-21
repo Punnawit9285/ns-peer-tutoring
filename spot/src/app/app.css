@@ -146,7 +146,12 @@ main { max-width: 1320px; margin: 0 auto; padding: 18px 18px 40px; outline: none
 .arrownote svg { flex: none; width: 30px; height: 14px; margin-top: 3px; }
 
 /* drill */
-.drill { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(320px, 1fr); gap: 18px; align-items: start; }
+.drill { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(320px, 1fr); grid-template-rows: auto 1fr; gap: 18px; align-items: start; }
+.drill > aside { grid-row: 1 / span 2; }
+.drill > .dmap { grid-column: 1; grid-row: 2; }
+.dmap:empty { display: none; }
+.dmap .flowbox { margin-top: 0; scroll-margin-top: 76px; }
+.maplink { display: block; margin-top: 10px; border: 0; background: none; padding: 0; color: var(--blue); font: 600 13px var(--f-sans); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .card { padding: 18px 20px; position: sticky; top: 76px; }
 .qtop { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
 .pill { font: 600 11px var(--f-mono); padding: 2px 8px; border-radius: 99px; background: var(--soft); color: var(--ink2); }
@@ -170,6 +175,16 @@ main { max-width: 1320px; margin: 0 auto; padding: 18px 18px 40px; outline: none
 .btn.ok { border-color: var(--ok); color: var(--ok); } .btn.no { border-color: var(--bad); color: var(--bad); }
 #nextBtn { margin-top: 12px; }
 .sub { margin-top: 14px; }
+/* connection maps (flow.css from the Anatomy 101 deck is appended at build) */
+:root { --sheet: var(--panel); --sheet2: var(--soft); }
+.flowbox { margin-top: 14px; font-size: 15px; }
+.flowbox .ftabs button { text-align: left; }
+.flowbox .fsvg { cursor: zoom-in; }
+.flowsvg .fn.me rect { stroke: var(--acc); stroke-width: 3.6; filter: drop-shadow(0 0 4px color-mix(in srgb, var(--acc) 55%, transparent)); }
+.flowsvg .fn.me .nm { fill: var(--acc); font-weight: 700; }
+.flowbox .flegend .lme::before { border: 2.5px solid var(--acc); background: transparent; }
+.flowbox .flegend .lme { color: var(--acc); font-weight: 600; }
+.zoom .flowsvg { max-width: none; height: auto; background: var(--panel); border-radius: 10px; padding: 10px; }
 .sub h3 { font: 600 11px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink3); margin: 0 0 6px; }
 .thumbs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
 .thumbs figure { margin: 0; flex: none; width: 128px; cursor: zoom-in; }
@@ -237,7 +252,8 @@ main { max-width: 1320px; margin: 0 auto; padding: 18px 18px 40px; outline: none
 .zoom .plain { max-width: 100%; height: auto; background: #fff; }
 
 @media (max-width: 980px) {
-  .hero, .drill { grid-template-columns: minmax(0, 1fr); }
+  .hero, .drill { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .drill > aside, .drill > .dmap { grid-column: auto; grid-row: auto; }
   .card { position: static; }
   .labs { grid-template-columns: 1fr; }
 }
@@ -281,6 +297,8 @@ body.tutor .top { position: static; }
 .fit .ans small, .fit .ans .src { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .fit .ans small + .src { display: none; }
 .ans p { margin: 4px 0 0; font-size: 12.5px; }
+.ans .tmap { margin-top: 6px; border-top: 1px solid var(--rule); padding-top: 6px; cursor: zoom-in; }
+.ans .tmap .flowsvg { width: 100%; height: auto; }
 .ans p.f { color: var(--ink); } .ans p.w, .ans p.th { color: var(--ink2); }
 .ans .cyc { position: absolute; top: 6px; right: 6px; border: 0; background: rgba(0,0,0,.6); color: #fff; border-radius: 6px; padding: 2px 8px; cursor: pointer; font-size: 13px; }
 body.tutor .zoom .stage img { max-height: none; }

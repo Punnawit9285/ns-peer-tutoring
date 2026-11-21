@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """Build the spot trainer for one course: COURSE=NS|RS python3 build.py
 env  ATLAS   Rohen 8e PDF (not in the repo)
-     W       work folder for the atlas index and the raster cache (default ./.work)
+     W       work folder for the atlas index and the raster cache (default ./.work); W/ttf/plex{400,500,600}.ttf
+             (IBM Plex Sans) measure the flowchart text, as in the anatomy build
+     FLOWSVG flowchart renderer (default anatomy/src/flowsvg.py)
      OUT     site folder (default: ns-peer-tutoring/spot or rs-peer-tutoring/spot next to this repo)
      DECK    repo whose anatomy/ deck gives the lecture slides and past spot stations (default: the course repo)
-Inputs here: targets.py (checklist -> structures), notes.py (find / why / Thai), app/ (page, css, js)."""
+Inputs here: targets.py (checklist -> structures), notes.py (find / why / Thai), flows.py (connection maps), app/ (page, css, js)."""
 import html, json, os, re, shutil, sys, hashlib
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
-import targets, notes, views, atlas as ATL
+import importlib.util
+import targets, notes, views, flows, atlas as ATL
 
 COURSE = os.environ.get('COURSE', 'NS')
 NSREPO = os.path.abspath(os.path.join(HERE, '..', '..'))
@@ -76,6 +79,26 @@ def past_for(t):
             if any(re.search(p, a.lower()) for p in t['pat']) or norm(a) in acc: out.append([it['id'], j]); break
     return out[:4]
 
+# ---------- connection maps: the Anatomy 101 flowcharts + flows.py, each drawn once ----------
+def module(name, path):
+    spec = importlib.util.spec_from_file_location(name, path); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); return m
+flowsvg = module('flowsvg', os.environ.get('FLOWSVG', f'{NSREPO}/anatomy/src/flowsvg.py'))
+ALLF = dict(module('deckflows', f'{NSREPO}/anatomy/src/content/flows.py').FLOWS, **flows.FLOWS)
+FL = {}
+def maps(sid):
+    if sid not in flows.MAP: raise SystemExit(f'flows.MAP: no connection map for {sid}')
+    out = []
+    for fid, ids in flows.MAP[sid]:
+        ids = ids if isinstance(ids, list) else [ids]
+        if fid not in FL:
+            r = flowsvg.render(fid, ALLF[fid]); FL[fid] = dict(t=r['title'], svg=r['svg'], lg=r['legend'], lk=r['links'])
+        boxes = flowsvg.Flow(fid, ALLF[fid]).N
+        if any(i not in boxes for i in ids): raise SystemExit(f'flows.MAP {sid}: no box {[i for i in ids if i not in boxes]} in {fid}')
+        out.append([fid, ids])
+    return out
+stray = set(flows.MAP) - {t['id'] for C in (targets.NS, targets.RS) for lab in C for _, ts in lab['items'] for t in ts}
+if stray: raise SystemExit(f'flows.MAP: unknown structures {sorted(stray)}')
+
 # ---------- assemble ----------
 LABS, T, I = [], {}, {}
 stats = dict(structures=0, views=0, raster=0, photos=0, nophoto=[])
@@ -93,7 +116,7 @@ for lab in getattr(targets, COURSE):
                 vs.append(dict(img=e['file'], n=v['n'], path=e['path'])); stats['raster'] += v['kind'] == 'r'
             nt = notes.NOTES[t['id']]
             T[t['id']] = dict(name=t['name'], acc=t['acc'], find=nt['find'], why=nt['why'], th=nt['th'], views=vs, lec=lecture(t),
-                              card=next((c for c in t['cards'] if c in CARD), ''), past=past_for(t))
+                              card=next((c for c in t['cards'] if c in CARD), ''), past=past_for(t), fl=maps(t['id']))
             stats['structures'] += 1; stats['views'] += len(vs)
             if not vs: stats['nophoto'].append(t['id'])
     LABS.append(L)
@@ -101,13 +124,13 @@ P = {}
 for it in PAST:
     assert os.path.exists(f'{DECK}/anatomy/{it["img"]}')
     P[it['id']] = dict(set=it['set'], img='../anatomy/' + it['img'], qs=[[q['q'], str(q['a']), q.get('ex', '')] for q in it['qs']])
-stats['photos'] = len(I); stats['past'] = len(P)
+stats['photos'] = len(I); stats['past'] = len(P); stats['maps'] = len(FL)
 for fn in os.listdir(f'{OUT}/img/a'):     # photos of views dropped since an earlier build
     if fn not in I: os.remove(f'{OUT}/img/a/{fn}')
 
 META = {'NS': dict(title='NS I Spot Trainer', sub='Gross lab checklist · cadaver photos', other='https://punnawit9285.github.io/rs-peer-tutoring/spot/', othername='RS I'),
         'RS': dict(title='RS I Spot Trainer', sub='Gross lab checklist · cadaver photos', other='https://punnawit9285.github.io/ns-peer-tutoring/spot/', othername='NS I')}[COURSE]
-data = dict(course=COURSE, title=META['title'], labs=LABS, T=T, I=I, P=P, deck='../anatomy/student.html')
+data = dict(course=COURSE, title=META['title'], labs=LABS, T=T, I=I, P=P, F=FL, deck='../anatomy/student.html')
 js = 'window.SPOT=' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n'
 open(f'{OUT}/data.js', 'w').write(js)
 
@@ -121,7 +144,7 @@ for fam, base, w, stl, sub in FONTS:
     fn = f'{base}-{w}-{stl}.woff2'; copy(f'{NSREPO}/anatomy/fonts/{fn}', f'{OUT}/fonts/{fn}')
     rng = 'U+0E00-0E7F,U+200C-200D,U+25CC' if sub == 'thai' else 'U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2190-2199,U+2212,U+2713,U+2717'
     ff.append(f'@font-face{{font-family:"{fam}";font-style:{stl};font-weight:{w};font-display:swap;src:url(fonts/{fn}) format("woff2");unicode-range:{rng}}}')
-css = open(f'{HERE}/app/app.css').read().replace('__FONTS__', '\n'.join(ff))
+css = open(f'{HERE}/app/app.css').read().replace('__FONTS__', '\n'.join(ff)) + '\n' + open(f'{NSREPO}/anatomy/src/app/flow.css').read()
 appjs = open(f'{HERE}/app/app.js').read(); tutorjs = open(f'{HERE}/app/tutor.js').read()
 open(f'{OUT}/app.css', 'w').write(css); open(f'{OUT}/app.js', 'w').write(appjs); open(f'{OUT}/tutor.js', 'w').write(tutorjs)
 ver = hashlib.md5((js + css + appjs + tutorjs).encode()).hexdigest()[:8]

@@ -1,6 +1,6 @@
 # Spot trainer source (NS I + RS I)
 
-Builds the two checklist spot trainers published at `ns-peer-tutoring/spot/` and `rs-peer-tutoring/spot/`: every structure on the gross-lab attendance checklist (112-69 NS I, 114-69 RS I) shown on cadaver photos, as image-occlusion flashcards with spaced repetition, quizzes and timed past spot stations.
+Builds the two checklist spot trainers published at `ns-peer-tutoring/spot/` and `rs-peer-tutoring/spot/`: every structure on the gross-lab attendance checklist (112-69 NS I, 114-69 RS I) shown on cadaver photos, as image-occlusion drills (every structure of a lab per round), quizzes and timed past spot stations.
 
 ## How the photos are made
 
@@ -22,11 +22,12 @@ The photos come from Rohen, *Anatomy: A Photographic Atlas* 8e. The atlas PDF is
 
 - `targets.py`: checklist items → structures, with legend regexes, atlas page ranges, accepted typed answers and Anatomy 101 cards. Compound items are split, e.g. "Infrahyoid (strap) muscles" → four cards.
 - `notes.py`: per structure, *how to find it* on the cadaver, *why it matters*, and a Thai line.
+- `flows.py`: the connection map of every structure. `MAP` sends each structure to one or two flowcharts and names the box to light. Most are the Anatomy 101 deck's (`anatomy/src/content/flows.py`). `FLOWS` adds 25 maps in the same syntax for what those do not show (muscle layers and their nerves, joints and ligaments, meninges, the eye, the nasal and laryngeal walls, the trachea and pleura), with three more box kinds: muscle, bone / cartilage / joint, membrane. The build draws each map once with the deck's `flowsvg.py` and stops on a structure without a map or a box name that is not in its map.
 - Lecture slides come from the Anatomy 101 cards (`anatomy/student.html`). NS lab 7 (eye) uses the main deck's eye-and-orbit slides.
 - Past spot stations come from the Anatomy 101 banks, with the station photos, keys and explanations.
 - `app/`: the page, CSS and JS (no dependencies). It has six modes:
   - Checklist (home)
-  - Drill: SM-2-style spaced repetition, typed or self-graded, hints, other photos, neighbours on the photo, lecture slides, past stations
+  - Drill: every structure of the lab once per round (a miss comes back three cards later and does not count), four choices or typing, hints; after the answer the notes, the connection map (under the photo), other photos, neighbours on the photo, lecture slides, past stations
   - Quiz: distractors from the same photo; a miss shows where your choice really is
   - Find it: four lettered arrows
   - Spot exam: timed past stations, auto-marked with override
@@ -43,4 +44,4 @@ COURSE=NS python3 build.py     # -> ns-peer-tutoring/spot/
 COURSE=RS python3 build.py     # -> rs-peer-tutoring/spot/ (the rs repo checked out next to this one)
 ```
 
-`W` sets the work folder for the atlas index and the raster cache (default `.work/`), and `OUT` overrides the site folder. The first run indexes the atlas and cleans the raster figures, which takes a while; later runs reuse the cache.
+`W` sets the work folder for the atlas index and the raster cache (default `.work/`); put IBM Plex Sans TTFs in `W/ttf/plex400.ttf`, `plex500.ttf` and `plex600.ttf` to measure the flowchart text, as for the anatomy build. `FLOWSVG` points at another flowchart renderer (default `anatomy/src/flowsvg.py`), and `OUT` overrides the site folder. The first run indexes the atlas and cleans the raster figures, which takes a while; later runs reuse the cache.

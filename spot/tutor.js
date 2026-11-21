@@ -36,6 +36,18 @@ function photo(v) {
     '<svg viewBox="0 0 ' + im.w + ' ' + im.h + '" preserveAspectRatio="xMidYMid meet">' + arrow(ptrPath(v.path, im.w, im.h, O.full), im.w, im.h) + '</svg></div>';
 }
 
+/* the first connection map of a structure, its box lit (with notes) */
+function tmap(id) {
+  var x = (T[id].fl || [])[0]; if (!x) return '';
+  return '<div class="tmap" data-me="' + esc(x[1].join('\n')) + '" title="' + esc(D.F[x[0]].t) + '">' + D.F[x[0]].svg + '</div>';
+}
+function lightMaps() {
+  Array.prototype.forEach.call(document.querySelectorAll('.tmap'), function (m) {
+    var me = m.dataset.me.split('\n');
+    Array.prototype.forEach.call(m.querySelectorAll('g.fn'), function (g) { if (me.indexOf(g.dataset.n) >= 0) g.classList.add('me'); });
+  });
+}
+
 /* one tile per structure */
 var cur = {};   // structure id -> shown view index
 function tile(L, it, k, id, j) {
@@ -46,7 +58,7 @@ function tile(L, it, k, id, j) {
   else { pic = '<div class="stage plainpic empty">no photo</div>'; src = ''; }
   return '<figure class="ans" data-id="' + esc(id) + '"><div class="pic">' + pic + (t.views.length > 1 ? '<button class="cyc" data-cyc="' + esc(id) + '" title="Another photo">↻</button>' : '') + '</div>' +
     '<figcaption><span class="num">' + num + '</span><b>' + esc(t.name) + '</b>' + (it.ts.length > 1 ? '<small>' + (k + 1) + '. ' + esc(it.name) + '</small>' : '') +
-    (O.notes ? '<p class="f">' + esc(t.find) + '</p><p class="w">' + esc(t.why) + '</p><p class="th">' + esc(t.th) + '</p>' : '') +
+    (O.notes ? '<p class="f">' + esc(t.find) + '</p><p class="w">' + esc(t.why) + '</p><p class="th">' + esc(t.th) + '</p>' + tmap(id) : '') +
     '<span class="src">' + esc(src) + '</span></figcaption></figure>';
 }
 
@@ -61,7 +73,7 @@ function render() {
     '<ol class="itemlist">' + L.items.map(function (it, k) { return '<li><b>' + (k + 1) + '.</b> ' + esc(it.name) + '</li>'; }).join('') + '</ol>' +
     '<div class="anssheet" id="grid">' + tiles + '</div>';
   document.title = D.title + ' · Lab ' + L.lab + ' answers';
-  layout();
+  lightMaps(); layout();
 }
 
 /* fit every tile in the space left on screen (or on the printed page) */
@@ -106,6 +118,13 @@ $('#themeBtn').onclick = function () {
 };
 sheet.addEventListener('click', function (e) {
   var c = e.target.closest('[data-cyc]'); if (c) { var id = c.dataset.cyc; cur[id] = (cur[id] || 0) + 1; render(); return; }
+  var m = e.target.closest('.tmap');
+  if (m) {      // a connection map, full screen
+    var svg = m.querySelector('svg').cloneNode(true), W = +svg.getAttribute('width'), H = +svg.getAttribute('height');
+    zoom.innerHTML = '<div class="zbar"><span class="grow">Connection map · ' + esc(m.title) + '</span><button data-z="x">Close <span class="kbd">Esc</span></button></div><div class="zbody"></div>';
+    svg.removeAttribute('style'); svg.style.width = Math.round(W * Math.min((innerWidth - 40) / W, (innerHeight - 90) / H)) + 'px';
+    zoom.querySelector('.zbody').appendChild(svg); zoom.hidden = false; return;
+  }
   var f = e.target.closest('figure.ans'); if (!f) return;
   var pic = $('.stage', f).cloneNode(true), cap = $('figcaption', f).cloneNode(true);
   zoom.innerHTML = '<div class="zbar"><span class="grow">' + esc($('b', cap).textContent) + '</span><button data-z="x">Close <span class="kbd">Esc</span></button></div><div class="zbody"></div>';

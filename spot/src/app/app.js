@@ -1,9 +1,10 @@
 /* Spot trainer: checklist structures on cadaver photos.
    window.SPOT = { course, title, labs:[{lab,title,items:[{name,ts:[id]}]}], T:{id:{name,acc,find,why,th,lab,item,views:[{img,n,path}],lec:[{src,cap}],card,past:[[pid,qi]]}},
-                   I:{file:{w,h,page,labels:[[n,name,path]]}}, P:{pid:{set,img,qs:[[q,a,ex]]}}, deck } */
+                   I:{file:{w,h,page,labels:[[n,name,path]]}}, P:{pid:{set,img,qs:[[q,a,ex]]}}, deck,
+                   F:{fid:{t,svg,lg,lk}} } -- T[id].fl = [[fid, [box ids]]]: the connection maps, the structure's boxes lit */
 (function () {
 'use strict';
-var D = window.SPOT, T = D.T, I = D.I, P = D.P;
+var D = window.SPOT, T = D.T, I = D.I, P = D.P, F = D.F || {};
 var $ = function (s, r) { return (r || document).querySelector(s); };
 var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
@@ -99,6 +100,49 @@ function openZoom(html, cap) {
   function full() { var img = $('img', el) || el; img.style.width = (img.naturalWidth || +img.getAttribute('width')) + 'px'; }
   fit(); var img0 = $('img', el) || el; if (img0 && !img0.complete) img0.onload = fit;
   zoom.onclick = function (e) { var z = e.target.closest('[data-z]'); if (!z) { if (e.target === body) closeZoom(); return; } if (z.dataset.z === 'x') closeZoom(); else if (z.dataset.z === 'fit') fit(); else full(); };
+}
+/* connection maps (the Anatomy 101 flowcharts): the structure's box lit, tabs for a second map, Expand to full screen */
+var KN = { a: 'artery', v: 'vein', n: 'nerve', g: 'ganglion', l: 'lymph', s: 'dural sinus', t: 'organ / part', o: 'opening', c: 'space', r: 'airway', m: 'muscle', b: 'bone / cartilage / joint', d: 'membrane / meninges' };
+function mapLines(lk) {
+  var s = '<span class="ln"><svg width="26" height="10" aria-hidden="true"><path d="M1 5H18" stroke="currentColor" stroke-width="1.6"/><path d="M25 5l-8-4v8z" fill="currentColor"/></svg>branch, supply or drainage</span>';
+  if (lk.indexOf('conn') >= 0) s += '<span class="ln conn"><svg width="34" height="10" aria-hidden="true"><path d="M8 5H26" stroke="currentColor" stroke-width="2.2"/><path d="M1 5l8-4v8z M33 5l-8-4v8z" fill="currentColor"/></svg>two-way connection</span>';
+  if (lk.indexOf('rel') >= 0) s += '<span class="ln"><svg width="28" height="10" aria-hidden="true"><path d="M2 5H26" stroke="currentColor" stroke-width="1.8" stroke-dasharray=".1 4.5" stroke-linecap="round"/></svg>dotted: lies next to it</span>';
+  return s;
+}
+function mapHTML(id) {
+  var fl = T[id].fl || []; if (!fl.length) return '';
+  var tabs = fl.length > 1 ? '<div class="ftabs" role="group" aria-label="Flowcharts">' + fl.map(function (x, k) { return '<button type="button" data-fk="' + k + '" aria-pressed="' + (k ? 'false' : 'true') + '">' + esc(F[x[0]].t) + '</button>'; }).join('') + '</div>' : '';
+  return '<div class="flowbox"><div class="fhead"><span class="fh">Connection map</span>' + tabs + '<span class="ftools"><button type="button" class="btn sm" data-fzoom>Expand</button></span></div>' +
+    fl.map(function (x, k) { var f = F[x[0]];
+      return '<div class="fpanel' + (k ? '' : ' on') + '" data-fk="' + k + '" data-fid="' + esc(x[0]) + '" data-me="' + esc(x[1].join('\n')) + '">' + (fl.length > 1 ? '' : '<p class="ftitle">' + esc(f.t) + '</p>') +
+        '<div class="fsvg">' + f.svg + '</div><div class="flegend"><span class="lme">' + esc(T[id].name) + '</span>' +
+        f.lg.map(function (c) { return '<span style="--c:var(--fk-' + c + ');--b:var(--fk-' + c + '-bg)">' + KN[c] + '</span>'; }).join('') + mapLines(f.lk) + '</div></div>'; }).join('') + '</div>';
+}
+function mapLink(id) {      // in the answer panel: jump to the map (under the photo, or under this panel on a phone)
+  return (T[id].fl || []).length ? '<button type="button" class="maplink" data-gomap>Connection map: where it sits ↓</button>' : '';
+}
+function showMap(id) { var d = $('.dmap', app); if (d) { d.innerHTML = mapHTML(id); wireMaps(d); } }
+document.addEventListener('click', function (e) { if (e.target.closest('[data-gomap]')) { var m = $('.dmap .flowbox', app); if (m) m.scrollIntoView({ behavior: 'smooth', block: 'start' }); } });
+function wireMaps(root) {
+  $$('.flowbox', root).forEach(function (box) {
+    $$('.fpanel', box).forEach(function (p) {
+      var me = p.dataset.me.split('\n');
+      $$('g.fn', p).forEach(function (g) { if (me.indexOf(g.dataset.n) >= 0) g.classList.add('me'); });
+    });
+    var fit = function () {      // text no smaller than 80 %: a wide map scrolls sideways, centred on the lit box
+      var p = $('.fpanel.on', box), wrap = $('.fsvg', p), svg = $('svg', wrap), W = +svg.getAttribute('width'), small = W * 0.8 > wrap.clientWidth;
+      if (svg.dataset.mw == null) svg.dataset.mw = svg.style.maxWidth;      // its own cap: never more than 110 %
+      svg.style.width = small ? Math.round(W * 0.8) + 'px' : ''; svg.style.maxWidth = small ? 'none' : svg.dataset.mw;
+      var me = $('g.me', svg); if (small && me) { var r = me.getBoundingClientRect(), wr = wrap.getBoundingClientRect(); wrap.scrollLeft += r.left + r.width / 2 - (wr.left + wr.width / 2); }
+    };
+    var big = function () { var p = $('.fpanel.on', box), c = $('svg', p).cloneNode(true); c.removeAttribute('style'); openZoom(c.outerHTML, 'Connection map · ' + F[p.dataset.fid].t); };
+    $$('.ftabs button', box).forEach(function (b) { b.onclick = function () {
+      $$('.ftabs button', box).forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      $$('.fpanel', box).forEach(function (p) { p.classList.toggle('on', p.dataset.fk === b.dataset.fk); }); fit(); }; });
+    $('[data-fzoom]', box).onclick = big;
+    $$('.fsvg', box).forEach(function (w) { w.onclick = big; });
+    fit();
+  });
 }
 function closeZoom() { zoom.hidden = true; zoom.innerHTML = ''; }
 /* QR codes of both trainers (this course first): on the home page, and full screen from the header for a shared screen */
@@ -263,7 +307,7 @@ function drill(q) {
     h += (hint ? '<div class="hintbox">' + hintText() + '</div>' : '') +
       (typed !== null ? '<div class="verdict ' + (typed.ok ? 'ok' : 'no') + '">' + (typed.ok ? '✓ Correct' : mc() ? (chosen < 0 ? 'It comes back in a few cards' : '✗ Not quite' + (opts[chosen].n != null ? ': the blue arrow shows where “' + esc(opts[chosen].name) + '” is' : '')) : '✗ You wrote “' + esc(typed.s) + '”') + '</div>' : '') +
       (revealed ? revealHTML() : '') +
-      '<div class="progress"><i style="width:' + (100 * nRight / total) + '%"></i></div></aside></div>';
+      '<div class="progress"><i style="width:' + (100 * nRight / total) + '%"></i></div></aside><div class="dmap">' + (revealed ? mapHTML(cur) : '') + '</div></div>';
     app.innerHTML = h; wire();
     if (revealed && mc() && chosen >= 0 && !opts[chosen].right && opts[chosen].n != null && v) {
       var L = I[v.img].labels.filter(function (x) { return x[0] === opts[chosen].n; })[0];
@@ -289,7 +333,7 @@ function drill(q) {
   }
   function revealHTML() {
     var t = T[cur], v = t.views[vi], pq = v ? null : t.past[vi], h = '<div class="reveal"><p class="ans">' + esc(t.name) + '</p>' + (pq ? '<div class="ansitem">Station key: ' + esc(P[pq[0]].qs[pq[1]][1]) + (P[pq[0]].qs[pq[1]][2] ? ' · ' + esc(P[pq[0]].qs[pq[1]][2]) : '') + '</div>' : '') + '<div class="ansitem">Lab ' + labOf[cur].join(', ') + ' · ' + esc(itemOf[cur]) + (t.card ? ' · <a href="' + esc(D.deck) + '#' + esc(t.card) + '" target="_blank" rel="noopener">Anatomy 101 ' + esc(t.card) + ' ↗</a>' : '') + '</div>' +
-      nextHTML() + '<div class="note"><b>How to find it</b><p>' + esc(t.find) + '</p></div><div class="note"><b>Why it matters</b><p>' + esc(t.why) + '</p></div><div class="note th"><b>ภาษาไทย</b><p class="th">' + esc(t.th) + '</p></div>';
+      nextHTML() + '<div class="note"><b>How to find it</b><p>' + esc(t.find) + '</p></div><div class="note"><b>Why it matters</b><p>' + esc(t.why) + '</p></div><div class="note th"><b>ภาษาไทย</b><p class="th">' + esc(t.th) + '</p></div>' + mapLink(cur);
     var nb = neighbours(v);
     if (nb.length) h += '<div class="sub"><h3>Neighbours on this photo · hover or tap</h3><div class="chips">' + nb.map(function (L) { return '<span class="chip" data-nb="' + L[0] + '">' + esc(L[1]) + '</span>'; }).join('') + '</div></div>';
     if (t.views.length > 1) h += '<div class="sub"><h3>Same structure, other photos</h3><div class="thumbs">' + t.views.map(function (w, k) { return '<figure class="' + (k === vi ? 'cur' : '') + '" data-view="' + k + '"><img src="img/a/' + esc(w.img) + '" alt="" loading="lazy"><figcaption>Rohen p.' + I[w.img].page + '</figcaption></figure>'; }).join('') + '</div></div>';
@@ -309,6 +353,7 @@ function drill(q) {
   }
   function mark(got) { self = got; if (got) identified(cur); render(); }
   function wire() {
+    wireMaps(app);
     var f = $('#af'); if (f) f.onsubmit = function (e) { e.preventDefault(); if (!revealed) check(); };
     var inp = $('#ain'); if (inp && !revealed && matchMedia('(pointer:fine)').matches) inp.focus();
     $$('.opts [data-j]', app).forEach(function (b) { b.onclick = function () { choose(+b.dataset.j); }; });
@@ -395,15 +440,15 @@ function quiz(q) {
       if (k >= qs.length) return finish('Quiz', score, qs.length, misses, function () { quiz(q); });
       var id = qs[k], t = T[id], v = pick(t.views), opts = shuffle([{ name: t.name, id: id, n: v.n, right: true }].concat(distractors(id, v, pool, 3))), answered = false;
       app.innerHTML = '<div class="drill"><div>' + stage(v.img, [{ path: v.path }]) + '<div class="stagecap"><span>' + esc(srcCap(v.img)) + '</span></div></div><aside class="panel card"><div class="qtop"><span class="pill">Quiz</span><span class="grow"></span><span class="mono muted" style="font-size:12px">' + (k + 1) + ' / ' + qs.length + ' · score ' + score + '</span></div><div class="prompt">What is at the arrow?</div>' + ARROWNOTE + '<div class="opts">' +
-        opts.map(function (o, j) { return '<button data-j="' + j + '"><span class="L">' + 'ABCD'[j] + '</span>' + esc(o.name) + '</button>'; }).join('') + '</div><div id="fb"></div><div class="progress"><i style="width:' + (100 * k / qs.length) + '%"></i></div></aside></div>';
+        opts.map(function (o, j) { return '<button data-j="' + j + '"><span class="L">' + 'ABCD'[j] + '</span>' + esc(o.name) + '</button>'; }).join('') + '</div><div id="fb"></div><div class="progress"><i style="width:' + (100 * k / qs.length) + '%"></i></div></aside><div class="dmap"></div></div>';
       function choose(j) {
         if (answered) return; answered = true; var o = opts[j];
         $$('.opts button', app).forEach(function (b, i) { b.disabled = true; if (opts[i].right) b.classList.add('right'); else if (i === j) b.classList.add('wrong'); });
         if (o.right) { score++; identified(id); } else { misses.push(id);
           if (o.n != null) { var L = I[v.img].labels.filter(function (x) { return x[0] === o.n; })[0]; if (L) { var g = document.createElementNS('http://www.w3.org/2000/svg', 'g'); g.innerHTML = arrow(ptrPath(L[2], I[v.img].w, I[v.img].h, S.set.ptr), I[v.img].w, I[v.img].h, 'alt'); $('.stage svg', app).appendChild(g); } } }
         $('#fb').innerHTML = '<div class="verdict ' + (o.right ? 'ok' : 'no') + '">' + (o.right ? '✓ ' + esc(t.name) : '✗ It is the <b>' + esc(t.name) + '</b>' + (o.n != null ? '. The blue arrow shows where your choice is.' : '.')) + '</div>' +
-          '<div class="note"><b>How to find it</b><p>' + esc(t.find) + '</p></div><button class="btn pri" id="nx">Next <kbd>Enter</kbd></button>';
-        $('#nx').onclick = function () { k++; show(); };
+          '<div class="note"><b>How to find it</b><p>' + esc(t.find) + '</p></div><button class="btn pri" id="nx">Next <kbd>Enter</kbd></button>' + mapLink(id);
+        showMap(id); $('#nx').onclick = function () { k++; show(); };
       }
       $$('.opts button', app).forEach(function (b) { b.onclick = function () { choose(+b.dataset.j); }; });
       keyHandler = function (e) { var i = '1234'.indexOf(e.key); if (i < 0) i = 'abcd'.indexOf(e.key.toLowerCase()); if (!answered && i >= 0 && i < opts.length) choose(i); else if (answered && e.key === 'Enter') { k++; show(); } };
@@ -427,13 +472,13 @@ function findIt(q) {
       arrows.forEach(function (a, j) { a.badge = 'ABCD'[j]; });
       var answered = false;
       app.innerHTML = '<div class="drill"><div>' + stage(v.img, arrows.map(function (a) { return { path: a.path, badge: a.badge, full: true }; })) + '<div class="stagecap"><span>' + esc(srcCap(v.img)) + '</span></div></div><aside class="panel card"><div class="qtop"><span class="pill">Find it</span><span class="grow"></span><span class="mono muted" style="font-size:12px">' + (k + 1) + ' / ' + qs.length + ' · score ' + score + '</span></div>' +
-        '<div class="prompt">Which arrow is the <span style="color:var(--acc)">' + esc(t.name) + '</span>?</div>' + ARROWNOTE + '<div class="opts">' + arrows.map(function (a, j) { return '<button data-j="' + j + '"><span class="L">' + a.badge + '</span>Arrow ' + a.badge + '</button>'; }).join('') + '</div><div id="fb"></div></aside></div>';
+        '<div class="prompt">Which arrow is the <span style="color:var(--acc)">' + esc(t.name) + '</span>?</div>' + ARROWNOTE + '<div class="opts">' + arrows.map(function (a, j) { return '<button data-j="' + j + '"><span class="L">' + a.badge + '</span>Arrow ' + a.badge + '</button>'; }).join('') + '</div><div id="fb"></div></aside><div class="dmap"></div></div>';
       function choose(j) {
         if (answered) return; answered = true; var ok = arrows[j].right;
         $$('.opts button', app).forEach(function (b, i) { b.disabled = true; b.innerHTML = '<span class="L">' + arrows[i].badge + '</span>' + esc(arrows[i].name); if (arrows[i].right) b.classList.add('right'); else if (i === j) b.classList.add('wrong'); });
         if (ok) { score++; identified(id); } else { misses.push(id); }
-        $('#fb').innerHTML = '<div class="verdict ' + (ok ? 'ok' : 'no') + '">' + (ok ? '✓ Correct' : '✗ It was arrow ' + arrows.filter(function (a) { return a.right; })[0].badge) + '</div><div class="note"><b>How to find it</b><p>' + esc(t.find) + '</p></div><button class="btn pri" id="nx">Next <kbd>Enter</kbd></button>';
-        $('#nx').onclick = function () { k++; show(); };
+        $('#fb').innerHTML = '<div class="verdict ' + (ok ? 'ok' : 'no') + '">' + (ok ? '✓ Correct' : '✗ It was arrow ' + arrows.filter(function (a) { return a.right; })[0].badge) + '</div><div class="note"><b>How to find it</b><p>' + esc(t.find) + '</p></div><button class="btn pri" id="nx">Next <kbd>Enter</kbd></button>' + mapLink(id);
+        showMap(id); $('#nx').onclick = function () { k++; show(); };
       }
       $$('.opts button', app).forEach(function (b) { b.onclick = function () { choose(+b.dataset.j); }; });
       keyHandler = function (e) { var i = 'abcd'.indexOf(e.key.toLowerCase()); if (i < 0) i = '1234'.indexOf(e.key); if (!answered && i >= 0 && i < arrows.length) choose(i); else if (answered && e.key === 'Enter') { k++; show(); } };

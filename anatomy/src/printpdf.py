@@ -6,7 +6,7 @@ import json, os, re, html, sys, asyncio
 COURSE = os.environ.get('COURSE', 'NS'); PUBLIC = os.environ.get('PUBLIC') == '1'
 W = os.environ.get('W', '/home/claude/work'); D = json.load(open(f'{W}/site_data_{COURSE}{"_pub" if PUBLIC else ""}.json'))
 OUT = f'{W}/{"site_pub" if PUBLIC else "site"}/{COURSE.lower()}'
-KN = {'a': 'artery', 'v': 'vein', 'n': 'nerve', 'g': 'ganglion', 'l': 'lymph', 's': 'dural sinus', 't': 'target / organ', 'o': 'opening', 'c': 'space', 'r': 'airway'}
+KN = {'a': 'artery', 'v': 'vein', 'n': 'nerve', 'g': 'ganglion', 'l': 'lymph', 's': 'dural sinus', 't': 'target / organ', 'o': 'opening', 'c': 'space', 'r': 'airway', 'm': 'muscle', 'b': 'bone / cartilage / joint', 'd': 'membrane / meninges'}
 def flowlines(lt):
     s = '<span class="ln"><svg width="26" height="10"><path d="M1 5H18" stroke="currentColor" stroke-width="1.6"/><path d="M25 5l-8-4v8z" fill="currentColor"/></svg>one-way: branch or drainage</span>'
     if 'conn' in lt: s += '<span class="ln conn"><svg width="34" height="10"><path d="M8 5H26" stroke="currentColor" stroke-width="2.2"/><path d="M1 5l8-4v8z M33 5l-8-4v8z" fill="currentColor"/></svg>two-way connection (anastomosis, valveless vein, fibres join)</span>'

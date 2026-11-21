@@ -74,7 +74,7 @@
       '<p class="minih">By the end you can</p><ul class="objs">' + s.obj.map(function (o) { return '<li>' + esc(o) + '</li>'; }).join('') + '</ul>' +
       '<p class="minih">Cards</p><ul class="toc">' + toc + '</ul></article>';
   }
-  var KN = { a: 'artery', v: 'vein', n: 'nerve', g: 'ganglion', l: 'lymph', s: 'dural sinus', t: 'target / organ', o: 'opening', c: 'space', r: 'airway' };
+  var KN = { a: 'artery', v: 'vein', n: 'nerve', g: 'ganglion', l: 'lymph', s: 'dural sinus', t: 'target / organ', o: 'opening', c: 'space', r: 'airway', m: 'muscle', b: 'bone / cartilage / joint', d: 'membrane / meninges' };
   function flowLines(lt) {
     lt = lt || [];
     var s = '<span class="ln"><svg width="26" height="10" aria-hidden="true"><path d="M1 5H18" stroke="currentColor" stroke-width="1.6"/><path d="M25 5l-8-4v8z" fill="currentColor"/></svg>one-way: branch or drainage</span>';

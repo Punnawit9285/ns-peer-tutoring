@@ -10,7 +10,8 @@ A flow is a dict:
           type 'rel': lies next to / runs with, not connected, grey dotted with no heads.
   orient  'h' (default, flow left -> right) or 'v' (top -> bottom, good for chains)
   kind    default node kind: a artery · v vein · n nerve · g ganglion · l lymph · s dural sinus · t target/organ
-          · o opening/foramen · c CSF/space
+          · o opening/foramen · c CSF/space · r airway · m muscle · b bone/cartilage/joint · d membrane/meninges
+  pedge   colour of a line between two boxes that are neither vessel, nerve, ganglion nor airway (default 'n'; 'p' = grey, part of)
 
 Tree line syntax (2-space indent per level):
   [*]Name [| note] [{k}] [#id]
@@ -32,7 +33,9 @@ def tw(s, w=500, sz=13): return _font(w, sz).getlength(s)
 NAME_SZ, NOTE_SZ, PADX, LINE_N, LINE_S = 13, 10.5, 9, 16, 13.5
 GAP_MAIN, GAP_CROSS, GAP_ROOT = 38, 7, 14
 MAXW_NAME, MAXW_NOTE = 162, 168
-KINDS = {'a': 'Artery', 'v': 'Vein', 'n': 'Nerve', 'g': 'Ganglion', 'l': 'Lymph', 's': 'Dural sinus', 't': 'Target', 'o': 'Opening', 'c': 'Space / cavity', 'r': 'Airway'}
+KINDS = {'a': 'Artery', 'v': 'Vein', 'n': 'Nerve', 'g': 'Ganglion', 'l': 'Lymph', 's': 'Dural sinus', 't': 'Target', 'o': 'Opening', 'c': 'Space / cavity', 'r': 'Airway',
+         'm': 'Muscle', 'b': 'Bone / cartilage / joint', 'd': 'Membrane / meninges'}
+PLAIN = 'togcmbd'     # kinds that take their line colour from the other end
 
 def wrap(text, maxw, w, sz):
     words, lines, cur = text.split(' '), [], ''
@@ -240,8 +243,8 @@ class Flow:
         out.append('<g class="fedges">')
         for a, b, typ, par in self.E:
             A, B = N[a], N[b]
-            k = N[b]['kind'] if N[b]['kind'] not in 'togc' else N[a]['kind']
-            if k in 'togc': k = next((x for x in (N[a]['kind'], N[b]['kind']) if x not in 'togc'), 'n')
+            k = N[b]['kind'] if N[b]['kind'] not in PLAIN else N[a]['kind']
+            if k in PLAIN: k = next((x for x in (N[a]['kind'], N[b]['kind']) if x not in PLAIN), 'n' if 'g' in (N[a]['kind'], N[b]['kind']) else self.d.get('pedge', 'n'))
             if H:
                 x1, y1 = A['x'] + A['w'], A['y'] + A['h'] / 2
                 x2, y2 = B['x'] - 1, B['y'] + B['h'] / 2
