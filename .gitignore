@@ -8,3 +8,6 @@ dist/print.html
 dist/fonts/
 dist/pimg/
 tools/trim
+spot/src/ocr
+spot/src/.work/
+spot/src/__pycache__/
