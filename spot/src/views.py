@@ -156,7 +156,9 @@ class Atlas:
             W, H = pil.size
             labels = [dict(n=int(n), name=leg[n], path=[[round(min(max(x - E, 0), W / k) * k, 1), round(min(max(y - E, 0), H / k) * k, 1)] for x, y in pth]) for n, pth in rf['paths'].items()
                       if n in leg and (rf['how'].get(n) in TRUSTED and good_path(pth, rf['w'], rf['h'], 0.07) or int(n) == v['n'])]
-        if not os.path.exists(path): pil.save(path, quality=82, optimize=True, progressive=True)
+        src = f'{self.cache}/raster/p{p}_{f}.jpg' if v['kind'] == 'r' else None
+        # a raster photo is cleaned again whenever its tracing changes: never keep an older export of it
+        if not os.path.exists(path) or (src and os.path.getmtime(src) > os.path.getmtime(path)): pil.save(path, quality=82, optimize=True, progressive=True)
         # one entry per number (a label with two lines keeps the first)
         seen, uniq = set(), []
         for l in labels:

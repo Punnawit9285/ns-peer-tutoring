@@ -52,14 +52,14 @@ function accOf(id) { return [T[id].name].concat(T[id].acc || []); }
 /* ---------------- pointer drawing ---------------- */
 function ptrPath(path, w, h, mode) {
   var p = path.slice(); if (p.length < 2) return p;
-  if (mode === 'short') {
-    var L = Math.max(w, h) * 0.17, out = [p[p.length - 1]], acc = 0;
-    for (var i = p.length - 1; i > 0 && acc < L; i--) {
+  if (mode === 'short') {      // a straight pointer onto the tip, from the point 17 % back along the leader (round its bends)
+    var L = Math.max(w, h) * 0.17, tip = p[p.length - 1], acc = 0, from = p[0];
+    for (var i = p.length - 1; i > 0; i--) {
       var a = p[i], b = p[i - 1], seg = Math.hypot(a[0] - b[0], a[1] - b[1]);
-      if (acc + seg >= L) { var t = (L - acc) / seg; out.unshift([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]); acc = L; }
-      else { out.unshift(b); acc += seg; }
+      if (acc + seg >= L) { var t = (L - acc) / seg; from = [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]; break; }
+      acc += seg;
     }
-    return out;
+    return [from, tip];
   }
   return p;
 }

@@ -14,13 +14,13 @@ if (O.theme) document.documentElement.dataset.theme = O.theme;
 /* pointer drawing (as in app.js) */
 function ptrPath(path, w, h, full) {
   var p = path.slice(); if (p.length < 2 || full) return p;
-  var L = Math.max(w, h) * 0.17, out = [p[p.length - 1]], acc = 0;
-  for (var i = p.length - 1; i > 0 && acc < L; i--) {
+  var L = Math.max(w, h) * 0.17, tip = p[p.length - 1], acc = 0, from = p[0];     // straight onto the tip, as in app.js
+  for (var i = p.length - 1; i > 0; i--) {
     var a = p[i], b = p[i - 1], seg = Math.hypot(a[0] - b[0], a[1] - b[1]);
-    if (acc + seg >= L) { var t = (L - acc) / seg; out.unshift([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]); acc = L; }
-    else { out.unshift(b); acc += seg; }
+    if (acc + seg >= L) { var t = (L - acc) / seg; from = [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]; break; }
+    acc += seg;
   }
-  return out;
+  return [from, tip];
 }
 function arrow(p, w, h) {
   var n = p.length, tip = p[n - 1], prev = p[n - 2], dx = tip[0] - prev[0], dy = tip[1] - prev[1], L = Math.hypot(dx, dy) || 1;
