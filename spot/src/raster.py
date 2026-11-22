@@ -120,9 +120,9 @@ def snap(g, sx, sy, a, offs, das, n=90):
         if m > best[0]: best = (m, b, x, y)
     return best
 
-def follow(g, sx, sy, a, pol, s0, maxlen=2000):
+def follow(g, sx, sy, a, pol, s0, maxlen=2000, img=None):
     """snap onto the line (offset + angle), then walk it in 60 px chunks, re-snapping a little at each chunk;
-    the line ends after a gap of weak evidence (> 14 px, or > 45 px if the line comes back for a while)"""
+    the line ends where its evidence ends, unless a solid stretch of line follows within 45 px"""
     _, a, sx, sy = snap(g, sx, sy, a, np.arange(-4, 4.01, 0.5), np.arange(-2.5, 2.51, 0.25), 120)
     pts = [(sx, sy)]; ev_all = []; x, y = sx, sy
     while len(ev_all) < maxlen:
@@ -145,15 +145,19 @@ def follow(g, sx, sy, a, pol, s0, maxlen=2000):
             while q < len(strong) and strong[q]: q += 1
             runs.append((r, q - 1)); r = q
         else: r += 1
-    last = 0; prev = None
+    # Past a gap the line goes on only into a solid stretch of printed line (10+ px, mostly strong, black or white ink).
+    # A weak blip, a short run or a red / cream / brown stretch beyond the gap is a crevice, a vessel or a nerve in line
+    # with it, and taking it put the tip on the next structure.
+    ev = np.array(ev_all); last = None
     for r0, r1 in runs:
-        if prev is None:
+        if last is None:
             if r0 > 18: break
-        else:
-            gap = r0 - prev
-            if gap > 45 or (gap > 14 and r1 - r0 < 6): break
-        prev = r1; last = r1
-    return pts[:last + 2]
+            last = r1; continue
+        gap = r0 - last
+        if gap <= 3: last = r1; continue
+        if gap > 45: break
+        if r1 - r0 + 1 >= 10 and np.mean(ev[r0:r1 + 1] > 2 * THR) >= 0.7 and (img is None or inky(img, pts[r0 + 1:r1 + 2], 0, 0.7)): last = r1
+    return pts[:(last or 0) + 2]
 
 def ink(img, x, y, pol=0):
     """printed ink: a near-black or near-white grey pixel, unlike cream nerves, red vessels and brown crevices.
@@ -199,7 +203,7 @@ def bends(g, img, pts, turns=3, forks=None):
         ain = math.degrees(math.atan2(y1 - y0, x1 - x0)); cands = []
         go = across(g, img, x1, y1, ain)
         if go:      # straight on, under a patch where the line cannot be seen
-            seg = follow(g, go[0], go[1], go[2], 0, 2 * THR)
+            seg = follow(g, go[0], go[1], go[2], 0, 2 * THR, img=img)
             if len(seg) >= 12 and inky(img, seg[3:], 0):
                 L = math.hypot(go[0] - x1, go[1] - y1)
                 pts = pts + [(x1 + (go[0] - x1) * k / L, y1 + (go[1] - y1) * k / L) for k in range(1, int(L))] + seg; continue
@@ -212,7 +216,7 @@ def bends(g, img, pts, turns=3, forks=None):
         cands.sort(reverse=True); keep = []
         for sc, a in cands:          # one per direction
             if all(abs((a - b + 180) % 360 - 180) > 25 for _, b in keep): keep.append((sc, a))
-        segs = [follow(g, x1, y1, a, 0, sc) for sc, a in keep]
+        segs = [follow(g, x1, y1, a, 0, sc, img=img) for sc, a in keep]
         segs = [q for q in segs if len(q) >= 12 and inky(img, q[3:], 0)]
         if not segs: break
         if forks is not None: forks.extend(segs[1:])
@@ -267,12 +271,18 @@ def margin_lines(g, img, box):
                 sc = float(np.percentile(np.abs(rs), 25))
                 if best is None or sc > best[0]: best = (sc, a)
             if best and best[0] > 15:
-                pts = follow(g, sx, sy, best[1], 0, best[0])
+                pts = follow(g, sx, sy, best[1], 0, best[0], img=img)
                 if len(pts) >= 40 and inky(img, pts[2:], 0):
                     fk = []; pts, head = arrowhead(img, bends(g, img, pts, forks=fk)); out.append(dict(line=pts, head=head, forks=fk))
     return out
 
-def trace_number(g, box, img=None):
+def lead(g, img, pts, a):
+    """A hand-checked last piece (views.LEADS): from the traced end, walk the printed line that leaves at heading a."""
+    seg = follow(g, pts[-1][0], pts[-1][1], a, 0, 2 * THR, img=img)
+    if len(seg) < 6: raise SystemExit(f'LEADS: no printed line at heading {a} from {pts[-1]}')
+    return pts + seg[1:]
+
+def trace_number(g, box, img=None, a_lead=None):
     """box: number bbox in px (x0,y0,x1,y1). Start points: around the box edges; pick the strongest line."""
     x0, y0, x1, y1 = box; cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
     best = None
@@ -285,10 +295,13 @@ def trace_number(g, box, img=None):
         if best is None or s > best[0]: best = (s, a, pol, sx, sy)
     if best is None or best[0] < 8: return None
     s, a, pol, sx, sy = best
-    pts = follow(g, sx, sy, a, pol, s)
+    pts = follow(g, sx, sy, a, pol, s, img=img)
     if len(pts) < 12: return None
     head = 0; fk = []
-    if EXTEND and img is not None: pts, head = arrowhead(img, bends(g, img, pts, forks=fk))
+    if EXTEND and img is not None:
+        pts = bends(g, img, pts, forks=fk)
+        if a_lead is not None: pts = lead(g, img, pts, a_lead)
+        pts, head = arrowhead(img, pts)
     return dict(path=[pts[0], pts[-1]] if len(pts) < 3 else [pts[0]] + pts[len(pts) // 2:len(pts) // 2 + 1] + [pts[-1]], line=pts, score=s, pol=pol, head=head, forks=fk)
 
 def residue(img, m, tips):
@@ -413,7 +426,7 @@ def content_box(img, thr=0.55):
     if len(cols) < 10 or len(rows) < 10: return (0, 0, img.shape[1], img.shape[0])
     return (int(cols[0]), int(rows[0]), int(cols[-1]) + 1, int(rows[-1]) + 1)
 
-def process(img, expected, text_boxes=None):
+def process(img, expected, text_boxes=None, leads=None):
     """-> clean image (cropped), {n: path px in the cropped image (start at photo edge -> tip)}, number boxes.
     text_boxes: {n: box px} for numbers printed as text beside the photo (lines baked in, numbers not)."""
     H, W = img.shape[:2]; nums = {}
@@ -430,7 +443,7 @@ def process(img, expected, text_boxes=None):
     g = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY).astype(np.float32)
     traces = {}
     for n, (box, how) in nums.items():
-        t = trace_number(g, box, img)
+        t = trace_number(g, box, img, (leads or {}).get(n))
         if t: traces[n] = t
     x0, y0, x1, y1 = content_box(img)
     extra = margin_lines(g, img, (x0, y0, x1, y1)) if EXTEND else []

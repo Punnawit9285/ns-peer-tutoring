@@ -15,6 +15,10 @@ BLOCK = {(72, 1), (136, 2), (49, 2)}     # illustrations that pass the photo tes
 REJECT = {(230, 0, 23), (205, 0, 6), (234, 0, 12), (237, 0, 2), (276, 0, 17), (171, 0, 10), (124, 1, 8), (96, 1, 11), (140, 0, 13), (162, 2, 6),
           (49, 0, 10), (147, 0, 15), (163, 3, 10), (220, 0, 11), (220, 0, 2), (266, 0, 24), (255, 3, 13), (255, 3, 10),
           (148, 1, 27), (148, 1, 29), (220, 0, 13), (255, 2, 10)}
+# Hand-checked on the original figure: the printed leader of these numbers turns into a short (or faint, or edge-hugging)
+# last piece the tracer cannot tell from tissue. Heading of that piece in degrees (0 = right, 90 = down); the tracer
+# still snaps onto the printed line and walks it. (page, figure, number): heading
+LEADS = {(155, 2, 18): 251, (164, 1, 16): 20, (254, 0, 13): 313, (84, 0, 21): 251, (55, 0, 10): 248}
 TRUSTED = ('text', 'ocr', 'blob')   # raster numbers read directly; sequence-filled ones are not used for targets
 
 def load(d, xref):
@@ -80,7 +84,7 @@ class Atlas:
             n = int(re.match(r'\d+', txt).group(0))
             if b[0] - 40 <= wx0 and wx1 <= b[2] + 40 and b[1] - 6 <= wy0 and wy1 <= b[3] + 6 and not (b[0] + 4 < (wx0 + wx1) / 2 < b[2] - 4 and b[1] + 4 < (wy0 + wy1) / 2 < b[3] - 4):
                 tb[n] = ((wx0 - b[0]) * sx, (wy0 - b[1]) * sy, (wx1 - b[0]) * sx, (wy1 - b[1]) * sy)
-        clean, paths, how = raster.process(img, expected, tb or None)
+        clean, paths, how = raster.process(img, expected, tb or None, {n: h for (pp, ff, n), h in LEADS.items() if (pp, ff) == (p, f)})
         cv2.imwrite(f'{self.cache}/raster/p{p}_{f}.jpg', clean, [cv2.IMWRITE_JPEG_QUALITY, 92])
         out = dict(w=clean.shape[1], h=clean.shape[0], paths={str(n): v for n, v in paths.items()}, how={str(n): v for n, v in how.items()})
         json.dump(out, open(js, 'w')); return out
