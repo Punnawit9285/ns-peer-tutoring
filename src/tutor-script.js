@@ -2,19 +2,19 @@
    "Understand it: the 80%" summary, and a SAY line for every concept card and core question. Keys match deck IDs. */
 window.TUTOR_SCRIPT = {
   plan: [
-    ["Video 1", ["V", "I", "N", "C"], "Back and vertebral column, spine imaging, nervous tissue, spinal cord and peripheral nerve.", "40&#8211;50 min"],
-    ["Video 2", ["K", "Z", "F", "D"], "Skull and foramina, scalp, meninges and intracranial bleeds, superficial face and neck, deep face and V3.", "45&#8211;55 min"],
-    ["Video 3", ["O", "J", "E", "H"], "Oral cavity and pharynx, deep neck, eye and orbit, ear.", "45&#8211;55 min"],
-    ["Video 4", ["M", "P", "L", "R"], "Membrane potential, nerve conduction and the NMJ, the frog lab, reflexes and the reflex exam.", "45&#8211;55 min"],
-    ["Video 5", ["A", "G", "X", "Y"], "ANS physiology, Horner and Raynaud with the rabbit and dog labs, ANS of head and neck with CN III, VII, IX, and the two SGD cases.", "45&#8211;55 min"],
-    ["Video 6", ["S", "W"], "Physics of sound, hearing, audiograms and the vestibular system; light and lasers in medicine.", "30&#8211;40 min"]
+    ["Video 1", ["N", "M", "P", "L"], "Nervous tissue, membrane potential, nerve conduction and the NMJ, the frog nerve lab.", "40&#8211;50 min"],
+    ["Video 2", ["R", "A", "G"], "Reflexes and the reflex exam, ANS physiology, Horner and Raynaud with the rabbit and dog labs.", "40&#8211;45 min"],
+    ["Video 3", ["S", "W"], "Physics of sound, hearing, audiograms and the vestibular system; light and lasers in medicine.", "30&#8211;40 min"],
+    ["Video 4", ["V", "I", "C", "K", "Z"], "Back and vertebral column, spine imaging, spinal cord and peripheral nerve, skull and foramina, scalp, meninges and intracranial bleeds.", "50&#8211;60 min"],
+    ["Video 5", ["F", "D", "O", "J"], "Superficial face and neck, deep face and V3, oral cavity and pharynx, deep neck.", "40&#8211;50 min"],
+    ["Video 6", ["E", "H", "X", "Y"], "Eye and orbit, ear, ANS of head and neck with CN III, VII, IX, and the two SGD cases.", "45&#8211;55 min"]
   ],
   sec: {}
 };
 var SC = window.TUTOR_SCRIPT.sec;
 function sec_(id, part, time, open, u, say) { SC[id] = { part: part, time: time, open: open, u: u, say: say }; }
 
-sec_('V', 'Video 1', '10&#8211;12 min', 'Build the spine from bottom-line numbers: 7, 12, 5, 5, 4, then four curves, then the one feature that names each region, then the ligaments and the deep muscle columns.', [
+sec_('V', 'Video 4', '10&#8211;12 min', 'Build the spine from bottom-line numbers: 7, 12, 5, 5, 4, then four curves, then the one feature that names each region, then the ligaments and the deep muscle columns.', [
   '<b>Counts and curves</b>: 7 cervical, 12 thoracic, 5 lumbar, 5 sacral, 4 coccygeal; thoracic and sacral kyphoses are primary, cervical and lumbar lordoses secondary.',
   '<b>Typical vertebra</b>: body in front, arch of two pedicles and two laminae behind; facet joint between articular processes; intervertebral foramen from two notches.',
   '<b>Regional signatures</b>: atlas has no body, axis has the dens, cervicals have a foramen transversarium, thoracics have rib facets, sacrum has the hiatus and cornua.',
@@ -29,7 +29,7 @@ sec_('V', 'Video 1', '10&#8211;12 min', 'Build the spine from bottom-line number
   'V-C5': 'Erector spinae from medial to lateral is S, L, I; the transversospinal group just gets shorter as it gets deeper.',
   'V-C6': 'Four small muscles tie the skull to C1 and C2 for the fine head movements.'
 });
-sec_('I', 'Video 1', '8&#8211;10 min', 'For each modality ask what it shows best: plain film for alignment, CT for bone, MRI for disc, cord and roots.', [
+sec_('I', 'Video 4', '8&#8211;10 min', 'For each modality ask what it shows best: plain film for alignment, CT for bone, MRI for disc, cord and roots.', [
   '<b>C1–C2</b>: open-mouth view for symmetric gaps; atlanto-dental interval under 3 mm in adults and 5 mm in children.',
   '<b>Cervical film</b>: uncovertebral joints on AP, neural foramina on oblique, four smooth lines on the lateral view.',
   '<b>Lumbar oblique</b>: Scotty dog; a broken neck is spondylolysis, which can lead to spondylolisthesis.',
@@ -57,7 +57,7 @@ sec_('N', 'Video 1', '10&#8211;12 min', 'Nervous tissue is three things: neurons
   'N-C5': 'Give every glial cell one job and you have the whole table.',
   'N-C6': 'Match each ending to its stimulus, then wrap the nerve in three sheaths.'
 });
-sec_('C', 'Video 1', '10&#8211;12 min', 'The cord is shorter than the canal: that one fact explains lumbar puncture, cauda equina and why the levels do not match.', [
+sec_('C', 'Video 4', '10&#8211;12 min', 'The cord is shorter than the canal: that one fact explains lumbar puncture, cauda equina and why the levels do not match.', [
   '<b>Levels</b>: cord ends at L1/L2, dural sac at S2; 8 cervical nerves; enlargements C4–T1 and L2–S3.',
   '<b>Spaces</b>: epidural fat and veins, subarachnoid CSF; lumbar puncture below the conus; caudal block through the sacral hiatus.',
   '<b>Inside the cord</b>: dorsal horn sensory, ventral motor, lateral autonomic; C1 is motor only.',
@@ -72,7 +72,7 @@ sec_('C', 'Video 1', '10&#8211;12 min', 'The cord is shorter than the canal: tha
   'C-C5': 'Size and myelin set the speed; then pair each ending with its stimulus.',
   'C-C6': 'Grade an injury by what is cut: myelin only, axon, or the whole nerve.'
 });
-sec_('K', 'Video 2', '10&#8211;12 min', 'Learn the skull as an exam map: landmarks where bones meet, three fossae, and which hole each cranial nerve uses.', [
+sec_('K', 'Video 4', '10&#8211;12 min', 'Learn the skull as an exam map: landmarks where bones meet, three fossae, and which hole each cranial nerve uses.', [
   '<b>22 bones</b>: 8 neurocranial, 14 facial; temporal bone has squamous, petrous, mastoid and tympanic parts.',
   '<b>Landmarks</b>: pterion F-P-S-T, asterion P-O-T, bregma sagittal plus coronal, lambda sagittal plus lambdoid; four fontanelles.',
   '<b>Fossae</b>: anterior for frontal lobes, middle for temporal lobes and pituitary, posterior (largest) for brainstem and cerebellum.',
@@ -85,7 +85,7 @@ sec_('K', 'Video 2', '10&#8211;12 min', 'Learn the skull as an exam map: landmar
   'K-C4': 'Group the nerves by the hole they share.',
   'K-C5': 'For each fracture ask what runs just under that bone.'
 });
-sec_('Z', 'Video 2', '10&#8211;12 min', 'From outside in: five scalp layers, then three meninges, and pair every layer with the bleed that lives there.', [
+sec_('Z', 'Video 4', '10&#8211;12 min', 'From outside in: five scalp layers, then three meninges, and pair every layer with the bleed that lives there.', [
   '<b>Scalp</b>: SCALP; loose areolar is the danger layer; cephalohaematoma stays within sutures.',
   '<b>Bleeds</b>: epidural from the middle meningeal artery, subdural from bridging veins, subarachnoid from an aneurysm.',
   '<b>Dural folds</b>: falx cerebri, tentorium with its notch, falx cerebelli, diaphragma sellae.',
@@ -98,7 +98,7 @@ sec_('Z', 'Video 2', '10&#8211;12 min', 'From outside in: five scalp layers, the
   'Z-C4': 'Sort the twelve nerves by what they carry.',
   'Z-C5': 'Two arterial systems meet in a ring; the cavernous sinus has two inside and four in the wall.'
 });
-sec_('F', 'Video 2', '10&#8211;12 min', 'The face moves with VII and feels with V; its veins lead to the cavernous sinus; the parotid is where VII branches.', [
+sec_('F', 'Video 5', '10&#8211;12 min', 'The face moves with VII and feels with V; its veins lead to the cavernous sinus; the parotid is where VII branches.', [
   '<b>Muscles of expression</b>: all CN VII; masseter and temporalis are mastication.',
   '<b>Danger triangle</b>: facial vein to ophthalmic veins to the cavernous sinus.',
   '<b>Parotid</b>: facial nerve, external carotid branches, retromandibular vein; palsy causes corneal ulcer and drooling.',
@@ -111,7 +111,7 @@ sec_('F', 'Video 2', '10&#8211;12 min', 'The face moves with VII and feels with 
   'F-C4': 'Three trigeminal bands top to bottom, and one patch that is not trigeminal.',
   'F-C5': 'Divide the neck with SCM, then trace the thyroid’s two arteries and three veins.'
 });
-sec_('D', 'Video 2', '10&#8211;12 min', 'The infratemporal fossa is a box: four chewing muscles, the maxillary artery, a venous plexus and V3 with its hitchhikers.', [
+sec_('D', 'Video 5', '10&#8211;12 min', 'The infratemporal fossa is a box: four chewing muscles, the maxillary artery, a venous plexus and V3 with its hitchhikers.', [
   '<b>Fossae</b>: walls and contents of the temporal and infratemporal fossae.',
   '<b>Mastication</b>: three close the jaw, lateral pterygoid opens and protrudes; all V3.',
   '<b>Maxillary artery</b>: three parts by the lateral pterygoid; middle meningeal through foramen spinosum.',
@@ -124,7 +124,7 @@ sec_('D', 'Video 2', '10&#8211;12 min', 'The infratemporal fossa is a box: four 
   'D-C4': 'V3 splits into sensory and motor, and carries fibres from VII and IX to their glands.',
   'D-C5': 'A joint with a disc, a ring-shaped bone, and a needle at the mandibular foramen.'
 });
-sec_('O', 'Video 3', '10&#8211;12 min', 'Every structure here follows one nerve rule with one exception. Learn the rule, then the exception.', [
+sec_('O', 'Video 5', '10&#8211;12 min', 'Every structure here follows one nerve rule with one exception. Learn the rule, then the exception.', [
   '<b>Palate</b>: soft palate muscles X except tensor veli palatini V3; incisive foramen nasopalatine nerve.',
   '<b>Tongue muscles</b>: XII except palatoglossus X; genioglossus protrudes.',
   '<b>Tongue sensation</b>: anterior two thirds lingual V3 and chorda tympani VII; posterior third IX; lingual artery deep to hyoglossus.',
@@ -137,7 +137,7 @@ sec_('O', 'Video 3', '10&#8211;12 min', 'Every structure here follows one nerve 
   'O-C4': 'Different origins, different nerves; then find where the submandibular duct opens.',
   'O-C5': 'Three floors of the pharynx, and one muscle that breaks the vagus rule.'
 });
-sec_('J', 'Video 3', '10&#8211;12 min', 'Deep neck anatomy is always asked with a procedure: carotid plaque, central lines, thyroidectomy, Horner.', [
+sec_('J', 'Video 5', '10&#8211;12 min', 'Deep neck anatomy is always asked with a procedure: carotid plaque, central lines, thyroidectomy, Horner.', [
   '<b>Arteries</b>: right CCA from brachiocephalic, left from arch; subclavian in three parts by anterior scalene.',
   '<b>Central lines</b>: IJV risks carotid puncture, subclavian risks pneumothorax.',
   '<b>Vagus</b>: external laryngeal to cricothyroid, internal laryngeal sensory above the cords, recurrent laryngeal the rest.',
@@ -151,7 +151,7 @@ sec_('J', 'Video 3', '10&#8211;12 min', 'Deep neck anatomy is always asked with 
   'J-C4': 'Three cervical ganglia at three levels; damage the chain and the face loses its sympathetics.',
   'J-C5': 'Fascia wraps the neck into tubes, and the spaces between them carry infection down.'
 });
-sec_('E', 'Video 3', '12&#8211;15 min', 'Orbit, then the muscles and how to test them, then the eyeball from outside in, then the nerves.', [
+sec_('E', 'Video 6', '12&#8211;15 min', 'Orbit, then the muscles and how to test them, then the eyeball from outside in, then the nerves.', [
   '<b>Openings</b>: optic canal II and ophthalmic artery; SOF III IV V1 VI; IOF V2.',
   '<b>Extraocular muscles</b>: LR6 SO4 rest III; abduct to test recti, adduct to test obliques.',
   '<b>Tears</b>: lacrimal serous, goblet mucous, Meibomian lipid; drainage to the nose.',
@@ -166,7 +166,7 @@ sec_('E', 'Video 3', '12&#8211;15 min', 'Orbit, then the muscles and how to test
   'E-C5': 'Two pupil muscles from two systems, and the route the aqueous takes out.',
   'E-C6': 'The optic nerve is brain, and the ciliary ganglion is the parasympathetic relay.'
 });
-sec_('H', 'Video 3', '12&#8211;15 min', 'Follow sound inward: canal, drum, a six-walled middle ear, then two labyrinths filled with two fluids.', [
+sec_('H', 'Video 6', '12&#8211;15 min', 'Follow sound inward: canal, drum, a six-walled middle ear, then two labyrinths filled with two fluids.', [
   '<b>External ear</b>: outer third cartilage; umbo, pars flaccida, cone of light; pull the pinna up and back.',
   '<b>Middle ear walls</b>: tegmen roof, jugular floor, promontory medial, mastoid behind, tube in front.',
   '<b>Ossicles and muscles</b>: tensor tympani V3, stapedius VII; Eustachian tube upper third bone.',
@@ -181,7 +181,7 @@ sec_('H', 'Video 3', '12&#8211;15 min', 'Follow sound inward: canal, drum, a six
   'H-C5': 'Three channels in the cochlea, and position along it sets the pitch.',
   'H-C6': 'Sort hearing loss by where the sound stops, then trace otitis media to its neighbours.'
 });
-sec_('M', 'Video 4', '10&#8211;12 min', 'Don’t memorise the direction, predict it: two forces on each ion, and Vm goes toward the most permeable ion.', [
+sec_('M', 'Video 1', '10&#8211;12 min', 'Don’t memorise the direction, predict it: two forces on each ion, and Vm goes toward the most permeable ion.', [
   '<b>Forces</b>: Na⁺ chemical in and electrical in; K⁺ out and in, so K⁺ is near equilibrium.',
   '<b>RMP</b>: about −70 mV from gradients plus leak K⁺ permeability; the pump only maintains the gradients.',
   '<b>Nernst and Goldman</b>: E<sub>Na</sub> positive, E<sub>K</sub> negative; Vm pulled toward the most permeable ion.',
@@ -194,7 +194,7 @@ sec_('M', 'Video 4', '10&#8211;12 min', 'Don’t memorise the direction, predict
   'M-C4': 'Sodium in, potassium out, and a recovery time when the sodium channel cannot fire again.',
   'M-C5': 'Change potassium and you move the resting potential; change sodium and you change the drive behind the spike.'
 });
-sec_('P', 'Video 4', '12&#8211;15 min', 'One signal, one journey: along the nerve, then across the junction. Every disease and drug breaks one step.', [
+sec_('P', 'Video 1', '12&#8211;15 min', 'One signal, one journey: along the nerve, then across the junction. Every disease and drug breaks one step.', [
   '<b>Cable properties</b>: τ = Rm·Cm, λ ∝ √(Rm/Ra); myelin raises Rm and lowers Cm.',
   '<b>Saltatory conduction</b>: regenerated at nodes; demyelination slows and blocks; GBS is PNS.',
   '<b>NMJ</b>: Ca²⁺ entry, ACh release, nAChR, EPP (graded), muscle AP (all-or-none).',
@@ -207,7 +207,7 @@ sec_('P', 'Video 4', '12&#8211;15 min', 'One signal, one journey: along the nerv
   'P-C4': 'Walk the chain on the chart and stop where each disease or drug cuts it.',
   'P-C5': 'Too much acetylcholine paralyses too, and the two relaxants get there by opposite routes.'
 });
-sec_('L', 'Video 4', '8&#8211;10 min', 'In the lab you are the physiologist: read each trace as a mechanism.', [
+sec_('L', 'Video 1', '8&#8211;10 min', 'In the lab you are the physiologist: read each trace as a mechanism.', [
   '<b>Paired stimuli</b>: second response normal, smaller or absent depending on how many fibres are refractory.',
   '<b>Compound AP</b>: sum of many fibres; peaks from fast to slow fibres.',
   '<b>NCV</b>: distance over the latency difference; 40 mm over 2 ms is 20 m/s.',
@@ -220,7 +220,7 @@ sec_('L', 'Video 4', '8&#8211;10 min', 'In the lab you are the physiologist: rea
   'L-C4': 'The cathode starts the spike; an anode in the way can stop it.',
   'L-C5': 'Stimulate the muscle directly to prove the block is at the junction.'
 });
-sec_('R', 'Video 4', '12&#8211;15 min', 'Every reflex is the same five-part arc; the exam is about which part and which level.', [
+sec_('R', 'Video 2', '12&#8211;15 min', 'Every reflex is the same five-part arc; the exam is about which part and which level.', [
   '<b>Arc and classes</b>: receptor, afferent, centre, efferent, effector; mono, di, poly.',
   '<b>Spindle versus GTO</b>: length, Ia, monosynaptic, contracts; tension, Ib, disynaptic, relaxes.',
   '<b>Withdrawal</b>: flexor reflex then crossed extensor; divergence, reciprocal inhibition, afterdischarge.',
@@ -235,7 +235,7 @@ sec_('R', 'Video 4', '12&#8211;15 min', 'Every reflex is the same five-part arc;
   'R-C5': 'Each tendon reflex is one nerve and two roots; grade it and compare the sides.',
   'R-C6': 'For cranial reflexes, name the nerve in, the nerve out and the brainstem level.'
 });
-sec_('A', 'Video 5', '12&#8211;15 min', 'Follow the pathway, don’t memorise the organ table: two neurons, one golden rule, then receptors.', [
+sec_('A', 'Video 2', '12&#8211;15 min', 'Follow the pathway, don’t memorise the organ table: two neurons, one golden rule, then receptors.', [
   '<b>Two neurons</b>: ganglion with fast nicotinic and slow muscarinic and dopamine potentials.',
   '<b>Golden rule</b>: all preganglionic ACh nicotinic; parasympathetic post ACh muscarinic; sympathetic post NE; sweat glands and adrenal medulla are exceptions.',
   '<b>Layout</b>: thoracolumbar versus craniosacral; paravertebral and prevertebral ganglia.',
@@ -250,7 +250,7 @@ sec_('A', 'Video 5', '12&#8211;15 min', 'Follow the pathway, don’t memorise th
   'A-C5': 'Sympathetic holds urine in, parasympathetic pushes it out.',
   'A-C6': 'Know the receptor on the organ and you can predict any drug.'
 });
-sec_('G', 'Video 5', '12&#8211;15 min', 'When the ANS fails: Horner is a broken sympathetic chain, Raynaud is an overactive one, and the labs prove both.', [
+sec_('G', 'Video 2', '12&#8211;15 min', 'When the ANS fails: Horner is a broken sympathetic chain, Raynaud is an overactive one, and the labs prove both.', [
   '<b>Horner</b>: ptosis, miosis, anhidrosis; first, second or third-order neuron.',
   '<b>Drops</b>: cocaine fails to dilate a Horner pupil; apraclonidine reverses the anisocoria.',
   '<b>Raynaud</b>: cold, sympathetic vasoconstriction, white then blue then red.',
@@ -263,7 +263,7 @@ sec_('G', 'Video 5', '12&#8211;15 min', 'When the ANS fails: Horner is a broken 
   'G-C4': 'Cut it, then stimulate each end, then block the ganglion and stimulate past it.',
   'G-C5': 'Read each graph by receptor, and use the blocker to see which receptor is left.'
 });
-sec_('X', 'Video 5', '12&#8211;15 min', 'Sympathetics climb the carotids; parasympathetics ride III, VII and IX to four ganglia. Use the branches of VII to find a lesion.', [
+sec_('X', 'Video 6', '12&#8211;15 min', 'Sympathetics climb the carotids; parasympathetics ride III, VII and IX to four ganglia. Use the branches of VII to find a lesion.', [
   '<b>Outflow</b>: T1–3 to superior cervical ganglion; EW, superior and inferior salivatory nuclei.',
   '<b>Sympathetic to face</b>: ICA fibres to the pupil, ECA fibres to sweat glands.',
   '<b>CN III</b>: ciliary ganglion; palsy gives ptosis, down and out, mydriasis.',
@@ -278,7 +278,7 @@ sec_('X', 'Video 5', '12&#8211;15 min', 'Sympathetics climb the carotids; parasy
   'X-C5': 'Walk up the facial nerve on the chart; the highest branch lost marks the lesion.',
   'X-C6': 'Glossopharyngeal reaches the parotid through the otic ganglion, and miswiring after surgery gives Frey syndrome.'
 });
-sec_('Y', 'Video 5', '10&#8211;12 min', 'Two cases tie the block together: find the root from the exam, and find the neuron from the eye.', [
+sec_('Y', 'Video 6', '10&#8211;12 min', 'Two cases tie the block together: find the root from the exam, and find the neuron from the eye.', [
   '<b>Case 1</b>: weak plantarflexion, S1 numbness, absent ankle reflex: right S1 radiculopathy.',
   '<b>Which root</b>: paracentral disc hits the traversing root, far lateral hits the exiting root.',
   '<b>Tests</b>: SLR sensitive not specific, crossed SLR specific; MRI; surgery for progressive weakness or cauda equina.',
@@ -291,7 +291,7 @@ sec_('Y', 'Video 5', '10&#8211;12 min', 'Two cases tie the block together: find 
   'Y-C4': 'The eye gives the system, the neck injury gives the neuron and the vessel.',
   'Y-C5': 'The light reflex runs on parasympathetics, so Horner leaves it intact.'
 });
-sec_('S', 'Video 6', '15&#8211;20 min', 'Physics first, then the ear as an amplifier, then reading the audiogram, then balance.', [
+sec_('S', 'Video 3', '15&#8211;20 min', 'Physics first, then the ear as an amplifier, then reading the audiogram, then balance.', [
   '<b>Frequency</b>: f = 1/period; 20–20,000 Hz, best 1000–4000.',
   '<b>Decibels</b>: SPL against 20 µPa, HL against the normal threshold, SL against the patient’s threshold.',
   '<b>Localisation</b>: ITD for low, ILD for high; maximum ITD about 0.67 ms.',
@@ -309,7 +309,7 @@ sec_('S', 'Video 6', '15&#8211;20 min', 'Physics first, then the ear as an ampli
   'S-C7': 'Vertigo is a mismatch; match each symptom to the organ that senses that movement.',
   'S-C8': 'Two vestibular nerves, each with its own organs, and a test for each organ.'
 });
-sec_('W', 'Video 6', '10&#8211;12 min', 'Light is a wave and a particle; a laser is light made very orderly, and its power and pulse decide what it does to tissue.', [
+sec_('W', 'Video 3', '10&#8211;12 min', 'Light is a wave and a particle; a laser is light made very orderly, and its power and pulse decide what it does to tissue.', [
   '<b>Wave and photon</b>: c = λν; in a medium the frequency stays; E = hν.',
   '<b>Laser</b>: stimulated emission, pumping, feedback; monochromatic, directional, coherent.',
   '<b>Tissue interactions</b>: photochemical with a dye, thermal, photoablation (excimer), plasma, photodisruption (Nd:YAG).',
@@ -327,9 +327,9 @@ sec_('W', 'Video 6', '10&#8211;12 min', 'Light is a wave and a particle; a laser
 function sayQ(sid, o) { for (var k in o) SC[sid].say[k] = o[k]; }
 sayQ('V', {
   V1: 'Ask what each part borders. Only the transverse process points away from the canal.',
-  V4: 'The lumbar canal beats the thoracic, but the cervical canal is bigger still. That one word is the trap.',
-  V9: 'The nucleus sits a little behind centre. That is why discs herniate backwards onto the roots.',
-  V15: 'Count the segments it crosses: rotatores one or two, multifidus two to four, semispinalis four to six.'
+  V2: 'The lumbar canal beats the thoracic, but the cervical canal is bigger still. That one word is the trap.',
+  V5: 'The nucleus sits a little behind centre. That is why discs herniate backwards onto the roots.',
+  V7: 'Count the segments it crosses: rotatores one or two, multifidus two to four, semispinalis four to six.'
 });
 sayQ('I', {
   I1: 'Find C1’s anterior arch; the peg just behind it is the dens.',
@@ -338,70 +338,69 @@ sayQ('I', {
   I8: 'Denser is whiter on CT, and nothing in the spine is denser than cortical bone.'
 });
 sayQ('N', {
-  N2: 'Look for the pale cone with no Nissl bodies. That is where the axon starts.',
-  N8: 'Soma to terminal is forward, so it is anterograde transport.',
-  N15: 'One phagocyte in the brain: microglia.'
+  N4: 'Soma to terminal is forward, so it is anterograde transport.',
+  N5: 'One phagocyte in the brain: microglia.'
 });
 sayQ('C', {
   C1: 'Three landmarks to know cold: nipple T4, xiphoid T7, umbilicus T10.',
-  C7: 'Walk the needle in from the skin. The posterior longitudinal ligament is on the far side of the CSF.',
-  C16: 'The groove on the front of the cord carries the one anterior spinal artery.',
-  C17: 'C is thinnest but has no myelin, so among myelinated fibres the smallest is B.',
-  C19: 'Neurotmesis means the whole nerve is cut, epineurium and all.'
+  C3: 'Walk the needle in from the skin. The posterior longitudinal ligament is on the far side of the CSF.',
+  C10: 'The groove on the front of the cord carries the one anterior spinal artery.',
+  C11: 'C is thinnest but has no myelin, so among myelinated fibres the smallest is B.',
+  C13: 'Neurotmesis means the whole nerve is cut, epineurium and all.'
 });
 sayQ('K', {
   K1: 'Male skulls are built heavier: big brow ridges, square jaw, blunt orbital rims.',
   K3: 'Four bones meet at the pterion, and the middle meningeal artery runs just under it.',
-  K13: 'Nine, ten and eleven share the jugular foramen. Twelve has its own canal.'
+  K5: 'Nine, ten and eleven share the jugular foramen. Twelve has its own canal.'
 });
 sayQ('Z', {
   Z1: 'Arteries outside the dura bleed outside the dura: epidural.',
-  Z9: 'Midbrain gives three and four; the pons gives five, six and seven.',
-  Z16: 'Posterior circulation: vertebral, basilar, then the posterior cerebrals.'
+  Z3: 'Midbrain gives three and four; the pons gives five, six and seven.',
+  Z4: 'Posterior circulation: vertebral, basilar, then the posterior cerebrals.'
 });
 sayQ('F', {
   F1: 'Orbicularis oculi closes the eye; lose it and you cannot blink.',
-  F9: 'The marginal mandibular branch is motor, so expect a drooping corner of the mouth, not numbness.',
-  F12: 'Three bands down the face: V1, V2, V3. The middle third is maxillary.'
+  F7: 'The marginal mandibular branch is motor, so expect a drooping corner of the mouth, not numbness.',
+  F8: 'Three bands down the face: V1, V2, V3. The middle third is maxillary.'
 });
 sayQ('D', {
   D2: 'List what lives in the fossa; the mental nerve is already out on the chin.',
   D3: 'Three muscles close the jaw. The lateral pterygoid is the only one that opens it.',
-  D15: 'V3’s motor list ends with the two tensors; stapedius belongs to the facial nerve.'
+  D11: 'V3’s motor list ends with the two tensors; stapedius belongs to the facial nerve.'
 });
 sayQ('O', {
-  O2: 'Every tongue muscle is hypoglossal, except palatoglossus.',
-  O5: 'Lift the tongue: right under the mucosa, above mylohyoid, the lingual nerve hooks under the duct.',
-  O7: 'Mylohyoid is the floor: sublingual gland above it, submandibular gland below it.'
+  O4: 'Every tongue muscle is hypoglossal, except palatoglossus.',
+  O6: 'Lift the tongue: right under the mucosa, above mylohyoid, the lingual nerve hooks under the duct.',
+  O9: 'Mylohyoid is the floor: sublingual gland above it, submandibular gland below it.'
 });
 sayQ('J', {
-  J9: 'Find the triangle between the two heads of sternocleidomastoid. The vein is under it.',
-  J10: 'Tie the inferior thyroid artery and you risk the recurrent nerve. That takes out every abductor, the posterior cricoarytenoid.',
-  J18: 'Cut the sympathetic chain in the neck and you get Horner on that side.',
-  J19: 'The danger space sits between alar and prevertebral fascia and runs all the way down to the diaphragm.'
+  J1: 'Find the triangle between the two heads of sternocleidomastoid. The vein is under it.',
+  J2: 'Tie the inferior thyroid artery and you risk the recurrent nerve. That takes out every abductor, the posterior cricoarytenoid.',
+  J8: 'Cut the sympathetic chain in the neck and you get Horner on that side.',
+  J9: 'The danger space sits between alar and prevertebral fascia and runs all the way down to the diaphragm.'
 });
 sayQ('E', {
   E1: 'Eye movements plus V1 with normal vision means the superior orbital fissure.',
   E5: 'Abduct the eye to test the recti: up is superior rectus, down is inferior rectus.',
   E11: 'Follow the light: cornea, aqueous, lens, vitreous. The sclera is off the path.',
-  E22: 'Aqueous drains at the angle through the trabecular meshwork.'
+  E14: 'Aqueous drains at the angle through the trabecular meshwork.'
 });
 sayQ('H', {
-  H5: 'The stapes plugs the oval window, so that window is on the medial wall.',
-  H7: 'The tube equalises pressure; it is not on the sound path.',
-  H18: 'Crista has a cupula, macula has otoliths, Corti has a tectorial membrane.',
-  H21: 'The stapes pushes into the vestibule and on into the scala vestibuli.'
+  H3: 'The stapes plugs the oval window, so that window is on the medial wall.',
+  H5: 'The tube equalises pressure; it is not on the sound path.',
+  H8: 'Crista has a cupula, macula has otoliths, Corti has a tectorial membrane.',
+  H11: 'The stapes pushes into the vestibule and on into the scala vestibuli.'
 });
 sayQ('M', {
-  M1: 'Change outside sodium and you move E-sodium, not the resting potential.',
-  M3: 'A huge potassium rise holds the membrane depolarised, sodium channels inactivate, and nothing fires.'
+  M4: 'Change outside sodium and you move E-sodium, not the resting potential.',
+  M12: 'A huge potassium rise holds the membrane depolarised, sodium channels inactivate, and nothing fires.'
 });
 sayQ('P', {
-  P1: 'Myelin is resistance. Lose it and current leaks out before it reaches the next node.',
-  P4: 'Tetrodotoxin plugs the voltage-gated sodium channel, so no action potential starts anywhere.'
+  P3: 'Myelin is resistance. Lose it and current leaks out before it reaches the next node.',
+  P8: 'Tetrodotoxin plugs the voltage-gated sodium channel, so no action potential starts anywhere.'
 });
 sayQ('L', {
-  L1: 'Nerve stimulation fails, direct muscle stimulation works: the block is at the junction, and both drugs keep the end plate depolarised.'
+  L6: 'Nerve stimulation fails, direct muscle stimulation works: the block is at the junction, and both drugs keep the end plate depolarised.'
 });
 sayQ('R', {
   R1: 'Too much tension, tendon organ fires, the same muscle relaxes.',
@@ -409,12 +408,12 @@ sayQ('R', {
   R6: 'First comes spinal shock, so every reflex below the lesion disappears.'
 });
 sayQ('A', {
-  A1: 'Beta receptors listen to noradrenaline, and only sympathetic postganglionic fibres release it.',
-  A2: 'Watery saliva is parasympathetic: give a muscarinic agonist.',
-  A3: 'Catecholamines tighten the internal sphincter through alpha-one.'
+  A3: 'Beta receptors listen to noradrenaline, and only sympathetic postganglionic fibres release it.',
+  A5: 'Watery saliva is parasympathetic: give a muscarinic agonist.',
+  A6: 'Catecholamines tighten the internal sphincter through alpha-one.'
 });
 sayQ('G', {
-  G1: 'Apraclonidine is a weak alpha-one agonist. Only the denervated, supersensitive pupil dilates, so the anisocoria flips.'
+  G2: 'Apraclonidine is a weak alpha-one agonist. Only the denervated, supersensitive pupil dilates, so the anisocoria flips.'
 });
 sayQ('X', {
   X1: 'The carotid plexus is postganglionic fibres from the superior cervical ganglion.',
@@ -434,3 +433,17 @@ sayQ('W', {
   W3: 'Photocoagulation means heat: a thermal interaction.',
   W5: 'Cataract surgery uses the femtosecond laser.'
 });
+
+/* SAY lines for the core lecture check-questions (data/lecq.js) */
+sayQ('M', { M17: 'Small depolarisation, closer to threshold. Big and lasting depolarisation, sodium channels stay inactivated: less excitable.' });
+sayQ('P', { P12: 'Ptosis and diplopia happen in both. The split is where the fault is: LEMS before the synapse, MG after it.' });
+sayQ('L', {
+  L3: 'Subtract the two latencies, then divide the distance: forty millimetres over two milliseconds is twenty metres per second.',
+  L5: 'The anode hyperpolarises, so fibres conduct later or not at all: longer latency, smaller compound action potential.'
+});
+sayQ('A', { A4: 'Every preganglionic fibre releases ACh. That is the golden rule, sympathetic included.' });
+sayQ('G', {
+  G1: 'Ptosis, miosis, anhidrosis: a broken sympathetic pathway, not an eye disease.',
+  G6: 'Slow heart, low pressure, busy gut, small pupils: everything muscarinic, so a parasympathetic pattern.'
+});
+sayQ('O', { O20: 'Submandibular duct on the caruncle, sublingual ducts along the fold.' });

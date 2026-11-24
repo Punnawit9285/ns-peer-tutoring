@@ -8,19 +8,29 @@ Question-first peer-tutoring material for **Nervous System I (NS I)**, MDCU: the
 |---|---|
 | **Student deck** (shown in the video) | https://punnawit9285.github.io/ns-peer-tutoring/student.html |
 | **Tutor deck** (second screen: answers, Thai notes, script) | https://punnawit9285.github.io/ns-peer-tutoring/tutor.html |
-| **Student handout PDF** | https://punnawit9285.github.io/ns-peer-tutoring/student.pdf?v=8ab6f402 |
+| **Student handout PDF** | https://punnawit9285.github.io/ns-peer-tutoring/student.pdf?v=2201b07b |
 
 Open the student and tutor decks in the same browser and tick *Follow student* in the tutor deck: it jumps to whatever card the student deck shows.
 
 **QR codes** for a shared screen or a printed page: the start card of each deck (main and Anatomy 101) shows QR codes that open the deck, download its PDF and open the spot trainer, and the cover of each PDF carries a QR code that downloads that PDF.
 
-## Sections (121 concepts · 301 questions · 460 cloze blanks)
+## Sections (121 concepts · 239 questions · 460 cloze blanks)
+
+Physiology, physics and histology come first (N to W), then the anatomy sections (V to X), and the two SGD cases close the deck. The deck follows the 6-video recording plan on the tutor start card.
 
 | ID | Section | Source handout |
 |---|---|---|
+| N | Nervous Tissue: Neurons, Glia & Nerve Sheaths | Nervous tissue (57 pages) |
+| M | Membrane Potential & the Action Potential | Membrane potential (39 pages) |
+| P | Physiology of Nerve & the Neuromuscular Junction | Physiology of nerve and NMJ (40 pages) |
+| L | Lab: Frog Nerve & Neuromuscular Junction | Lab nerve and NMJ (44 pages) |
+| R | Reflexes: Arc, Spinal Reflexes & the Reflex Exam | Physiology of reflex (78 pages) |
+| A | Autonomic Nervous System: Pathways, Organs & Receptors | ANS physiology (32 pages) |
+| G | ANS Integration: Horner, Raynaud & the Rabbit and Dog Labs | ANS integration and regulation (48 pages) |
+| S | Physics of Sound, Hearing & the Vestibular System | Physics of sound and hearing 2026 (115 pages) |
+| W | Light in Medicine: Optics & Lasers | Light in Medicine 2026 (74 slides) |
 | V | Vertebral Column & Deep Back Muscles | Deep back muscles and vertebral column (86 pages) |
 | I | Radiologic Anatomy of Vertebral Column & Spinal Cord | Imaging of vertebral column and spinal cord (61 pages) |
-| N | Nervous Tissue: Neurons, Glia & Nerve Sheaths | Nervous tissue (57 pages) |
 | C | Spinal Cord & Peripheral Nerve | Spinal cord & peripheral nerve (52 pages) |
 | K | Skull: Bones, Landmarks, Fossae & Foramina | Skull (61 pages) |
 | Z | Scalp, Meninges, Cranial Nerves & Brain Vessels | Structures within cranial cavity (39 pages) |
@@ -28,22 +38,18 @@ Open the student and tutor decks in the same browser and tick *Follow student* i
 | D | Deep Face: Temporal & Infratemporal Fossae, V3 & TMJ | Deep structures of face (44 pages) |
 | O | Oral Cavity, Floor of Mouth & Pharynx | Oral cavity and floor of mouth (87 pages) |
 | J | Deep Structures of the Neck | Deep structures of neck (32 pages) |
-| M | Membrane Potential & the Action Potential | Membrane potential (39 pages) |
-| P | Physiology of Nerve & the Neuromuscular Junction | Physiology of nerve and NMJ (40 pages) |
-| L | Lab: Frog Nerve & Neuromuscular Junction | Lab nerve and NMJ (44 pages) |
-| A | Autonomic Nervous System: Pathways, Organs & Receptors | ANS physiology (32 pages) |
-| G | ANS Integration: Horner, Raynaud & the Rabbit and Dog Labs | ANS integration and regulation (48 pages) |
 | E | Eye & Orbit | Eye and orbit (44 pages) |
-| R | Reflexes: Arc, Spinal Reflexes & the Reflex Exam | Physiology of reflex (78 pages) |
-| W | Light in Medicine: Optics & Lasers | Light in Medicine 2026 (74 slides) |
 | H | Ear: External, Middle & Inner | Ear (41 pages) |
 | X | ANS of the Head & Neck: CN III, VII, IX | ANS of head and neck (21 pages) |
-| S | Physics of Sound, Hearing & the Vestibular System | Physics of sound and hearing 2026 (115 pages) |
 | Y | SGD Wrap-Up: Lumbar Disc Herniation & Traumatic Horner | SGD wrap-up (28 pages) |
 
 ## Where the questions come from
 
-The problems are the **past papers**: the AC80 and AC81 NS I MCQ recalls (with the peer-support keys), the AC81 NS I spot test, and the AC79 spot II (back, head & neck, plus the nervous-tissue stations). Each question sits right after the concept card it tests and is tagged with its source (`AC80`, `AC81`, `AC80 · AC81`, `AC81 spot` …). Spot-test photos are cropped from the recall PDFs, one per station, and shared by the station's two questions.
+The quiz is built for the **MCQ exam**. Each question sits right after the concept card it tests and is tagged with its source.
+
+- **Past-paper MCQs (139)**: every usable item of the AC80 and AC81 NS I MCQ recalls, with the peer-support keys (`AC80`, `AC81`, `AC80 · AC81`).
+- **Lecture check-questions (42)**: the MCQs the lecturers put in their own handouts, with the official answer printed on the slide (`Lecture quiz`, `Lab quiz`): membrane potential, nerve & NMJ, the frog nerve lab, ANS physiology, ANS integration, oral cavity and deep face. Each explanation cites its slide. They follow the past-paper items of the same concept.
+- **Spot items (58)**, kept only where the station teaches a link: what supplies a structure, what it does or contains, what passes through it, or what happens when it is cut (`AC81 spot`, `AC79 spot`, `AC79 · AC81 spot` when both years asked the same station). The 104 pure "identify structure A" items are left out of this deck: the back, head and neck stations are in the Anatomy 101 deck below, and the histology, eye and ear identification stations are no longer in either deck (git history before 24 Nov 2026 has them).
 
 - **Original wording and option order** are kept; a few long AC81 case stems are trimmed to the facts the question uses, and Thai stems carry an English gloss.
 - **Recall notes**: where a recalled key or stem disagrees with the lecture, or the recall is incomplete, the item says so in a *Recall note* and teaches the principle.
@@ -99,7 +105,8 @@ tools/crops.sh     # crop figures from src-pdf/*.pdf (the handouts and recalls; 
 tools/shrink.sh    # cap figures at 1100 px
 node check.js      # IDs, answer keys, every Thai / tutor layer keyed to a real card, blanks, images
 node build.js all  # student.html, index.html, tutor.html, dist/deck.html, dist/notes.html, dist/img/
-tools/pdf.sh       # student.pdf: two headless-Chrome passes for real page numbers (CHROME=... to override)
+tools/pdf.sh       # student.pdf: headless-Chrome passes until every page number settles (CHROME=... to override)
+                   # macOS (PDFKit, sips) or Linux (poppler pdftotext, ImageMagick); fonts from Google Fonts or npm @fontsource
 ```
 
 Course material belongs to the Faculty of Medicine, Chulalongkorn University; past-paper recalls to the MDCU peer-support teams. For peer study only. See [legal.md](legal.md).

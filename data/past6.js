@@ -1,4 +1,4 @@
-/* Past-paper questions, Video 6: S sound & hearing, W light & laser. */
+/* Past-paper questions: S sound & hearing, W light & laser. */
 (function () {
   /* ---------- S · Sound & hearing ---------- */
   CVS.after('S-C1', [

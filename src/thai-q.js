@@ -6,24 +6,12 @@
   /* ---------- V · Back ---------- */
   add({
     V1: ['Transverse process ยื่นออกด้านข้าง <b>ห่างจาก vertebral canal</b> → หักแล้วไม่ค่อยโดน cord', 'Pedicle, facet, uncovertebral joint ล้อมรอบ canal / foramen → หักแล้วกด cord หรือ root ได้'],
-    V2: ['แท่งที่ยื่นออกด้านข้างจากรอยต่อ pedicle–lamina = <b>transverse process</b>'],
-    V3: ['แผ่นกระดูกแบนจาก transverse process ไปหา spinous process เป็นหลังคา canal = <b>lamina</b>'],
-    V4: ['Canal ของ lumbar เป็นสามเหลี่ยม ใหญ่กว่า thoracic แต่<b>เล็กกว่า cervical</b> → ข้อนี้ผิด', 'Mammillary process, accessory process, body รูปไต = ลักษณะ lumbar ที่ถูก'],
-    V5: ['ปุ่มเล็กด้านหลังโคน transverse process = <b>accessory process</b>', 'Mammillary process อยู่ด้านหลัง superior articular process'],
-    V6: ['มี facet ให้หัวซี่โครงบน body + facet ให้ tubercle บน transverse process → <b>thoracic</b> (ช่วงกลาง)'],
-    V7: ['ขอบยกขึ้นด้านข้างของผิวบน body = <b>uncinate process</b> → เฉพาะ cervical (สร้าง uncovertebral joint)'],
-    V8: ['Spinous process ยาว ชี้ลงชัน = <b>thoracic</b>'],
-    V9: ['Nucleus pulposus อยู่<b>ค่อนไปด้านหลัง</b> ไม่ใช่ด้านหน้า → disc จึงแตกไปด้านหลัง (posterolateral)'],
-    V10: ['<b>PLL</b> วิ่งด้านหลัง body ภายใน canal → เป็นผนังหน้าของ canal', 'ALL อยู่หน้า body; flavum, interspinous, nuchae อยู่หลัง canal'],
-    V11: ['ช่องระหว่าง body สองอัน = <b>intervertebral disc</b>'],
-    V12: ['รูด้านข้างระหว่าง pedicle สองอัน = <b>intervertebral foramen</b> → spinal nerve ออกทางนี้'],
-    V13: ['ข้อระหว่าง articular process ของกระดูกบน–ล่าง มองจากด้านหลัง = <b>facet (zygapophyseal) joint</b>'],
-    V14: ['เส้นเอ็นพาดบน<b>ปลาย</b> spinous process = <b>supraspinous ligament</b>', 'Interspinous อยู่<b>ระหว่าง</b> spine'],
-    V15: ['Transversospinal: transverse → spine ข้างบน', 'Multifidus ข้าม <b>2–4</b> ปล้อง · semispinalis 4–6 · rotatores 1–2 → ข้าม 3 = <b>multifidus</b>'],
-    V16: ['กล้ามเนื้อหนาชั้นลึกชิด spine ช่วง lumbar = <b>multifidus</b>'],
-    V17: ['Erector spinae แถวนอกสุด ไปเกาะมุมซี่โครง = <b>iliocostalis</b> (S-L-I จากในออกนอก)'],
-    V18: ['กล้ามเนื้อเหมือนผ้าพันแผล จาก ligamentum nuchae ขึ้นไป mastoid = <b>splenius capitis</b>'],
-    V19: ['แถวนอกสุดของ erector spinae มีแขนงไปซี่โครง = <b>iliocostalis</b>']
+    V2: ['Canal ของ lumbar เป็นสามเหลี่ยม ใหญ่กว่า thoracic แต่<b>เล็กกว่า cervical</b> → ข้อนี้ผิด', 'Mammillary process, accessory process, body รูปไต = ลักษณะ lumbar ที่ถูก'],
+    V3: ['ปุ่มเล็กด้านหลังโคน transverse process = <b>accessory process</b>', 'Mammillary process อยู่ด้านหลัง superior articular process'],
+    V4: ['มี facet ให้หัวซี่โครงบน body + facet ให้ tubercle บน transverse process → <b>thoracic</b> (ช่วงกลาง)'],
+    V5: ['Nucleus pulposus อยู่<b>ค่อนไปด้านหลัง</b> ไม่ใช่ด้านหน้า → disc จึงแตกไปด้านหลัง (posterolateral)'],
+    V6: ['<b>PLL</b> วิ่งด้านหลัง body ภายใน canal → เป็นผนังหน้าของ canal', 'ALL อยู่หน้า body; flavum, interspinous, nuchae อยู่หลัง canal'],
+    V7: ['Transversospinal: transverse → spine ข้างบน', 'Multifidus ข้าม <b>2–4</b> ปล้อง · semispinalis 4–6 · rotatores 1–2 → ข้าม 3 = <b>multifidus</b>']
   });
 
   /* ---------- I · Spine imaging ---------- */
@@ -42,55 +30,37 @@
   /* ---------- N · Nervous tissue ---------- */
   add({
     N1: ['เฉลย = <b>Golgi</b> (silver) → เห็น neuron ทั้งตัวพร้อม process', 'Cresyl violet = Nissl body · H&amp;E = routine · osmium = myelin'],
-    N2: ['Axon hillock = ส่วนรูปกรวยของ soma ที่<b>ไม่มี Nissl body</b> (สีจาง) → D'],
-    N3: ['Process ที่ยังมี Nissl substance = <b>dendrite</b> → A'],
-    N4: ['Lipofuscin = สารสีเหลืองน้ำตาลใน cytoplasm ของ neuron สูงอายุ → B'],
-    N5: ['Karyon = <b>nucleus</b> → C'],
-    N6: ['ตัวเซลล์ใหญ่ มี Nissl เต็ม nucleus ใหญ่จาง nucleolus ชัด = <b>neuron</b>'],
-    N7: ['Neuron มี nucleus แบบ <b>vesicular</b> (จาง) + nucleolus ชัด', 'End-feet = astrocyte'],
-    N8: ['ขนส่งจาก soma → terminal = <b>anterograde axonal transport</b> (kinesin)', 'Retrograde = กลับเข้า soma (ทางที่ toxin/virus ใช้)'],
-    N9: ['Postsynaptic = เซลล์อีกฝั่งของ cleft ที่มี membrane หนาทึบ → D'],
-    N10: ['วงกลมเล็กๆ อัดแน่นใน terminal = <b>synaptic vesicle</b> → B'],
-    N11: ['ช่องแคบที่ myelin สอง internode มาชนกัน = <b>node of Ranvier</b> → D'],
-    N12: ['เส้นตรงกลางใน myelin = <b>axon</b> → B'],
-    N13: ['รอยคอดระหว่าง myelin สองท่อน = <b>node of Ranvier</b>'],
-    N14: ['ช่องขาวจางรอบ axon = <b>myelin</b> (lipid ละลายไปตอนเตรียม slide)'],
-    N15: ['<b>Microglia</b> = macrophage ของ CNS', 'Astrocyte = BBB, scar · oligodendrocyte = myelin CNS · Schwann = PNS'],
-    N16: ['Marker ของ astrocyte = <b>GFAP</b>'],
-    N17: ['Schwann cell สร้าง myelin, ปกป้อง axon, หลั่ง growth factor, นำทาง regeneration', '<b>ไม่เปลี่ยนเป็น neuron</b>'],
-    N18: ['เซลล์รูปดาว มี process ดำแผ่ออกรอบตัว = <b>astrocyte</b>'],
-    N19: ['ปลาย process ไปแปะหลอดเลือด (end-feet) → <b>blood–brain barrier</b>'],
-    N20: ['EM: เซลล์หนึ่งตัวห่อ axon ที่มี myelin หนึ่งเส้น = <b>Schwann cell</b>'],
-    N21: ['Schwann cell = glia ของ PNS → อยู่ใน <b>peripheral nerve</b>'],
-    N22: ['รูเล็กกลาง grey commissure = <b>central canal</b>'],
-    N23: ['Central canal บุด้วย ependyma ต่อกับ ventricle → มี <b>CSF</b>'],
-    N24: ['Neuron ตัวกลมใหญ่ใน sensory ganglion = <b>ganglion cell</b>'],
-    N25: ['Nucleus เล็กแบนล้อมรอบ ganglion cell = <b>satellite cell</b> (glia ของ PNS)'],
-    N26: ['Meissner = <b>light touch</b> (ผิวไม่มีขน)', 'Pacinian = vibration/pressure · free ending = pain, temperature']
+    N2: ['ตัวเซลล์ใหญ่ มี Nissl เต็ม nucleus ใหญ่จาง nucleolus ชัด = <b>neuron</b>'],
+    N3: ['Neuron มี nucleus แบบ <b>vesicular</b> (จาง) + nucleolus ชัด', 'End-feet = astrocyte'],
+    N4: ['ขนส่งจาก soma → terminal = <b>anterograde axonal transport</b> (kinesin)', 'Retrograde = กลับเข้า soma (ทางที่ toxin/virus ใช้)'],
+    N5: ['<b>Microglia</b> = macrophage ของ CNS', 'Astrocyte = BBB, scar · oligodendrocyte = myelin CNS · Schwann = PNS'],
+    N6: ['Marker ของ astrocyte = <b>GFAP</b>'],
+    N7: ['Schwann cell สร้าง myelin, ปกป้อง axon, หลั่ง growth factor, นำทาง regeneration', '<b>ไม่เปลี่ยนเป็น neuron</b>'],
+    N8: ['เซลล์รูปดาว มี process ดำแผ่ออกรอบตัว = <b>astrocyte</b>'],
+    N9: ['ปลาย process ไปแปะหลอดเลือด (end-feet) → <b>blood–brain barrier</b>'],
+    N10: ['EM: เซลล์หนึ่งตัวห่อ axon ที่มี myelin หนึ่งเส้น = <b>Schwann cell</b>'],
+    N11: ['Schwann cell = glia ของ PNS → อยู่ใน <b>peripheral nerve</b>'],
+    N12: ['รูเล็กกลาง grey commissure = <b>central canal</b>'],
+    N13: ['Central canal บุด้วย ependyma ต่อกับ ventricle → มี <b>CSF</b>'],
+    N14: ['Meissner = <b>light touch</b> (ผิวไม่มีขน)', 'Pacinian = vibration/pressure · free ending = pain, temperature']
   });
 
   /* ---------- C · Spinal cord ---------- */
   add({
     C1: ['งูสวัดขึ้นตาม dermatome เดียว', 'สะดือ = <b>T10</b> · หัวนม = T4 · xiphoid = T7'],
     C2: ['Xiphoid = <b>T7</b>'],
-    C3: ['ปลาย cord ที่เรียวแหลม = <b>conus medullaris</b> (~L1–L2)'],
-    C4: ['มัด root ใต้ conus = <b>cauda equina</b>'],
-    C5: ['ส่วนป่องของ cord ส่วนล่างเหนือ conus (root ไปขา) = <b>lumbosacral enlargement</b>'],
-    C6: ['มัด root ใต้ปลาย cord = <b>cauda equina</b>'],
-    C7: ['เข็ม LP: supraspinous → interspinous → <b>flavum</b> → epidural → dura + arachnoid → subarachnoid (CSF)', '<b>PLL</b> อยู่ผนังหน้า canal → เข็มไม่ผ่าน'],
-    C8: ['Cord จบ L1–L2 แต่ dural sac ถึง S2 → แทงที่ <b>L3/L4</b> หรือ L4/L5'],
-    C9: ['ท่อหนาด้านนอกที่ถูกเปิดออก = <b>dura mater</b>'],
-    C10: ['นอก dura = epidural fat (+ venous plexus) · ใน dura = arachnoid → แยก <b>fat กับ arachnoid</b>'],
-    C11: ['ด้านหลัง นอก dural tube = <b>posterior epidural space</b>'],
-    C12: ['ท่อเหนียวที่หุ้ม cord = <b>dura mater</b>'],
-    C13: ['ร่องลึกกว้างด้านบน = ventral median fissure → ล่าง = dorsal', 'จุดที่ dorsal horn ถึงผิว = <b>dorsolateral sulcus</b>'],
-    C14: ['Dorsal (<b>sensory</b>) rootlet เข้า cord ตาม dorsolateral sulcus'],
-    C15: ['ร่องลึกกลางด้านหน้า cord = <b>ventral median fissure</b>'],
-    C16: ['<b>Anterior spinal artery</b> (เส้นเดียว) วิ่งใน ventral median fissure → เลี้ยง 2/3 หน้า'],
-    C17: ['C เล็กสุดแต่<b>ไม่มี myelin</b>', 'ใน myelinated: Aα &gt; Aβ &gt; Aγ &gt; Aδ &gt; <b>B</b> → B เล็กสุด'],
-    C18: ['ใหญ่ + myelin → เร็ว → <b>Aα</b> เร็วสุด'],
-    C19: ['Neurapraxia = myelin · axonotmesis = axon · <b>neurotmesis = ขาดทั้งเส้นถึง epineurium</b>'],
-    C20: ['ตัดเรียบ สด ช่องว่างแทบไม่มี → <b>เย็บต่อตรง</b> (direct repair)', 'Graft (เช่น sural) ใช้เมื่อปลายสองข้างดึงมาชนไม่ได้']
+    C3: ['เข็ม LP: supraspinous → interspinous → <b>flavum</b> → epidural → dura + arachnoid → subarachnoid (CSF)', '<b>PLL</b> อยู่ผนังหน้า canal → เข็มไม่ผ่าน'],
+    C4: ['Cord จบ L1–L2 แต่ dural sac ถึง S2 → แทงที่ <b>L3/L4</b> หรือ L4/L5'],
+    C5: ['ท่อหนาด้านนอกที่ถูกเปิดออก = <b>dura mater</b>'],
+    C6: ['นอก dura = epidural fat (+ venous plexus) · ใน dura = arachnoid → แยก <b>fat กับ arachnoid</b>'],
+    C7: ['ร่องลึกกว้างด้านบน = ventral median fissure → ล่าง = dorsal', 'จุดที่ dorsal horn ถึงผิว = <b>dorsolateral sulcus</b>'],
+    C8: ['Dorsal (<b>sensory</b>) rootlet เข้า cord ตาม dorsolateral sulcus'],
+    C9: ['ร่องลึกกลางด้านหน้า cord = <b>ventral median fissure</b>'],
+    C10: ['<b>Anterior spinal artery</b> (เส้นเดียว) วิ่งใน ventral median fissure → เลี้ยง 2/3 หน้า'],
+    C11: ['C เล็กสุดแต่<b>ไม่มี myelin</b>', 'ใน myelinated: Aα &gt; Aβ &gt; Aγ &gt; Aδ &gt; <b>B</b> → B เล็กสุด'],
+    C12: ['ใหญ่ + myelin → เร็ว → <b>Aα</b> เร็วสุด'],
+    C13: ['Neurapraxia = myelin · axonotmesis = axon · <b>neurotmesis = ขาดทั้งเส้นถึง epineurium</b>'],
+    C14: ['ตัดเรียบ สด ช่องว่างแทบไม่มี → <b>เย็บต่อตรง</b> (direct repair)', 'Graft (เช่น sural) ใช้เมื่อปลายสองข้างดึงมาชนไม่ได้']
   });
 
   /* ---------- K · Skull ---------- */
@@ -99,48 +69,24 @@
     K2: ['Cribriform plate = ส่วนของ <b>ethmoid</b> → CN I ลอดผ่าน'],
     K3: ['<b>Pterion</b> = F + P + S (greater wing) + T มาชนเป็นรูป H', 'Asterion = P + O + T · bregma = coronal ชน sagittal'],
     K4: ['Frontal ↔ parietal = <b>coronal</b> · parietal ↔ parietal = sagittal · parietal ↔ occipital = lambdoid'],
-    K5: ['จุดที่กระดูก 4 ชิ้นมาชนกันที่ขมับ = <b>pterion</b>'],
-    K6: ['หลังหู P + O + T = <b>asterion</b>'],
-    K7: ['มองจากบน รอยต่อพาดขวางด้านหน้า = <b>coronal</b>'],
-    K8: ['ด้านหลัง ปลาย sagittal = <b>lambdoid</b>'],
-    K9: ['พาดขวางด้านหน้า = <b>coronal</b> (ไม่มี bregmoid suture)'],
-    K10: ['ด้านหลังกะโหลก = <b>lambdoid</b>'],
-    K11: ['รอยต่อรูป H ที่ขมับ (บางสุด) = <b>pterion</b>'],
-    K12: ['หลัง mastoid = <b>asterion</b>', 'Gnathion = จุดต่ำสุดของคาง · inion = external occipital protuberance'],
-    K13: ['Jugular foramen = <b>IX, X, XI</b> + IJV', '<b>XII</b> ออกทาง hypoglossal canal ของตัวเอง'],
-    K14: ['Foramen ovale (OVALE): <b>O</b>tic ganglion, <b>V</b>3, <b>A</b>ccessory meningeal a., <b>L</b>esser petrosal, <b>E</b>missary v.', 'Middle meningeal a. → spinosum'],
-    K15: ['V1 = SOF · <b>V2 = rotundum</b> · V3 = ovale'],
-    K16: ['รูกลมเล็ก<b>หน้า</b> foramen ovale = <b>foramen rotundum</b>', 'เฉลย recall ให้ ovale แต่ข้อคู่เฉลย maxillary n. → rotundum เข้ากันกว่า'],
-    K17: ['Foramen rotundum → <b>maxillary nerve (V2)</b>'],
-    K18: ['รูกลมใต้ SOF ด้านหน้า middle fossa = <b>foramen rotundum</b>'],
-    K19: ['Rotundum → <b>V2</b>'],
-    K20: ['รูหลัง petrous temporal ปลายร่อง sigmoid = <b>jugular foramen</b>'],
-    K21: ['Jugular foramen → <b>IX</b> (+ X, XI)', 'VII, VIII → IAM · XII → hypoglossal canal'],
-    K22: ['SOF มี III, IV, V1, VI', '<b>V2</b> ออกทาง rotundum ใต้ fissure → โดนน้อยสุด'],
-    K23: ['V1 วิ่งผ่าน SOF = ช่องระหว่าง lesser/greater wing ของ <b>sphenoid</b>']
+    K5: ['Jugular foramen = <b>IX, X, XI</b> + IJV', '<b>XII</b> ออกทาง hypoglossal canal ของตัวเอง'],
+    K6: ['Foramen ovale (OVALE): <b>O</b>tic ganglion, <b>V</b>3, <b>A</b>ccessory meningeal a., <b>L</b>esser petrosal, <b>E</b>missary v.', 'Middle meningeal a. → spinosum'],
+    K7: ['V1 = SOF · <b>V2 = rotundum</b> · V3 = ovale'],
+    K8: ['รูกลมเล็ก<b>หน้า</b> foramen ovale = <b>foramen rotundum</b>', 'เฉลย recall ให้ ovale แต่ข้อคู่เฉลย maxillary n. → rotundum เข้ากันกว่า'],
+    K9: ['Foramen rotundum → <b>maxillary nerve (V2)</b>'],
+    K10: ['รูหลัง petrous temporal ปลายร่อง sigmoid = <b>jugular foramen</b>'],
+    K11: ['Jugular foramen → <b>IX</b> (+ X, XI)', 'VII, VIII → IAM · XII → hypoglossal canal'],
+    K12: ['SOF มี III, IV, V1, VI', '<b>V2</b> ออกทาง rotundum ใต้ fissure → โดนน้อยสุด'],
+    K13: ['V1 วิ่งผ่าน SOF = ช่องระหว่าง lesser/greater wing ของ <b>sphenoid</b>']
   });
 
   /* ---------- Z · Cranial cavity ---------- */
   add({
     Z1: ['Middle meningeal a. อยู่ระหว่างกะโหลกกับ dura → <b>epidural</b> (เหนือ dura)', 'Bridging vein → subdural · aneurysm → subarachnoid'],
-    Z2: ['ปุ่มคล้ายดอกกะหล่ำตามแนวกลาง = <b>arachnoid granulation</b> → ระบาย CSF เข้า SSS', 'Granular foveolae = หลุมที่มันทำไว้บนกะโหลก'],
-    Z3: ['วิ่งแนวนอนตามขอบ tentorium ด้านหลัง = <b>transverse sinus</b>'],
-    Z4: ['ปุ่มข้างแนวกลาง = <b>arachnoid granulation</b>'],
-    Z5: ['หลอดเลือดบนผิวสมองวิ่งขึ้นหา SSS = <b>superior cerebral (bridging) vein</b> → ขาดแล้วเกิด subdural'],
-    Z6: ['Infratentorial = posterior fossa → มี <b>sigmoid sinus</b>', 'Optic n., superior cerebral v., falx cerebri อยู่เหนือ tentorium'],
-    Z7: ['ในขอบ tentorium ที่ occipital = <b>transverse sinus</b>'],
-    Z8: ['Dura รูปเต็นท์คลุม posterior fossa = <b>tentorium cerebelli</b>'],
-    Z9: ['Midbrain = <b>III, IV</b> · pons = V, VI, VII · VIII ที่ pontomedullary junction'],
-    Z10: ['เส้นเล็กออกหน้า brainstem ที่รอยต่อ pons–medulla = <b>abducens</b>'],
-    Z11: ['ใต้ pons ที่ vertebral a. มาชน = <b>medulla</b>'],
-    Z12: ['แขนง trigeminal อันหลังสุด ลงไป foramen ovale = <b>mandibular n.</b>'],
-    Z13: ['หลอดเลือดใหญ่โผล่ข้าง sella จาก cavernous sinus = <b>ICA</b>'],
-    Z14: ['เส้นเรียวใกล้แนวกลางที่รอยต่อ pons–medulla = <b>abducens</b>'],
-    Z15: ['วิ่งขึ้นกลางหน้า pons = <b>basilar artery</b>'],
-    Z16: ['Posterior circulation = vertebral → basilar → <b>PCA</b>', 'ICA, ophthalmic, ACA, MCA = anterior'],
-    Z17: ['SSS, straight, occipital เข้า confluence · transverse ออกจาก confluence', '<b>Inferior sagittal</b> + great cerebral v. → straight sinus → ถึง confluence ทางอ้อม'],
-    Z18: ['แขนง trigeminal ลง foramen ovale = <b>mandibular n.</b>'],
-    Z19: ['ถูกตัดที่ foramen magnum ข้าง medulla = <b>vertebral artery</b>']
+    Z2: ['Infratentorial = posterior fossa → มี <b>sigmoid sinus</b>', 'Optic n., superior cerebral v., falx cerebri อยู่เหนือ tentorium'],
+    Z3: ['Midbrain = <b>III, IV</b> · pons = V, VI, VII · VIII ที่ pontomedullary junction'],
+    Z4: ['Posterior circulation = vertebral → basilar → <b>PCA</b>', 'ICA, ophthalmic, ACA, MCA = anterior'],
+    Z5: ['SSS, straight, occipital เข้า confluence · transverse ออกจาก confluence', '<b>Inferior sagittal</b> + great cerebral v. → straight sinus → ถึง confluence ทางอ้อม']
   });
 
   /* ---------- F · Face & neck ---------- */
@@ -151,18 +97,10 @@
     F4: ['ทำหน้ารังเกียจ = ย่นจมูก ยกริมฝีปากบน → <b>levator labii superioris alaeque nasi</b> → D'],
     F5: ['Procerus เกาะต้นจาก <b>nasal bone</b> → B'],
     F6: ['Corrugator เกาะจาก<b>สันคิ้ว (superciliary arch)</b> → A'],
-    F7: ['กล้ามลึกที่หัวคิ้ว = <b>corrugator supercilii</b>'],
-    F8: ['เส้นเล็กออกจากมุมบนด้านในของ orbit = <b>supratrochlear n.</b> (V1)'],
-    F9: ['Marginal mandibular (VII) → กล้ามดึงมุมปากลง → <b>มุมปากตก</b>', 'เป็น motor → ไม่ชา (ชา = mental n., V3)'],
-    F10: ['ท่อหนาพาดผ่าน masseter ใต้ zygomatic arch = <b>parotid duct</b>'],
-    F11: ['กล้ามแก้มชั้นลึกที่ parotid duct แทงผ่าน = <b>buccinator</b>'],
-    F12: ['ผิวหน้า 3 แถบ: บน V1 · <b>กลาง V2</b> · ล่าง V3', 'แขนง VII เป็น motor'],
-    F13: ['กล้ามแบนที่มี hypoglossal n. พาดบนผิว = <b>hyoglossus</b> → เกาะจาก hyoid'],
-    F14: ['IAN ให้ nerve to mylohyoid ก่อนเข้า mandibular foramen → <b>mylohyoid + anterior digastric</b> → D'],
-    F15: ['จาก mastoid ลงมา hyoid = <b>posterior belly of digastric</b> (VII)'],
-    F16: ['แขนงแรกของ ECA โค้งลงไปขั้วบน thyroid = <b>superior thyroid a.</b>'],
-    F17: ['Strap muscle ชั้นตื้น sternum → hyoid ชิดแนวกลาง = <b>sternohyoid</b>'],
-    F18: ['แผ่นกล้ามพื้นปากเหนือ hyoid = <b>mylohyoid</b>']
+    F7: ['Marginal mandibular (VII) → กล้ามดึงมุมปากลง → <b>มุมปากตก</b>', 'เป็น motor → ไม่ชา (ชา = mental n., V3)'],
+    F8: ['ผิวหน้า 3 แถบ: บน V1 · <b>กลาง V2</b> · ล่าง V3', 'แขนง VII เป็น motor'],
+    F9: ['กล้ามแบนที่มี hypoglossal n. พาดบนผิว = <b>hyoglossus</b> → เกาะจาก hyoid'],
+    F10: ['IAN ให้ nerve to mylohyoid ก่อนเข้า mandibular foramen → <b>mylohyoid + anterior digastric</b> → D']
   });
 
   /* ---------- D · Deep face ---------- */
@@ -173,69 +111,51 @@
     D4: ['ยื่นคาง = <b>lateral + medial pterygoid</b> (+ superficial masseter)', 'Temporalis ใยหลัง = ดึงคางกลับ → ตัดตัวเลือกที่มี temporalis'],
     D5: ['ผิวด้านในของ lateral pterygoid plate = origin ของ <b>medial pterygoid</b>'],
     D6: ['Medial pterygoid เกาะ<b>ผิวด้านในของ ramus</b> (คู่กับ masseter ด้านนอก)'],
-    D7: ['วิ่งแนวนอนไปข้างหน้าจากคอ mandible = <b>lateral pterygoid</b>'],
-    D8: ['Lateral pterygoid ← <b>ผิวนอก</b>ของ lateral pterygoid plate', 'Medial pterygoid ← ผิวใน'],
-    D9: ['กล้ามหนาสี่เหลี่ยมบนผิวนอก ramus = <b>masseter</b>'],
-    D10: ['กล้ามบดเคี้ยวทุกตัว ← <b>V3</b>'],
-    D11: ['วิ่งตรงขึ้นจาก maxillary a. ส่วนแรกไปฐานกะโหลก = <b>middle meningeal a.</b>'],
-    D12: ['Middle meningeal a. → <b>foramen spinosum</b>'],
-    D13: ['หลอดเลือดขึ้นไปฐานกะโหลก มี auriculotemporal n. โอบรอบ = <b>middle meningeal a.</b>'],
-    D14: ['เส้นประสาทที่แยกสองแขนงโอบ MMA แล้ววิ่งไปหู = <b>auriculotemporal n.</b>'],
-    D15: ['V3 motor: กล้ามบดเคี้ยว, mylohyoid, ant. digastric, tensor veli palatini, <b>tensor tympani</b>', 'Stapedius = VII'],
-    D16: ['ฟันล่าง ← <b>inferior alveolar n.</b> (V3) → จบเป็น mental n.'],
-    D17: ['<b>Infraorbital n.</b> = ปลาย V2', 'Lingual, auriculotemporal, IAN, buccal = sensory ของ V3'],
-    D18: ['หลอดเลือดเล็กวิ่งคู่ IAN ไป mandibular foramen = <b>inferior alveolar a.</b>'],
-    D19: ['IAA เลี้ยง mandible + <b>ฟันล่าง</b>']
+    D7: ['กล้ามหนาสี่เหลี่ยมบนผิวนอก ramus = <b>masseter</b>'],
+    D8: ['กล้ามบดเคี้ยวทุกตัว ← <b>V3</b>'],
+    D9: ['วิ่งตรงขึ้นจาก maxillary a. ส่วนแรกไปฐานกะโหลก = <b>middle meningeal a.</b>'],
+    D10: ['Middle meningeal a. → <b>foramen spinosum</b>'],
+    D11: ['V3 motor: กล้ามบดเคี้ยว, mylohyoid, ant. digastric, tensor veli palatini, <b>tensor tympani</b>', 'Stapedius = VII'],
+    D12: ['ฟันล่าง ← <b>inferior alveolar n.</b> (V3) → จบเป็น mental n.'],
+    D13: ['<b>Infraorbital n.</b> = ปลาย V2', 'Lingual, auriculotemporal, IAN, buccal = sensory ของ V3'],
+    D14: ['หลอดเลือดเล็กวิ่งคู่ IAN ไป mandibular foramen = <b>inferior alveolar a.</b>'],
+    D15: ['IAA เลี้ยง mandible + <b>ฟันล่าง</b>']
   });
 
   /* ---------- O · Oral cavity ---------- */
   add({
-    O1: ['กล้ามรูปพัดจากหลังคางขึ้นไปในลิ้น = <b>genioglossus</b>'],
-    O2: ['กล้ามลิ้นทุกตัว ← <b>XII</b> ยกเว้น palatoglossus ← X'],
-    O3: ['กล้ามรูปพัดเต็มลิ้นใน midline section = <b>genioglossus</b>'],
-    O4: ['Genioglossus = กล้ามลิ้น → <b>hypoglossal</b>'],
-    O5: ['พื้นปาก: <b>lingual n.</b> อยู่ใต้ mucosa เหนือ mylohyoid บน hyoglossus (วนใต้ submandibular duct)', 'Hypoglossal n. อยู่ต่ำกว่าบน hyoglossus'],
-    O6: ['<b>Lingual a.</b> (ECA) วิ่งลึกต่อ hyoglossus → ให้ sublingual a. เลี้ยงพื้นปาก'],
-    O7: ['<b>Mylohyoid</b> = พื้นปาก: sublingual gland อยู่บน · submandibular ส่วนตื้นอยู่ล่าง'],
-    O8: ['เหนือ submandibular space (อ้อมขอบหลัง mylohyoid) = sublingual space + <b>ลิ้น</b>', 'ติดเชื้อลามขึ้น → ลิ้นถูกดันขึ้น (Ludwig angina)'],
-    O9: ['Sublingual gland เปิดด้วย<b>ท่อเล็กหลายท่อ</b>ตาม sublingual fold', 'Wharton = submandibular · Stensen = parotid'],
-    O10: ['เฉลย = <b>submandibular triangle</b> (ต่อมทั้งต่อมอยู่ใน triangle)', 'หลายตำราบอกส่วนลึกอยู่เหนือ mylohyoid ใน sublingual space'],
-    O11: ['Digastric มีสองเส้นประสาท: <b>posterior belly ← VII</b> · anterior belly ← V3'],
-    O12: ['จากหลังมุม mandible ลงมา hyoid = <b>posterior belly of digastric</b>'],
-    O13: ['Posterior belly digastric ← <b>facial n.</b>'],
-    O14: ['ต่อมใต้ body ของ mandible โอบขอบหลัง mylohyoid = <b>submandibular gland</b>'],
-    O15: ['Submandibular → <b>Wharton’s duct</b> → sublingual papilla'],
-    O16: ['กล้ามเรียวจาก styloid ไป hyoid มี digastric tendon แทรก = <b>stylohyoid</b>'],
-    O17: ['Stylohyoid = กล้าม arch 2 → <b>facial n.</b>'],
-    O18: ['ต่อมใต้ mandible = <b>submandibular</b> (submaxillary = ชื่อเก่าของต่อมเดียวกัน)'],
-    O19: ['เส้นประสาทวิ่งไปข้างหน้าบน hyoglossus ใต้ต่อมและท่อ = <b>hypoglossal n.</b>'],
-    O20: ['Tonsil ระบายไป <b>jugulodigastric node</b> → คลำได้<b>ใต้มุม mandible</b>']
+    O3: ['กล้ามรูปพัดจากหลังคางขึ้นไปในลิ้น = <b>genioglossus</b>'],
+    O4: ['กล้ามลิ้นทุกตัว ← <b>XII</b> ยกเว้น palatoglossus ← X'],
+    O6: ['พื้นปาก: <b>lingual n.</b> อยู่ใต้ mucosa เหนือ mylohyoid บน hyoglossus (วนใต้ submandibular duct)', 'Hypoglossal n. อยู่ต่ำกว่าบน hyoglossus'],
+    O7: ['<b>Lingual a.</b> (ECA) วิ่งลึกต่อ hyoglossus → ให้ sublingual a. เลี้ยงพื้นปาก'],
+    O9: ['<b>Mylohyoid</b> = พื้นปาก: sublingual gland อยู่บน · submandibular ส่วนตื้นอยู่ล่าง'],
+    O10: ['เหนือ submandibular space (อ้อมขอบหลัง mylohyoid) = sublingual space + <b>ลิ้น</b>', 'ติดเชื้อลามขึ้น → ลิ้นถูกดันขึ้น (Ludwig angina)'],
+    O11: ['Sublingual gland เปิดด้วย<b>ท่อเล็กหลายท่อ</b>ตาม sublingual fold', 'Wharton = submandibular · Stensen = parotid'],
+    O12: ['เฉลย = <b>submandibular triangle</b> (ต่อมทั้งต่อมอยู่ใน triangle)', 'หลายตำราบอกส่วนลึกอยู่เหนือ mylohyoid ใน sublingual space'],
+    O13: ['Digastric มีสองเส้นประสาท: <b>posterior belly ← VII</b> · anterior belly ← V3'],
+    O14: ['จากหลังมุม mandible ลงมา hyoid = <b>posterior belly of digastric</b>'],
+    O15: ['Posterior belly digastric ← <b>facial n.</b>'],
+    O16: ['ต่อมใต้ body ของ mandible โอบขอบหลัง mylohyoid = <b>submandibular gland</b>'],
+    O17: ['Submandibular → <b>Wharton’s duct</b> → sublingual papilla'],
+    O18: ['กล้ามเรียวจาก styloid ไป hyoid มี digastric tendon แทรก = <b>stylohyoid</b>'],
+    O19: ['Stylohyoid = กล้าม arch 2 → <b>facial n.</b>'],
+    O23: ['Tonsil ระบายไป <b>jugulodigastric node</b> → คลำได้<b>ใต้มุม mandible</b>']
   });
 
   /* ---------- J · Deep neck ---------- */
   add({
-    J1: ['แขนงของ CCA ที่<b>ไม่มีแขนง</b>ในคอ อยู่หลัง-นอกต่อ ECA = <b>ICA</b>'],
-    J2: ['หลอดเลือดใหญ่โค้งออกด้านข้างข้าม rib 1 = <b>subclavian</b>'],
-    J3: ['ขึ้นตรงจาก subclavian ส่วนแรกไป transverse foramen C6 = <b>vertebral a.</b>'],
-    J4: ['ลำสั้นข้าง vertebral a. แตกเป็น inferior thyroid, suprascapular, transverse cervical = <b>thyrocervical trunk</b>'],
-    J5: ['แขนงแรกของ arch ด้านขวา แตกเป็น R subclavian + R CCA = <b>brachiocephalic trunk</b>'],
-    J6: ['ขึ้นตรงข้าง trachea = <b>common carotid</b>'],
-    J7: ['แขนงแรกในสุดของ subclavian ขึ้นไปบน = <b>vertebral a.</b>'],
-    J8: ['ลำสั้นแตกหลายแขนง = <b>thyrocervical trunk</b>'],
-    J9: ['IJV อยู่ใต้ <b>SCM</b> → แทงที่ยอดสามเหลี่ยมระหว่าง sternal กับ clavicular head ด้านนอก carotid'],
-    J10: ['ผูก inferior thyroid a. → เสี่ยง <b>RLN</b> → อัมพาตกล้ามกล่องเสียงทุกตัวยกเว้น cricothyroid', '<b>Posterior cricoarytenoid</b> = abductor ตัวเดียว'],
-    J11: ['แทง thyrohyoid membrane เข้ากล่องเสียง = <b>internal laryngeal n.</b> (sensory เหนือ vocal cord)'],
-    J12: ['Internal laryngeal n. ไปคู่กับ superior laryngeal a. = <b>แขนงของ superior thyroid a.</b>'],
-    J13: ['สายมี ganglion บนกล้าม prevertebral หลัง carotid sheath = <b>sympathetic trunk</b>'],
-    J14: ['เส้นใหญ่ใน carotid sheath ระหว่าง a. กับ v. = <b>vagus</b>'],
-    J15: ['วิ่งลงหน้า anterior scalene = <b>phrenic n.</b> (C3–5)'],
-    J16: ['Phrenic → <b>diaphragm</b> อัมพาตข้างนั้น'],
-    J17: ['สายหลัง carotid sheath บน vertebral column = <b>sympathetic trunk</b>'],
-    J18: ['ตัด cervical sympathetic → ptosis, miosis, anhidrosis = <b>Horner</b>'],
-    J19: ['Danger space = ระหว่าง <b>alar กับ prevertebral fascia</b> → ยาวถึง diaphragm → ติดเชื้อลง mediastinum', 'Retropharyngeal = buccopharyngeal กับ alar'],
-    J20: ['Investing layer หุ้ม <b>SCM</b> + trapezius (+ parotid, submandibular)', 'Strap muscles อยู่ใน pretracheal layer'],
-    J21: ['Zone I: sternal notch → cricoid · II: cricoid → มุม mandible · III: เหนือมุม mandible', '<b>Oesophagus</b> เริ่มที่ cricoid → ไม่อยู่ใน zone III'],
-    J22: ['Zone I = thoracic inlet: trachea, oesophagus, thyroid, lung apex, ต้นหลอดเลือดใหญ่', '<b>Pharynx</b> จบที่ cricoid → อยู่ zone II–III']
+    J1: ['IJV อยู่ใต้ <b>SCM</b> → แทงที่ยอดสามเหลี่ยมระหว่าง sternal กับ clavicular head ด้านนอก carotid'],
+    J2: ['ผูก inferior thyroid a. → เสี่ยง <b>RLN</b> → อัมพาตกล้ามกล่องเสียงทุกตัวยกเว้น cricothyroid', '<b>Posterior cricoarytenoid</b> = abductor ตัวเดียว'],
+    J3: ['แทง thyrohyoid membrane เข้ากล่องเสียง = <b>internal laryngeal n.</b> (sensory เหนือ vocal cord)'],
+    J4: ['Internal laryngeal n. ไปคู่กับ superior laryngeal a. = <b>แขนงของ superior thyroid a.</b>'],
+    J5: ['วิ่งลงหน้า anterior scalene = <b>phrenic n.</b> (C3–5)'],
+    J6: ['Phrenic → <b>diaphragm</b> อัมพาตข้างนั้น'],
+    J7: ['สายหลัง carotid sheath บน vertebral column = <b>sympathetic trunk</b>'],
+    J8: ['ตัด cervical sympathetic → ptosis, miosis, anhidrosis = <b>Horner</b>'],
+    J9: ['Danger space = ระหว่าง <b>alar กับ prevertebral fascia</b> → ยาวถึง diaphragm → ติดเชื้อลง mediastinum', 'Retropharyngeal = buccopharyngeal กับ alar'],
+    J10: ['Investing layer หุ้ม <b>SCM</b> + trapezius (+ parotid, submandibular)', 'Strap muscles อยู่ใน pretracheal layer'],
+    J11: ['Zone I: sternal notch → cricoid · II: cricoid → มุม mandible · III: เหนือมุม mandible', '<b>Oesophagus</b> เริ่มที่ cricoid → ไม่อยู่ใน zone III'],
+    J12: ['Zone I = thoracic inlet: trachea, oesophagus, thyroid, lung apex, ต้นหลอดเลือดใหญ่', '<b>Pharynx</b> จบที่ cricoid → อยู่ zone II–III']
   });
 
   /* ---------- E · Eye & orbit ---------- */
@@ -253,75 +173,51 @@
     E11: ['ทางแสง: cornea → aqueous → lens → vitreous', '<b>Sclera</b> ทึบแสง ไม่อยู่ในทางแสง'],
     E12: ['<b>Choroid</b> = ชั้นหลอดเลือดหลัง retina ไม่อยู่ในทางแสง'],
     E13: ['รอยต่อ cornea–sclera = <b>limbus</b>'],
-    E14: ['โดมใสด้านหน้า = <b>cornea</b>'],
-    E15: ['เส้นใหญ่ออกจากหลังลูกตา = <b>optic n.</b>'],
-    E16: ['ชั้นเซลล์หลายแถวบนผิว = <b>corneal epithelium</b> (stratified squamous)'],
-    E17: ['Stroma หลวมๆ บน pigment epithelium สีดำ ยื่นหน้า lens = <b>iris</b>'],
-    E18: ['ก้อนนูนสองด้านหลัง iris = <b>lens</b>'],
-    E19: ['เส้นประ = จุดที่ retina หนาหยุด = <b>ora serrata</b>'],
-    E20: ['หน้าต่างใสด้านหน้าลูกตาที่ผ่า = <b>cornea</b>'],
-    E21: ['ก้อนเหลืองนูนสองด้าน = <b>lens</b>'],
-    E22: ['Aqueous สร้างจาก ciliary process → ออกทาง <b>trabecular meshwork</b> → canal of Schlemm', 'อุดตัน → ความดันลูกตาสูง (glaucoma)'],
-    E23: ['แผ่นบางมีสียื่นหน้า lens = <b>iris</b>'],
-    E24: ['วงกล้ามเนื้อหนารูปสามเหลี่ยมหลังโคน iris = <b>ciliary body</b>'],
-    E25: ['Afferent: cornea → long ciliary n. → <b>nasociliary</b> → V1', 'Efferent = VII (orbicularis oculi)'],
-    E26: ['ไม่มี nasociliary ในตัวเลือก → เลือกต้นสาย <b>ophthalmic n. (V1)</b>']
+    E14: ['Aqueous สร้างจาก ciliary process → ออกทาง <b>trabecular meshwork</b> → canal of Schlemm', 'อุดตัน → ความดันลูกตาสูง (glaucoma)'],
+    E15: ['Afferent: cornea → long ciliary n. → <b>nasociliary</b> → V1', 'Efferent = VII (orbicularis oculi)'],
+    E16: ['ไม่มี nasociliary ในตัวเลือก → เลือกต้นสาย <b>ophthalmic n. (V1)</b>']
   });
 
   /* ---------- H · Ear ---------- */
   add({
-    H1: ['ส่วนล่างนุ่มไม่มีกระดูกอ่อน = <b>lobule</b>'],
-    H2: ['ติ่งเล็กหน้ารูหู = <b>tragus</b>'],
-    H3: ['ผนังหน้า: รูเปิด <b>auditory tube</b> + tensor tympani (มี ICA อยู่หลังผนัง)', 'Aditus = ผนังหลัง · promontory, round window = ผนังใน'],
-    H4: ['ผนังหลัง (mastoid): aditus, pyramid + stapedius, <b>facial canal ส่วนลง</b>'],
-    H5: ['ผนังใน: promontory, <b>oval window</b>, round window, facial canal ด้านบน', 'ผนังนอก = tympanic membrane'],
-    H6: ['Facial canal วิ่งผนังใน แล้ว<b>ลงในผนังหลัง (mastoid)</b> → COM ลามไป mastoid ถึงเส้นประสาท'],
-    H7: ['ทางเสียง: TM → ossicles → stapes → oval window → perilymph → cochlear duct', '<b>Eustachian tube</b> แค่ปรับความดัน + ระบาย'],
-    H8: ['Tensor tympani (V3) → <b>ด้ามของ malleus</b> · stapedius (VII) → คอ stapes'],
-    H9: ['Stapedius ← <b>VII</b> → อัมพาต = hyperacusis'],
-    H10: ['ห่วงสามวงบนหูชั้นใน = <b>semicircular canals</b>'],
-    H11: ['ท่อจากหูชั้นกลางลงหน้าไป nasopharynx = <b>auditory tube</b>'],
-    H12: ['ท่อลงหน้าไปคอหอย = <b>auditory tube</b>'],
-    H13: ['ห่วงของหูชั้นใน = <b>semicircular canal</b>'],
-    H14: ['หัวกลม ด้ามยาว = <b>malleus</b>'],
-    H15: ['Body + process ยาวและสั้น (เหมือนฟันกราม) = <b>incus</b>'],
-    H16: ['รูกระดูกหลัง TMJ บนกะโหลกแห้ง = <b>external acoustic meatus</b>'],
-    H17: ['ปุ่มกลมหลังล่างรูหู = <b>mastoid process</b>'],
-    H18: ['Crista → hair cell + <b>cupula</b> · macula → otolithic membrane · Corti → tectorial'],
-    H19: ['แผ่น hair cell แบน มีชั้นวุ้น + ผลึกด้านบน = <b>macula</b>'],
-    H20: ['Macula มี <b>otolithic membrane</b> (otoconia)'],
-    H21: ['Stapes ดัน perilymph ของ vestibule เข้า <b>scala vestibuli</b> → helicotrema → scala tympani → round window'],
-    H22: ['ได้ยิน = <b>organ of Corti</b>', 'Macula, crista = vestibular · macula lutea = จอตา'],
-    H23: ['ช่องกลางรูปสามเหลี่ยมระหว่าง vestibular กับ basilar membrane = <b>cochlear duct</b>'],
-    H24: ['เฉลย = <b>cochlea</b> (bony capsule)', 'จริงๆ เป็นส่วนของ petrous temporal bone'],
-    H25: ['ช่อง endolymph บน organ of Corti = <b>cochlear duct</b>'],
-    H26: ['แผ่นวุ้นคลุม hair cell = <b>tectorial membrane</b>']
+    H1: ['ผนังหน้า: รูเปิด <b>auditory tube</b> + tensor tympani (มี ICA อยู่หลังผนัง)', 'Aditus = ผนังหลัง · promontory, round window = ผนังใน'],
+    H2: ['ผนังหลัง (mastoid): aditus, pyramid + stapedius, <b>facial canal ส่วนลง</b>'],
+    H3: ['ผนังใน: promontory, <b>oval window</b>, round window, facial canal ด้านบน', 'ผนังนอก = tympanic membrane'],
+    H4: ['Facial canal วิ่งผนังใน แล้ว<b>ลงในผนังหลัง (mastoid)</b> → COM ลามไป mastoid ถึงเส้นประสาท'],
+    H5: ['ทางเสียง: TM → ossicles → stapes → oval window → perilymph → cochlear duct', '<b>Eustachian tube</b> แค่ปรับความดัน + ระบาย'],
+    H6: ['Tensor tympani (V3) → <b>ด้ามของ malleus</b> · stapedius (VII) → คอ stapes'],
+    H7: ['Stapedius ← <b>VII</b> → อัมพาต = hyperacusis'],
+    H8: ['Crista → hair cell + <b>cupula</b> · macula → otolithic membrane · Corti → tectorial'],
+    H9: ['แผ่น hair cell แบน มีชั้นวุ้น + ผลึกด้านบน = <b>macula</b>'],
+    H10: ['Macula มี <b>otolithic membrane</b> (otoconia)'],
+    H11: ['Stapes ดัน perilymph ของ vestibule เข้า <b>scala vestibuli</b> → helicotrema → scala tympani → round window'],
+    H12: ['ได้ยิน = <b>organ of Corti</b>', 'Macula, crista = vestibular · macula lutea = จอตา']
   });
 
   /* ---------- M · Membrane potential ---------- */
   add({
-    M1: ['Na⁺ นอกเซลล์ต่ำ → <b>E<sub>Na</sub> บวกน้อยลง</b> → overshoot ต่ำลง', 'RMP แทบไม่เปลี่ยน เพราะตอนพัก membrane ซึมผ่าน K⁺ เป็นหลัก'],
-    M2: ['Repolarization อาศัย <b>voltage-gated K⁺ channel</b> เปิด', 'บล็อก → AP ยาว repolarize ช้า ยิงซ้ำ'],
-    M3: ['K⁺ นอกเซลล์สูงมาก → RMP บวกขึ้นค้าง → Na⁺ channel <b>inactivate</b>', 'ยิง AP ไม่ได้เลย = depolarization block'],
-    M4: ['Na⁺ นอกเซลล์สูง → E<sub>Na</sub> บวกขึ้น → แรงขับ Na⁺ มากขึ้น → <b>AP สูงขึ้น ถี่ขึ้น</b>'],
-    M5: ['Na⁺ ต่ำ → E<sub>Na</sub> บวกน้อยลง → <b>amplitude ลด</b> (ยังยิง AP ได้)'],
-    M6: ['Hyponatremia → E<sub>Na</sub> และแรงขับ Na⁺ ลด → AP <b>เล็กลง ยิงน้อยลง</b>'],
-    M7: ['K⁺ นอกเซลล์ต่ำ → gradient ห่างขึ้น → RMP ลบมากขึ้น = <b>hyperpolarization</b> → ไกล threshold → อ่อนแรง']
+    M4: ['Na⁺ นอกเซลล์ต่ำ → <b>E<sub>Na</sub> บวกน้อยลง</b> → overshoot ต่ำลง', 'RMP แทบไม่เปลี่ยน เพราะตอนพัก membrane ซึมผ่าน K⁺ เป็นหลัก'],
+    M7: ['Repolarization อาศัย <b>voltage-gated K⁺ channel</b> เปิด', 'บล็อก → AP ยาว repolarize ช้า ยิงซ้ำ'],
+    M12: ['K⁺ นอกเซลล์สูงมาก → RMP บวกขึ้นค้าง → Na⁺ channel <b>inactivate</b>', 'ยิง AP ไม่ได้เลย = depolarization block'],
+    M13: ['Na⁺ นอกเซลล์สูง → E<sub>Na</sub> บวกขึ้น → แรงขับ Na⁺ มากขึ้น → <b>AP สูงขึ้น ถี่ขึ้น</b>'],
+    M14: ['Na⁺ ต่ำ → E<sub>Na</sub> บวกน้อยลง → <b>amplitude ลด</b> (ยังยิง AP ได้)'],
+    M15: ['Hyponatremia → E<sub>Na</sub> และแรงขับ Na⁺ ลด → AP <b>เล็กลง ยิงน้อยลง</b>'],
+    M16: ['K⁺ นอกเซลล์ต่ำ → gradient ห่างขึ้น → RMP ลบมากขึ้น = <b>hyperpolarization</b> → ไกล threshold → อ่อนแรง']
   });
 
   /* ---------- P · Nerve & NMJ ---------- */
   add({
-    P1: ['Myelin = R<sub>m</sub> สูง, C<sub>m</sub> ต่ำ', 'Demyelination → <b>R<sub>m</sub> ลด → กระแสรั่ว</b> → λ สั้น → ถึง node ถัดไปไม่พอ → นำช้า'],
-    P2: ['NMO-IgG = anti-<b>AQP4</b> บน astrocyte end-feet', 'Astrocyte ตาย → myelin ใน CNS หายตามมา (optic n. + cord)'],
-    P3: ['เฉลยตามคำวินิจฉัย MS: WBC ทำลาย myelin ใน CNS → <b>plaque หลายจุด</b>', 'อาการในโจทย์จริงๆ เป็น MG (thymus, ptosis, diplopia → nAChR ถูกดึงเข้าเซลล์)'],
-    P4: ['TTX → บล็อก <b>voltage-gated Na⁺ channel</b> → ไม่เกิด AP'],
-    P5: ['α-bungarotoxin จากงูทับสมิงคลา → <b>บล็อก nAChR</b> ด้าน postsynaptic', 'ตัด SNARE = botulinum'],
-    P6: ['Malignant hyperthermia: <b>RyR1 กลายพันธุ์</b> → SR ปล่อย Ca²⁺ ไม่หยุด เมื่อได้ halothane / succinylcholine', 'กล้ามเกร็ง ไข้สูง เผาผลาญสูง']
+    P3: ['Myelin = R<sub>m</sub> สูง, C<sub>m</sub> ต่ำ', 'Demyelination → <b>R<sub>m</sub> ลด → กระแสรั่ว</b> → λ สั้น → ถึง node ถัดไปไม่พอ → นำช้า'],
+    P4: ['NMO-IgG = anti-<b>AQP4</b> บน astrocyte end-feet', 'Astrocyte ตาย → myelin ใน CNS หายตามมา (optic n. + cord)'],
+    P5: ['เฉลยตามคำวินิจฉัย MS: WBC ทำลาย myelin ใน CNS → <b>plaque หลายจุด</b>', 'อาการในโจทย์จริงๆ เป็น MG (thymus, ptosis, diplopia → nAChR ถูกดึงเข้าเซลล์)'],
+    P8: ['TTX → บล็อก <b>voltage-gated Na⁺ channel</b> → ไม่เกิด AP'],
+    P9: ['α-bungarotoxin จากงูทับสมิงคลา → <b>บล็อก nAChR</b> ด้าน postsynaptic', 'ตัด SNARE = botulinum'],
+    P10: ['Malignant hyperthermia: <b>RyR1 กลายพันธุ์</b> → SR ปล่อย Ca²⁺ ไม่หยุด เมื่อได้ halothane / succinylcholine', 'กล้ามเกร็ง ไข้สูง เผาผลาญสูง']
   });
 
   /* ---------- L · Lab ---------- */
   add({
-    L1: ['<b>Succinylcholine</b> และ <b>ACh dose สูง</b> → end-plate depolarize ค้าง → Na⁺ channel inactivate', 'กระตุ้นเส้นประสาทไม่หด แต่กระตุ้นกล้ามโดยตรงยังหด → บล็อกที่ NMJ']
+    L6: ['<b>Succinylcholine</b> และ <b>ACh dose สูง</b> → end-plate depolarize ค้าง → Na⁺ channel inactivate', 'กระตุ้นเส้นประสาทไม่หด แต่กระตุ้นกล้ามโดยตรงยังหด → บล็อกที่ NMJ']
   });
 
   /* ---------- R · Reflex ---------- */
@@ -340,18 +236,18 @@
 
   /* ---------- A · ANS physiology (+ P7) ---------- */
   add({
-    P7: ['เฉลยตาม thymus → <b>MG</b>: antibody บล็อก/ดึง <b>nAChR</b> เข้าเซลล์', 'อาการ infection + flaccid + demyelination เป็น GBS (ไม่ใช่ NMJ) → แยกสองโรคให้ออก'],
-    A1: ['β receptor ตอบ <b>NE</b> → ใยที่หลั่ง NE = sympathetic postganglionic (การหลั่งน้ำอสุจิ = sympathetic)', 'Preganglionic ทุกเส้น, parasympathetic post, sympathetic ไปต่อมเหงื่อ = ACh'],
-    A2: ['น้ำลายใสปริมาณมาก = parasympathetic → ACh บน <b>M3</b> → ให้ <b>muscarinic agonist</b> (pilocarpine)', 'Sympathetic → น้ำลายน้อย เหนียว'],
-    A3: ['Catecholamine → <b>α1</b> ที่ <b>internal urethral sphincter</b> → หด', 'Iris sphincter, ลำไส้, detrusor หดด้วย parasympathetic · external sphincter = กล้ามลาย'],
-    A4: ['เฉลย = <b>antimuscarinic</b> → detrusor คลาย ลด urge leakage', 'บล็อก α1 จะทำให้ internal sphincter คลาย → รั่วมากขึ้น'],
-    A5: ['β2 (β3) → กล้ามเรียบคลาย → <b>detrusor คลาย</b>', 'Internal sphincter หด = α1 · เหงื่อ = muscarinic'],
-    A6: ['<b>α2</b> ที่ปลายประสาท = autoreceptor เบรกการหลั่ง NE', 'บล็อก α2 → NE หลั่งมากขึ้น']
+    P11: ['เฉลยตาม thymus → <b>MG</b>: antibody บล็อก/ดึง <b>nAChR</b> เข้าเซลล์', 'อาการ infection + flaccid + demyelination เป็น GBS (ไม่ใช่ NMJ) → แยกสองโรคให้ออก'],
+    A3: ['β receptor ตอบ <b>NE</b> → ใยที่หลั่ง NE = sympathetic postganglionic (การหลั่งน้ำอสุจิ = sympathetic)', 'Preganglionic ทุกเส้น, parasympathetic post, sympathetic ไปต่อมเหงื่อ = ACh'],
+    A5: ['น้ำลายใสปริมาณมาก = parasympathetic → ACh บน <b>M3</b> → ให้ <b>muscarinic agonist</b> (pilocarpine)', 'Sympathetic → น้ำลายน้อย เหนียว'],
+    A6: ['Catecholamine → <b>α1</b> ที่ <b>internal urethral sphincter</b> → หด', 'Iris sphincter, ลำไส้, detrusor หดด้วย parasympathetic · external sphincter = กล้ามลาย'],
+    A7: ['เฉลย = <b>antimuscarinic</b> → detrusor คลาย ลด urge leakage', 'บล็อก α1 จะทำให้ internal sphincter คลาย → รั่วมากขึ้น'],
+    A8: ['β2 (β3) → กล้ามเรียบคลาย → <b>detrusor คลาย</b>', 'Internal sphincter หด = α1 · เหงื่อ = muscarinic'],
+    A9: ['<b>α2</b> ที่ปลายประสาท = autoreceptor เบรกการหลั่ง NE', 'บล็อก α2 → NE หลั่งมากขึ้น']
   });
 
   /* ---------- G · ANS integration ---------- */
   add({
-    G1: ['ก่อนหยอด: ตาขวา (Horner) รูม่านตาเล็กกว่า', 'Apraclonidine = α1 อ่อน → dilator ที่ denervated มี α1 เพิ่ม → <b>ตาขวาขยาย</b> ตาซ้ายไม่ขยาย → anisocoria <b>กลับข้าง</b> → A']
+    G2: ['ก่อนหยอด: ตาขวา (Horner) รูม่านตาเล็กกว่า', 'Apraclonidine = α1 อ่อน → dilator ที่ denervated มี α1 เพิ่ม → <b>ตาขวาขยาย</b> ตาซ้ายไม่ขยาย → anisocoria <b>กลับข้าง</b> → A']
   });
 
   /* ---------- X · ANS of head & neck ---------- */
@@ -390,5 +286,51 @@
     W4: ['ยิง <b>photocoagulation</b> รอบรอยฉีก → เกิดแผลเป็นยึด retina'],
     W5: ['ต้อกระจก = <b>femtosecond laser</b> (photodisruption)', 'Excimer = PRK/LASIK · argon = retina'],
     W6: ['<b>RK</b> ใช้มีดกรีด ไม่ใช่ laser และเลิกใช้แล้ว', 'PRK, LASIK = excimer · ReLEx/SMILE = femtosecond']
+  });
+
+  /* ---------- Lecture check-questions (data/lecq.js) ---------- */
+  add({
+    M1: ['ที่ rest ทั้ง chemical และ electrical force ของ Na⁺ ชี้<b>เข้า</b> → เปิด channel แล้ว Na⁺ ไหลเข้า', 'ไหลตาม gradient ผ่าน channel ไม่ต้องใช้ ATP'],
+    M2: ['K⁺: chemical ออก vs electrical เข้า เกือบหักล้างกัน → Vm อยู่ใกล้ <b>E<sub>K</sub></b>', 'Na⁺: ทั้งสองแรงชี้เข้า → ห่างจาก equilibrium มาก'],
+    M3: ['Pump มีหน้าที่<b>รักษา gradient</b> ไม่ได้สร้าง Vm โดยตรง', 'Vm มาจาก permeability + gradient ที่มีอยู่ → ตอนแรกยังใกล้ปกติ ค่อย ๆ ลดลงเมื่อ gradient หมด'],
+    M5: ['[Na⁺] นอก ≫ ใน → ต้องให้ข้างใน<b>เป็นบวก</b>จึงจะดัน Na⁺ ไว้ได้ → E<sub>Na</sub> ≈ +60 mV'],
+    M6: ['เพิ่ม permeability ต่อ ion ไหน → Vm ถูกดึงเข้าหา equilibrium potential ของ ion นั้น', 'pK ↑ → Vm → <b>E<sub>K</sub></b> (hyperpolarize)'],
+    M8: ['Upstroke = <b>voltage-gated Na⁺ channel</b> เปิดเร็ว (positive feedback)', 'K⁺ channel เปิดทีหลัง → repolarize · pump ไม่ได้สร้าง spike'],
+    M9: ['−62 mV ยัง<b>ไม่ถึง threshold</b> (−55 mV) → ไม่เกิด AP'],
+    M10: ['AP เป็น <b>all-or-none</b> → ขนาดเท่ากัน', 'Stimulus แรงขึ้น → ความถี่ของ AP เพิ่ม ไม่ใช่ขนาด'],
+    M11: ['Na⁺ channel ที่ inactivated ทำให้ AP วิ่ง<b>ทางเดียว</b> + จำกัดความถี่สูงสุด + กันการยิงไม่หยุด → <b>ถูกทุกข้อ</b>'],
+    M17: ['Depolarize เล็กน้อย (A) → ใกล้ threshold → excitability อาจ ↑', 'Depolarize มากและนาน (B) → Na⁺ channel <b>inactivated</b> ค้าง → excitability ↓'],
+    P1: ['Myelin = ฉนวน → <b>Rm ↑</b> (Cm ↓) → current รั่วน้อย วิ่งไปได้ไกล', 'Ra ↓ มาจาก axon ที่ใหญ่ขึ้น ไม่ใช่ myelin'],
+    P2: ['λ ∝ √(Rm/Ra) → <b>Rm สูง</b> → current รั่วน้อย → ไปได้ไกลกว่า'],
+    P6: ['Demyelination → Rm ↓, Cm ↑ → current รั่ว → ช้าลง → ถ้าไม่พอถึง node ถัดไป = <b>conduction block</b>', 'ถูก<b>ทุกตัวเลือก</b>'],
+    P7: ['หลังติดเชื้อ + ascending weakness + areflexia + NCV ช้า = <b>GBS</b>', 'GBS = demyelination ของ peripheral nerve → เสียที่การ<b>นำ AP ตามเส้นประสาท</b> ไม่ใช่ NMJ'],
+    P12: ['Ptosis, diplopia เจอได้ทั้งคู่ → แยกไม่ได้', 'LEMS = <b>presynaptic</b> (anti-VGCC → ACh release ↓) · MG = postsynaptic (anti-nAChR)'],
+    P13: ['Block voltage-gated Na⁺ channel = <b>tetrodotoxin</b>', 'Botulinum = ACh release ↓ · α-bungarotoxin = block nAChR · tetanus = ยับยั้ง inhibitory neuron ใน cord'],
+    P14: ['AChE inhibitor มาก → ACh ค้าง → end-plate depolarize ค้าง → Na⁺ channel <b>inactivated</b> → ไม่เกิด AP ใหม่ = depolarizing block'],
+    L1: ['Absolute refractory = <b>กระตุ้นแรงแค่ไหนก็ไม่เกิด</b> AP ที่ 2 (Na⁺ channel inactivated)', 'ต้องแรงกว่าเดิมจึงเกิด = relative refractory'],
+    L2: ['เส้นใหญ่ → Ra ↓ · มี myelin → Rm ↑, Cm ↓ → <b>large myelinated</b> เร็วที่สุด'],
+    L3: ['NCV = ระยะทาง ÷ ผลต่าง latency = 40 mm ÷ (5 − 3) ms = <b>20 m/s</b>', 'ลบ latency 2 จุด → ตัดเวลาที่ NMJ และกล้ามเนื้อทิ้ง'],
+    L4: ['ใต้ <b>cathode</b> ผิวนอกเป็นลบ → membrane depolarize → AP เริ่มตรงนี้', 'Anode → hyperpolarize'],
+    L5: ['Anode hyperpolarize → กระตุ้นและนำยากขึ้น → บาง fiber ช้าลง (<b>latency ↑</b>) บางเส้นนำไม่ผ่าน (<b>amplitude ↓</b>)'],
+    L7: ['ACh ขนาดต่ำ = เหมือน transmission ปกติ → EPP → muscle AP → <b>หดตัว</b>'],
+    L8: ['ACh ขนาดสูง → nAChR ถูกกระตุ้นค้าง → depolarize ค้าง → Na⁺ channel inactivated → หดก่อนแล้ว<b>อัมพาต</b> (เหมือน succinylcholine)'],
+    A1: ['ร่างกายตอบสนองเองโดยไม่ต้องสั่ง = <b>ANS</b> (involuntary) ตรงนี้คือ sympathetic'],
+    A2: ['Ganglion ไม่ใช่แค่ relay แต่เป็น synapse ที่<b>ปรับและรวมสัญญาณ</b> นอก CNS ได้'],
+    A4: ['Golden rule: preganglionic ทุกเส้น (sympathetic และ parasympathetic) หลั่ง <b>ACh</b> → nicotinic', 'Postganglionic sympathetic ส่วนใหญ่ = NE ยกเว้นต่อมเหงื่อ = ACh → muscarinic'],
+    A10: ['β₁ = หัวใจ → <b>HR ↑</b>, contractility ↑', 'Bronchodilation = β₂ · vasoconstriction = α₁ · pupil constriction = muscarinic'],
+    A11: ['Muscarinic (M2) ที่หัวใจ → pacemaker ช้าลง → <b>HR ↓</b> (เหมือนกระตุ้น vagus)'],
+    G1: ['Ptosis + miosis + anhidrosis = <b>Horner</b> = sympathetic pathway เสีย', 'Ptosis มาจาก tarsal muscle (sympathetic) ไม่ใช่ levator (somatic)'],
+    G3: ['เย็น → sympathetic → digital artery หดมากเกิน → <b>blood flow ↓</b>'],
+    G4: ['<b>ขาวซีด (pallor)</b> = หลอดเลือดหดสุด flow แทบไม่มี', 'เขียว = flow ช้า เลือดขาด O₂ · แดง = reactive hyperemia ตอนเลือดกลับ'],
+    G5: ['ตัด cervical sympathetic → dilator pupillae ไม่ทำงาน → sphincter (parasympathetic) ชนะ → <b>รูม่านตาเล็ก</b> (เหมือน Horner)'],
+    G6: ['HR ↓, BP ↓, ลำไส้บีบ ↑, รูม่านตาเล็ก = ผลของ muscarinic ทั้งหมด → <b>parasympathetic</b> pattern'],
+    O1: ['ฟันได้เลือดจาก <b>superior และ inferior alveolar artery</b> (แขนง maxillary a.)', 'ความรู้สึกจาก superior / inferior alveolar nerve (V2 / V3)'],
+    O2: ['<b>Nasopalatine n.</b> (V2) ลงตาม nasal septum ผ่าน incisive foramen หลังฟันหน้า ไปเลี้ยง hard palate ส่วนหน้า'],
+    O5: ['Intrinsic muscle ของลิ้นทั้ง 4 มัด = <b>hypoglossal (XII)</b>'],
+    O8: ['Lingual a. วิ่ง<b>ลึกต่อ hyoglossus</b>', 'XII และ lingual n. วิ่งบนผิวด้านนอกของ hyoglossus'],
+    O20: ['Wharton’s duct (submandibular) เปิดที่ <b>sublingual caruncle</b> ข้าง frenulum', 'Sublingual gland เปิดตาม sublingual fold'],
+    O21: ['<b>Hypoglossal n.</b> โค้งข้าม carotid ใน submandibular triangle แล้ววิ่งบน hyoglossus ไปลิ้น'],
+    O22: ['<b>Platysma</b> อยู่ใน superficial fascia คลุม submental และ submandibular triangle', 'Mylohyoid อยู่ลึกกว่า anterior belly'],
+    D16: ['Auriculotemporal, buccal, lingual = sensory · inferior alveolar = sensory ไปฟันล่างเป็นหลัก', 'แขนงของมันคือ <b>nerve to mylohyoid</b> = motor ไป mylohyoid + anterior belly ของ digastric']
   });
 })(window.THAI_Q = window.THAI_Q || {});
