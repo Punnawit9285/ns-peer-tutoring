@@ -20,9 +20,12 @@ CVS.sections.forEach(s => {
     if (hasQ) out['z-' + it.id] = phrase('Quiz · ' + it.id + ' ·', out['k-' + it.id]);
   });
   out['s-' + s.id] = out['k-' + cs[0].id];
-  out['a-' + s.id] = phrase('Answer key · Section ' + s.id + ' ' + s.title.split(' ')[0]);
-  out['b-' + s.id] = phrase('Concept blanks · Section ' + s.id + ' ' + s.title.split(' ')[0]);
-  out['x-' + s.id] = phrase('Thai explanations · Section ' + s.id + ' ' + s.title.split(' ')[0]);
+  /* a part header: "<label> · Section X", then the section title (PDFKit order) or its first concept ID (poppler order) */
+  const head = label => { const re = new RegExp(esc((label + ' · Section ' + s.id).replace(/\s+/g, '')) + '(?=' + esc(s.title.split(' ')[0].replace(/&amp;/g, '&')) + '|' + s.id + '-C\\d)');
+    const p = lines.find(l => re.test(l.t.replace(/\s+/g, ''))); return p ? p.n : 0; };
+  out['a-' + s.id] = head('Answer key');
+  out['b-' + s.id] = head('Concept blanks');
+  out['x-' + s.id] = head('Thai explanations');
 });
 /* every concept page must show the end of its card: a missing tail means the page clipped it */
 const plain = h => String(h).replace(/<span class="cz">[\s\S]*?<\/span>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/\{\{|\}\}/g, '').replace(/&#(\d+);/g, (m, n) => String.fromCharCode(+n)).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&[a-z]+;/g, '').replace(/\s+/g, '');
