@@ -5,6 +5,7 @@ tools/pdftext
 tools/qr
 tools/relabel
 dist/print.html
+dist/print-tutor.html
 dist/fonts/
 dist/pimg/
 tools/trim

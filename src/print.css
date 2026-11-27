@@ -1,9 +1,9 @@
-/* Student handout (print.js -> dist/print.html -> student.pdf). A4 portrait.
+/* AC-based learning & Tutor PDFs (print.js -> dist/print.html / dist/print-tutor.html). A4 portrait.
    Screen and print use the same rules, so the concept-page fit measured on screen holds in print. */
 @page {
   size: A4;
   margin: 12mm 12mm 13mm;
-  @bottom-left { content: "NS I Anatomy, Physiology & Physics · Peer support 82 · student handout"; font: 7.5pt "IBM Plex Mono", monospace; color: #6b7385; }
+  @bottom-left { content: "NS I Anatomy, Physiology & Physics · Peer support 82 · AC-based learning"; font: 7.5pt "IBM Plex Mono", monospace; color: #6b7385; }
   @bottom-right { content: counter(page) " / " counter(pages); font: 7.5pt "IBM Plex Mono", monospace; color: #6b7385; }
 }
 html, body { background: #fff; }
@@ -135,3 +135,33 @@ table.toc td:first-child { white-space: normal; }
 /* a table too wide to sit beside its figure (see unclip() in print.js): one column, table full width, figure under it */
 .cfit .tstack.tstack { grid-template-columns: minmax(0, 1fr); }
 .cfit .tstack .scan img, .cfit .tstack .scan.tall img { max-height: 300px; }
+
+/* tutor PDF additions */
+.czr { display: inline; padding: 0 3px; border-bottom: 1.5px solid var(--art); background: #fbf3f4; color: var(--art); font-weight: 600; border-radius: 3px 3px 0 0; }
+.tsecpage { break-before: page; padding-top: 2mm; }
+.tsecpage h2 { font: 600 1.9em/1.15 var(--f-display); margin: 4px 0 8px; }
+.tsecpage .lede { font-size: 1.05em; color: var(--ink2); margin: 0 0 10px; font-family: "IBM Plex Sans Thai", var(--f-body); }
+.tsay { margin: 6px 0 8px; background: var(--sheet2); border-left: 3px solid var(--art); border-radius: 7px; padding: 6px 10px; }
+.tsay .tp-head { font: 600 .72em var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--art); margin-bottom: 2px; }
+.tsay p { margin: 0; line-height: 1.45; }
+.ttraps { margin: 8px 0; background: var(--warn-soft); border-left: 3px solid var(--warn); border-radius: 7px; padding: 7px 11px; font-family: "IBM Plex Sans Thai", var(--f-body); }
+.ttraps .tp-head { font: 600 .72em var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--warn); margin-bottom: 3px; }
+.ttraps ul { margin: 0; padding-left: 1.2em; display: grid; gap: 2px; line-height: 1.45; }
+.tu80 { margin: 8px 0; border: 1px solid var(--rule); border-radius: 7px; padding: 7px 11px; }
+.tu80 .tp-head { font: 600 .74em var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--ink2); margin-bottom: 4px; }
+.tu80 ol { margin: 0; padding-left: 1.3em; display: grid; gap: 3px; line-height: 1.45; }
+.tnotes { margin: 8px 0 0; background: var(--art-soft); border-left: 3px solid var(--art); border-radius: 7px; padding: 6px 10px; font-family: "IBM Plex Sans Thai", var(--f-body); }
+.tnotes .tn-head { font: 600 .72em var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--art); margin-bottom: 2px; }
+.tnotes ul { margin: 0; padding-left: 1.2em; display: grid; gap: 2px; line-height: 1.42; }
+.tnotes pre.tdiag { margin: 5px 0 0; padding: 5px 8px; background: #fff; border: 1px solid var(--rule); border-radius: 5px; font: 400 .78em/1.35 var(--f-mono); white-space: pre-wrap; }
+.popt li.isans .L, .ptf span.isans .L { background: var(--ok); border-color: var(--ok); color: #fff; }
+.popt li.isans > span:last-child, .ptf span.isans { color: var(--ok); font-weight: 600; }
+.tqa { margin-top: 5px; padding: 5px 8px; background: #f3faf5; border-left: 2.5px solid var(--ok); border-radius: 5px; font-size: .94em; }
+.tqa .tqans { font-weight: 600; color: var(--ok); margin-bottom: 2px; }
+.tqa ul { margin: 2px 0 0; padding-left: 1.15em; display: grid; gap: 1.5px; line-height: 1.45; font-family: "IBM Plex Sans Thai", var(--f-body); }
+.tqa .flag { margin-top: 4px; padding: 3px 7px; font-size: .9em; border-radius: 5px; }
+.tqa .tsay { margin: 4px 0 0; padding: 4px 8px; font-size: .92em; }
+table.tplan { width: 100%; border-collapse: collapse; font-size: .92em; margin-bottom: 12px; }
+table.tplan th { text-align: left; font: 600 .75em var(--f-mono); text-transform: uppercase; letter-spacing: .05em; color: var(--ink2); border-bottom: 1.5px solid var(--ink); padding: 4px 5px; }
+table.tplan td { border-bottom: 1px solid var(--rule); padding: 4px 5px; vertical-align: top; }
+table.tplan td:first-child { white-space: nowrap; font-weight: 600; }

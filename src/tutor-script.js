@@ -327,123 +327,279 @@ sec_('W', 'Video 3', '10&#8211;12 min', 'Light is a wave and a particle; a laser
 function sayQ(sid, o) { for (var k in o) SC[sid].say[k] = o[k]; }
 sayQ('V', {
   V1: 'Ask what each part borders. Only the transverse process points away from the canal.',
-  V2: 'The lumbar canal beats the thoracic, but the cervical canal is bigger still. That one word is the trap.',
-  V5: 'The nucleus sits a little behind centre. That is why discs herniate backwards onto the roots.',
-  V7: 'Count the segments it crosses: rotatores one or two, multifidus two to four, semispinalis four to six.'
+  V4: 'The lumbar canal beats the thoracic, but the cervical canal is bigger still. That one word is the trap.',
+  V9: 'The nucleus sits a little behind centre. That is why discs herniate backwards onto the roots.',
+  V14: 'Count the segments it crosses: rotatores one or two, multifidus two to four, semispinalis four to six.'
 });
 sayQ('I', {
   I1: 'Find C1’s anterior arch; the peg just behind it is the dens.',
-  I2: 'Name the four lines front to back; the canal sits between the second and the third.',
-  I5: 'Draw the dog: nose transverse process, eye pedicle, ear superior facet, neck pars, front leg inferior facet.',
-  I8: 'Denser is whiter on CT, and nothing in the spine is denser than cortical bone.'
+  I4: 'Name the four lines front to back; the canal sits between the second and the third.',
+  I10: 'Draw the dog: nose transverse process, eye pedicle, ear superior facet, neck pars, front leg inferior facet.',
+  I16: 'Denser is whiter on CT, and nothing in the spine is denser than cortical bone.'
 });
 sayQ('N', {
-  N4: 'Soma to terminal is forward, so it is anterograde transport.',
-  N5: 'One phagocyte in the brain: microglia.'
+  N10: 'Soma to terminal is forward, so it is anterograde transport.',
+  N16: 'One phagocyte in the brain: microglia.'
 });
 sayQ('C', {
   C1: 'Three landmarks to know cold: nipple T4, xiphoid T7, umbilicus T10.',
-  C3: 'Walk the needle in from the skin. The posterior longitudinal ligament is on the far side of the CSF.',
-  C10: 'The groove on the front of the cord carries the one anterior spinal artery.',
-  C11: 'C is thinnest but has no myelin, so among myelinated fibres the smallest is B.',
-  C13: 'Neurotmesis means the whole nerve is cut, epineurium and all.'
+  C5: 'Walk the needle in from the skin. The posterior longitudinal ligament is on the far side of the CSF.',
+  C17: 'The groove on the front of the cord carries the one anterior spinal artery.',
+  C22: 'C is thinnest but has no myelin, so among myelinated fibres the smallest is B.',
+  C26: 'Neurotmesis means the whole nerve is cut, epineurium and all.'
 });
 sayQ('K', {
   K1: 'Male skulls are built heavier: big brow ridges, square jaw, blunt orbital rims.',
-  K3: 'Four bones meet at the pterion, and the middle meningeal artery runs just under it.',
-  K5: 'Nine, ten and eleven share the jugular foramen. Twelve has its own canal.'
+  K4: 'Four bones meet at the pterion, and the middle meningeal artery runs just under it.',
+  K9: 'Nine, ten and eleven share the jugular foramen. Twelve has its own canal.'
 });
 sayQ('Z', {
-  Z1: 'Arteries outside the dura bleed outside the dura: epidural.',
-  Z3: 'Midbrain gives three and four; the pons gives five, six and seven.',
-  Z4: 'Posterior circulation: vertebral, basilar, then the posterior cerebrals.'
+  Z2: 'Arteries outside the dura bleed outside the dura: epidural.',
+  Z8: 'Midbrain gives three and four; the pons gives five, six and seven.',
+  Z12: 'Posterior circulation: vertebral, basilar, then the posterior cerebrals.'
 });
 sayQ('F', {
   F1: 'Orbicularis oculi closes the eye; lose it and you cannot blink.',
-  F7: 'The marginal mandibular branch is motor, so expect a drooping corner of the mouth, not numbness.',
-  F8: 'Three bands down the face: V1, V2, V3. The middle third is maxillary.'
+  F10: 'The marginal mandibular branch is motor, so expect a drooping corner of the mouth, not numbness.',
+  F14: 'Three bands down the face: V1, V2, V3. The middle third is maxillary.'
 });
 sayQ('D', {
   D2: 'List what lives in the fossa; the mental nerve is already out on the chin.',
-  D3: 'Three muscles close the jaw. The lateral pterygoid is the only one that opens it.',
-  D11: 'V3’s motor list ends with the two tensors; stapedius belongs to the facial nerve.'
+  D5: 'Three muscles close the jaw. The lateral pterygoid is the only one that opens it.',
+  D20: 'V3’s motor list ends with the two tensors; stapedius belongs to the facial nerve.'
 });
 sayQ('O', {
-  O4: 'Every tongue muscle is hypoglossal, except palatoglossus.',
-  O6: 'Lift the tongue: right under the mucosa, above mylohyoid, the lingual nerve hooks under the duct.',
-  O9: 'Mylohyoid is the floor: sublingual gland above it, submandibular gland below it.'
+  O7: 'Every tongue muscle is hypoglossal, except palatoglossus.',
+  O12: 'Lift the tongue: right under the mucosa, above mylohyoid, the lingual nerve hooks under the duct.',
+  O16: 'Mylohyoid is the floor: sublingual gland above it, submandibular gland below it.'
 });
 sayQ('J', {
-  J1: 'Find the triangle between the two heads of sternocleidomastoid. The vein is under it.',
-  J2: 'Tie the inferior thyroid artery and you risk the recurrent nerve. That takes out every abductor, the posterior cricoarytenoid.',
-  J8: 'Cut the sympathetic chain in the neck and you get Horner on that side.',
-  J9: 'The danger space sits between alar and prevertebral fascia and runs all the way down to the diaphragm.'
+  J7: 'Find the triangle between the two heads of sternocleidomastoid. The vein is under it.',
+  J9: 'Tie the inferior thyroid artery and you risk the recurrent nerve. That takes out every abductor, the posterior cricoarytenoid.',
+  J19: 'Cut the sympathetic chain in the neck and you get Horner on that side.',
+  J22: 'The danger space sits between alar and prevertebral fascia and runs all the way down to the diaphragm.'
 });
 sayQ('E', {
   E1: 'Eye movements plus V1 with normal vision means the superior orbital fissure.',
-  E5: 'Abduct the eye to test the recti: up is superior rectus, down is inferior rectus.',
-  E11: 'Follow the light: cornea, aqueous, lens, vitreous. The sclera is off the path.',
-  E14: 'Aqueous drains at the angle through the trabecular meshwork.'
+  E7: 'Abduct the eye to test the recti: up is superior rectus, down is inferior rectus.',
+  E16: 'Follow the light: cornea, aqueous, lens, vitreous. The sclera is off the path.',
+  E21: 'Aqueous drains at the angle through the trabecular meshwork.'
 });
 sayQ('H', {
-  H3: 'The stapes plugs the oval window, so that window is on the medial wall.',
-  H5: 'The tube equalises pressure; it is not on the sound path.',
-  H8: 'Crista has a cupula, macula has otoliths, Corti has a tectorial membrane.',
-  H11: 'The stapes pushes into the vestibule and on into the scala vestibuli.'
+  H4: 'The stapes plugs the oval window, so that window is on the medial wall.',
+  H11: 'The tube equalises pressure; it is not on the sound path.',
+  H15: 'Crista has a cupula, macula has otoliths, Corti has a tectorial membrane.',
+  H22: 'The stapes pushes into the vestibule and on into the scala vestibuli.'
 });
 sayQ('M', {
-  M4: 'Change outside sodium and you move E-sodium, not the resting potential.',
-  M12: 'A huge potassium rise holds the membrane depolarised, sodium channels inactivate, and nothing fires.'
+  M6: 'Change outside sodium and you move E-sodium, not the resting potential.',
+  M22: 'A huge potassium rise holds the membrane depolarised, sodium channels inactivate, and nothing fires.'
 });
 sayQ('P', {
-  P3: 'Myelin is resistance. Lose it and current leaks out before it reaches the next node.',
-  P8: 'Tetrodotoxin plugs the voltage-gated sodium channel, so no action potential starts anywhere.'
+  P7: 'Myelin is resistance. Lose it and current leaks out before it reaches the next node.',
+  P17: 'Tetrodotoxin plugs the voltage-gated sodium channel, so no action potential starts anywhere.'
 });
 sayQ('L', {
-  L6: 'Nerve stimulation fails, direct muscle stimulation works: the block is at the junction, and both drugs keep the end plate depolarised.'
+  L9: 'Nerve stimulation fails, direct muscle stimulation works: the block is at the junction, and both drugs keep the end plate depolarised.'
 });
 sayQ('R', {
-  R1: 'Too much tension, tendon organ fires, the same muscle relaxes.',
-  R4: 'Withdrawal that outlasts the stimulus is afterdischarge from reverberating circuits.',
-  R6: 'First comes spinal shock, so every reflex below the lesion disappears.'
+  R3: 'Too much tension, tendon organ fires, the same muscle relaxes.',
+  R8: 'Withdrawal that outlasts the stimulus is afterdischarge from reverberating circuits.',
+  R13: 'First comes spinal shock, so every reflex below the lesion disappears.'
 });
 sayQ('A', {
-  A3: 'Beta receptors listen to noradrenaline, and only sympathetic postganglionic fibres release it.',
-  A5: 'Watery saliva is parasympathetic: give a muscarinic agonist.',
-  A6: 'Catecholamines tighten the internal sphincter through alpha-one.'
+  A4: 'Beta receptors listen to noradrenaline, and only sympathetic postganglionic fibres release it.',
+  A11: 'Watery saliva is parasympathetic: give a muscarinic agonist.',
+  A14: 'Catecholamines tighten the internal sphincter through alpha-one.'
 });
 sayQ('G', {
-  G2: 'Apraclonidine is a weak alpha-one agonist. Only the denervated, supersensitive pupil dilates, so the anisocoria flips.'
+  G4: 'Apraclonidine is a weak alpha-one agonist. Only the denervated, supersensitive pupil dilates, so the anisocoria flips.'
 });
 sayQ('X', {
-  X1: 'The carotid plexus is postganglionic fibres from the superior cervical ganglion.',
-  X4: 'Tears go through the pterygopalatine ganglion.',
-  X5: 'Salivary fibres that regrow down the tear path: crocodile tears after a facial nerve injury.',
-  X7: 'The parotid is supplied by nine, through the otic ganglion, not by seven.'
+  X3: 'The carotid plexus is postganglionic fibres from the superior cervical ganglion.',
+  X9: 'Tears go through the pterygopalatine ganglion.',
+  X12: 'Salivary fibres that regrow down the tear path: crocodile tears after a facial nerve injury.',
+  X15: 'The parotid is supplied by nine, through the otic ganglion, not by seven.'
 });
 sayQ('Y', {
   Y2: 'A paracentral disc catches the traversing root: at L5–S1 that is S1.'
 });
 sayQ('S', {
   S1: 'Time is distance over speed: 0.8 seconds.',
-  S3: 'Twenty times the pressure is plus 26 decibels, so 20 plus 26 is 46.'
+  S12: 'Twenty times the pressure is plus 26 decibels, so 20 plus 26 is 46.'
 });
 sayQ('W', {
-  W2: 'A laser is one colour, one direction, in step. Polychromatic is the wrong word.',
-  W3: 'Photocoagulation means heat: a thermal interaction.',
-  W5: 'Cataract surgery uses the femtosecond laser.'
+  W9: 'A laser is one colour, one direction, in step. Polychromatic is the wrong word.',
+  W11: 'Photocoagulation means heat: a thermal interaction.',
+  W14: 'Cataract surgery uses the femtosecond laser.'
 });
 
 /* SAY lines for the core lecture check-questions (data/lecq.js) */
-sayQ('M', { M17: 'Small depolarisation, closer to threshold. Big and lasting depolarisation, sodium channels stay inactivated: less excitable.' });
-sayQ('P', { P12: 'Ptosis and diplopia happen in both. The split is where the fault is: LEMS before the synapse, MG after it.' });
+sayQ('M', { M28: 'Small depolarisation, closer to threshold. Big and lasting depolarisation, sodium channels stay inactivated: less excitable.' });
+sayQ('P', { P31: 'Ptosis and diplopia happen in both. The split is where the fault is: LEMS before the synapse, MG after it.' });
 sayQ('L', {
-  L3: 'Subtract the two latencies, then divide the distance: forty millimetres over two milliseconds is twenty metres per second.',
-  L5: 'The anode hyperpolarises, so fibres conduct later or not at all: longer latency, smaller compound action potential.'
+  L4: 'Subtract the two latencies, then divide the distance: forty millimetres over two milliseconds is twenty metres per second.',
+  L8: 'The anode hyperpolarises, so fibres conduct later or not at all: longer latency, smaller compound action potential.'
 });
-sayQ('A', { A4: 'Every preganglionic fibre releases ACh. That is the golden rule, sympathetic included.' });
+sayQ('A', { A8: 'Every preganglionic fibre releases ACh. That is the golden rule, sympathetic included.' });
 sayQ('G', {
-  G1: 'Ptosis, miosis, anhidrosis: a broken sympathetic pathway, not an eye disease.',
-  G6: 'Slow heart, low pressure, busy gut, small pupils: everything muscarinic, so a parasympathetic pattern.'
+  G3: 'Ptosis, miosis, anhidrosis: a broken sympathetic pathway, not an eye disease.',
+  G21: 'Slow heart, low pressure, busy gut, small pupils: everything muscarinic, so a parasympathetic pattern.'
 });
-sayQ('O', { O20: 'Submandibular duct on the caruncle, sublingual ducts along the fold.' });
+sayQ('O', { O30: 'Submandibular duct on the caruncle, sublingual ducts along the fold.' });
+
+/* SAY lines for core AC68–AC79 exam-pool questions (data/past_pool.js) */
+sayQ('N', {
+  N8: 'Remember that the axon begins where the Nissl bodies stop, so rough ER is absent from the axon and all its proteins have to be shipped down from the soma.',
+  N11: 'Axonal transport runs along microtubules, with kinesin walking outward and dynein walking back to the cell body.',
+  N12: 'Pathogens like poliovirus, rabies and tetanus toxin hijack retrograde axonal transport on dynein to climb from peripheral terminals into the spinal cord.',
+  N14: 'This comes up almost every year: Schwann cells make myelin in the peripheral nervous system, one internode per cell, while oligodendrocytes handle the CNS.',
+  N27: 'Ependymal cells line the ventricles and modify into the choroid plexus to produce cerebrospinal fluid.',
+  N34: 'Pair the two classic touch corpuscles: Meissner for light touch, and Pacinian deep in the skin for pressure and vibration.'
+});
+sayQ('M', {
+  M3: 'Every normal resting potential starts from the same baseline gradient: potassium is high inside, sodium is high outside.',
+  M7: 'The Nernst equation calculates equilibrium potential when the chemical and electrical forces are equal and opposite, using Kelvin—never membrane thickness.',
+  M13: 'Repolarization is a two-part switch: voltage-gated sodium channels inactivate while voltage-gated potassium channels open to bring the membrane back down.'
+});
+sayQ('P', {
+  P3: 'When myelin is stripped away in Guillain-Barré syndrome, current leaks right through the membrane, which means membrane resistance drops while capacitance rises.',
+  P10: 'Recent infection followed by ascending weakness, lost reflexes and peripheral demyelination is textbook Guillain-Barré syndrome.',
+  P15: 'In myasthenia gravis, the nerve fires normally, but with fewer nicotinic receptors on the muscle, the end-plate potential shrinks and fails to reach threshold.',
+  P22: 'Botulinum toxin from home-canned food cleaves the SNARE complex, so ACh vesicles cannot fuse and muscle goes flaccid.',
+  P25: 'Small cell lung cancer with proximal leg weakness and a presynaptic NMJ block is Lambert-Eaton myasthenic syndrome.',
+  P33: 'Organophosphate insecticides like chlorpyrifos are irreversible acetylcholinesterase inhibitors, flooding every cholinergic synapse with ACh.'
+});
+sayQ('L', {
+  L3: 'Always subtract the two distances and divide by the difference in latencies—300 millimeters divided by 6 milliseconds gives 50 meters per second.',
+  L5: 'Read the chamber from the distal end: ground, recording electrodes, then cathode closer to recording and anode on the far end.',
+  L6: 'Flipping the cathode and anode puts a hyperpolarized barrier in the way—anodal block—so latency goes up and the compound action potential shrinks.'
+});
+sayQ('R', {
+  R1: 'Pulling your foot off a nail runs through chains of interneurons, making it the classic polysynaptic reflex.',
+  R6: 'Because the stretch reflex is monosynaptic, there is no interneuron in its core loop—the inhibitory interneuron belongs to the Golgi tendon reflex.',
+  R15: 'Spinal shock is temporary and wipes out both somatic and autonomic reflexes at first, then gives way to hyperreflexia once recovery begins.',
+  R17: 'Upper motor neuron lesions in the CNS give spasticity and brisk reflexes, while flaccidity, atrophy and lost reflexes point to the lower motor neuron.',
+  R19: 'Higher gamma motor neuron drive tightens the muscle spindles and cranks up reflex sensitivity, producing hyperreflexia.',
+  R26: 'Stroking the lateral sole tests the plantar reflex; here the big toe extends and the toes fan out—a positive Babinski sign.'
+});
+sayQ('A', {
+  A1: 'Hexamethonium blocks the ganglion itself, and every autonomic ganglion runs on nicotinic receptors.',
+  A5: 'Sweat glands are the golden-rule exception: sympathetic fibres, yes, but they release acetylcholine, not noradrenaline.',
+  A6: 'Excess acetylcholine speeds up the gut and floods the sweat glands, which are cholinergic too, while slowing the heart.',
+  A9: 'The adrenal medulla is a modified sympathetic ganglion whose postganglionic cells dump adrenaline straight into the blood.',
+  A12: 'Two muscles lift the lid: levator is somatic, and only the superior tarsal muscle is sympathetic smooth muscle.',
+  A16: 'Bladder control takes all three: sympathetic to store, parasympathetic to empty, and somatic pudendal to hold it in.',
+  A19: 'Pick the selective beta-two agonist salbutamol: it opens the airways without driving a 130-beat heart even faster.',
+  A21: 'Organophosphate floods the synapse with acetylcholine: block it with a muscarinic antagonist, and remember ACh contracts the iris sphincter, not gut sphincters.'
+});
+sayQ('G', {
+  G2: 'A lung-apex tumour hits the second-order sympathetic neuron and produces Horner syndrome, so expect facial anhidrosis.',
+  G5: 'Cocaine fails in every Horner eye, while Paredrine still dilates a preganglionic lesion because the third neuron still holds noradrenaline.',
+  G6: 'A carotid tumour destroys the third-order postganglionic neuron, so there is no stored noradrenaline left and neither cocaine nor Paredrine dilates the pupil.',
+  G8: 'Cut the preganglionic sympathetic fibre, not the postganglionic one, or receptor up-regulation will make the vasospasm worse.',
+  G13: 'One percent nicotine blocks the ganglion, so stimulating the preganglionic stump cannot get through and the Horner signs stay.',
+  G15: 'Faster heart, dilated pupil, zero gut motility, and added acetylcholine does nothing: that is muscarinic blockade by atropine.',
+  G17: 'Pressure falls, pupil shrinks, gut speeds up, and heart rate stays flat: alpha blockade with phentolamine, not a muscarinic drug.',
+  G20: 'Norepinephrine alone triggers reflex bradycardia from the huge alpha-one pressure surge; block the ganglion to cut the reflex, and its direct beta-one tachycardia shows through.'
+});
+sayQ('S', {
+  S4: 'Turn milliseconds into seconds first: five hundred milliseconds is half a second, and one over a half is two hertz.',
+  S6: 'Hearing level subtracts the normal reference threshold at that frequency: twenty minus seven point five is twelve point five.',
+  S7: 'Divide by twenty micropascals to get one hundred, take log base ten for two, and multiply by twenty for forty dB SPL.',
+  S8: 'Sensation level is always above the patient’s own threshold, not the normal one: seventy minus forty is thirty dB SL.',
+  S10: 'Two ears compare amplitude for high pitches and phase or arrival time for low pitches — amplitude and phase.',
+  S16: 'Use the vibrating area, fifty-five square millimetres, not eighty-five: fifty-five over three point two is seventeen-fold.'
+});
+sayQ('W', {
+  W2: 'Short wavelengths scatter far more than long ones — that is why the sky is blue, so the statement saying long wavelengths scatter more is false.',
+  W3: 'Anti-reflective coatings cancel glare by destructive thin-film interference.',
+  W5: 'Shorter wavelength means higher frequency and energy: X-ray, then UV, then visible, then infrared.',
+  W8: 'Convex is plus and concave is minus, but object vergence is only negative for a real object — a virtual object has positive vergence.',
+  W10: 'Lasers are monochromatic, coherent, directional and intense — optical light, not ionizing radiation.',
+  W13: 'Photoablation belongs to the UV excimer laser; Nd:YAG works by photodisruption.',
+  W17: 'Myopia is too much focusing power or too long an eye; losing the lens in aphakia does the opposite and causes severe hyperopia.',
+  W18: 'Presbyopia lacks near focusing power, so it needs a plus convex lens, never a concave lens.'
+});
+sayQ('V', {
+  V3: 'To open the vertebral canal from behind, remove its posterior roof: spinous process, laminae, and the ligamentum flavum between them.',
+  V7: 'Mammillary and accessory processes belong to the lumbar spine; thoracic vertebrae are named by rib facets, a small round canal and long sloping spines.',
+  V11: 'The posterior longitudinal ligament reinforces the midline behind the disc, so a herniating nucleus pulposus escapes posterolaterally.'
+});
+sayQ('I', {
+  I2: 'On the lateral view, check the atlanto-dental interval: under 3 millimetres in adults, under 5 in children.',
+  I8: 'Cervical neural foramina face obliquely forward, so you need the oblique view; thoracic and lumbar foramina show on the lateral film.',
+  I19: 'For any soft-tissue spine question—disc, cord, or nerve roots—pick MRI first.',
+  I21: 'MRI is first-line for a herniated disc, but a pacemaker rules it out—switch to CT myelography.'
+});
+sayQ('C', {
+  C15: 'Match each groove on the cord surface: dorsal roots enter the dorsolateral sulcus, ventral roots leave the ventrolateral sulcus, and the anterior spinal artery sits in the ventral median fissure.',
+  C18: 'One anterior spinal artery feeds the front two-thirds—ventral horn and lateral column—while two posterior spinal arteries feed the dorsal columns and dorsal horns.'
+});
+sayQ('K', {
+  K6: 'Every midline point—glabella, nasion, bregma, lambda, inion, gnathion—sits in the median plane; pterion and asterion are the paired ones on the side.',
+  K18: 'CSF leaking from the ear with facial palsy and hearing loss points straight to the petrous temporal bone, where CN VII, CN VIII, and the inner ear live.'
+});
+sayQ('Z', {
+  Z3: 'Middle meningeal artery gives an epidural bleed; torn superior cerebral bridging veins bleed beneath the dura into the subdural space.',
+  Z5: 'The tentorium cerebelli is the horizontal dural roof separating the cerebral hemispheres above from the cerebellum below.',
+  Z10: 'Trochlear—CN IV—is the only cranial nerve that exits from the dorsal surface of the brainstem.',
+  Z15: 'The circle of Willis closes around the optic chiasm with ACom, ACA, ICA, PCom and PCA; the middle cerebral artery runs laterally off it and is not part of the ring.'
+});
+sayQ('F', {
+  F21: 'Remember the internal carotid gives no branches in the neck; the thyroid gets arteries from the external carotid and thyrocervical trunk, and drains to the internal jugular and brachiocephalic veins.',
+  F23: 'Three strap muscles use ansa cervicalis, but thyrohyoid is the exception—supplied by C1 fibres riding with the hypoglossal nerve.'
+});
+sayQ('D', {
+  D18: 'The deep facial vein links the facial vein straight back into the pterygoid venous plexus.',
+  D26: 'Because chorda tympani joins the lingual nerve in the infratemporal fossa, injuring the lingual nerve during dental work knocks out both touch and taste on the anterior two-thirds of the tongue.',
+  D28: 'Trace the deep danger-triangle route step by step: facial vein, deep facial vein, pterygoid plexus, emissary vein through foramen ovale, into the cavernous sinus.'
+});
+sayQ('O', {
+  O1: 'Upper and lower teeth both trace back to the maxillary artery via its superior and inferior alveolar branches.',
+  O8: 'Genioglossus anchors the tongue to the front of the mandible and pulls it forward—the only protruder of the tongue.',
+  O9: 'The tongue deviates toward the weak side because the healthy genioglossus pushes it across—left deviation means a left hypoglossal lesion.',
+  O14: 'Split the front two-thirds of the tongue in two: lingual nerve for touch, chorda tympani of CN VII for taste.',
+  O34: 'Unlike the tongue, the uvula pulls away from a vagus lesion—rightward deviation means the left vagus nerve is down.'
+});
+sayQ('J', {
+  J1: 'Remember the asymmetry at the arch: only the right side has a brachiocephalic artery; on the left, the carotid and subclavian come straight off the aorta.',
+  J2: 'Pair the thyroid arteries by their parents: superior thyroid is external carotid, inferior thyroid is subclavian via the thyrocervical trunk.',
+  J3: 'Four classic subclavian branches—vertebral, internal thoracic, thyrocervical and costocervical; superior thyroid belongs to the external carotid.',
+  J12: 'Upper pole, superior thyroid artery, external laryngeal nerve; lower pole, inferior thyroid artery, recurrent laryngeal nerve.',
+  J13: 'Right behind the thyroid lobe, the recurrent laryngeal nerve crosses the inferior thyroid artery—nick it and the vocal cord is paralysed.',
+  J20: 'Ptosis, miosis and anhidrosis after neck or apical lung surgery is textbook Horner syndrome—think cervical sympathetic trunk.',
+  J26: 'The thoracic duct drains into the left venous angle, where the left internal jugular meets the left subclavian vein.'
+});
+sayQ('E', {
+  E5: 'III, IV, VI and all three branches of V1 use the superior orbital fissure; CN II has its own optic canal.',
+  E13: 'Adduct the eye to line up the obliques—then looking down tests the superior oblique.',
+  E15: 'The tarsal plates are the stiff connective-tissue skeleton of the eyelids, housing the lipid-producing Meibomian glands.',
+  E18: 'The optic nerve leaves the back of the eye through the fenestrated lamina cribrosa of the sclera.',
+  E22: 'Parasympathetic drive contracts the ciliary muscle for near focus and the sphincter for miosis—never dilation or distance focus.',
+  E28: 'Both limbs of the corneal blink reflex: nasociliary of V1 feels the cotton, and CN VII closes the lids.'
+});
+sayQ('H', {
+  H1: 'Every landmark of the pinna has elastic cartilage except the lobule—that is why you pierce the earlobe.',
+  H14: 'Tensor tympani belongs to the first arch, so it is V3; stapedius is second arch, so it is CN VII.',
+  H18: 'Match motion to organ: rotation goes to the crista in the ampulla of a semicircular duct; gravity and linear motion go to the utricle and saccule.',
+  H24: 'Remember the three caps: cupula for crista, otolithic membrane for macula, and tectorial membrane over the organ of Corti.',
+  H25: 'Base is narrow, stiff and high frequency; apex at the helicotrema is wide, floppy and low frequency.',
+  H28: 'Walk the walls of the middle ear for spread: roof to meninges, back to mastoid and sigmoid sinus, medial to labyrinth—never the parotid.',
+  H29: 'The back door from the middle ear into the mastoid air cells is the aditus.',
+  H30: 'Noise-induced hearing loss is sensorineural—it destroys the cochlear hair cells, not the drum or ossicles.'
+});
+sayQ('X', {
+  X1: 'There are only four cranial parasympathetic ganglia—ciliary, pterygopalatine, submandibular and otic; the trigeminal ganglion is purely sensory.',
+  X2: 'Greater and lesser petrosal are preganglionic parasympathetic; deep petrosal and the carotid plexuses are all sympathetic.',
+  X4: 'Horner ptosis is mild because levator palpebrae still works—it is the sympathetic superior tarsal muscle that is paralysed.',
+  X6: 'Severe ptosis with the eye resting down and out is the unmistakable signature of an oculomotor nerve palsy.',
+  X10: 'Greater petrosal feeds the pterygopalatine ganglion; chorda tympani feeds submandibular; lesser petrosal feeds otic.',
+  X14: 'CN VII runs right through the parotid gland, yet it never makes parotid saliva—that job belongs to CN IX.',
+  X17: 'Trace the parotid route: CN IX becomes the lesser petrosal nerve on its way to the otic ganglion.'
+});
+sayQ('Y', {
+  Y4: 'Watch the trap on Horner signs: losing sympathetic vasoconstrictors actually causes facial vasodilation, and the eye looks sunken—enophthalmos, never exophthalmos.',
+  Y5: 'Horner cuts the sympathetic dilator, leaving CN II and parasympathetic CN III untouched—so the direct light reflex stays completely intact.',
+  Y6: 'Light in the right eye: right optic nerve carries the signal in, and the right oculomotor nerve drives the direct constriction.'
+});

@@ -122,7 +122,7 @@
     var nc = 0; S.forEach(function (s) { nc += counts(s).c; });
     return '<article class="card secard"><div class="eyebrow"><span class="chip kind">Peer support 82</span><span class="chip">Tutor view &#183; all answers revealed</span></div>' +
       '<h2>NS I: Nervous System Anatomy, Physiology &amp; Physics &#183; Tutor</h2>' +
-      '<p class="lede">ลำดับการ์ดตรงกับ Student Deck ทุกใบ (' + nc + ' concepts, ' + tot + ' คำถาม, core ' + core + ' ข้อสำหรับอัดวิดีโอ) เฉลยและช่องว่าง cloze เปิดไว้หมด พร้อม bullet ภาษาไทย, กล่อง SAY และโน้ตผู้สอน</p>' +
+      '<p class="lede">ลำดับการ์ดตรงกับ Student Deck ทุกใบ (' + nc + ' concepts, ' + tot + ' คำถาม, core ' + core + ' ข้อสำหรับอัดวิดีโอ) เฉลยและช่องว่าง cloze เปิดไว้หมด พร้อม bullet ภาษาไทย, กล่อง SAY และโน้ตผู้สอน · <a class="decklink" href="ns1-anatomy-physiology-physics-tutor.pdf" download>Tutor PDF</a> <a class="decklink" href="ns1-anatomy-physiology-physics-ac-based-learning.pdf" download>AC-based learning PDF</a></p>' +
       '<div class="stations">' + st + '</div>' + planTable() +
       '<div class="traps-box"><div class="tp-head">ใช้คู่กับ Student Deck</div><ul>' +
       '<li>เปิด <b>Student Deck</b> บนจอที่อัด และเปิดหน้านี้ใน<b>เบราว์เซอร์เดียวกัน</b> (คนละแท็บหรือคนละหน้าต่าง) แล้วติ๊ก <b>Follow student</b> หน้านี้จะเลื่อนตามการ์ดที่นักเรียนเห็น</li>' +

@@ -24,6 +24,8 @@ window.CVS = {
     eye: 'Eye &amp; orbit slides',
     reflex: 'Physiology of reflex slides',
     light: 'Light in Medicine slides',
+    ac78: 'AC76–78 NS I MCQ recall',
+    ac79: 'AC79 NS I MCQ recall',
     ac80: 'AC80 NS I MCQ recall',
     ac81: 'AC81 NS I MCQ recall',
     ac81s: 'AC81 NS I spot test recall',

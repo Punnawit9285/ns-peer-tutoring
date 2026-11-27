@@ -8,13 +8,14 @@ Question-first peer-tutoring material for **Nervous System I (NS I)**, MDCU: the
 |---|---|
 | **Student deck** (shown in the video) | https://punnawit9285.github.io/ns-peer-tutoring/student.html |
 | **Tutor deck** (second screen: answers, Thai notes, script) | https://punnawit9285.github.io/ns-peer-tutoring/tutor.html |
-| **Student handout PDF** | https://punnawit9285.github.io/ns-peer-tutoring/student.pdf?v=2201b07b |
+| **AC-based learning PDF** (all lecture slides open, blanks empty) | https://punnawit9285.github.io/ns-peer-tutoring/ns1-anatomy-physiology-physics-ac-based-learning.pdf?v=504037b2 |
+| **Tutor PDF** (all blanks, answers, SAY lines &amp; notes revealed) | https://punnawit9285.github.io/ns-peer-tutoring/ns1-anatomy-physiology-physics-tutor.pdf?v=ebbb35b1 |
 
 Open the student and tutor decks in the same browser and tick *Follow student* in the tutor deck: it jumps to whatever card the student deck shows.
 
 **QR codes** for a shared screen or a printed page: the start card of each deck (main and Anatomy 101) shows QR codes that open the deck, download its PDF and open the spot trainer, and the cover of each PDF carries a QR code that downloads that PDF.
 
-## Sections (121 concepts · 239 questions · 460 cloze blanks)
+## Sections (121 concepts · 529 questions · 460 cloze blanks)
 
 Physiology, physics and histology come first (N to W), then the anatomy sections (V to X), and the two SGD cases close the deck. The deck follows the 6-video recording plan on the tutor start card.
 
@@ -47,13 +48,13 @@ Physiology, physics and histology come first (N to W), then the anatomy sections
 
 The quiz is built for the **MCQ exam**. Each question sits right after the concept card it tests and is tagged with its source.
 
-- **Past-paper MCQs (139)**: every usable item of the AC80 and AC81 NS I MCQ recalls, with the peer-support keys (`AC80`, `AC81`, `AC80 · AC81`).
-- **Lecture check-questions (42)**: the MCQs the lecturers put in their own handouts, with the official answer printed on the slide (`Lecture quiz`, `Lab quiz`): membrane potential, nerve & NMJ, the frog nerve lab, ANS physiology, ANS integration, oral cavity and deep face. Each explanation cites its slide. They follow the past-paper items of the same concept.
+- **Past-paper MCQs (429)**: deduplicated, high-yield items drawn from the full NS I exam pool across **AC68–AC81** (`AC 70–75` Back/Head & Neck + Neurophysiology chapters, `AC 76–78` 20 chapter booklets, `AC79`, `AC80`, and `AC81` recalls with peer-support keys). Identical or closely recurring exam-pool questions are grouped into one item tagged chronologically with every year they appeared (e.g. `AC68 · AC71 · AC72 · AC74 · AC75 · AC76 · AC77 · AC78 · AC80 · AC81` for refractive media of the eye, or `AC73 · AC75 · AC77 · AC78 · AC79 · AC80` for chorda tympani). Items from the `AC79` compiled pool (Membrane potential, Nervous tissue, ANS, Light, Sound) without an individual year tag carry `AC73–79`.
+- **Lecture check-questions (42)**: the MCQs the lecturers put in their own handouts, with the official answer printed on the slide (`Lecture quiz`, `Lab quiz`, plus any past-paper years when an AC exam reused the same question, e.g. `AC72 · AC79 · Lecture quiz`): membrane potential, nerve & NMJ, the frog nerve lab, ANS physiology, ANS integration, oral cavity and deep face. Each explanation cites its slide. They follow the past-paper items of the same concept.
 - **Spot items (58)**, kept only where the station teaches a link: what supplies a structure, what it does or contains, what passes through it, or what happens when it is cut (`AC81 spot`, `AC79 spot`, `AC79 · AC81 spot` when both years asked the same station). The 104 pure "identify structure A" items are left out of this deck: the back, head and neck stations are in the Anatomy 101 deck below, and the histology, eye and ear identification stations are no longer in either deck (git history before 24 Nov 2026 has them).
 
 - **Original wording and option order** are kept; a few long AC81 case stems are trimmed to the facts the question uses, and Thai stems carry an English gloss.
-- **Recall notes**: where a recalled key or stem disagrees with the lecture, or the recall is incomplete, the item says so in a *Recall note* and teaches the principle.
-- **Excluded**: the *Imaging of head and neck* items (that lecture is not one of the NS I handouts here) and items recalled without options (AC81 “mimics a β1 agonist”).
+- **Recall notes**: where a recalled key or stem disagrees with the lecture or physiology, or the recall is incomplete, the item says so in a *Recall note* and teaches the principle.
+- **Excluded**: non-NS I chapters from the older MS I booklet (upper/lower limbs, gait, ergonomics), *Imaging of head and neck* items (that lecture is not one of the NS I handouts here), and broken recalls without usable options or stems.
 - **Interactive flowcharts**: P-C4 (where the NMJ signal fails: MG, LEMS, toxins, drugs), G-C1 (Horner: which neuron), X-C5 (facial nerve lesion level from the signs) and S-C6 (reading an audiogram: type and WHO degree). Click any box for why that step exists, load a case, or (audiogram) type your own thresholds, then press *Next step*. The PDF prints the charts without the controls.
 
 ## Anatomy 101: cadaver to lecture (NS I gross anatomy)
@@ -96,7 +97,8 @@ Source and method: [`spot/src`](spot/src). The atlas PDF is read locally and nev
 
 - **`student.html`** (also `index.html`, `dist/deck.html`): Present and Browse modes, *Core only* filter, cloze blanks on every concept card (Space = next blank, Enter = all, R = hide, click a blank to flip it), click an option to see the answer, click a figure to zoom, L opens the Thai explanation, B toggles Browse. Swipe on phones.
 - **`tutor.html`** (also `dist/notes.html`): the same cards with every answer and blank revealed, Thai bullets, a SAY line on each concept card and core question, the 6-video plan on the start card, an "Understand it: the 80%" summary on each section card, and Thai tutor notes beyond the slides.
-- **`student.pdf`**: A4 handout. Each concept on one page with its blanks empty and numbered, then the quiz on that concept (no answers). At the back: the answer key with Thai explanations, the answers to every numbered blank, and each concept's Thai key points and explanation.
+- **`ns1-anatomy-physiology-physics-ac-based-learning.pdf`**: A4 AC-based learning PDF (229 pages). Each concept on one page with its blanks empty and numbered and **all lecture screenshots shown open** (including slides that show answers, so students can read the slide to fill the blanks), then the quiz on that concept (no answers). At the back: the answer key with Thai explanations, the answers to every numbered blank, and each concept's Thai key points and explanation.
+- **`ns1-anatomy-physiology-physics-tutor.pdf`**: A4 tutor PDF (287 pages). Includes the 6-video recording plan on the cover, section opening SAY / exam traps / 80% summaries, every concept with all blanks revealed, Thai key points, SAY lines, all lecture screenshots open, and Thai tutor notes beyond the slide, followed by quizzes with every answer, Thai explanation, recall note, and core SAY line revealed inline.
 
 ## Building
 
@@ -105,7 +107,7 @@ tools/crops.sh     # crop figures from src-pdf/*.pdf (the handouts and recalls; 
 tools/shrink.sh    # cap figures at 1100 px
 node check.js      # IDs, answer keys, every Thai / tutor layer keyed to a real card, blanks, images
 node build.js all  # student.html, index.html, tutor.html, dist/deck.html, dist/notes.html, dist/img/
-tools/pdf.sh       # student.pdf: headless-Chrome passes until every page number settles (CHROME=... to override)
+tools/pdf.sh       # builds both AC-based learning & Tutor PDFs via headless Chrome until every page number settles (CHROME=... to override)
                    # macOS (PDFKit, sips) or Linux (poppler pdftotext, ImageMagick); fonts from Google Fonts or npm @fontsource
 ```
 
