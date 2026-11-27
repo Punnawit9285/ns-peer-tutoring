@@ -1,4 +1,4 @@
-# AC79 Spot II (back, head & neck) - stations, keys and explanations taken from the ns-peer-tutoring deck (Punnawit9285); photos cropped there from the recall PDF.
+# AC79 Spot II (back, head & neck) - stations, keys and explanations taken from the ns-peer-tutoring deck (KAOPUNnawit); photos cropped there from the recall PDF.
 SET = "AC79 Spot II"
 SRC = "img:ns-peer-tutoring"
 ITEMS = [

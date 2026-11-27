@@ -1,4 +1,4 @@
-# RS I MCQ recalls AC79-AC81 (anatomy lectures) - questions, keys and explanations taken from the rs-peer-tutoring deck (Punnawit9285). One question per item.
+# RS I MCQ recalls AC79-AC81 (anatomy lectures) - questions, keys and explanations taken from the rs-peer-tutoring deck (KAOPUNnawit). One question per item.
 SET = "MCQ"
 SRC = "mcq:rs-peer-tutoring"
 MCQ = True

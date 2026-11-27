@@ -147,10 +147,10 @@ function wireMaps(root) {
 function closeZoom() { zoom.hidden = true; zoom.innerHTML = ''; }
 /* QR codes of both trainers (this course first): on the home page, and full screen from the header for a shared screen */
 var QRS = (D.course === 'NS' ? ['ns', 'rs'] : ['rs', 'ns']).map(function (c) {
-  return { name: c.toUpperCase() + ' I Spot Trainer', url: 'https://punnawit9285.github.io/' + c + '-peer-tutoring/spot/', img: 'img/qr-' + c + '.svg' };
+  return { name: c.toUpperCase() + ' I Spot Trainer', url: 'https://kaopunnawit.github.io/' + c + '-peer-tutoring/spot/', img: 'img/qr-' + c + '.svg' };
 });
 function qrHTML(cls) {
-  return '<div class="' + cls + '">' + QRS.map(function (q) { return '<a class="qr" href="' + q.url + '" target="_blank" rel="noopener"><img src="' + q.img + '" alt="QR code for ' + q.url + '"><b>' + q.name + '</b><span>' + q.url.replace(cls === 'qrbig' ? 'https://' : 'https://punnawit9285.github.io/', '') + '</span></a>'; }).join('') + '</div>';
+  return '<div class="' + cls + '">' + QRS.map(function (q) { return '<a class="qr" href="' + q.url + '" target="_blank" rel="noopener"><img src="' + q.img + '" alt="QR code for ' + q.url + '"><b>' + q.name + '</b><span>' + q.url.replace(cls === 'qrbig' ? 'https://' : 'https://kaopunnawit.github.io/', '') + '</span></a>'; }).join('') + '</div>';
 }
 function showQR() {
   zoom.innerHTML = '<div class="zbar"><span class="grow">Scan to open on your phone</span><button data-z="x">Close <span class="kbd">Esc</span></button></div><div class="zbody">' + qrHTML('qrbig') + '</div>';

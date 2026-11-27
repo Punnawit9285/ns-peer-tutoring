@@ -49,7 +49,7 @@ def extimg(name):
     fn = 'img/pp/x_' + name.replace(':', '_')
     if not os.path.exists(f'{OUT}/{fn}'):
         repo, _, base = name.rpartition(':'); repo = repo or 'ns'
-        im = Image.open(f'{os.environ.get("REPOS", "/home/claude/punnawit9285")}/{repo}-peer-tutoring/img/{base}').convert('RGB')
+        im = Image.open(f'{os.environ.get("REPOS", "/home/claude/kaopunnawit")}/{repo}-peer-tutoring/img/{base}').convert('RGB')
         if max(im.size) > 1500: im.thumbnail((1500, 1500))
         im.save(f'{OUT}/{fn}', quality=85, optimize=True)
     return fn
@@ -234,7 +234,7 @@ META = {'NS': dict(title='NS I Anatomy 101', deck='ns', badge='Peer tutoring', s
             lede='The three gross-anatomy lectures of RS I as concept cards, cadaver steps (real specimen beside the lecture diagram), the RS I tidbits board, and every usable past RS spot test (AC76-AC81) with keys.')}[COURSE]
 META.update(
             disc='Cadaver photographs: Rohen, Yokochi & Lütjen-Drecoll, Anatomy: A Photographic Atlas 8e (© Schattauer / Wolters Kluwer). Past spot tests and MCQ recalls: MDCU peer-support teams (AC79 spot II and the MCQ items as edited in the ns- and rs-peer-tutoring decks). ' + COURSE + ' I tidbits board: class summary. Lecture figures: 2026 NS I / RS I handouts, Faculty of Medicine, Chulalongkorn University. For use inside the class only.')
-SITE = f'https://punnawit9285.github.io/{COURSE.lower()}-peer-tutoring/'
+SITE = f'https://kaopunnawit.github.io/{COURSE.lower()}-peer-tutoring/'
 # QR codes on the start card and the PDF cover: this deck, its PDF, the spot trainer (app/qr/, made and decode-checked with tools/qr)
 META['qr'] = [dict(cap='Scan to open this deck', url=SITE + 'anatomy/', img='img/qr-deck.svg'),
               dict(cap='Scan to download the PDF', url=SITE + 'anatomy/student.pdf', img='img/qr-pdf.svg', dl=1),
@@ -261,7 +261,7 @@ def page(mode):
     css = FONTCSS + '\n' + ''.join(open(f'{W}/app/{f}').read() for f in ('base.css', 'deck.css', 'tutor.css', 'anat.css', 'flow.css'))
     body = open(f'{W}/app/body.html').read().replace('NS I &amp; RS I Anatomy 101', html.escape(META['title']))
     other = 'rs' if COURSE == 'NS' else 'ns'
-    olink = f'https://punnawit9285.github.io/{other}-peer-tutoring/anatomy/'   # the decks live in two repos
+    olink = f'https://kaopunnawit.github.io/{other}-peer-tutoring/anatomy/'   # the decks live in two repos
     if mode == 'tutor':
         body = body.replace('__SUB__', 'Tutor deck · answers, Thai notes, lab clips').replace('__TUTORCTRL__',
             '<label class="chk" for="follow"><input type="checkbox" id="follow" checked> Follow student</label><a class="btn small" href="student.html" target="_blank" rel="noopener">Student deck ↗</a>' + f'<a class="btn small" href="{olink}tutor.html">{other.upper()} I ↗</a>')

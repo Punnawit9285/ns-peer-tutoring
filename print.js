@@ -101,8 +101,8 @@ if (!TUTOR) {
   h += '<section class="cover"><div class="eyebrow"><span class="chip kind">Peer support 82</span><span class="chip">NS I · Anatomy, physiology &amp; physics</span><span class="chip">AC-based learning</span></div>' +
     '<h1>NS I: Nervous System Anatomy, Physiology &amp; Physics</h1>' +
     '<div class="coverline"><div class="counts"><div><b>' + nC + '</b><span>concepts</span></div><div><b>' + nQ + '</b><span>questions</span></div></div>' +
-    '<div class="qrs"><a class="qrlink" href="https://punnawit9285.github.io/ns-peer-tutoring/"><small class="qrcap">Scan to open the interactive deck</small><img src="img/qr-site.svg" alt="QR code for punnawit9285.github.io/ns-peer-tutoring"><span>punnawit9285.github.io/ns-peer-tutoring</span></a>' +
-    '<a class="qrlink" href="https://punnawit9285.github.io/ns-peer-tutoring/' + AC_PDF + '"><small class="qrcap">Scan to download AC-based learning (PDF)</small><img src="img/qr-pdf.svg" alt="QR code for the NS I AC-based learning PDF"><span>' + AC_PDF + '</span></a></div></div>' +
+    '<div class="qrs"><a class="qrlink" href="https://kaopunnawit.github.io/ns-peer-tutoring/"><small class="qrcap">Scan to open the interactive deck</small><img src="img/qr-site.svg" alt="QR code for kaopunnawit.github.io/ns-peer-tutoring"><span>kaopunnawit.github.io/ns-peer-tutoring</span></a>' +
+    '<a class="qrlink" href="https://kaopunnawit.github.io/ns-peer-tutoring/' + AC_PDF + '"><small class="qrcap">Scan to download AC-based learning (PDF)</small><img src="img/qr-pdf.svg" alt="QR code for the NS I AC-based learning PDF"><span>' + AC_PDF + '</span></a></div></div>' +
     '<h3 class="minih">Contents</h3><table class="toc"><thead><tr><th>Section</th><th>Starts</th><th>Concepts · questions</th><th>Quiz answers</th><th>Blank answers</th><th>Thai concept explanations</th></tr></thead><tbody>';
   S.forEach(s => {
     const qn = s.items.filter(isQ).length, cn = s.items.filter(it => it.t === 'c').length;
@@ -124,8 +124,8 @@ if (!TUTOR) {
   h += '<section class="cover"><div class="eyebrow"><span class="chip kind">Peer support 82</span><span class="chip">NS I · Anatomy, physiology &amp; physics</span><span class="chip core">Tutor guide · all answers revealed</span></div>' +
     '<h1>NS I: Nervous System Anatomy, Physiology &amp; Physics · Tutor</h1>' +
     '<div class="coverline"><div class="counts"><div><b>' + nC + '</b><span>concepts</span></div><div><b>' + nQ + '</b><span>questions</span></div><div><b>' + nCore + '</b><span>core</span></div></div>' +
-    '<div class="qrs"><a class="qrlink" href="https://punnawit9285.github.io/ns-peer-tutoring/tutor.html"><small class="qrcap">Scan to open the tutor deck</small><img src="img/qr-tutor.svg" alt="QR code for tutor deck"><span>ns-peer-tutoring/tutor.html</span></a>' +
-    '<a class="qrlink" href="https://punnawit9285.github.io/ns-peer-tutoring/' + TUTOR_PDF + '"><small class="qrcap">Scan to download Tutor PDF</small><img src="img/qr-tutor-pdf.svg" alt="QR code for the NS I tutor PDF"><span>' + TUTOR_PDF + '</span></a></div></div>' +
+    '<div class="qrs"><a class="qrlink" href="https://kaopunnawit.github.io/ns-peer-tutoring/tutor.html"><small class="qrcap">Scan to open the tutor deck</small><img src="img/qr-tutor.svg" alt="QR code for tutor deck"><span>ns-peer-tutoring/tutor.html</span></a>' +
+    '<a class="qrlink" href="https://kaopunnawit.github.io/ns-peer-tutoring/' + TUTOR_PDF + '"><small class="qrcap">Scan to download Tutor PDF</small><img src="img/qr-tutor-pdf.svg" alt="QR code for the NS I tutor PDF"><span>' + TUTOR_PDF + '</span></a></div></div>' +
     (planRows ? '<h3 class="minih">Recording plan</h3><table class="tplan"><thead><tr><th>Video</th><th>Sections</th><th>Core</th><th>Covers</th><th>Length</th></tr></thead><tbody>' + planRows + '</tbody></table>' : '') +
     '<h3 class="minih">Contents</h3><table class="toc"><thead><tr><th>Section</th><th>Starts</th><th>Concepts · Qs (core)</th><th>Thai explanations</th></tr></thead><tbody>';
   S.forEach(s => {

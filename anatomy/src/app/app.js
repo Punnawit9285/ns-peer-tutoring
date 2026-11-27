@@ -52,7 +52,7 @@
     }).join('');
     function qrs() {
       return '<div class="qrs">' + (D.meta.qr || []).map(function (q) {
-        return '<a class="qrlink" href="' + esc(q.url) + '"' + (q.dl ? ' download' : '') + ' target="_blank" rel="noopener"><small class="qrcap">' + esc(q.cap) + '</small><img src="' + esc(q.img) + '" width="112" height="112" alt="QR code for ' + esc(q.url) + '"><span>' + esc(q.url.replace('https://punnawit9285.github.io/', '')) + '</span></a>';
+        return '<a class="qrlink" href="' + esc(q.url) + '"' + (q.dl ? ' download' : '') + ' target="_blank" rel="noopener"><small class="qrcap">' + esc(q.cap) + '</small><img src="' + esc(q.img) + '" width="112" height="112" alt="QR code for ' + esc(q.url) + '"><span>' + esc(q.url.replace('https://kaopunnawit.github.io/', '')) + '</span></a>';
       }).join('') + '</div>';
     }
     return '<article class="card secard"><div class="eyebrow"><span class="chip kind">' + esc(D.meta.badge) + '</span><span class="chip">' + esc(D.meta.sub) + '</span></div>' +

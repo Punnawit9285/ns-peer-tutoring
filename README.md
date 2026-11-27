@@ -6,10 +6,10 @@ Question-first peer-tutoring material for **Nervous System I (NS I)**, MDCU: the
 
 | | Link |
 |---|---|
-| **Student deck** (shown in the video) | https://punnawit9285.github.io/ns-peer-tutoring/student.html |
-| **Tutor deck** (second screen: answers, Thai notes, script) | https://punnawit9285.github.io/ns-peer-tutoring/tutor.html |
-| **AC-based learning PDF** (all lecture slides open, blanks empty) | https://punnawit9285.github.io/ns-peer-tutoring/ns1-anatomy-physiology-physics-ac-based-learning.pdf?v=504037b2 |
-| **Tutor PDF** (all blanks, answers, SAY lines &amp; notes revealed) | https://punnawit9285.github.io/ns-peer-tutoring/ns1-anatomy-physiology-physics-tutor.pdf?v=ebbb35b1 |
+| **Student deck** (shown in the video) | https://kaopunnawit.github.io/ns-peer-tutoring/student.html |
+| **Tutor deck** (second screen: answers, Thai notes, script) | https://kaopunnawit.github.io/ns-peer-tutoring/tutor.html |
+| **AC-based learning PDF** (all lecture slides open, blanks empty) | https://kaopunnawit.github.io/ns-peer-tutoring/ns1-anatomy-physiology-physics-ac-based-learning.pdf?v=0325ce41 |
+| **Tutor PDF** (all blanks, answers, SAY lines &amp; notes revealed) | https://kaopunnawit.github.io/ns-peer-tutoring/ns1-anatomy-physiology-physics-tutor.pdf?v=6ebd7ea7 |
 
 Open the student and tutor decks in the same browser and tick *Follow student* in the tutor deck: it jumps to whatever card the student deck shows.
 
@@ -63,25 +63,25 @@ A second deck for the NS I gross-anatomy lectures, built to link each lecture st
 
 | | Link |
 |---|---|
-| **Student deck** | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/student.html |
-| **Tutor deck** (every answer and cloze revealed, Thai tutor notes and SAY lines) | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/tutor.html |
-| **Student handout PDF** | https://punnawit9285.github.io/ns-peer-tutoring/anatomy/student.pdf?v=3a265ab5 |
-| **RS I Anatomy 101 deck** | https://punnawit9285.github.io/rs-peer-tutoring/anatomy/student.html |
+| **Student deck** | https://kaopunnawit.github.io/ns-peer-tutoring/anatomy/student.html |
+| **Tutor deck** (every answer and cloze revealed, Thai tutor notes and SAY lines) | https://kaopunnawit.github.io/ns-peer-tutoring/anatomy/tutor.html |
+| **Student handout PDF** | https://kaopunnawit.github.io/ns-peer-tutoring/anatomy/student.pdf?v=03de7728 |
+| **RS I Anatomy 101 deck** | https://kaopunnawit.github.io/rs-peer-tutoring/anatomy/student.html |
 
 66 concepts · 46 cadaver steps · 14 lab clips · 215 past-paper items (379 questions) · 42 connection maps · 88 tidbits-board tiles.
 
 Sections: B Vertebral column & deep back muscles; S Spinal cord, meninges & peripheral nerve; K Skull: bones, landmarks, fossae & foramina; F Superficial face & neck; T Temporal & infratemporal fossa, mastication, TMJ; O Oral cavity, tongue, floor of mouth & pharynx; N Deep structures of the neck; C Scalp, meninges, brain, cranial nerves & vessels.
 
-The cadaver steps use photos from Rohen, *Photographic Atlas of Anatomy* 8e (© Schattauer / Wolters Kluwer). The deck and PDF are for educational, non-profit use inside MDCU only, and the textbook itself is not uploaded; see [legal.md](legal.md). Deck source: [`ns-peer-tutoring/anatomy/src`](https://github.com/Punnawit9285/ns-peer-tutoring/tree/main/anatomy/src).
+The cadaver steps use photos from Rohen, *Photographic Atlas of Anatomy* 8e (© Schattauer / Wolters Kluwer). The deck and PDF are for educational, non-profit use inside MDCU only, and the textbook itself is not uploaded; see [legal.md](legal.md). Deck source: [`ns-peer-tutoring/anatomy/src`](https://github.com/KAOPUNnawit/ns-peer-tutoring/tree/main/anatomy/src).
 
 ## Spot trainer: the gross-lab checklist on cadaver photos
 
 | | Link |
 |---|---|
-| **NS I spot trainer** | https://punnawit9285.github.io/ns-peer-tutoring/spot/ |
-| **RS I spot trainer** | https://punnawit9285.github.io/rs-peer-tutoring/spot/ |
-| **NS I tutor answer sheet** (every item of a lab on one page) | https://punnawit9285.github.io/ns-peer-tutoring/spot/tutor.html#lab=1 |
-| **RS I tutor answer sheet** (every item of a lab on one page) | https://punnawit9285.github.io/rs-peer-tutoring/spot/tutor.html#lab=1 |
+| **NS I spot trainer** | https://kaopunnawit.github.io/ns-peer-tutoring/spot/ |
+| **RS I spot trainer** | https://kaopunnawit.github.io/rs-peer-tutoring/spot/ |
+| **NS I tutor answer sheet** (every item of a lab on one page) | https://kaopunnawit.github.io/ns-peer-tutoring/spot/tutor.html#lab=1 |
+| **RS I tutor answer sheet** (every item of a lab on one page) | https://kaopunnawit.github.io/rs-peer-tutoring/spot/tutor.html#lab=1 |
 
 Every structure on the *112-69 Gross Checklist NS I*: 7 labs and 77 items, split into 96 structures. Each is shown on Rohen cadaver photos with the printed numbers removed and a thin arrow on the structure. 92 structures have 1–4 photos (278 views on 110 photos). Four have notes and lecture slides only: rotatores, zygomatic branches of VII, thyroid isthmus and diaphragma sellae.
 

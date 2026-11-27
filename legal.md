@@ -21,7 +21,7 @@ All rights to the material below stay with its owners. This repository claims no
 
 ## Removal requests
 
-If you hold rights to any material here and want it removed, open an issue in this repository or contact the owner (GitHub: [Punnawit9285](https://github.com/Punnawit9285)). It will be taken down promptly.
+If you hold rights to any material here and want it removed, open an issue in this repository or contact the owner (GitHub: [KAOPUNnawit](https://github.com/KAOPUNnawit)). It will be taken down promptly.
 
 ---
 

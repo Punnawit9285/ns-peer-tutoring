@@ -128,8 +128,8 @@ stats['photos'] = len(I); stats['past'] = len(P); stats['maps'] = len(FL)
 for fn in os.listdir(f'{OUT}/img/a'):     # photos of views dropped since an earlier build
     if fn not in I: os.remove(f'{OUT}/img/a/{fn}')
 
-META = {'NS': dict(title='NS I Spot Trainer', sub='Gross lab checklist · cadaver photos', other='https://punnawit9285.github.io/rs-peer-tutoring/spot/', othername='RS I'),
-        'RS': dict(title='RS I Spot Trainer', sub='Gross lab checklist · cadaver photos', other='https://punnawit9285.github.io/ns-peer-tutoring/spot/', othername='NS I')}[COURSE]
+META = {'NS': dict(title='NS I Spot Trainer', sub='Gross lab checklist · cadaver photos', other='https://kaopunnawit.github.io/rs-peer-tutoring/spot/', othername='RS I'),
+        'RS': dict(title='RS I Spot Trainer', sub='Gross lab checklist · cadaver photos', other='https://kaopunnawit.github.io/ns-peer-tutoring/spot/', othername='NS I')}[COURSE]
 data = dict(course=COURSE, title=META['title'], labs=LABS, T=T, I=I, P=P, F=FL, deck='../anatomy/student.html')
 js = 'window.SPOT=' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n'
 open(f'{OUT}/data.js', 'w').write(js)

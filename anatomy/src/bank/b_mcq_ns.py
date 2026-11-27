@@ -1,4 +1,4 @@
-# NS I MCQ recalls AC80-AC81 (anatomy lectures) - questions, keys and explanations taken from the ns-peer-tutoring deck (Punnawit9285). One question per item.
+# NS I MCQ recalls AC80-AC81 (anatomy lectures) - questions, keys and explanations taken from the ns-peer-tutoring deck (KAOPUNnawit). One question per item.
 SET = "MCQ"
 SRC = "mcq:ns-peer-tutoring"
 MCQ = True
