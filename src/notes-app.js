@@ -15,6 +15,22 @@
 
   /* Thai layers (src/thai-data.js, shared with the tutor deck and print.js) */
   var THAI_Q = window.THAI_Q || {}, THAI_CONCEPT = window.THAI_CONCEPT || {}, THAI_SEC = window.THAI_SEC || {};
+  var PDFP = window.PDF_PAGES || null;
+  function pdfPage(it) {
+    if (!PDFP || !it) return 0;
+    if (it.t === 'intro') return 1;
+    if (it.t === 'sec') return (PDFP.sec && PDFP.sec[S[it.si].id]) || 0;
+    return (PDFP.card && PDFP.card[it.id]) || 0;
+  }
+  function pdfBadge(pg, withTotal) {
+    if (!pg || !PDFP) return '';
+    var label = 'PDF p. ' + pg + (withTotal && PDFP.total ? ' / ' + PDFP.total : '');
+    return '<a class="chip pdfpg" href="' + PDFP.file + '#page=' + pg + '" target="_blank" rel="noopener" title="Open student PDF at page ' + pg + '">' + label + '</a>';
+  }
+  function pdfFoot(pg) {
+    if (!pg || !PDFP) return '';
+    return ' &#183; <a class="pos-pdf" href="' + PDFP.file + '#page=' + pg + '" target="_blank" rel="noopener" title="Open student PDF at page ' + pg + '">PDF p. ' + pg + '</a>';
+  }
 
   var state = {}, view = 'present', coreOnly = false, seq = [], idx = 0;
 
@@ -39,7 +55,7 @@
     if (it.src) h += '<span class="chip">' + it.src + '</span>';
     if (it.core) h += '<span class="chip core">core</span>';
     if (it.group) h += '<span class="chip grp">' + it.group + '</span>';
-    return h + '<span class="sp"></span><span>' + s.short + '</span></div>';
+    return h + '<span class="sp"></span>' + pdfBadge(pdfPage(it)) + '<span>' + s.short + '</span></div>';
   }
   function answerText(it) {
     if (it.t === 'q') {
@@ -95,9 +111,13 @@
   function renderSec(si) {
     var s = S[si], c = counts(s), ts = THAI_SEC[s.id] || {}, sc = SCRIPT.sec[s.id] || {};
     var u80 = sc.u && sc.u.length ? '<details class="u80"><summary>Understand it: the 80% <span>English summary &#183; ' + sc.u.length + ' points</span></summary><ol>' + sc.u.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ol></details>' : '';
-    var toc = s.items.filter(function (it) { return it.t === 'c'; }).map(function (it) { return '<li><span class="tid">' + it.id + '</span>' + it.title + '</li>'; }).join('');
+    var toc = s.items.filter(function (it) { return it.t === 'c'; }).map(function (it) {
+      var pg = pdfPage(it);
+      return '<li><span class="tid">' + it.id + '</span>' + it.title + (pg ? '<span class="tpg">p. ' + pg + '</span>' : '') + '</li>';
+    }).join('');
     var trapsHtml = ts.traps && ts.traps.length ? '<div class="traps-box"><div class="tp-head">จุดหลอกข้อสอบที่พบบ่อย (Exam Traps)</div><ul>' + ts.traps.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul></div>' : '';
-    return '<article class="card secard"><div class="eyebrow"><span class="chip kind">' + s.kind + '</span><span class="id">Section ' + s.id + '</span><span class="chip">' + (si + 1) + ' of ' + S.length + '</span>' + (sc.part ? '<span class="chip core">' + sc.part + ' &#183; ' + sc.time + '</span>' : '') + '</div>' +
+    var spg = pdfPage({ t: 'sec', si: si });
+    return '<article class="card secard"><div class="eyebrow"><span class="chip kind">' + s.kind + '</span><span class="id">Section ' + s.id + '</span><span class="chip">' + (si + 1) + ' of ' + S.length + '</span>' + (sc.part ? '<span class="chip core">' + sc.part + ' &#183; ' + sc.time + '</span>' : '') + '<span class="sp"></span>' + pdfBadge(spg) + '</div>' +
       '<h2>' + s.title + '</h2><p class="lede">' + (ts.big || s.blurb) + '</p>' + sayBox(sc.open, 'เปิด Section &#183; SAY') +
       '<div class="stats"><span><b>' + c.c + '</b>concept cards</span><span><b>' + c.q + '</b>questions</span><span><b>' + c.core + '</b>core, for the video</span></div>' +
       trapsHtml + u80 +
@@ -116,11 +136,11 @@
     var tot = 0, core = 0;
     S.forEach(function (s) { var c = counts(s); tot += c.q; core += c.core; });
     var st = S.map(function (s, si) {
-      var c = counts(s);
-      return '<button type="button" class="station" data-sec="' + si + '"><span class="k">' + s.id + ' &#183; ' + s.kind + '</span><b>' + s.short + '</b><span>' + c.q + ' questions &#183; ' + c.core + ' core</span></button>';
+      var c = counts(s), spg = PDFP && PDFP.sec ? PDFP.sec[s.id] : 0;
+      return '<button type="button" class="station" data-sec="' + si + '"><span class="k">' + s.id + ' &#183; ' + s.kind + (spg ? ' &#183; p. ' + spg : '') + '</span><b>' + s.short + '</b><span>' + c.q + ' questions &#183; ' + c.core + ' core</span></button>';
     }).join('');
     var nc = 0; S.forEach(function (s) { nc += counts(s).c; });
-    return '<article class="card secard"><div class="eyebrow"><span class="chip kind">Peer support 82</span><span class="chip">Tutor view &#183; all answers revealed</span></div>' +
+    return '<article class="card secard"><div class="eyebrow"><span class="chip kind">Peer support 82</span><span class="chip">Tutor view &#183; all answers revealed</span><span class="sp"></span>' + pdfBadge(1, true) + '</div>' +
       '<h2>NS I: Nervous System Anatomy, Physiology &amp; Physics &#183; Tutor</h2>' +
       '<p class="lede">ลำดับการ์ดตรงกับ Student Deck ทุกใบ (' + nc + ' concepts, ' + tot + ' คำถาม, core ' + core + ' ข้อสำหรับอัดวิดีโอ) เฉลยและช่องว่าง cloze เปิดไว้หมด พร้อม bullet ภาษาไทย, กล่อง SAY และโน้ตผู้สอน · <a class="decklink" href="ns1-anatomy-physiology-physics-tutor.pdf" download>Tutor PDF</a> <a class="decklink" href="ns1-anatomy-physiology-physics-ac-based-learning.pdf" download>AC-based learning PDF</a></p>' +
       '<div class="stations">' + st + '</div>' + planTable() +
@@ -158,11 +178,12 @@
     $('stage').innerHTML = it.t === 'intro' ? renderIntro() : it.t === 'sec' ? renderSec(it.si) : it.t === 'c' ? renderC(it) : renderQ(it);
     var si = secIndex(it);
     setTabs(si);
-    if (si < 0) { $('pos').innerHTML = 'Start'; }
+    var pg = pdfPage(it);
+    if (si < 0) { $('pos').innerHTML = 'Start' + pdfFoot(pg); }
     else {
       var n = 0, k = 0;
       for (var i = 0; i < seq.length; i++) { if (secIndex(seq[i]) === si && seq[i].t !== 'sec') { n++; if (seq[i] === it) k = n; } }
-      $('pos').innerHTML = S[si].short + ' &#183; ' + (it.t === 'sec' ? 'intro' : k + ' / ' + n) + (it.t === 'sec' ? '' : ' &#183; <span>' + it.id + '</span>');
+      $('pos').innerHTML = S[si].short + ' &#183; ' + (it.t === 'sec' ? 'intro' : k + ' / ' + n) + (it.t === 'sec' ? '' : ' &#183; <span>' + it.id + '</span>') + pdfFoot(pg);
     }
     $('progBar').style.width = (100 * idx / (seq.length - 1)) + '%';
     $('prev').disabled = idx === 0;
@@ -204,7 +225,8 @@
   function renderBrowse() {
     var h = '';
     S.forEach(function (s) {
-      h += '<section class="bsec" id="b-' + s.id + '"><header><div class="eyebrow"><span class="chip kind">' + s.kind + '</span><span class="id">Section ' + s.id + '</span></div><h2>' + s.title + '</h2><p>' + ((THAI_SEC[s.id] && THAI_SEC[s.id].big) || s.blurb) + '</p></header>';
+      var spg = PDFP && PDFP.sec ? PDFP.sec[s.id] : 0;
+      h += '<section class="bsec" id="b-' + s.id + '"><header><div class="eyebrow"><span class="chip kind">' + s.kind + '</span><span class="id">Section ' + s.id + '</span><span class="sp"></span>' + pdfBadge(spg) + '</div><h2>' + s.title + '</h2><p>' + ((THAI_SEC[s.id] && THAI_SEC[s.id].big) || s.blurb) + '</p></header>';
       s.items.forEach(function (it) { if (coreOnly && isQ(it) && !it.core) return; h += it.t === 'c' ? renderC(it) : renderQ(it); });
       h += '</section>';
     });

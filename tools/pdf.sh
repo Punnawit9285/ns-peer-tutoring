@@ -62,6 +62,9 @@ build_one() {
   for f in BaiJamjuree IBMPlexSans IBMPlexSansThai IBMPlexMono; do
     strings -n 6 "$PDF" | grep -q "/BaseFont */[A-Z]*+$f" || { echo "font $f not embedded in $PDF" >&2; exit 4; }
   done
+  if [ -z "$FLAG" ]; then
+    node tools/pdf-pages.js "$TMP/final.txt"
+  fi
   V=$(sha "$PDF" | cut -c1-8)
   perl -pi -e "s#(ns-peer-tutoring/$PDF)(\?v=[0-9a-f]+)?#\$1?v=$V#g" README.md
   echo "$PDF version $V"

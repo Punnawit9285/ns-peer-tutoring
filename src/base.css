@@ -47,6 +47,11 @@ button, input { font: inherit; color: inherit; }
 .chip.core { background: var(--art-soft); color: var(--art); }
 .chip.kind { background: var(--ven-soft); color: var(--ven); }
 .chip.grp { background: transparent; border: 1px dashed var(--rule); }
+.chip.pdfpg { background: var(--ven-soft); color: var(--ven); border: 1px solid var(--ven); font-weight: 600; text-decoration: none; }
+.chip.pdfpg:hover { background: var(--ven); color: var(--sheet); }
+.pos .pos-pdf { color: var(--ven); font-weight: 600; text-decoration: none; }
+.pos .pos-pdf:hover { text-decoration: underline; }
+.toc .tpg { font-family: var(--f-mono); font-size: .8em; color: var(--ink2); margin-left: 6px; white-space: nowrap; }
 .concept h2, .secard h2 { font-family: var(--f-display); font-weight: 600; font-size: 1.6em; line-height: 1.2; margin: 0 0 14px; text-wrap: balance; letter-spacing: .005em; }
 .cbody { display: grid; gap: 16px; }
 .cbody > * { min-width: 0; }

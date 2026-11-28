@@ -20,12 +20,12 @@ function syncImg(){
 }
 const which=process.argv[2]||'deck';
 if(which==='deck'||which==='all'){
-  const html=page(TITLE,['src/base.css','src/flows.css','src/deck.css'],rd('src/deck-body.html'),['src/thai-data.js','src/thai-q.js','src/thai-explain.js','src/flows.js','src/deck-app.js']);
+  const html=page(TITLE,['src/base.css','src/flows.css','src/deck.css'],rd('src/deck-body.html'),['src/thai-data.js','src/thai-q.js','src/thai-explain.js','src/pdf-pages.js','src/flows.js','src/deck-app.js']);
   fs.writeFileSync('dist/deck.html',html); fs.writeFileSync('student.html',html); fs.writeFileSync('index.html',html);
   console.log('deck.html / student.html / index.html',html.length,'bytes');
 }
 if(which==='notes'||which==='all'){
-  const html=page(TITLE+' (Tutor)',['src/base.css','src/flows.css','src/notes.css'],rd('src/notes-body.html'),['src/thai-data.js','src/thai-q.js','src/thai-explain.js','src/tutor-notes.js','src/tutor-script.js','src/flows.js','src/notes-app.js']);
+  const html=page(TITLE+' (Tutor)',['src/base.css','src/flows.css','src/notes.css'],rd('src/notes-body.html'),['src/thai-data.js','src/thai-q.js','src/thai-explain.js','src/tutor-notes.js','src/tutor-script.js','src/pdf-pages.js','src/flows.js','src/notes-app.js']);
   fs.writeFileSync('dist/notes.html',html); fs.writeFileSync('tutor.html',html);
   console.log('notes.html / tutor.html',html.length,'bytes');
 }
